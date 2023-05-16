@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
-@tailwind utilities
+@tailwind utilities;
+
+@layer base {
+    .ivy {
+        width: 20%;
+        position: absolute;
+        z-index: 1;
+        top: 50%;
+        transform: translate(400%, -50%);
+        animation: ivy 10s infinite ease-in-out;
+    }
+
+    @keyframes ivy {
+        0% {
+            transform: translate(0%, -50%);
+        }
+
+        50% {
+            transform: translate(400%, -50%);
+        }
+
+        100% {
+            transform: translate(0%, -50%);
+
+        }
+    }
+}
