@@ -19,9 +19,7 @@ module.exports = {
             }
         },
         fontFamily: {
-            'body': [
-
-            ]
+            'Plus Jakarta Sans': ['Plus Jakarta Sans']
         }
     },
     plugins: [
