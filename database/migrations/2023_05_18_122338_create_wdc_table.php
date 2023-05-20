@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('wdc', function (Blueprint $table) {
             $table->id('id_wdc');
-            $table->string('foto', 100);
             $table->enum('validasi',['Belum Tervalidasi', 'Sudah Valid', 'Tidak Valid']);
 
         });
