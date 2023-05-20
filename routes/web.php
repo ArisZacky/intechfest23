@@ -26,3 +26,10 @@ Route::get('/register', function(){
 
 Route::post('/register', [AuthController::class, 'register']);
 
+Route::get('/otp', function(){
+    return view('otp');
+});
+
+Route::get('/forget-password', function(){
+    return view('forgetPassword');
+});

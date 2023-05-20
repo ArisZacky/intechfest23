@@ -29,50 +29,39 @@
             </a>
             {{-- card --}}
             <div class="md:w-full relative z-50 bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700 overflow-x-hidden overflow-y-hidden">
-                {{-- form login --}}
-                <div class="p-6 space-y-4 md:space-y-6 sm:p-8 transition-all duration-1000" id="form-login">
+                {{-- form reset password --}}
+                <div class="p-6 space-y-4 md:space-y-6 sm:p-8" id="form-lupa-password">
                     <h1 class="text-xl font-bold leading-tight tracking-normal text-gray-900 md:text-2xl dark:text-white">
-                        Login
+                        Reset Password
                     </h1>
-                    <form class="space-y-4 md:space-y-6" action="/login" method="POST">
-                        @csrf
+                    <form class="space-y-4 md:space-y-6" action="#">
                             <div>
-                                <label for="email-login"
+                                <label for="email"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
-                                <input type="email" name="email" id="email-login" placeholder="nama@domain.com" required
+                                <input type="email" name="email" id="email" placeholder="nama@domain.com" required
                                     class="bg-gray-50 border focus:border-primary-lightblue focus:ring-primary-lightblue border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             </div>
                             <div>
-                                <label for="password-login" class="block text-sm font-medium text-gray-900 dark:text-white">
+                                <label for="password" class="block text-sm font-medium text-gray-900 dark:text-white">
                                     Password
                                 </label>
-                                <input type="password" name="password" id="password-login" placeholder="••••••••" required
+                                <input type="password" name="password" id="password" placeholder="••••••••" required
+                                    class="bg-gray-50 border focus:border-primary-lightblue focus:ring-primary-lightblue border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            </div>
+                            <div>
+                                <label for="konfirmasi-password" class="block text-sm font-medium text-gray-900 dark:text-white">
+                                    Konfirmasi Password
+                                </label>
+                                <input type="password" name="konfirmasi-password" placeholder="••••••••" id="konfirmasi-password" required
                                     class="bg-gray-50 border focus:border-primary-lightblue focus:ring-primary-lightblue border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             </div>
                             <div class="flex justify-center">
                                 <button type="submit"
-                                    class="w-full box-border focus:border-cyan-500 focus:outline-cyan-500 focus:ring-cyan-500 text-slate-100 hover:text-white bg-primary-lightblue hover:bg-primary-blue font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                                    Login
+                                    class="w-full box-border focus:border-cyan-500 focus:outline-cyan-500 focus:ring-cyan-500 text-slate-100 hover:text-white bg-primary-lightblue hover:bg-primary-blue font-medium rounded-lg text-sm px-4 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                                    Reset Password
                                 </button>
                             </div>
-                            <p class="text-sm font-light text-gray-500 dark:text-gray-400">
-                                Lupa password?
-                                <a href="/forget-password"
-                                    class="font-medium focus:outline-cyan-500 hover:underline dark:text-primary-500 cursor-pointer" id="lupa-password">
-                                    Klik disini
-                                </a>
-                            </p>
-                            <div class="relative">
-                                <hr>
-                                <span class="bg-white text-sm absolute text-gray-500 left-1/2 -translate-x-1/2 -top-3 z-10 px-10">atau</span>
-                            </div>
-                            <p class="text-sm font-light text-gray-500 dark:text-gray-400 text-center">
-                                Belum punya akun?
-                                <a href="/register"
-                                    class="font-medium focus:outline-cyan-500 hover:underline dark:text-primary-500">
-                                    Daftar
-                                </a>
-                            </p>
+                            <a href="/login" class="fa-solid fa-arrow-left-long text-xl cursor-pointer" id="back-login"></a>
                     </form>
                 </div>
             </div>
