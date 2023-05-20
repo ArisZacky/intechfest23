@@ -9,11 +9,53 @@
         z-index: 1;
         top: 50%;
         transform: translate(400%, -50%);
-        animation: ivy 10s infinite ease-in-out;
+        animation: ivyTerbangMendarat 30s infinite ease-in-out;
     }
 
-    @keyframes ivy {
+    @keyframes ivyTerbangMendarat {
         0% {
+            transform: translate(0%, -50%);
+        }
+
+        30% {
+            transform: translate(0%, -50%);
+        }
+
+        35% {
+            transform: translate(0%, -250%);
+        }
+
+        40% {
+            transform: translate(400%, -250%);
+        }
+
+        50% {
+            transform: translate(400%, -50%);
+        }
+
+        80% {
+            transform: translate(400%, -50%);
+        }
+
+        85% {
+            transform: translate(400%, -250%);
+        }
+
+        90% {
+            transform: translate(0%, -250%);
+        }
+
+        100% {
+            transform: translate(0%, -50%);
+        }
+    }
+
+    @keyframes ivyMondarMandir {
+        0% {
+            transform: translate(0%, -50%);
+        }
+
+        40% {
             transform: translate(0%, -50%);
         }
 
@@ -21,9 +63,50 @@
             transform: translate(400%, -50%);
         }
 
+        90% {
+            transform: translate(400%, -50%);
+        }
+
         100% {
             transform: translate(0%, -50%);
+        }
+    }
 
+    @keyframes ivyMuter {
+        0% {
+            transform: translate(0%, -50%);
+        }
+
+        25% {
+            transform: translate(0%, -50%);
+        }
+
+        30% {
+            transform: translate(0%, -250%);
+        }
+
+        40% {
+            transform: translate(400%, -250%);
+        }
+
+        50% {
+            transform: translate(400%, -50%);
+        }
+
+        75% {
+            transform: translate(400%, -50%);
+        }
+
+        80% {
+            transform: translate(400%, 250%);
+        }
+
+        90% {
+            transform: translate(0%, 250%);
+        }
+
+        100% {
+            transform: translate(0%, -50%);
         }
     }
 }

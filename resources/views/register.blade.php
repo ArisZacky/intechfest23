@@ -19,15 +19,16 @@
         {{-- abstract image --}}
         <img src="{{asset('images/abstract/Group 2.png')}}" alt="abstract image" class="absolute right-0 -bottom-14 hidden lg:block w-2/6">
         <img src="{{asset('images/abstract/Group 45.png')}}" alt="abstract image" class="absolute -top-4 rotate-180 hidden lg:block">
-        <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+        <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:h-screen">
             {{-- logo --}}
             <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
                 <img class="w-8 h-8 mr-2" src="{{asset('images/logo/logo.png')}}" alt="logo">
                 Intechfest 
             </a>
             {{-- card --}}
-            <div class="w-full relative z-50 bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
-                <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+            <div class="md:w-full relative z-50 bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700 overflow-x-hidden">
+                {{-- content register --}}
+                <div class="p-6 space-y-4 md:space-y-6 sm:p-8 transition-all duration-1000" id="form-register">
                     <h1 class="text-xl font-bold leading-tight tracking-normal text-gray-900 md:text-2xl dark:text-white">
                         Registrasi Akun
                     </h1>
@@ -45,18 +46,55 @@
                             <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
                             <input type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-50 focus:border-primary-lightblue focus:ring-primary-lightblue border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="">
                         </div>
-                        <button id="submit" type="submit" class="w-full box-border focus:border-cyan-500 focus:outline-cyan-500 focus:ring-cyan-500 text-slate-100 hover:text-white bg-primary-lightblue hover:bg-primary-blue font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Buat Akun</button>
+                        <button id="submitRegis" type="submit" class="w-full box-border focus:border-cyan-500 focus:outline-cyan-500 focus:ring-cyan-500 text-slate-100 hover:text-white bg-primary-lightblue hover:bg-primary-blue font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Buat Akun</button>
                         <p class="text-sm font-light text-gray-500 dark:text-gray-400 text-center">
-                            Sudah punya akun? <a href="#" class="font-medium focus:outline-cyan-500 text-primary-600 hover:underline dark:text-primary-500">Login disini</a>
+                            Sudah punya akun? <a href="/login" class="font-medium focus:outline-cyan-500 text-primary-600 hover:underline dark:text-primary-500">Login disini</a>
                         </p>
                     </form>
+                </div>
+                {{-- content otp --}}
+                <div class="p-6 w-full space-y-4 md:space-y-6 sm:p-8 transition-all duration-1000 translate-x-full absolute top-0 left-0" id="form-otp">
+                    <h1 class="text-xl font-bold leading-tight tracking-normal text-gray-900 md:text-2xl dark:text-white">
+                        Verifikasi OTP
+                    </h1>
+                    <p class="text-sm font-light text-gray-500 dark:text-gray-400 text-center">
+                        Pesan verifikasi sudah dikirim melalui alamat email <span href="#" class="font-medium focus:outline-cyan-500 text-primary-600 hover:underline dark:text-primary-500">sur******na@gmail.com</span>
+                    </p>
+                    {{-- form otp --}}
+                    <div class="flex lg:translate-y-full md:translate-y-[90%] justify-center">
+                        <form class="grid md:w-4/6 w-4/5 grid-cols-4 place-items-center h-16 text-center" action="#">
+                            <input type="text" id="otpInput1" maxlength="1" oninput="handleInput(this, 'otpInput1', 'otpInput2')" class="md:w-4/6 w-[90%] text-2xl text-center outline-none border-x-0 border-t-0 border-b-2 ring-0 otp-input border-primary-darkblue focus:ring-0 focus:border-primary-lightblue">
+                            <input type="text" maxlength="1" oninput="handleInput(this, 'otpInput1', 'otpInput3')" id="otpInput2" class="md:w-4/6 w-[90%] text-2xl text-center outline-none border-x-0 border-t-0 border-b-2 ring-0 otp-input border-primary-darkblue focus:ring-0 focus:border-primary-lightblue">
+                            <input type="text" maxlength="1" oninput="handleInput(this, 'otpInput2', 'otpInput4')" id="otpInput3" class="md:w-4/6 w-[90%] text-2xl text-center outline-none border-x-0 border-t-0 border-b-2 ring-0 otp-input border-primary-darkblue focus:ring-0 focus:border-primary-lightblue">
+                            <input type="text" maxlength="1" oninput="handleInput(this, 'otpInput3', 'otpInput4')" id="otpInput4" class="md:w-4/6 w-[90%] text-2xl text-center outline-none border-x-0 border-t-0 border-b-2 ring-0 otp-input border-primary-darkblue focus:ring-0 focus:border-primary-lightblue">
+                        </form>
+                    </div>
+                    <div class="absolute left-0 lg:translate-y-[35%] md:translate-y-[30%] p-6 w-full space-y-4 md:space-y-6 sm:p-8">
+                        <p href="#" class="font-medium focus:outline-cyan-500 text-primary-600 dark:text-primary-500">Expired dalam 04:59</p>
+                        <div class="flex justify-between items-center">
+                            <p class="text-sm font-light text-gray-500 dark:text-gray-400">
+                                Tidak menerima email? <span href="#" class="font-medium focus:outline-cyan-500 text-primary-600 hover:underline dark:text-primary-500 cursor-pointer">kirim ulang</span>
+                            </p>
+                        </div>
+                        <i class="fa-solid fa-arrow-left-long text-xl cursor-pointer" id="back-otp"></i>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-
+    <script src="https://kit.fontawesome.com/7eaa0f0932.js" crossorigin="anonymous"></script>
     <script>
-        const btn = document.quer
+        // animasi otp dan form
+        const register = document.querySelector('#form-register')
+        const otp = document.querySelector('#form-otp')
+        document.querySelector('#submitRegis').addEventListener("click", function(){
+            register.classList.toggle("-translate-x-full")
+            otp.classList.toggle("translate-x-full")
+        })
+        document.querySelector('#back-otp').addEventListener("click", function(){
+            register.classList.toggle("-translate-x-full")
+            otp.classList.toggle("translate-x-full")
+        })
     </script>
 
 </body>
