@@ -37,8 +37,20 @@ class AuthController extends Controller
         ]);
         
         if (Auth::attempt($credentials)) {
+
             $request->session()->regenerate();
-            return redirect()->intended('/register');
+            
+            $user_data = User::where('email', $request->email)->first();
+            $level = $user_data->level;
+            
+            //membawa ke halaman sesuai level
+            if($level == "admin")
+                return redirect('/admin');
+            elseif($level == "panitia"){
+                return redirect('/panitia');
+            }else{
+                return redirect('/peserta');
+            }
         }else{
             return redirect('login');
         }
@@ -56,7 +68,14 @@ class AuthController extends Controller
 
         $user = User::create($data);
         // send email
-        Mail::to($request->email)->send(new EmailSender());
+        $otp1 = rand(0,9);
+        $otp2 = rand(0,9);
+        $otp3 = rand(0,9);
+        $otp4 = rand(0,9);
+        $otp = ['otp' => "$otp1"."$otp2"."$otp3"."$otp4"];
+        Mail::send('emails.otpmail', $otp, function($mail) use ($request) {
+            $mail->to($request->email)->subject('OTP');
+        });
         // return user
         if($user){
             return redirect('/login');
@@ -64,6 +83,15 @@ class AuthController extends Controller
             return redirect('/register');
         }
         
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+    
+        return redirect('/login');
     }
 
     /**

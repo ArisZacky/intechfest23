@@ -28,7 +28,7 @@ class EmailSender extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Email Sender',
+            subject: 'OTP Send',
         );
     }
 
