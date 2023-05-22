@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Mail\EmailSender;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\EmailSender;
+use Illuminate\Auth\Events\Registered;
 
 class AuthController extends Controller
 {
@@ -58,7 +59,7 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
-        // create user status unverified
+        // menangkap data user dari inputan from
         $data = [
             'name' => $request->nama, 
             'email'=>$request->email, 
@@ -66,23 +67,35 @@ class AuthController extends Controller
             'level' => 'peserta'
         ];
 
+        // menambahkan data user ke db melaui variabel data
         $user = User::create($data);
-        // send email
-        $otp1 = rand(0,9);
-        $otp2 = rand(0,9);
-        $otp3 = rand(0,9);
-        $otp4 = rand(0,9);
-        $otp = ['otp' => "$otp1"."$otp2"."$otp3"."$otp4"];
-        Mail::send('emails.otpmail', $otp, function($mail) use ($request) {
-            $mail->to($request->email)->subject('OTP');
-        });
-        // return user
-        if($user){
-            return redirect('/login');
-        } else {
-            return redirect('/register');
-        }
+
+        //membuat user login tetapi akun belum terverifikasi
+        event(new Registered($user));
+        Auth::login($user);
+
+        return redirect('/email/verify');
+
+        // Code OTP
+        // $otp1 = rand(0,9);
+        // $otp2 = rand(0,9);
+        // $otp3 = rand(0,9);
+        // $otp4 = rand(0,9);
+        // $otp = ['otp' => "$otp1"."$otp2"."$otp3"."$otp4"];
+        // Mail::send('emails.otpmail', $otp, function($mail) use ($request) {
+        //     $mail->to($request->email)->subject('OTP');
+        // });
+        // // return user
+        // if($user){
+        //     return redirect('/login');
+        // } else {
+        //     return redirect('/register');
+        // }
         
+    }
+
+    public function emailNotice(){
+        return view('auth.verify-email');
     }
 
     public function logout(Request $request)
