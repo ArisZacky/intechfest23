@@ -13,10 +13,12 @@
     }
 </style>
 <body>
-    <h1>Email sudah dikirim ke email anda, silahkan cek email anda !</h1>
-    <form action="/email/verification-notification" method="POST">
-        @csrf
-        <h3>Belum mendapatkan email? <button type="submit">Kirim ulang email</button></h3>
-    </form>
+    <div class="main">
+        <h1>Email sudah dikirim ke email anda, silahkan cek email anda !</h1>
+        <form action="/email/verification-notification" method="POST">
+            @csrf
+            <h3>Belum mendapatkan email? <button type="submit">Kirim ulang email</button></h3>
+        </form>
+    </div>
 </body>
 </html>
