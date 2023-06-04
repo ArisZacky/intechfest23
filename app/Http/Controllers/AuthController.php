@@ -67,6 +67,10 @@ class AuthController extends Controller
             'level' => 'peserta'
         ];
 
+        $validated = $request->validate([
+            'email' => 'unique:users',
+        ]);
+
         // menambahkan data user ke db melaui variabel data
         $user = User::create($data);
 
