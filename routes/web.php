@@ -83,30 +83,9 @@ Route::post('/forgot-password', function (Request $request) {
 })->middleware('guest')->name('password.email');
 
 // mengirim token ke email
-Route::post('/reset-password', function (Request $request) {
-    $request->validate([
-        'token' => 'required',
-        'email' => 'required|email',
-        'password' => 'required|min:8|confirmed',
-    ]);
- 
-    $status = Password::reset(
-        $request->only('email', 'password', 'password_confirmation', 'token'),
-        function (User $user, string $password) {
-            $user->forceFill([
-                'password' => Hash::make($password)
-            ])->setRememberToken(Str::random(60));
- 
-            $user->save();
- 
-            event(new PasswordReset($user));
-        }
-    );
- 
-    return $status === Password::PASSWORD_RESET
-                ? redirect()->route('login')->with('status', __($status))
-                : back()->withErrors(['email' => [__($status)]]);
-})->middleware('guest')->name('password.update');
+Route::get('/reset-password/{token}', function (string $token) {
+    return view('auth.reset-password', ['token' => $token]);
+})->middleware('guest')->name('password.reset');
 
 // form reset password
 Route::post('/reset-password', function (Request $request) {
@@ -139,12 +118,43 @@ Route::post('/reset-password', function (Request $request) {
 Route::group(['middleware' => ['auth','verified','level:admin']], function(){
     Route::get('/admin', [AdminController::class, 'index']);
     // semua route admin dibuat dalam route group ini!!
+
+    // Menampilkan Halaman Childtalks
+    Route::get('/childtalk-admin', [AdminController::class, 'ct']);
+    // Menampilkan Halaman WDC
+    Route::get('/wdc-admin', [AdminController::class, 'wdc']);
+    // Menampilkan Halaman DC
+    Route::get('/dc-admin', [AdminController::class, 'dc']);
+    // Menmapilkan Halaman CTF
+    Route::get('/ctf-admin', [AdminController::class, 'ctf']);
+    // Menampilkan Halaman Transaksi
+    Route::get('/transaksi-admin', [AdminController::class, 'transaksi']);
+    // Menampilkan Halaman Akun Admin
+    Route::get('/akun-panitia', [AdminController::class, 'panitia']);
+    // Menampilkan Halaman Akun Peserta
+    Route::get('/akun-peserta', [AdminController::class, 'peserta']);
+
 });
 
 // Panitia Routes
 Route::group(['middleware' => ['auth','verified','level:panitia']], function(){
     Route::get('/panitia', [PanitiaController::class, 'index']);
     // semua route panitia dibuat dalam route group ini!!
+
+    // Menampilkan Halaman Childtalks
+    Route::get('/childtalk-panitia', [PanitiaController::class, 'ct']);
+
+    // Menampilkan Halaman WDC
+    Route::get('/wdc-panitia', [PanitiaController::class, 'wdc']);
+
+    // Menampilkna Halaman DC
+    Route::get('/dc-panitia', [PanitiaController::class, 'dc']);
+
+    // Menampilkan Halaman CTF
+    Route::get('/ctf-panitia', [PanitiaController::class, 'ctf']);
+
+    // Menampilkan Halaman Transaksi
+    Route::get('/transaksi-panitia', [PanitiaController::class, 'transaksi']);
 });
 
 // Peserta Routes
