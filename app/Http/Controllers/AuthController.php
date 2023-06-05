@@ -60,12 +60,16 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         // menangkap data user dari inputan from
+
+        $password = bcrypt($request->password);
+
         $data = [
             'name' => $request->nama, 
             'email'=>$request->email, 
-            'password' => $request->password, 
+            'password' => $password, 
             'level' => 'peserta'
         ];
+
 
         $validated = $request->validate([
             'email' => 'unique:users',
