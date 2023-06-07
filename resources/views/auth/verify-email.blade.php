@@ -33,15 +33,11 @@
                         Verifikasi Akun
                     </h1>
                     <p class="text-sm font-light text-gray-500 dark:text-gray-400 text-center">
-                        Email verifikasi sudah dikirim ke alamat email <span href="#" class="font-medium focus:outline-cyan-500 text-primary-600 hover:underline dark:text-primary-500">sur******na@gmail.com</span> 
+                        Email verifikasi sudah dikirim ke alamat email 
                     </p>
                     <div class="flex justify-center">
-                        <button type="button" href="#" class="text-white bg-cyan-400 hover:bg-cyan-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Verifikasi Sekarang</button>
+                        <a href="gmail.com" class="text-white bg-cyan-400 hover:bg-cyan-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Verifikasi Sekarang</a>
                     </div>
-                    <p class="text-sm font-light text-gray-500 dark:text-gray-400 text-center">
-                        Alamat email salah?
-                        <a href="../register" class="font-medium focus:outline-cyan-500 text-primary-600 hover:underline dark:text-primary-500">Ubah disini</a> 
-                    </p>
                     <div class="lg:translate-y-[15%] md:translate-y-[10%] p-3 w-full space-y-2 md:space-y-1 sm:p-">
                         <div class="flex justify-between items-center">
                             <p class="text-sm font-light text-gray-500 dark:text-gray-400">
