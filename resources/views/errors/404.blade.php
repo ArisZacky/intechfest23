@@ -9,7 +9,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500&display=swap"
         rel="stylesheet">
-    <title>Login</title>
+    <title>404 Page Not Found</title>
+    <link rel="shortcut icon" href="{{ asset('images/logo/favicon.ico') }}">
 </head>
 <body style="font-family: 'Plus Jakarta Sans','sans-serif';">
     <section class="h-screen flex justify-center items-center">

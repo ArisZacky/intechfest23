@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="shortcut icon" href="{{ asset('images/logo/favicon.ico') }}">
 </head>
 <body style="font-family: 'Plus Jakarta Sans', sans-serif;">
     <section class="bg-gray-50 dark:bg-gray-900 relative overflow-y-hidden">

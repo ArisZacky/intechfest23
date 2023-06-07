@@ -130,9 +130,9 @@ Route::group(['middleware' => ['auth', 'verified', 'level:admin']], function () 
     // Menampilkan Halaman Transaksi
     Route::get('/transaksi-admin', [AdminController::class, 'transaksi']);
     // Menampilkan Halaman Akun Admin
-    Route::get('/akun-panitia', [AdminController::class, 'panitia']);
+    Route::get('/data-panitia', [AdminController::class, 'panitia']);
     // Menampilkan Halaman Akun Peserta
-    Route::get('/akun-peserta', [AdminController::class, 'peserta']);
+    Route::get('/data-peserta', [AdminController::class, 'peserta']);
 
 });
 
@@ -207,4 +207,8 @@ Route::group(['middleware' => ['auth', 'verified', 'level:panitia']], function (
 Route::group(['middleware' => ['auth', 'verified', 'level:peserta']], function () {
     Route::get('/peserta', [PesertaController::class, 'index']);
     // semua route peserta dibuat dalam route group ini!!
+});
+
+Route::get('tampilAdmin', function(){
+    return view('admin');
 });

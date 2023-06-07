@@ -9,7 +9,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500&display=swap"
         rel="stylesheet">
-    <title>Lupa Password ?</title>
+    <title>Lupa Password?</title>
+    <link rel="shortcut icon" href="{{ asset('images/logo/favicon.ico') }}">
 </head>
 
 <body style="font-family: 'Plus Jakarta Sans','sans-serif' ;">
