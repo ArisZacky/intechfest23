@@ -52,50 +52,9 @@
                         </p>
                     </form>
                 </div>
-                {{-- content otp --}}
-                <div class="p-6 w-full space-y-4 md:space-y-6 sm:p-8 transition-all duration-1000 translate-x-full absolute top-0 left-0" id="form-otp">
-                    <h1 class="text-xl font-bold leading-tight tracking-normal text-gray-900 md:text-2xl dark:text-white">
-                        Verifikasi OTP
-                    </h1>
-                    <p class="text-sm font-light text-gray-500 dark:text-gray-400 text-center">
-                        Pesan verifikasi sudah dikirim melalui alamat email <span href="#" class="font-medium focus:outline-cyan-500 text-primary-600 hover:underline dark:text-primary-500">sur******na@gmail.com</span>
-                    </p>
-                    {{-- form otp --}}
-                    <div class="flex lg:translate-y-full md:translate-y-[90%] justify-center">
-                        <form class="grid md:w-4/6 w-4/5 grid-cols-4 place-items-center h-16 text-center" action="#">
-                            <input type="text" class="md:w-4/6 w-[90%] text-2xl text-center outline-none border-x-0 border-t-0 border-b-2 ring-0 otp-input border-primary-darkblue focus:ring-0 focus:border-primary-lightblue">
-                            <input type="text" class="md:w-4/6 w-[90%] text-2xl text-center outline-none border-x-0 border-t-0 border-b-2 ring-0 otp-input border-primary-darkblue focus:ring-0 focus:border-primary-lightblue">
-                            <input type="text" class="md:w-4/6 w-[90%] text-2xl text-center outline-none border-x-0 border-t-0 border-b-2 ring-0 otp-input border-primary-darkblue focus:ring-0 focus:border-primary-lightblue">
-                            <input type="text" class="md:w-4/6 w-[90%] text-2xl text-center outline-none border-x-0 border-t-0 border-b-2 ring-0 otp-input border-primary-darkblue focus:ring-0 focus:border-primary-lightblue">
-                        </form>
-                    </div>
-                    <div class="absolute left-0 lg:translate-y-[35%] md:translate-y-[30%] p-6 w-full space-y-4 md:space-y-6 sm:p-8">
-                        <p href="#" class="font-medium focus:outline-cyan-500 text-primary-600 dark:text-primary-500">Expired dalam 04:59</p>
-                        <div class="flex justify-between items-center">
-                            <p class="text-sm font-light text-gray-500 dark:text-gray-400">
-                                Tidak menerima email? <span href="#" class="font-medium focus:outline-cyan-500 text-primary-600 hover:underline dark:text-primary-500 cursor-pointer">kirim ulang</span>
-                            </p>
-                        </div>
-                        <i class="fa-solid fa-arrow-left-long text-xl cursor-pointer" id="back-otp"></i>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
     <script src="https://kit.fontawesome.com/7eaa0f0932.js" crossorigin="anonymous"></script>
-    <script>
-        // animasi otp dan form
-        const register = document.querySelector('#form-register')
-        const otp = document.querySelector('#form-otp')
-        document.querySelector('#submitRegis').addEventListener("click", function(){
-            register.classList.toggle("-translate-x-full")
-            otp.classList.toggle("translate-x-full")
-        })
-        document.querySelector('#back-otp').addEventListener("click", function(){
-            register.classList.toggle("-translate-x-full")
-            otp.classList.toggle("translate-x-full")
-        })
-    </script>
-
 </body>
 </html>
