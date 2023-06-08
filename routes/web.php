@@ -35,29 +35,29 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::get('/logout', [AuthController::class, 'logout']);
 
 //Register Routes
-Route::get('/register', function(){
+Route::get('/register', function () {
     return view('register');
 });
 
 Route::post('/register', [AuthController::class, 'register']);
 
-Route::get('/email/verify', [AuthController::class, 'emailNotice'])->middleware('auth')->name('verification.notice');
+Route::get('/email/verify', [AuthController::class, 'emailNotice']);
 
 // route yang mengarahkan tombol verifikasi pada email
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
     return redirect('/admin');
-})->middleware(['auth', 'signed','level:admin'])->name('verification.verify');
+})->middleware(['auth', 'signed', 'level:admin'])->name('verification.verify');
 
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
     return redirect('/panitia');
-})->middleware(['auth', 'signed','level:panitia'])->name('verification.verify');
+})->middleware(['auth', 'signed', 'level:panitia'])->name('verification.verify');
 
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
     return redirect('/peserta');
-})->middleware(['auth', 'signed','level:peserta'])->name('verification.verify');
+})->middleware(['auth', 'signed', 'level:peserta'])->name('verification.verify');
 
 //resend email verifikasi
 Route::post('/email/verification-notification', function (Request $request) {
@@ -66,7 +66,7 @@ Route::post('/email/verification-notification', function (Request $request) {
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
 // Forgot Password Route
-Route::get('/forgot-password', function(){
+Route::get('/forgot-password', function () {
     return view('auth.forgot-password');
 });
 
@@ -79,8 +79,8 @@ Route::post('/forgot-password', function (Request $request) {
     );
 
     return $status === Password::RESET_LINK_SENT
-            ? back()->with(['status' => __($status)])
-            : back()->withErrors(['email' => __($status)]);
+        ? back()->with(['status' => __($status)])
+        : back()->withErrors(['email' => __($status)]);
 })->middleware('guest')->name('password.email');
 
 // mengirim token ke email
@@ -95,28 +95,28 @@ Route::post('/reset-password', function (Request $request) {
         'email' => 'required|email',
         'password' => 'required|min:8|confirmed',
     ]);
- 
+
     $status = Password::reset(
         $request->only('email', 'password', 'password_confirmation', 'token'),
         function (User $user, string $password) {
             $user->forceFill([
                 'password' => Hash::make($password)
             ])->setRememberToken(Str::random(60));
- 
+
             $user->save();
- 
+
             event(new PasswordReset($user));
         }
     );
- 
+
     return $status === Password::PASSWORD_RESET
-                ? redirect()->route('login')->with('status', __($status))
-                : back()->withErrors(['email' => [__($status)]]);
-   
+        ? redirect()->route('login')->with('status', __($status))
+        : back()->withErrors(['email' => [__($status)]]);
+
 })->middleware('guest')->name('password.update');
 
 // Admin Routes
-Route::group(['middleware' => ['auth','verified','level:admin']], function(){
+Route::group(['middleware' => ['auth', 'verified', 'level:admin']], function () {
     Route::get('/admin', [AdminController::class, 'index']);
     // semua route admin dibuat dalam route group ini!!
 
@@ -131,14 +131,14 @@ Route::group(['middleware' => ['auth','verified','level:admin']], function(){
     // Menampilkan Halaman Transaksi
     Route::get('/transaksi-admin', [AdminController::class, 'transaksi']);
     // Menampilkan Halaman Akun Admin
-    Route::get('/akun-panitia', [AdminController::class, 'panitia']);
+    Route::get('/data-panitia', [AdminController::class, 'panitia']);
     // Menampilkan Halaman Akun Peserta
-    Route::get('/akun-peserta', [AdminController::class, 'peserta']);
+    Route::get('/data-peserta', [AdminController::class, 'peserta']);
 
 });
 
 // Panitia Routes
-Route::group(['middleware' => ['auth','verified','level:panitia']], function(){
+Route::group(['middleware' => ['auth', 'verified', 'level:panitia']], function () {
     Route::get('/panitia', [PanitiaController::class, 'index']);
     // semua route panitia dibuat dalam route group ini!!
 
@@ -205,7 +205,11 @@ Route::group(['middleware' => ['auth','verified','level:panitia']], function(){
 });
 
 // Peserta Routes
-Route::group(['middleware' => ['auth','verified','level:peserta']], function(){
+Route::group(['middleware' => ['auth', 'verified', 'level:peserta']], function () {
     Route::get('/peserta', [PesertaController::class, 'index']);
     // semua route peserta dibuat dalam route group ini!!
+});
+
+Route::get('tampilAdmin', function(){
+    return view('admin');
 });
