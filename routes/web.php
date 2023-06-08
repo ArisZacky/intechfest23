@@ -12,6 +12,7 @@ use Illuminate\Auth\Events\PasswordReset;
 use App\Http\Controllers\PanitiaController;
 use App\Http\Controllers\PesertaController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
