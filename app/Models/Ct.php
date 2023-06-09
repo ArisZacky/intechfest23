@@ -13,7 +13,6 @@ class Ct extends Model
 
     protected $table = 'ct';
     protected $primaryKey = 'id_ct';
-    public $timestamps = false;
 
     // peserta
     public function peserta(): HasOne

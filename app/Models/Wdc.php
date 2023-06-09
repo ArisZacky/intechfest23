@@ -13,7 +13,6 @@ class Wdc extends Model
 
     protected $table = 'wdc';
     protected $primaryKey = 'id_wdc';
-    public $timestamps = false;
 
     // peserta
     public function peserta(): HasOne
