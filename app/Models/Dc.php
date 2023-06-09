@@ -13,7 +13,6 @@ class Dc extends Model
 
     protected $table = 'dc';
     protected $primaryKey = 'id_dc';
-    public $timestamps = false;
 
      // peserta
      public function peserta(): HasOne

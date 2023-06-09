@@ -13,7 +13,6 @@ class Project extends Model
 
     protected $table = 'project';
     protected $primaryKey = 'id_project';
-    public $timestamps = false;
 
     // wdc
     public function wdc(): BelongsTo

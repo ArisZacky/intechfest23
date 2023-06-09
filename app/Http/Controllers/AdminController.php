@@ -14,7 +14,7 @@ use App\Models\Transaksi;
 class AdminController extends Controller
 {
     public function index(){
-        return view('admin.dashboard');
+        return view('admin.content.dashboard');
     }
 
     // Halaman Setting Akun Panitia
@@ -26,7 +26,8 @@ class AdminController extends Controller
     // Halaman Setting Akun Peserta
     public function peserta(){
         $peserta = Peserta::all();
-        return view('admin.setting_akun.peserta.dashpeserta', compact(['peserta']));
+        // return view('admin.setting_akun.peserta.dashpeserta', compact(['peserta']));
+        return view('admin.content.peserta', compact(['peserta']));
     }
     // halaman utama childtalks
     public function ct()

@@ -13,7 +13,6 @@ class Ctf extends Model
 
     protected $table = 'ctf';
     protected $primaryKey = 'id_ctf';
-    public $timestamps = false;
     
     // peserta
     public function peserta(): HasOne
