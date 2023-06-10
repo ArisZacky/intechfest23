@@ -9,6 +9,7 @@ use App\Models\Wdc;
 use App\Models\Ct;
 use App\Models\Ctf;
 use App\Models\DC;
+use App\Models\Project;
 use App\Models\Transaksi;
 
 class AdminController extends Controller
@@ -33,7 +34,7 @@ class AdminController extends Controller
     public function ct()
     {
         $ct = Ct::all();
-        return view('admin.childtalk.dashct', compact(['ct']));
+        return view('admin.chilltalk.dashct', compact(['ct']));
     }
     // halaman wdc
     public function wdc()
@@ -58,6 +59,12 @@ class AdminController extends Controller
     {
         $transaksi = Transaksi::all();
         return view('admin.transaksi.dashtransaksi', compact(['transaksi']));
+    }
+    // halaman transaksi
+    public function project()
+    {
+        $project = Project::all();
+        return view('admin.project.dashproject', compact(['project']));
     }
 
 }

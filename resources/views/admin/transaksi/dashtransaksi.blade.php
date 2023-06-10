@@ -1,5 +1,5 @@
 {{-- menghubungkan file main --}}
-@extends('panitia.main')
+@extends('admin.main')
 
 {{-- judul halaman disini --}}
 @section('title', 'Data Peserta DC')

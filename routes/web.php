@@ -120,8 +120,8 @@ Route::group(['middleware' => ['auth', 'verified', 'level:admin']], function () 
     Route::get('/admin', [AdminController::class, 'index']);
     // semua route admin dibuat dalam route group ini!!
 
-    // Menampilkan Halaman Childtalks
-    Route::get('/childtalk-admin', [AdminController::class, 'ct']);
+    // Menampilkan Halaman Chilltalks
+    Route::get('/chilltalk-admin', [AdminController::class, 'ct']);
     // Menampilkan Halaman WDC
     Route::get('/wdc-admin', [AdminController::class, 'wdc']);
     // Menampilkan Halaman DC
@@ -134,6 +134,9 @@ Route::group(['middleware' => ['auth', 'verified', 'level:admin']], function () 
     Route::get('/data-panitia', [AdminController::class, 'panitia']);
     // Menampilkan Halaman Akun Peserta
     Route::get('/data-peserta', [AdminController::class, 'peserta']);
+    // Menampilkan Halaman Project 
+    Route::get('/project-admin', [AdminController::class, 'project']);
+
 
 });
 
@@ -144,7 +147,7 @@ Route::group(['middleware' => ['auth', 'verified', 'level:panitia']], function (
 
 // CT ================================================================================================================
     // Menampilkan Halaman Childtalks
-    Route::get('/childtalk-panitia', [PanitiaController::class, 'ct']);
+    Route::get('/chilltalk-panitia', [PanitiaController::class, 'ct']);
      // delete ct
      Route::get('/ct-panit-delete/{id_ct}', [PanitiaController::class, 'delete_ct']);
      // menampilkan daftar hapus ct

@@ -21,30 +21,6 @@
             <li>
                 <button type="button"
                     class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                    aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
-                    <i class="fa-regular fa-address-card text-gray-500 text-xl"></i>
-                    <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item>Data Pengguna</span>
-                    <svg sidebar-toggle-item class="w-6 h-6 text-gray-500" fill="currentColor" viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                            clip-rule="evenodd"></path>
-                    </svg>
-                </button>
-                <ul id="dropdown-example" class="py-2 space-y-2">
-                    <li>
-                        <a href="/data-panitia"
-                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Data Panitia</a>
-                    </li>
-                    <li>
-                        <a href="/data-peserta"
-                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Data Peserta</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <button type="button"
-                    class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                     aria-controls="dropdown-lomba" data-collapse-toggle="dropdown-lomba">
                     <i class="fa-solid fa-flag-checkered text-gray-500 text-xl"></i>                  
                     <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item>Peserta Lomba</span>
@@ -57,31 +33,38 @@
                 </button>
                 <ul id="dropdown-lomba" class="py-2 space-y-2">
                     <li>
-                        <a href="#"
+                        <a href="/dc-panitia"
                             class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">DC</a>
                     </li>
                     <li>
-                        <a href="#"
+                        <a href="wdc-panitia"
                             class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">WDC</a>
                     </li>
                     <li>
-                        <a href="#"
+                        <a href="/ctf-panitia"
                             class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">CTF</a>
                     </li>
                 </ul>
             </li>
             <li>
-                <a href="#"
+                <a href="/chilltalk-panitia"
                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                     <i class="fa-solid fa-microphone-lines text-xl text-gray-500"></i>                
                     <span class="ml-3">Peserta ChillTalks</span>
                 </a>
             </li>
             <li>
-                <a href="#"
+                <a href="/project-panitia"
                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                     <i class="fa-regular fa-folder-closed text-xl text-gray-500"></i>            
                     <span class="ml-3">Pengumpulan Project</span>
+                </a>
+            </li>
+            <li>
+                <a href="/transaksi-panitia"
+                    class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <i class="fa-solid fa-money-bills text-gray-500"></i>            
+                    <span class="ml-3">Data Transaksi</span>
                 </a>
             </li>
         </ul>

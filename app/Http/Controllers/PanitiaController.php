@@ -22,15 +22,15 @@ class PanitiaController extends Controller
     // halaman utama childtalks
     public function ct()
     {
-        $ct = Ct::all();
-        return view('panitia.childtalk.dashct', compact(['ct']));
+        $ct = Ct::all();    
+        return view('panitia.chilltalk.dashct', compact(['ct']));
     }
     // Delete ct
     public function delete_ct($id)
     {
         $ct = Ct::findOrFail($id);
         $ct->delete();
-        return redirect('/childtalk-panitia');
+        return redirect('/chilltalk-panitia');
     }
     // menampilkan data yang sudah di hapus dc
     public function ct_hapus(){
