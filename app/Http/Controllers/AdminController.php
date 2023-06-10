@@ -60,7 +60,7 @@ class AdminController extends Controller
         $transaksi = Transaksi::all();
         return view('admin.transaksi.dashtransaksi', compact(['transaksi']));
     }
-    // halaman transaksi
+    // halaman project
     public function project()
     {
         $project = Project::all();
