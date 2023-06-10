@@ -9,12 +9,13 @@ use App\Models\Dc;
 use App\Models\Ctf;
 use App\Models\Transaksi;
 use App\Models\Project;
+use App\Models\Content;
 
 class PanitiaController extends Controller
 {
     public function index()
     {
-        return view('panitia.dashboard');
+        return view('panitia.content.dashboard');
     }
 
 // CT ============================================================

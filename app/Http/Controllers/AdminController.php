@@ -20,7 +20,7 @@ class AdminController extends Controller
     // Halaman Setting Akun Panitia
     public function panitia(){
         $panitia = Panitia::all();
-        return view('admin.setting_akun.panitia.dashpanit', compact(['panitia']));
+        return view('admin.content.panitia', compact(['panitia']));
     }
 
     // Halaman Setting Akun Peserta

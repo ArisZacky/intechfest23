@@ -1,8 +1,8 @@
 {{-- menghubungkan file main --}}
-@extends('panitia.main')
+@extends('admin.main')
 
 {{-- judul halaman disini --}}
-@section('title', 'Data Peserta DC')
+@section('title', 'Data Panitia')
 
 {{-- membuat content disini --}}
 @section('content')
@@ -83,22 +83,22 @@
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
                                 <th scope="col" class="px-4 py-4">No</th>
-                                <th scope="col" class="px-4 py-3">ID PESERTA</th>
-                                <th scope="col" class="px-4 py-3">NAMA ANGGOTA</th>
-                                <th scope="col" class="px-4 py-3">ID TRANSAKSI</th>
+                                <th scope="col" class="px-4 py-3">Email Panitia</th>
+                                <th scope="col" class="px-4 py-3">Nama Panitia</th>
+                                <th scope="col" class="px-4 py-3">Foto</th>
                                 <th scope="col" class="px-4 py-3">
                                     <span class="sr-only">Actions</span>
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($dc as $data)
+                            @foreach($panitia as $data)
                             <tr
                                 class="border-b dark:border-gray-700 {{($loop->iteration % 2 == 0) ? 'bg-slate-100' : ''}}">
                                 <td class="px-4 py-3">{{$loop->iteration}}</td>
-                                <td class="px-4 py-3">{{$data->id_peserta}}</td>
-                                <td class="px-4 py-3">{{$data->nama_anggota}}</td>
-                                <td class="px-4 py-3">{{$data->id_transaksi}}</td>
+                                <td class="px-4 py-3">{{$data->email}}</td>
+                                <td class="px-4 py-3">{{$data->nama_lengkap}}</td>
+                                <td class="px-4 py-3">{{$data->foto}}</td>
                                 <td class="px-4 py-3">
                                     <button id="apple-imac-27-dropdown-button"
                                         data-dropdown-toggle="apple-imac-27-dropdown"
@@ -218,7 +218,7 @@
         <div class="relative p-4 bg-white rounded-lg shadow dark:bg-gray-800 sm:p-5">
             <!-- Modal header -->
             <div class="flex justify-between items-center pb-4 mb-4 rounded-t border-b sm:mb-5 dark:border-gray-600">
-                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Tambah Data Peserta</h3>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Tambah Data Panitia</h3>
                 <button type="button"
                     class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
                     data-modal-target="createProductModal" data-modal-toggle="createProductModal">
@@ -235,24 +235,25 @@
             <form action="#">
                 <div class="grid gap-4 mb-4 sm:grid-cols-2">
                     <div>
-                        <label for="id_peserta" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ID PESERTA </label>
+                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email
+                            Panitia</label>
                         <input type="text" name="email" id="email"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             placeholder="Masukkan email peserta..." required="">
                     </div>
                     <div>
-                        <label for="nama_anggota"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NAMA ANGGOTA</label>
-                        <input type="text" name="nomer_peserta" id="nomer_peserta"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Masukkan nomer peserta..." required="">
-                    </div>
-                    <div>
-                        <label for="id_transaksi"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ID TRANSAKSI</label>
+                        <label for="nama_lengkap"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Panitia</label>
                         <input type="text" name="nama_lengkap" id="nama_lengkap"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             placeholder="Masukkan nama lengkap peserta..." required="">
+                    </div>
+                    <div>
+                        <label for="no_hp" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                            Panitia</label>
+                        <input type="file" name="no_hp" id="no_hp"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            placeholder="08xxxx" required="">
                     </div>
                 </div>
                 <div class="flex justify-end border-t pt-3">
@@ -291,21 +292,21 @@
                 <div class="grid gap-4 mb-4 sm:grid-cols-2">
                     <div>
                         <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email
-                            Peserta</label>
+                            Panitia</label>
                         <input type="text" name="email" id="email"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             placeholder="Masukkan email peserta..." required="">
                     </div>
                     <div>
-                        <label for="nomer_peserta"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nomer Peserta</label>
-                        <input type="text" name="nomer_peserta" id="nomer_peserta"
+                        <label for="nomer_panitia"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nomer Panitia</label>
+                        <input type="text" name="nomer_panitia" id="nomer_panitia"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             placeholder="Masukkan nomer peserta..." required="">
                     </div>
                     <div>
                         <label for="nama_lengkap"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Peserta</label>
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Panitia/label>
                         <input type="text" name="nama_lengkap" id="nama_lengkap"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             placeholder="Masukkan nama lengkap peserta..." required="">
@@ -320,14 +321,14 @@
                     <div>
                         <label for="nama_instansi"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Instansi
-                            Peserta</label>
+                            Panitia</label>
                         <input type="text" name="nama_instansi" id="nama_instansi"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             placeholder="Masukkan nama lengkap peserta..." required="">
                     </div>
                     <div>
                         <label for="no_hp" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Telpon
-                            Peserta</label>
+                            Panitia</label>
                         <input type="text" name="no_hp" id="no_hp"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             placeholder="08xxxx" required="">
