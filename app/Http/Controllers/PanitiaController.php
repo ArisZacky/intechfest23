@@ -70,7 +70,6 @@ class PanitiaController extends Controller
     }
 
 
-
 // DC ========================================================== 
 
     // halaman dc
