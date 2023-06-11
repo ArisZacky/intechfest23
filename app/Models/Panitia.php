@@ -12,6 +12,12 @@ class Panitia extends Model
 
     protected $table = 'panitia';
 
+    protected $fillable = [
+        'email_panitia',
+        'nama_lengkap',
+        'foto'
+    ];
+
     // transaksi
     public function transaksi(): BelongsTo
     {

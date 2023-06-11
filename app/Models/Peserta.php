@@ -10,8 +10,17 @@ class Peserta extends Model
 {
     use HasFactory;
 
+    
     protected $table = 'peserta';
-
+    
+    protected $fillable = [
+        'email',
+        'nomer_peserta',
+        'nama_lengkap',
+        'alamat',
+        'nama_instansi',
+        'no_hp'
+    ];
     // ct
     public function ct(): BelongsTo
     {
