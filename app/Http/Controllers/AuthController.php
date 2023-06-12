@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Peserta;
 use App\Mail\EmailSender;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Auth\Events\Registered;
@@ -75,8 +77,24 @@ class AuthController extends Controller
             'email' => 'unique:users',
         ]);
 
-        // menambahkan data user ke db melaui variabel data
-        $user = User::create($data);
+        // Database Transaction untuk insert data ke 2 table
+        try {
+            DB::beginTransaction();
+            
+            // Insert data ke table users menggunakan variavel data
+            $user = User::create($data);
+    
+            // Insert data ke table peserta 
+            Peserta::create([
+                'email' => $request->email,
+                'nama_lengkap' => $request->nama
+            ]);
+
+            DB::commit();
+        } catch (\Throwable $th) {
+            throw $th;
+            DB::rollBack();
+        }
 
         //membuat user login tetapi akun belum terverifikasi
         event(new Registered($user));
