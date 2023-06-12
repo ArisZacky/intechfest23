@@ -12,6 +12,7 @@ use Illuminate\Auth\Events\PasswordReset;
 use App\Http\Controllers\PanitiaController;
 use App\Http\Controllers\PesertaController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -119,8 +120,8 @@ Route::group(['middleware' => ['auth', 'verified', 'level:admin']], function () 
     Route::get('/admin', [AdminController::class, 'index']);
     // semua route admin dibuat dalam route group ini!!
 
-    // Menampilkan Halaman Childtalks
-    Route::get('/childtalk-admin', [AdminController::class, 'ct']);
+    // Menampilkan Halaman Chilltalks
+    Route::get('/chilltalk-admin', [AdminController::class, 'ct']);
     // Menampilkan Halaman Akun Chilltalks Yang terdelete
     Route::get('/deleted-data-chilltalks', [AdminController::class, 'getDeletedChilltalks']);
     // Mengembalikan data akun Chilltalks (restore)
@@ -187,6 +188,9 @@ Route::group(['middleware' => ['auth', 'verified', 'level:admin']], function () 
 
     // Menampilkan Halaman Akun Peserta
     Route::get('/data-peserta', [AdminController::class, 'peserta']);
+    // Menampilkan Halaman Project 
+    Route::get('/project-admin', [AdminController::class, 'project']);
+
     // Menampilkan Halaman Akun Peserta Yang terdelete
     Route::get('/deleted-data-peserta', [AdminController::class, 'getDeletedPeserta']);
     // Mengembalikan data akun peserta (restore)
@@ -205,7 +209,7 @@ Route::group(['middleware' => ['auth', 'verified', 'level:panitia']], function (
 
 // CT ================================================================================================================
     // Menampilkan Halaman Childtalks
-    Route::get('/childtalk-panitia', [PanitiaController::class, 'ct']);
+    Route::get('/chilltalk-panitia', [PanitiaController::class, 'ct']);
      // delete ct
      Route::get('/ct-panit-delete/{id_ct}', [PanitiaController::class, 'delete_ct']);
      // menampilkan daftar hapus ct

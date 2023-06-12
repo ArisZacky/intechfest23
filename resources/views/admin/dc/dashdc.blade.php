@@ -1,5 +1,5 @@
 {{-- menghubungkan file main --}}
-@extends('panitia.main')
+@extends('admin.main')
 
 {{-- judul halaman disini --}}
 @section('title', 'Data Peserta DC')
@@ -83,7 +83,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($transaksi as $data)
+                            @foreach($dc as $data)
                             <tr
                                 class="border-b dark:border-gray-700 {{($loop->iteration % 2 == 0) ? 'bg-slate-100' : ''}}">
                                 <td class="px-4 py-3">{{$loop->iteration}}</td>

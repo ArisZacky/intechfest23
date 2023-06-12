@@ -8,12 +8,10 @@
     <title>Document</title>
 </head>
 <body>
-    
-    <h1 class="mb-6">Halaman Panitia</h1>
-    
 
-    
-<nav class="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
+<h1>Daftar Data Yang Dihapus (Transaksi)</h1>
+
+<nav class="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700 mb-6">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
     <button data-collapse-toggle="navbar-dropdown" type="button" class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-dropdown" aria-expanded="false">
       <span class="sr-only">Open main menu</span>
@@ -55,8 +53,60 @@
         </li>
       </ul>
     </div>
+    <a href="/logout" class="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900">Daftar Hapus</a>
   </div>
 </nav>
+
+<a href="/transaksi-panitia" class="text-white mx-16 bg-sky-400 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-2">Back</a>
+
+<!-- table -->
+
+<!-- table -->
+
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-10 my-10">
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-slate-300 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    No
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Nama Panitia
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Foto Transaksi
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Validasi
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Action
+                </th>
+            </tr>
+        </thead>
+        @foreach($transaksi as $data)
+        <tbody>
+            <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    {{$loop -> iteration}}
+                </th>
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    {{$data->panitia['nama_lengkap']}}
+                </th>
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    {{$data->foto}}
+                </th>
+                <td class="px-6 py-4">
+                    {{$data->validasi}}
+                </td>
+                <td class="px-6 py-4">
+                    <a href="/transaksi/{{$data->id_transaksi}}/restore" class="font-medium text-lime-700 dark:text-blue-500 hover:underline" >Restore</a>
+                </td>
+            </tr>
+        </tbody>
+        @endforeach
+    </table>
+</div>
 
 
 

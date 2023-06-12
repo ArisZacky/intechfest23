@@ -9,27 +9,28 @@ use App\Models\Dc;
 use App\Models\Ctf;
 use App\Models\Transaksi;
 use App\Models\Project;
+use App\Models\Content;
 
 class PanitiaController extends Controller
 {
     public function index()
     {
-        return view('panitia.dashboard');
+        return view('panitia.content.dashboard');
     }
 
 // CT ============================================================
     // halaman utama childtalks
     public function ct()
     {
-        $ct = Ct::all();
-        return view('panitia.childtalk.dashct', compact(['ct']));
+        $ct = Ct::all();    
+        return view('panitia.chilltalk.dashct', compact(['ct']));
     }
     // Delete ct
     public function delete_ct($id)
     {
         $ct = Ct::findOrFail($id);
         $ct->delete();
-        return redirect('/childtalk-panitia');
+        return redirect('/chilltalk-panitia');
     }
     // menampilkan data yang sudah di hapus dc
     public function ct_hapus(){

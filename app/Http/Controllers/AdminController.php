@@ -9,6 +9,7 @@ use App\Models\Wdc;
 use App\Models\Ct;
 use App\Models\Ctf;
 use App\Models\DC;
+use App\Models\Project;
 use App\Models\Transaksi;
 
 class AdminController extends Controller
@@ -21,7 +22,7 @@ class AdminController extends Controller
     // Halaman Setting Akun Panitia
     public function panitia(){
         $panitia = Panitia::all();
-        return view('admin.setting_akun.panitia.dashpanit', compact(['panitia']));
+        return view('admin.content.panitia', compact(['panitia']));
     }
     // PANITIA END ============================================================
     
@@ -84,7 +85,7 @@ class AdminController extends Controller
     public function ct()
     {
         $ct = Ct::all();
-        return view('admin.childtalk.dashct', compact(['ct']));
+        return view('admin.chilltalk.dashct', compact(['ct']));
     }
     // UPDATE PESERTA
     public function updateCt(Request $request)
@@ -290,6 +291,12 @@ class AdminController extends Controller
     {
         $transaksi = Transaksi::all();
         return view('admin.transaksi.dashtransaksi', compact(['transaksi']));
+    }
+    // halaman project
+    public function project()
+    {
+        $project = Project::all();
+        return view('admin.project.dashproject', compact(['project']));
     }
     // UPDATE TRANSAKSI 
     public function updateTransaksi()

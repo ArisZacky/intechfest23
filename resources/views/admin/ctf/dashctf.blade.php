@@ -1,8 +1,8 @@
 {{-- menghubungkan file main --}}
-@extends('panitia.main')
+@extends('admin.main')
 
 {{-- judul halaman disini --}}
-@section('title', 'Data Peserta DC')
+@section('title', 'Data Peserta CTF')
 
 {{-- membuat content disini --}}
 @section('content')
@@ -74,23 +74,21 @@
                             <tr>
                                 <th scope="col" class="px-4 py-4">No</th>
                                 <th scope="col" class="px-4 py-3">NAMA PESERTA</th>
+                                <th scope="col" class="px-4 py-3">NAMA ANGGOTA</th>
                                 <th scope="col" class="px-4 py-3">BUKTI TRANSAKSI</th>
-                                <th scope="col" class="px-4 py-3">PROJECT</th>
-                                <th scope="col" class="px-4 py-3">VALIDASI</th>
                                 <th scope="col" class="px-4 py-3">
                                     <span class="sr-only">Actions</span>
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($transaksi as $data)
+                            @foreach($ctf as $data)
                             <tr
                                 class="border-b dark:border-gray-700 {{($loop->iteration % 2 == 0) ? 'bg-slate-100' : ''}}">
                                 <td class="px-4 py-3">{{$loop->iteration}}</td>
                                 <td class="px-4 py-3">{{$data->id_peserta}}</td>
+                                <td class="px-4 py-3">{{$data->nama_anggota}}</td>
                                 <td class="px-4 py-3">{{$data->id_transaksi}}</td>
-                                <td class="px-4 py-3">{{$data->id_project}}</td>
-                                <td class="px-4 py-3">{{$data->validasi}}</td>
                                 <td class="px-4 py-3">
                                     <button id="apple-imac-27-dropdown-button"
                                         data-dropdown-toggle="apple-imac-27-dropdown"
@@ -227,32 +225,32 @@
             <form action="#">
                 <div class="grid gap-4 mb-4 sm:grid-cols-2">
                     <div>
-                        <label for="id_peserta" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NAMA PESERTA
-                            Peserta</label>
+                        <label for="id_peserta" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NAMA
+                        PESERTA</label>
                         <input type="text" name="id_peserta" id="id_peserta"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Masukkan id_peserta peserta..." required="">
+                            placeholder="Masukkan email peserta..." required="">
+                    </div>
+                    <div>
+                        <label for="nama_anggota"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NAMA ANGGOTA</label>
+                        <input type="text" name="nama_anggota" id="nama_anggota"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            placeholder="Masukkan nomer peserta..." required="">
                     </div>
                     <div>
                         <label for="id_transaksi"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">BUKTI TRANSAKSI</label>
                         <input type="text" name="id_transaksi" id="id_transaksi"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Masukkan nomer peserta..." required="">
-                    </div>
-                    <div>
-                        <label for="id_project"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">PROJECT</label>
-                        <input type="text" name="id_project" id="id_project"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             placeholder="Masukkan nama lengkap peserta..." required="">
                     </div>
                     <div>
-                        <label for="validasi"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">validasi</label>
-                        <input type="text" name="validasi" id="validasi"
+                        <label for="alamat"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Alamat</label>
+                        <input type="text" name="alamat" id="alamat"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Masukkan"validasi peserta..." required="">
+                            placeholder="Masukkan alamat peserta..." required="">
                     </div>
                     <div>
                         <label for="nama_instansi"
@@ -270,12 +268,6 @@
                             placeholder="08xxxx" required="">
                     </div>
                 </div>
-                <div class="flex items-center border-t pt-3 justify-end space-x-4">
-                    <input type="submit"
-                        class="text-primary-600 cursor-pointer hover:text-white border border-primary-600 hover:bg-primary-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                        value="Update">
-                </div>
-            </form>
         </div>
     </div>
 </div>
