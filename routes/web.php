@@ -211,7 +211,17 @@ Route::group(['middleware' => ['auth', 'verified', 'level:panitia']], function (
 Route::group(['middleware' => ['auth', 'verified', 'level:peserta']], function () {
     Route::get('/peserta', [PesertaController::class, 'index']);
     // semua route peserta dibuat dalam route group ini!!
-});
+        // Menampilkan Halaman Chilltalks
+        Route::get('/chilltalk-peserta', [PesertaController::class, 'ct']);
+        // Menampilkan Halaman DC
+        Route::get('/dc-peserta', [PesertaController::class, 'dc']);
+        // Menampilkan Halaman WDC
+        Route::get('/wdc-peserta', [PesertaController::class, 'wdc']);
+        // Menampilkan Halaman CTF
+        Route::get('/ctf-peserta', [PesertaController::class, 'ctf']);
+        // Menampilkan Halaman Transaksi
+        Route::get('/transaksi-peserta', [PesertaController::class, 'transaksi']);
+    });
 
 Route::get('tampilAdmin', function(){
     return view('admin');
