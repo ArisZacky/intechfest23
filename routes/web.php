@@ -25,11 +25,6 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 |
 */
 
-// landing / default route
-Route::get('/', function(){
-    return view('landing');
-});
-
 // Login Routes
 Route::get('/login', function () {
     return view('login');
@@ -127,83 +122,21 @@ Route::group(['middleware' => ['auth', 'verified', 'level:admin']], function () 
 
     // Menampilkan Halaman Chilltalks
     Route::get('/chilltalk-admin', [AdminController::class, 'ct']);
-    // Menampilkan Halaman Akun Chilltalks Yang terdelete
-    Route::get('/deleted-data-chilltalks', [AdminController::class, 'getDeletedChilltalks']);
-    // Mengembalikan data akun Chilltalks (restore)
-    Route::get('/data-chilltalks/{$id}/restore', [AdminController::class, 'restoreChilltalks']);
-    // Update Akun Chilltalks
-    Route::post('/update-chilltalks', [AdminController::class, 'updateChilltalks']);
-    // Delete Akun Chilltalks
-    Route::post('/delete-chilltalks', [AdminController::class, 'deleteChilltalks']); 
-
     // Menampilkan Halaman WDC
     Route::get('/wdc-admin', [AdminController::class, 'wdc']);
-    // Menampilkan Halaman Akun WDC Yang terdelete
-    Route::get('/deleted-data-wdc', [AdminController::class, 'getDeletedWdc']);
-    // Mengembalikan data akun WDC (restore)
-    Route::get('/data-wdc/{$id}/restore', [AdminController::class, 'restoreWdc']);
-    // Update Akun WDC
-    Route::post('/update-wdc', [AdminController::class, 'updateWdc']);
-    // Delete Akun WDC
-    Route::post('/delete-wdc', [AdminController::class, 'deleteWdc']); 
-
     // Menampilkan Halaman DC
     Route::get('/dc-admin', [AdminController::class, 'dc']);
-    // Menampilkan Halaman Akun DC Yang terdelete
-    Route::get('/deleted-data-dc', [AdminController::class, 'getDeletedDc']);
-    // Mengembalikan data akun DC (restore)
-    Route::get('/data-dc/{$id}/restore', [AdminController::class, 'restoreDc']);
-    // Update Akun DC
-    Route::post('/update-dc', [AdminController::class, 'updateDc']);
-    // Delete Akun DC
-    Route::post('/delete-dc', [AdminController::class, 'deleteDc']); 
-
     // Menmapilkan Halaman CTF
     Route::get('/ctf-admin', [AdminController::class, 'ctf']);
-    // Menampilkan Halaman Akun CTF Yang terdelete
-    Route::get('/deleted-data-ctf', [AdminController::class, 'getDeletedCtf']);
-    // Mengembalikan data akun CTF (restore)
-    Route::get('/data-ctf/{$id}/restore', [AdminController::class, 'restoreCtf']);
-    // Update Akun CTF
-    Route::post('/update-ctf', [AdminController::class, 'updateCtf']);
-    // Delete Akun CTF
-    Route::post('/delete-ctf', [AdminController::class, 'deleteCtf']); 
-
     // Menampilkan Halaman Transaksi
     Route::get('/transaksi-admin', [AdminController::class, 'transaksi']);
-    // Menampilkan Halaman Akun Transaksi Yang terdelete
-    Route::get('/deleted-data-transaksi', [AdminController::class, 'getDeletedTransaksi']);
-    // Mengembalikan data akun Transaksi (restore)
-    Route::get('/data-transaksi/{$id}/restore', [AdminController::class, 'restoreTransaksi']);
-    // Update Akun Transaksi
-    Route::post('/update-transaksi', [AdminController::class, 'updateTransaksi']);
-    // Delete Akun Transaksi
-    Route::post('/delete-transaksi', [AdminController::class, 'deleteTransaksi']);
-
-    // Menampilkan Halaman Akun Panitia
+    // Menampilkan Halaman Akun Admin
     Route::get('/data-panitia', [AdminController::class, 'panitia']);
-    // Menampilkan Halaman Akun Panitia Yang terdelete
-    Route::get('/deleted-data-panitia', [AdminController::class, 'getDeletedPanitia']);
-    // Mengembalikan data akun Panitia (restore)
-    Route::get('/data-panitia/{$id}/restore', [AdminController::class, 'restorePanitia']);
-    // Update Akun Panitia
-    Route::post('/update-panitia', [AdminController::class, 'updatePanitia']);
-    // Delete Akun Panitia
-    Route::post('/delete-panitia', [AdminController::class, 'deletePanitia']); 
-
     // Menampilkan Halaman Akun Peserta
     Route::get('/data-peserta', [AdminController::class, 'peserta']);
     // Menampilkan Halaman Project 
     Route::get('/project-admin', [AdminController::class, 'project']);
 
-    // Menampilkan Halaman Akun Peserta Yang terdelete
-    Route::get('/deleted-data-peserta', [AdminController::class, 'getDeletedPeserta']);
-    // Mengembalikan data akun peserta (restore)
-    Route::get('/data-peserta/{$id}/restore', [AdminController::class, 'restorePeserta']);
-    // Update Akun Peserta
-    Route::post('/update-peserta', [AdminController::class, 'updatePeserta']);
-    // Delete Akun Peserta
-    Route::post('/delete-peserta', [AdminController::class, 'deletePeserta']); 
 
 });
 
