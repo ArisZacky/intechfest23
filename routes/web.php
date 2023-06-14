@@ -25,6 +25,11 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 |
 */
 
+// landing / default route
+Route::get('/', function(){
+    return view('landing');
+});
+
 // Login Routes
 Route::get('/login', function () {
     return view('login');
