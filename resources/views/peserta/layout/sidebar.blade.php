@@ -14,15 +14,22 @@
             <li>
                 <a href="/profil-peserta"
                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-                    <i class="fa-solid fa-microphone-lines text-xl text-gray-500"></i>                
+                    <i class="fa-regular fa-address-card text-xl text-gray-500"></i>                
                     <span class="ml-3">Profil</span>
                 </a>
             </li>
             <li>
                 <a href="/lomba-peserta"
                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-                    <i class="fa-solid fa-money-bills text-gray-500"></i>            
+                    <i class="fa-solid fa-flag-checkered text-gray-500"></i>      
                     <span class="ml-3">Lomba</span>
+                </a>
+            </li>
+            <li>
+                <a href="/chilltalks-peserta"
+                    class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <i class="fa-solid fa-microphone-lines text-xl text-gray-500"></i>            
+                    <span class="ml-3">Chilltalks</span>
                 </a>
             </li>
         </ul>
