@@ -2,19 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Ct;
-use App\Models\Wdc;
 use App\Models\Dc;
 use App\Models\Ctf;
-use App\Models\Transaksi;
-use App\Models\Project;
+use App\Models\Wdc;
 use App\Models\Content;
+use App\Models\Project;
+use App\Models\Transaksi;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PanitiaController extends Controller
 {
     public function index()
     {
+        Auth::user();
         return view('panitia.content.dashboard');
     }
 
