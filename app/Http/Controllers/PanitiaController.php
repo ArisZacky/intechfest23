@@ -26,21 +26,11 @@ class PanitiaController extends Controller
         return view('panitia.chilltalk.dashct', compact(['ct']));
     }
     // Delete ct
-    public function delete_ct($id)
+    public function delete_ct(Request $request)
     {
-        $ct = Ct::findOrFail($id);
-        $ct->delete();
-        return redirect('/chilltalk-panitia');
-    }
-    // menampilkan data yang sudah di hapus dc
-    public function ct_hapus(){
-        $ct = Ct::onlyTrashed()->get();
-        return view ('panitia.childtalk.dashdelete', compact(['ct']));
-    }
-    // Restore (kembalikan data)
-    public function ct_kembali($id){
-        $ct = Ct::withTrashed()->where('id_ct', $id)->restore();
-        return redirect('/childtalk-panitia');
+        $data = Ct::findOrFail($request['id_ct']);
+        $data->delete();
+        return redirect()->back()->with('delete_success', 'delete Data Berhasil!');        
     }
 
 // WDC ===========================================================
@@ -52,21 +42,32 @@ class PanitiaController extends Controller
         return view('panitia.wdc.dashwdc', compact(['wdc']));
     }
     // delete wdc
-    public function delete_wdc($id)
+    public function delete_wdc(Request $request)
+    {      
+        $data = Wdc::findOrFail($request['id_wdc']);
+        $data->delete();
+        return redirect()->back()->with('delete_success', 'delete Data Berhasil!');        
+    }   
+    // Update Wdc
+    public function update_wdc(Request $request)
     {
-        $wdc = Wdc::findOrFail($id);
-        $wdc->delete();
-        return redirect('/wdc-panitia');
-    }
-    // menampilkan data yang sudah di hapus wdc
-    public function wdc_hapus(){
-        $wdc = Wdc::onlyTrashed()->get();
-        return view ('panitia.wdc.dashdelet', compact(['wdc']));
-    }
-    // Restore (kembalikan data)
-    public function wdc_kembali($id){
-        $wdc = Wdc::withTrashed()->where('id_wdc', $id)->restore();
-        return redirect('/wdc-panitia');
+        if($request->isMethod('post')){
+            $request->validate([
+                'id_peserta' => 'required',
+                'foto' => 'required',
+                'id_transaksi' => 'required',
+                'id_project' => 'required',
+                'validasi' => 'required',
+            ]);
+            
+            $data = $request->all();
+            Wdc::where(['id_wdc' => $request->id_wdc])->update([
+                'foto'=>$data['foto'],
+                'validasi'=>$data['validasi'],
+                
+        ]);
+            return redirect()->back()->with('update_success', 'Update Data Berhasil!');
+        }
     }
 
 
@@ -79,22 +80,34 @@ class PanitiaController extends Controller
         return view('panitia.dc.dashdc', compact(['dc']));
     }
     // menghapus
-    public function delete_dc($id)
+    public function delete_dc(Request $request)
+    { 
+        $data = Dc::findOrFail($request['id_dc']);
+        $data->delete();
+        return redirect()->back()->with('delete_success', 'delete Data Berhasil!');   
+    }
+    // Update Dc
+    public function update_dc(Request $request)
     {
-        $dc = Dc::findOrFail($id);
-        $dc->delete();
-        return redirect('/dc-panitia');
+        if($request->isMethod('post')){
+            $request->validate([
+                'id_peserta' => 'required',
+                'foto' => 'required',
+                'id_transaksi' => 'required',
+                'id_project' => 'required',
+                'validasi' => 'required',
+            ]);
+            
+            $data = $request->all();
+            Dc::where(['id_dc' => $request->id_dc])->update([
+                'foto'=>$data['foto'],
+                'validasi'=>$data['validasi'],
+                
+        ]);
+            return redirect()->back()->with('update_success', 'Update Data Berhasil!');
+        }
     }
-    // menampilkan data yang sudah di hapus dc
-    public function dc_hapus(){
-        $dc = Dc::onlyTrashed()->get();
-        return view ('panitia.dc.dashdelet', compact(['dc']));
-    }
-    // Restore (kembalikan data)
-    public function dc_kembali($id){
-        $dc = Dc::withTrashed()->where('id_dc', $id)->restore();
-        return redirect('/dc-panitia');
-    }
+ 
 
 // CTF =========================================================
 
@@ -104,22 +117,42 @@ class PanitiaController extends Controller
         $ctf = Ctf::all();
         return view('panitia.ctf.dashctf', compact(['ctf']));
     }
-    public function delete_ctf($id)
+    public function delete_ctf(Request $request)
     {
-        $ctf = Ctf::findOrFail($id);
-        $ctf->delete();
-        return redirect('/ctf-panitia');
+        $data = Ctf::findOrFail($request['id_ctf']);
+        $data->delete();
+        return redirect()->back()->with('delete_success', 'delete Data Berhasil!'); 
     }
-    // menampilkan data yang sudah di hapus dc
-    public function ctf_hapus(){
-        $ctf = Ctf::onlyTrashed()->get();
-        return view ('panitia.ctf.dashdelete', compact(['ctf']));
+    // Update Ctf
+    public function update_ctf(Request $request)
+    {
+        if($request->isMethod('post')){
+            $request->validate([
+                'id_peserta' => 'required',
+                'nama_team' => 'required',
+                'id_transaksi' => 'required',
+                'id_project' => 'required',
+                'anggota1' => 'required',
+                'foto_1' => 'required',
+                'anggota2' => 'required',
+                'foto_2' => 'required',
+                'validasi' => 'required',
+            ]);
+            
+            $data = $request->all();
+            ctf::where(['id_ctf' => $request->id_ctf])->update([
+                'nama_team'=>$data['nama_team'],
+                'anggota1'=>$data['anggota1'],
+                'foto_1'=>$data['foto_1'],
+                'anggota2'=>$data['anggota2'],
+                'foto_2'=>$data['foto_2'],
+                'validasi'=>$data['validasi'],
+                
+        ]);
+            return redirect()->back()->with('update_success', 'Update Data Berhasil!');
+        }
     }
-    // Restore (kembalikan data)
-    public function ctf_kembali($id){
-        $ctf = Ctf::withTrashed()->where('id_ctf', $id)->restore();
-        return redirect('/ctf-panitia');
-    }
+
 // TRANSAKSI ===================================================
 
     // halaman transaksi
@@ -128,22 +161,30 @@ class PanitiaController extends Controller
         $transaksi = Transaksi::all();
         return view('panitia.transaksi.dashtransaksi', compact(['transaksi']));
     }
-    // delete dc
-    public function delete_trans($id)
+    // delete Transaksi
+    public function delete_transaksi(Request $request)
     {
-        $transaksi = Transaksi::findOrFail($id);
-        $transaksi->delete();
-        return redirect('/transaksi-panitia');
+        $data = Transaksi::findOrFail($request['id_transaksi']);
+        $data->delete();
+        return redirect()->back()->with('delete_success', 'delete Data Berhasil!');   
     }
-    // menampilkan data yang sudah di hapus wdc
-    public function trans_hapus(){
-        $transaksi = Transaksi::onlyTrashed()->get();
-        return view ('panitia.transaksi.dashdelet', compact(['transaksi']));
-    }
-    // Restore (kembalikan data)
-    public function trans_kembali($id){
-        $transaksi = Transaksi::withTrashed()->where('id_transaksi', $id)->restore();
-        return redirect('/transaksi-panitia');
+    // update transaksi
+    public function update_transaksi(Request $request)
+    {
+        if($request->isMethod('post')){
+            $request->validate([
+                'id_panitia' => 'required',
+                'foto' => 'required',
+                'validasi' => 'required',
+            ]);
+            
+            $data = $request->all();
+            Transaksi::where(['id_transaksi' => $request->id_transaksi])->update([
+                'validasi'=>$data['validasi'],
+                
+        ]);
+            return redirect()->back()->with('update_success', 'Update Data Berhasil!');
+        }
     }
 
 // PROJECT =====================================================
@@ -155,20 +196,10 @@ class PanitiaController extends Controller
         return view('panitia.project.dashproject', compact(['project']));
     }
      // delete project
-     public function delete_project($id)
+     public function delete_project(Request $request)
      {
-         $project = Project::findOrFail($id);
-         $project->delete();
-         return redirect('/project-panitia');
+         $data = Project::findOrFail($request['id_project']);
+         $data->delete();
+         return redirect()->back()->with('delete_success', 'delete Data Berhasil!');  
      }
-     // menampilkan data yang sudah di hapus wdc
-     public function project_hapus(){
-         $project = Project::onlyTrashed()->get();
-         return view ('panitia.project.dashdelet', compact(['project']));
-     }
-     // Restore (kembalikan data)
-     public function project_kembali($id){
-         $project = Project::withTrashed()->where('id_project', $id)->restore();
-         return redirect('/project-panitia');
-    }   
 }
