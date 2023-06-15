@@ -55,7 +55,7 @@ class AuthController extends Controller
                 return redirect('/peserta');
             }
         }else{
-            return redirect('login');
+            return redirect('login')->with('gagal', 'Email Atau Password Salah !');
         }
     }
 
