@@ -2,19 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Ct;
+use App\Models\DC;
+use App\Models\Ctf;
+use App\Models\Wdc;
 use App\Models\Panitia;
 use App\Models\Peserta;
-use App\Models\Wdc;
-use App\Models\Ct;
-use App\Models\Ctf;
-use App\Models\DC;
 use App\Models\Project;
 use App\Models\Transaksi;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
     public function index(){
+        Auth()->user();
         return view('admin.content.dashboard');
     }
 
