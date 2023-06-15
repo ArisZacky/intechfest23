@@ -25,6 +25,11 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 |
 */
 
+// landing page
+Route::get('/', function(){
+    return view('landing');
+});
+
 // Login Routes
 Route::get('/login', function () {
     return view('login');
@@ -211,16 +216,12 @@ Route::group(['middleware' => ['auth', 'verified', 'level:panitia']], function (
 Route::group(['middleware' => ['auth', 'verified', 'level:peserta']], function () {
     Route::get('/peserta', [PesertaController::class, 'index']);
     // semua route peserta dibuat dalam route group ini!!
-        // Menampilkan Halaman Chilltalks
-        Route::get('/chilltalk-peserta', [PesertaController::class, 'ct']);
-        // Menampilkan Halaman DC
-        Route::get('/dc-peserta', [PesertaController::class, 'dc']);
-        // Menampilkan Halaman WDC
-        Route::get('/wdc-peserta', [PesertaController::class, 'wdc']);
-        // Menampilkan Halaman CTF
-        Route::get('/ctf-peserta', [PesertaController::class, 'ctf']);
-        // Menampilkan Halaman Transaksi
-        Route::get('/transaksi-peserta', [PesertaController::class, 'transaksi']);
+        // Menampilkan Halaman profoil
+        Route::get('/profil-peserta', [PesertaController::class, 'profil']);
+        // Menampilkan Halaman lomba
+        Route::get('/lomba-peserta', [PesertaController::class, 'lomba']);
+        // Menampilkan Halaman lomba
+        Route::get('/chilltalks-peserta', [PesertaController::class, 'chilltalks']);
     });
 
 Route::get('tampilAdmin', function(){
