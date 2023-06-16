@@ -20,7 +20,7 @@ class LombaController extends Controller
         //pada table users dengan mencocokan email pada table peserta dengan table users
         $data_peserta = Peserta::where('email', $user->email)->first();
         //return view lomba dan data dalam bentuk object
-        return view('lomba', ['user'=> $user, 'data_peserta'=> $data_peserta]);
+        return view('lomba.wdc', ['user'=> $user, 'data_peserta'=> $data_peserta]);
     }
 
     public function daftarwdc(Request $request, $id){
@@ -35,6 +35,9 @@ class LombaController extends Controller
 
         // mencari id yang sama pada table peserta yang dikirim kan melalui url
         $tb_peserta = Peserta::findOrFail($id);
+        $tb_wdc = Wdc::get();
+
+        $nama_lomba = "WDC";
 
         // ===============Membuat Nomer Peserta=======================
             $currentCount = Wdc::count() + 1; // Menghitung jumlah peserta yang sudah ada dan menambahkannya dengan 1
@@ -53,8 +56,8 @@ class LombaController extends Controller
         
         //================================Upload Foto====================
             $foto       = $request->foto; 
-            $filename   = "WDC_".$request->nama_lengkap; // format nama file
-            $path       = 'Identitas/wdc'.$filename; // tempat penyimpanan file
+            $filename   = "WDC_".$request->nama_lengkap.'_'.$foto->getClientOriginalName(); // format nama file
+            $path       = 'Identitas/wdc/'.$filename; // tempat penyimpanan file
 
             Storage::disk('public')->put($path,file_get_contents($foto));
          //============================End Upload Foto====================
@@ -72,14 +75,14 @@ class LombaController extends Controller
         $users = [
             'name' => $request->nama_lengkap
         ];
-
+        
         // data yang akan di insert ke table wdc
         $wdc = [
             'id_peserta' => $request->id_peserta,
-            'foto' => $request->foto,
+            'foto' => $filename,
             'validasi' => 'Belum Tervalidasi'
         ];
-
+        
         // Database Transaction untuk insert data ke 3 table
         try {
             DB::beginTransaction();
@@ -98,7 +101,15 @@ class LombaController extends Controller
             throw $th;
             DB::rollBack();
         }
-        
-        return redirect('/lomba-peserta')->with('gagal', 'Gagal Mendaftar Lomba');
+        return redirect('/peserta-wdc');
+    }
+
+    public function dashboardwdc(){
+        $data_peserta = Wdc::with('peserta')->get();
+        return view('peserta.content.wdc', ['data_peserta' => $data_peserta]);
+    }
+
+    public function pembayaran(){
+        return view('peserta.content.pembayaran-lomba');
     }
 }
