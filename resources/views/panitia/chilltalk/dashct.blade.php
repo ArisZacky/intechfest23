@@ -74,7 +74,6 @@
                             <tr>
                                 <th scope="col" class="px-4 py-4">No</th>
                                 <th scope="col" class="px-4 py-3">NAMA PESERTA</th>
-                                <th scope="col" class="px-4 py-3">BUKTI TRANSAKSI</th>
                                 <th scope="col" class="px-4 py-3">
                                     <!-- <span class="sr-only">Actions</span> -->
                                     Action
@@ -87,7 +86,6 @@
                                 class="border-b dark:border-gray-700 {{($loop->iteration % 2 == 0) ? 'bg-slate-100' : ''}}" id="baris{{$loop->iteration}}">
                                 <td class="px-4 py-3">{{$loop->iteration}}</td>
                                 <td class="px-4 py-3">{{$data->peserta['nama_lengkap']}}</td>
-                                <td class="px-4 py-3">{{$data->transaksi['foto']}}</td>
                                 <td class="px-4 py-3">
                                     <!-- <button id="apple-imac-27-dropdown-button"
                                         data-dropdown-toggle="apple-imac-27-dropdown"

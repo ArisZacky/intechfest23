@@ -73,14 +73,12 @@
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
                                 <th scope="col" class="px-4 py-4">No</th>
-                                <th scope="col" class="px-4 py-3">NAMA PESERTA</th>
+                                <th scope="col" class="px-4 py-3">NAMA LEADER</th>
+                                <th scope="col" class="px-4 py-3">NOMER PESERTA</th>
                                 <th scope="col" class="px-4 py-3">NAMA TEAM</th>
-                                <th scope="col" class="px-4 py-3">BUKTI TRANSAKSI</th>
-                                <th scope="col" class="px-4 py-3">PROJECT</th>
                                 <th scope="col" class="px-4 py-3">NAMA ANGGOTA 1</th>
-                                <th scope="col" class="px-4 py-3">FOTO ANGGOTA 1</th>
                                 <th scope="col" class="px-4 py-3">NAMA ANGGOTA 2</th>
-                                <th scope="col" class="px-4 py-3">FOTO ANGGOTA 2</th>
+                                <th scope="col" class="px-4 py-3">FOTO IDENTITAS</th>
                                 <th scope="col" class="px-4 py-3">VALIDASI</th>
                                 <th scope="col" class="px-4 py-3">
                                     <!-- <span class="sr-only">Actions</span> -->
@@ -94,17 +92,11 @@
                                 class="border-b dark:border-gray-700 {{($loop->iteration % 2 == 0) ? 'bg-slate-100' : ''}}" id="baris{{$loop->iteration}}">
                                 <th class="px-4 py-3">{{$loop->iteration}}</th>
                                 <td class="px-4 py-3">{{$data->peserta['nama_lengkap']}}</td>
+                                <td class="px-4 py-3">{{$data->peserta['nomer_peserta']}}</td>
                                 <td class="px-4 py-3">{{$data->nama_team}}</td>
-                                <td class="px-4 py-3">{{$data->transaksi['foto']}}</td>
-                                @if($data->prid_project==null)
-                                    <td class="px-4 py-3 italic">Belum Kumpul Project</td>
-                                @else
-                                <td class="px-4 py-3">{{$data->project['file_project']}}</td>
-                                @endif
                                 <td class="px-4 py-3">{{$data->anggota1}}</td>
-                                <td class="px-4 py-3">{{$data->foto_1}}</td>
                                 <td class="px-4 py-3">{{$data->anggota2}}</td>
-                                <td class="px-4 py-3">{{$data->foto_2}}</td>
+                                <td class="px-4 py-3">{{$data->foto}}</td>
                                 <td class="px-4 py-3">{{$data->validasi}}</td>
                                 <td class="px-4 py-3">
                                     <!-- <button id="apple-imac-27-dropdown-button"
@@ -244,63 +236,48 @@
                 <input type="hidden" name="id_ctf" id="edit-id_ctf">
                 <div class="grid gap-4 mb-4 sm:grid-cols-2">
                     <div>
-                        <label for="edit-nama_peserta" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NAMA
-                        PESERTA</label>
+                        <label for="edit-nama_peserta" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NAMA PESERTA
+                            </label>
                         <input type="text" name="id_peserta" id="edit-nama_peserta"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Masukkan email peserta..." required="">
+                            placeholder="Masukkan id_peserta peserta..." required="">
                     </div>
                     <div>
-                        <label for="edit-nama_team"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NAMA TEAM</label>
+                        <label for="edit-nomer_peserta" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NOMER PESERTA
+                            </label>
+                        <input type="text" name="id_peserta" id="edit-nomer_peserta"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            placeholder="Masukkan id_peserta peserta..." required="">
+                    </div>
+                    <div>
+                        <label for="edit-nama_team" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NAMA TEAM
+                            </label>
                         <input type="text" name="nama_team" id="edit-nama_team"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Masukkan nomer peserta..." required="">
+                            placeholder="Masukkan id_peserta peserta..." required="">
                     </div>
                     <div>
-                        <label for="edit-bukti_transaksi"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">BUKTI TRANSAKSI</label>
-                        <input type="text" name="id_transaksi" id="edit-bukti_transaksi"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Masukkan nama lengkap peserta..." required="">
-                    </div>
-                    <div>
-                        <label for="edit-file_project"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">PROJECT</label>
-                        <input type="text" name="id_project" id="edit-file_project"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Masukkan alamat peserta..." required="">
-                    </div>
-                    <div>
-                        <label for="edit-anggota1"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ANGGOTA1
-                            Peserta</label>
+                        <label for="edit-anggota1" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NAMA ANGGOTA 1
+                            </label>
                         <input type="text" name="anggota1" id="edit-anggota1"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Masukkan nama lengkap peserta..." required="">
+                            placeholder="Masukkan id_peserta peserta..." required="">
                     </div>
                     <div>
-                        <label for="edit-foto_1" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Foto 1</label>
-                        <input type="text" name="foto_1" id="edit-foto_1"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="08xxxx" required="">
-                    </div>
-                    <div>
-                        <label for="edit-anggota2"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ANGGOTA2
-                            Peserta</label>
+                        <label for="edit-anggota2" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NAMA ANGGOTA 2
+                            </label>
                         <input type="text" name="anggota2" id="edit-anggota2"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Masukkan nama lengkap peserta..." required="">
+                            placeholder="Masukkan id_peserta peserta..." required="">
                     </div>
                     <div>
-                        <label for="edit-foto_2" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Foto 2</label>
-                        <input type="text" name="foto_2" id="edit-foto_2"
+                        <label for="edit-foto_identitas" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">FOTO IDENTITTAS</label>
+                        <input type="text" name="foto" id="edit-foto_identitas"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="08xxxx" required="">
+                            placeholder="Masukkan id_peserta peserta..." required="">
                     </div>
                     <div>
-                        <label for="edit-validasi"
+                    <label for="edit-validasi"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">VALIDASI</label>
                         <select name="validasi" id="edit-validasi" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                             <option value="edit-validasi" hidden></option>
@@ -312,9 +289,9 @@
                     </div>
                 </div>
                 <div class="flex items-center border-t pt-3 justify-end space-x-4">
-                <input type="submit"
-                    class="text-primary-600 cursor-pointer hover:text-white border border-primary-600 hover:bg-primary-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                    value="Update">
+                    <input type="submit"
+                        class="text-primary-600 cursor-pointer hover:text-white border border-primary-600 hover:bg-primary-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                        value="Update">
                 </div>
             </form>
         </div>
@@ -368,14 +345,12 @@
         const td = document.querySelectorAll('#' + baris + ' td');
 
         document.getElementById('edit-nama_peserta').value = td[0].innerText
-        document.getElementById('edit-nama_team').value = td[1].innerText
-        document.getElementById('edit-bukti_transaksi').value = td[2].innerText
-        document.getElementById('edit-file_project').value = td[3].innerText
-        document.getElementById('edit-anggota1').value = td[4].innerText
-        document.getElementById('edit-foto_1').value = td[5].innerText
-        document.getElementById('edit-anggota2').value = td[6].innerText
-        document.getElementById('edit-foto_2').value = td[7].innerText
-        document.getElementById('edit-validasi').value = td[8].innerText
+        document.getElementById('edit-nomer_peserta').value = td[1].innerText
+        document.getElementById('edit-nama_team').value = td[2].innerText
+        document.getElementById('edit-anggota1').value = td[3].innerText
+        document.getElementById('edit-anggota2').value = td[4].innerText
+        document.getElementById('edit-foto_identitas').value = td[5].innerText
+        document.getElementById('edit-validasi').value = td[6].innerText
 
         document.getElementById('edit-id_ctf').value = id;
     }

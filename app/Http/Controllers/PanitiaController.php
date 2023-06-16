@@ -55,8 +55,6 @@ class PanitiaController extends Controller
             $request->validate([
                 'id_peserta' => 'required',
                 'foto' => 'required',
-                'id_transaksi' => 'required',
-                'id_project' => 'required',
                 'validasi' => 'required',
             ]);
             
@@ -93,8 +91,6 @@ class PanitiaController extends Controller
             $request->validate([
                 'id_peserta' => 'required',
                 'foto' => 'required',
-                'id_transaksi' => 'required',
-                'id_project' => 'required',
                 'validasi' => 'required',
             ]);
             
@@ -130,12 +126,9 @@ class PanitiaController extends Controller
             $request->validate([
                 'id_peserta' => 'required',
                 'nama_team' => 'required',
-                'id_transaksi' => 'required',
-                'id_project' => 'required',
                 'anggota1' => 'required',
-                'foto_1' => 'required',
                 'anggota2' => 'required',
-                'foto_2' => 'required',
+                'foto' => 'required',
                 'validasi' => 'required',
             ]);
             
@@ -143,9 +136,8 @@ class PanitiaController extends Controller
             ctf::where(['id_ctf' => $request->id_ctf])->update([
                 'nama_team'=>$data['nama_team'],
                 'anggota1'=>$data['anggota1'],
-                'foto_1'=>$data['foto_1'],
                 'anggota2'=>$data['anggota2'],
-                'foto_2'=>$data['foto_2'],
+                'foto'=>$data['foto'],
                 'validasi'=>$data['validasi'],
                 
         ]);
