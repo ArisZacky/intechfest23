@@ -2,7 +2,7 @@
 @extends('panitia.main')
 
 {{-- judul halaman disini --}}
-@section('title', 'Data Peserta DC')
+@section('title', 'Data Transaksi')
 
 {{-- membuat content disini --}}
 @section('content')
@@ -73,26 +73,25 @@
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
                                 <th scope="col" class="px-4 py-4">No</th>
-                                <th scope="col" class="px-4 py-3">NAMA PESERTA</th>
+                                <th scope="col" class="px-4 py-3">NAMA PANITIA</th>
                                 <th scope="col" class="px-4 py-3">BUKTI TRANSAKSI</th>
-                                <th scope="col" class="px-4 py-3">PROJECT</th>
                                 <th scope="col" class="px-4 py-3">VALIDASI</th>
                                 <th scope="col" class="px-4 py-3">
-                                    <span class="sr-only">Actions</span>
+                                    <!-- <span class="sr-only">Actions</span> -->
+                                    action
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($transaksi as $data)
                             <tr
-                                class="border-b dark:border-gray-700 {{($loop->iteration % 2 == 0) ? 'bg-slate-100' : ''}}">
-                                <td class="px-4 py-3">{{$loop->iteration}}</td>
-                                <td class="px-4 py-3">{{$data->id_peserta}}</td>
-                                <td class="px-4 py-3">{{$data->id_transaksi}}</td>
-                                <td class="px-4 py-3">{{$data->id_project}}</td>
+                                class="border-b dark:border-gray-700 {{($loop->iteration % 2 == 0) ? 'bg-slate-100' : ''}}" id="baris{{$loop->iteration}}">
+                                <th class="px-4 py-3">{{$loop->iteration}}</th>
+                                <td class="px-4 py-3">{{$data->panitia['nama_lengkap']}}</td>
+                                <td class="px-4 py-3">{{$data->foto}}</td>
                                 <td class="px-4 py-3">{{$data->validasi}}</td>
                                 <td class="px-4 py-3">
-                                    <button id="apple-imac-27-dropdown-button"
+                                    <!-- <button id="apple-imac-27-dropdown-button"
                                         data-dropdown-toggle="apple-imac-27-dropdown"
                                         class="inline-flex items-center text-sm font-medium hover:bg-gray-100 dark:hover:bg-gray-700 p-1.5 dark:hover-bg-gray-800 text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100"
                                         type="button">
@@ -103,10 +102,10 @@
                                         </svg>
                                     </button>
                                     <div id="apple-imac-27-dropdown"
-                                        class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
+                                        class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"> -->
                                         <ul class="py-1 text-sm" aria-labelledby="apple-imac-27-dropdown-button">
                                             <li>
-                                                <button type="button" data-modal-target="updateProductModal"
+                                                <button onclick ="edit('baris{{$loop->iteration}}', '{{$data->id_transaksi}}')" type="button" data-modal-target="updateProductModal"
                                                     data-modal-toggle="updateProductModal"
                                                     class="flex w-full items-center py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-gray-700 dark:text-gray-200">
                                                     <svg class="w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg"
@@ -120,7 +119,7 @@
                                                 </button>
                                             </li>
                                             <li>
-                                                <button type="button" data-modal-target="deleteModal"
+                                                <button onclick ="hapus('baris{{$loop->iteration}}', '{{$data->id_transaksi}}')" type="button" data-modal-target="deleteModal"
                                                     data-modal-toggle="deleteModal"
                                                     class="flex w-full items-center py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 text-red-500 dark:hover:text-red-400">
                                                     <svg class="w-4 h-4 mr-2" viewbox="0 0 14 15" fill="none"
@@ -210,7 +209,7 @@
         <div class="relative p-4 bg-white rounded-lg shadow dark:bg-gray-800 sm:p-5">
             <!-- Modal header -->
             <div class="flex justify-between items-center pb-4 mb-4 rounded-t border-b sm:mb-5 dark:border-gray-600">
-                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Update Data Peserta</h3>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Update Data Transaksi</h3>
                 <button type="button"
                     class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
                     data-modal-toggle="updateProductModal">
@@ -224,50 +223,32 @@
                 </button>
             </div>
             <!-- Modal body -->
-            <form action="#">
+            <form action="{{url('/transaksi-update')}}" method="post" enctype="multipart/form-data">
+            @csrf
+            <input type="hidden" id="edit-id_transaksi" name="id_transaksi">
                 <div class="grid gap-4 mb-4 sm:grid-cols-2">
                     <div>
-                        <label for="id_peserta" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NAMA PESERTA
-                            Peserta</label>
-                        <input type="text" name="id_peserta" id="id_peserta"
+                        <label for="edit-nama_panitia" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NAMA PANITIA</label>
+                        <input type="text" name="id_panitia" id="edit-nama_panitia"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Masukkan id_peserta peserta..." required="">
+                            placeholder="Masukkan Nama Peserta" required="">
                     </div>
                     <div>
-                        <label for="id_transaksi"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">BUKTI TRANSAKSI</label>
-                        <input type="text" name="id_transaksi" id="id_transaksi"
+                        <label for="edit-foto" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">FOTO TRANSAKSI</label>
+                        <input type="text" name="foto" id="edit-foto"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Masukkan nomer peserta..." required="">
+                            placeholder="Masukkan Nama Peserta" required="">
                     </div>
                     <div>
-                        <label for="id_project"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">PROJECT</label>
-                        <input type="text" name="id_project" id="id_project"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Masukkan nama lengkap peserta..." required="">
-                    </div>
-                    <div>
-                        <label for="validasi"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">validasi</label>
-                        <input type="text" name="validasi" id="validasi"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Masukkan"validasi peserta..." required="">
-                    </div>
-                    <div>
-                        <label for="nama_instansi"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Instansi
-                            Peserta</label>
-                        <input type="text" name="nama_instansi" id="nama_instansi"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Masukkan nama lengkap peserta..." required="">
-                    </div>
-                    <div>
-                        <label for="no_hp" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Telpon
-                            Peserta</label>
-                        <input type="text" name="no_hp" id="no_hp"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="08xxxx" required="">
+                        <label for="edit-validasi"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">VALIDASI</label>
+                        <select name="validasi" id="edit-validasi" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <option value="edit-validasi" hidden></option>
+                            <option value="Belum Tervalidasi">Belum Tervalidasi</option>
+                            <option value="Sudah Valid">Sudah Valid</option>
+                            <option value="Tidak Valid">TIdak Valid</option>
+
+                        </select>
                     </div>
                 </div>
                 <div class="flex items-center border-t pt-3 justify-end space-x-4">
@@ -306,16 +287,38 @@
             </svg>
             <p class="mb-4 text-gray-500 dark:text-gray-300">Apakah kamu yakin untuk menghapus data ini?</p>
             <div class="flex justify-center items-center space-x-4">
+            <form action="{{url('/transaksi-delete')}}" method="post">
+            @csrf
+            <input type="hidden" id="hapus-id_transaksi" name="id_transaksi">
                 <button data-modal-toggle="deleteModal" type="button"
                     class="py-2 px-3 text-sm font-medium text-gray-500 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-primary-300 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Tidak,
                     Batalkan</button>
-                <button type="submit"
-                    class="py-2 px-3 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-500 dark:hover:bg-red-600 dark:focus:ring-red-900">Ya,
-                    saya yakin!</button>
+                <input type="submit"
+                    class="py-2 px-3 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-500 dark:hover:bg-red-600 dark:focus:ring-red-900"
+                    value="Ya, Saya Yakin!">
+            </form>
             </div>
         </div>
     </div>
 </div>
 <!-- end delete modal -->
+
+<script>
+     function edit(baris, id) {
+        // fungsinya sama seperti hapus hanya beda penamaan
+        const td = document.querySelectorAll('#' + baris + ' td');
+
+        document.getElementById('edit-nama_panitia').value = td[0].innerText
+        document.getElementById('edit-foto').value = td[1].innerText
+        document.getElementById('edit-validasi').value = td[2].innerText
+
+        document.getElementById('edit-id_transaksi').value = id;
+    }
+    function hapus(baris, id){
+        const td = document.querySelectorAll('#' + baris + ' td');
+
+        document.getElementById('hapus-id_transaksi').value = id;
+    }
+</script>
 
 @endsection

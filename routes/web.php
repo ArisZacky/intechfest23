@@ -151,65 +151,49 @@ Route::group(['middleware' => ['auth', 'verified', 'level:panitia']], function (
     // semua route panitia dibuat dalam route group ini!!
 
 // CT ================================================================================================================
-    // Menampilkan Halaman Childtalks
+    // Menampilkan Halaman Chilltalks
     Route::get('/chilltalk-panitia', [PanitiaController::class, 'ct']);
      // delete ct
-     Route::get('/ct-panit-delete/{id_ct}', [PanitiaController::class, 'delete_ct']);
-     // menampilkan daftar hapus ct
-     Route::get('/daftar-ct-hapus', [PanitiaController::class, 'ct_hapus']);
-     // kembalikan data kehapus (restore)
-     Route::get('/ct/{id}/restore', [PanitiaController::class, 'ct_kembali']);
-
+     Route::post('/ct-delete', [PanitiaController::class, 'delete_ct']);
 
 // WDC ===============================================================================================================
     // Menampilkan Halaman WDC
     Route::get('/wdc-panitia', [PanitiaController::class, 'wdc']);
     // delete wdc
-    Route::get('/wdc-panit-delete/{id_wdc}', [PanitiaController::class, 'delete_wdc']);
-    // menampilkan daftar hapus wdc
-    Route::get('/daftar-wdc-hapus', [PanitiaController::class, 'wdc_hapus']);
-    // kembalikan data kehapus (restore)
-    Route::get('/wdc/{id}/restore', [PanitiaController::class, 'wdc_kembali']);
+    Route::post('/wdc-delete', [PanitiaController::class, 'delete_wdc']);
+    // update wdc
+    Route::post('/wdc-update', [PanitiaController::class, 'update_wdc']);
 
 // DC ================================================================================================================
     // Menampilkna Halaman DC
     Route::get('/dc-panitia', [PanitiaController::class, 'dc']);
      // delete dc
-     Route::get('/dc-panit-delete/{id_dc}', [PanitiaController::class, 'delete_dc']);
-     // menampilkan daftar hapus dc
-     Route::get('/daftar-dc-hapus', [PanitiaController::class, 'dc_hapus']);
-     // kembalikan data kehapus (restore)
-     Route::get('/dc/{id}/restore', [PanitiaController::class, 'dc_kembali']);
+    Route::post('/dc-delete', [PanitiaController::class, 'delete_dc']);
+    // update dc
+    Route::post('/dc-update', [PanitiaController::class, 'update_dc']);
 
 // CTF ===============================================================================================================
     // Menampilkan Halaman CTF
     Route::get('/ctf-panitia', [PanitiaController::class, 'ctf']);
      // delete ctf
-     Route::get('/ctf-panit-delete/{id_ctf}', [PanitiaController::class, 'delete_ctf']);
-     // menampilkan daftar hapus ctf
-     Route::get('/daftar-ctf-hapus', [PanitiaController::class, 'ctf_hapus']);
-     // kembalikan data kehapus (restore)
-     Route::get('/ctf/{id}/restore', [PanitiaController::class, 'ctf_kembali']);
+     Route::post('/ctf-delete', [PanitiaController::class, 'delete_ctf']);
+    // update ctf
+     Route::post('/ctf-update', [PanitiaController::class, 'update_ctf']);
 
 // TRANSAKSI =========================================================================================================
     // Menampilkan Halaman Transaksi
     Route::get('/transaksi-panitia', [PanitiaController::class, 'transaksi']);
-    // delete dc
-    Route::get('/transaksi-panit-delete/{id_transaksi}', [PanitiaController::class, 'delete_trans']);
-    // menampilkan daftar hapus dc
-    Route::get('/daftar-transaksi-hapus', [PanitiaController::class, 'trans_hapus']);
-    // kembalikan data kehapus (restore)
-    Route::get('/transaksi/{id}/restore', [PanitiaController::class, 'trans_kembali']);
+    // delete Transaksi
+    Route::post('/transaksi-delete', [PanitiaController::class, 'delete_transaksi']);
+    // update transaksi
+    Route::post('/transaksi-update', [PanitiaController::class, 'update_transaksi']);
 
 // PROJECT ===========================================================================================================
     // Menampilkan Halaman Project
     Route::get('/project-panitia', [PanitiaController::class, 'project']);
-     // delete dc
-     Route::get('/project-panit-delete/{id_project}', [PanitiaController::class, 'delete_project']);
-     // menampilkan daftar hapus dc
-     Route::get('/daftar-project-hapus', [PanitiaController::class, 'project_hapus']);
-     // kembalikan data kehapus (restore)
-     Route::get('/project/{id}/restore', [PanitiaController::class, 'project_kembali']);
+     // delete project
+     Route::post('project-delete', [PanitiaController::class, 'delete_project']);
+
 });
 
 // Peserta Routes
