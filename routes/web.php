@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Password;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\LombaController;
 use Illuminate\Auth\Events\PasswordReset;
 use App\Http\Controllers\PanitiaController;
 use App\Http\Controllers\PesertaController;
@@ -202,6 +203,8 @@ Route::group(['middleware' => ['auth', 'verified', 'level:peserta']], function (
     // semua route peserta dibuat dalam route group ini!!
         // Menampilkan Halaman profoil
         Route::get('/profil-peserta', [PesertaController::class, 'profil']);
+        // Edit Profile Peserta
+        Route::put('/profile-peserta/{id}', [PesertaController::class, 'edit_profile']);
         // Menampilkan Halaman lomba
         Route::get('/lomba-peserta', [PesertaController::class, 'lomba']);
         // Menampilkan Halaman lomba
@@ -210,4 +213,17 @@ Route::group(['middleware' => ['auth', 'verified', 'level:peserta']], function (
 
 Route::get('tampilAdmin', function(){
     return view('admin');
+});
+
+//Route Daftar cabang lomba
+Route::group(['middleware' => ['auth', 'verified', 'level:peserta']], function (){
+    // Menampilkan Form Daftar Lomba WDC
+    Route::get('/wdc', [LombaController::class, 'wdc']);
+    // Route yang mengarahkan proses daftar wdc
+    Route::put('/daftar-wdc/{id}', [LombaController::class, 'daftarwdc']);
+    // Menampilkan dashboard peserta wdc
+    Route::get('/peserta-wdc', [LombaController::class, 'dashboardwdc']);
+
+    // Menampilkan Transaksi
+    Route::get('/pembayaran', [LombaController::class, 'pembayaran']);
 });

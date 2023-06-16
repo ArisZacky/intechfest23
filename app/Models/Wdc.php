@@ -14,6 +14,13 @@ class Wdc extends Model
     protected $table = 'wdc';
     protected $primaryKey = 'id_wdc';
 
+    protected $fillable = [
+        'id_peserta',
+        'foto',
+        'id_project',
+        'validasi',
+    ];
+
     // peserta
     public function peserta(): HasOne
     {
