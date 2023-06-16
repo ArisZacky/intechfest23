@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Password;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\LombaController;
 use Illuminate\Auth\Events\PasswordReset;
 use App\Http\Controllers\PanitiaController;
 use App\Http\Controllers\PesertaController;
@@ -226,4 +227,10 @@ Route::group(['middleware' => ['auth', 'verified', 'level:peserta']], function (
 
 Route::get('tampilAdmin', function(){
     return view('admin');
+});
+
+//Route Daftar cabang lomba
+Route::group(['middleware' => ['auth', 'level:peserta']], function (){
+    Route::get('/wdc', [LombaController::class, 'wdc']);
+    Route::put('/daftar-wdc/{id}', [LombaController::class, 'daftarwdc']);
 });
