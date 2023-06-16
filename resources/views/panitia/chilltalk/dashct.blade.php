@@ -74,21 +74,20 @@
                             <tr>
                                 <th scope="col" class="px-4 py-4">No</th>
                                 <th scope="col" class="px-4 py-3">NAMA PESERTA</th>
-                                <th scope="col" class="px-4 py-3">BUKTI TRANSAKSI</th>
                                 <th scope="col" class="px-4 py-3">
-                                    <span class="sr-only">Actions</span>
+                                    <!-- <span class="sr-only">Actions</span> -->
+                                    Action
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($ct as $data)
                             <tr
-                                class="border-b dark:border-gray-700 {{($loop->iteration % 2 == 0) ? 'bg-slate-100' : ''}}">
+                                class="border-b dark:border-gray-700 {{($loop->iteration % 2 == 0) ? 'bg-slate-100' : ''}}" id="baris{{$loop->iteration}}">
                                 <td class="px-4 py-3">{{$loop->iteration}}</td>
-                                <td class="px-4 py-3">{{$data->id_peserta}}</td>
-                                <td class="px-4 py-3">{{$data->id_transaksi}}</td>
+                                <td class="px-4 py-3">{{$data->peserta['nama_lengkap']}}</td>
                                 <td class="px-4 py-3">
-                                    <button id="apple-imac-27-dropdown-button"
+                                    <!-- <button id="apple-imac-27-dropdown-button"
                                         data-dropdown-toggle="apple-imac-27-dropdown"
                                         class="inline-flex items-center text-sm font-medium hover:bg-gray-100 dark:hover:bg-gray-700 p-1.5 dark:hover-bg-gray-800 text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100"
                                         type="button">
@@ -99,7 +98,7 @@
                                         </svg>
                                     </button>
                                     <div id="apple-imac-27-dropdown"
-                                        class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
+                                        class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"> -->
                                         <ul class="py-1 text-sm" aria-labelledby="apple-imac-27-dropdown-button">
                                             <li>
                                                 <button type="button" data-modal-target="updateProductModal"
@@ -116,7 +115,7 @@
                                                 </button>
                                             </li>
                                             <li>
-                                                <button type="button" data-modal-target="deleteModal"
+                                                <button onclick ="hapus('baris{{$loop->iteration}}', '{{$data->id_ct}}')" type="button" data-modal-target="deleteModal"
                                                     data-modal-toggle="deleteModal"
                                                     class="flex w-full items-center py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 text-red-500 dark:hover:text-red-400">
                                                     <svg class="w-4 h-4 mr-2" viewbox="0 0 14 15" fill="none"
@@ -302,16 +301,28 @@
             </svg>
             <p class="mb-4 text-gray-500 dark:text-gray-300">Apakah kamu yakin untuk menghapus data ini?</p>
             <div class="flex justify-center items-center space-x-4">
+            <form action="{{url('/ct-delete')}}" method="post">
+            @csrf
+            <input type="hidden" id="hapus-id_ct" name="id_ct">
                 <button data-modal-toggle="deleteModal" type="button"
                     class="py-2 px-3 text-sm font-medium text-gray-500 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-primary-300 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Tidak,
                     Batalkan</button>
-                <button type="submit"
-                    class="py-2 px-3 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-500 dark:hover:bg-red-600 dark:focus:ring-red-900">Ya,
-                    saya yakin!</button>
+                <input type="submit"
+                    class="py-2 px-3 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-500 dark:hover:bg-red-600 dark:focus:ring-red-900"
+                    value="Ya, Saya Yakin!">
+            </form>
             </div>
         </div>
     </div>
 </div>
 <!-- end delete modal -->
+
+<script>
+    function hapus(baris, id){
+        const td = document.querySelectorAll('#' + baris + ' td');
+
+        document.getElementById('hapus-id_ct').value = id;
+    }
+</script>
 
 @endsection
