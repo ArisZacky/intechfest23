@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Wdc;
+use App\Models\Dc;
+use App\Models\Ctf;
 use App\Models\User;
 use App\Models\Peserta;
 use Illuminate\Http\Request;
@@ -13,6 +15,7 @@ use Illuminate\Support\Facades\Storage;
 
 class LombaController extends Controller
 {
+    // =============================================================================== WDC
     public function wdc(){
         //mengambil data dari user yang login pada table users
         $user = Auth::user();
@@ -30,7 +33,7 @@ class LombaController extends Controller
             'alamat' => 'required',
             'nama_instansi' => 'required',
             'no_hp' => 'required|numeric',
-            'foto' => 'required|mimes:png,jpg,jpeg|max:2048'
+            'foto' => 'required|mimes:png,jpg,jpeg|max:5000'
         ]);
 
         // mencari id yang sama pada table peserta yang dikirim kan melalui url
@@ -108,8 +111,221 @@ class LombaController extends Controller
         $data_peserta = Wdc::with('peserta')->get();
         return view('peserta.content.wdc', ['data_peserta' => $data_peserta]);
     }
-
-    public function pembayaran(){
+    public function pembayaranwdc(){
         return view('peserta.content.pembayaran-lomba');
     }
+
+
+    // =========================================================================================== DC
+
+    public function dc(){
+        //mengambil data dari user yang login pada table users
+        $user = Auth::user();
+        //mengambil data dari table peserta yang memiliki email sama dengan user yang login 
+        //pada table users dengan mencocokan email pada table peserta dengan table users
+        $data_peserta = Peserta::where('email', $user->email)->first();
+        //return view lomba dan data dalam bentuk object
+        return view('lomba.dc', ['user'=> $user, 'data_peserta'=> $data_peserta]);
+    }
+
+    public function daftardc(Request $request, $id){
+        
+        $validated = $request->validate([
+            'nama_lengkap' => 'required',
+            'alamat' => 'required',
+            'nama_instansi' => 'required',
+            'no_hp' => 'required|numeric',
+            'foto' => 'required|mimes:png,jpg,jpeg|max:5000'
+        ]);
+
+        // mencari id yang sama pada table peserta yang dikirim kan melalui url
+        $tb_peserta = Peserta::findOrFail($id);
+        $tb_dc = Dc::get();
+
+        $nama_lomba = "DC";
+
+        // ===============Membuat Nomer Peserta=======================
+            $currentCount = Dc::count() + 1; // Menghitung jumlah peserta yang sudah ada dan menambahkannya dengan 1
+            
+            // Set timezone
+            date_default_timezone_set('Asia/Singapore');
+
+            // membuat custom angka
+            $currentTimestamp   = now()->format('dHis'); // Mengambil tanggal, jam, menit, dan detik saat ini
+            $currentDay         = substr($currentTimestamp, 0, 2); // Mengambil 2 angka tanggal
+            $currentHour        = substr($currentTimestamp, 2, 2); // Mengambil 2 angka jam
+            $currentSecond      = substr($currentTimestamp, -2); // Mengambil 2 angka detik terakhir
+
+            $nomer_peserta      = '2'.str_pad($currentCount, 3, '0', STR_PAD_LEFT).$currentDay.$currentHour.$currentSecond;
+        // ==============Nomer Peserta End=============================
+        
+        //================================Upload Foto====================
+            $foto       = $request->foto; 
+            $filename   = "DC_".$request->nama_lengkap.'_'.$foto->getClientOriginalName(); // format nama file
+            $path       = 'Identitas/dc/'.$filename; // tempat penyimpanan file
+
+            Storage::disk('public')->put($path,file_get_contents($foto));
+         //============================End Upload Foto====================
+
+        // data yang akan di update ke table peserta
+        $peserta = [
+            'nomer_peserta' => $nomer_peserta,
+            'nama_lengkap' => $request->nama_lengkap,
+            'alamat' => $request->alamat,
+            'nama_instansi' => $request->nama_instansi,
+            'no_hp' => $request->no_hp
+        ];
+
+        // data yang akan di update ke table users
+        $users = [
+            'name' => $request->nama_lengkap
+        ];
+        
+        // data yang akan di insert ke table dc
+        $dc = [
+            'id_peserta' => $request->id_peserta,
+            'foto' => $filename,
+            'validasi' => 'Belum Tervalidasi'
+        ];
+        
+        // Database Transaction untuk insert data ke 3 table
+        try {
+            DB::beginTransaction();
+            
+            // update data ke table peserta 
+            $tb_peserta->update($peserta);
+
+            // update data ke table users yang memiliki email yang sama pada form
+            User::where('email', $request->email)->update($users);
+
+            // insert data ke table dc
+            Dc::create($dc);
+            
+            DB::commit();
+        } catch (\Throwable $th) {
+            throw $th;
+            DB::rollBack();
+        }
+        return redirect('/peserta-dc');
+    }
+
+
+    public function dashboarddc(){
+        $data_peserta = Dc::with('peserta')->get();
+        return view('peserta.content.dc', ['data_peserta' => $data_peserta]);
+    }
+
+    public function pembayarandc(){
+        return view('peserta.content.pembayaran-lomba');
+    }
+
+
+
+    // ====================================================================================== CTF
+    public function ctf(){
+        //mengambil data dari user yang login pada table users
+        $user = Auth::user();
+        //mengambil data dari table peserta yang memiliki email sama dengan user yang login 
+        //pada table users dengan mencocokan email pada table peserta dengan table users
+        $data_peserta = Peserta::where('email', $user->email)->first();
+        //return view lomba dan data dalam bentuk object
+        return view('lomba.ctf', ['user'=> $user, 'data_peserta'=> $data_peserta]);
+    }
+
+    public function daftarctf(Request $request, $id){
+        
+        $validated = $request->validate([
+            'nama_lengkap' => 'required',
+            'alamat' => 'required',
+            'nama_instansi' => 'required',
+            'no_hp' => 'required|numeric',
+            'anggota1' => 'required',
+            'anggota2' => 'required',
+            'foto' => 'required|mimes:pdf|max:5000'
+        ]);
+
+        // mencari id yang sama pada table peserta yang dikirim kan melalui url
+        $tb_peserta = Peserta::findOrFail($id);
+        $tb_ctf = Ctf::get();
+
+        $nama_lomba = "CTF";
+
+        // ===============Membuat Nomer Peserta=======================
+            $currentCount = Ctf::count() + 1; // Menghitung jumlah peserta yang sudah ada dan menambahkannya dengan 1
+            
+            // Set timezone
+            date_default_timezone_set('Asia/Singapore');
+
+            // membuat custom angka
+            $currentTimestamp   = now()->format('dHis'); // Mengambil tanggal, jam, menit, dan detik saat ini
+            $currentDay         = substr($currentTimestamp, 0, 2); // Mengambil 2 angka tanggal
+            $currentHour        = substr($currentTimestamp, 2, 2); // Mengambil 2 angka jam
+            $currentSecond      = substr($currentTimestamp, -2); // Mengambil 2 angka detik terakhir
+
+            $nomer_peserta      = '3'.str_pad($currentCount, 3, '0', STR_PAD_LEFT).$currentDay.$currentHour.$currentSecond;
+        // ==============Nomer Peserta End=============================
+        
+        //================================Upload Foto====================
+            $foto       = $request->foto; 
+            $filename   = "Ctf_".$request->nama_lengkap.'_'.$foto->getClientOriginalName(); // format nama file
+            $path       = 'Identitas/ctf/'.$filename; // tempat penyimpanan file
+
+            Storage::disk('public')->put($path,file_get_contents($foto));
+         //============================End Upload Foto====================
+
+        // data yang akan di update ke table peserta
+        $peserta = [
+            'nomer_peserta' => $nomer_peserta,
+            'nama_lengkap' => $request->nama_lengkap,
+            'alamat' => $request->alamat,
+            'nama_instansi' => $request->nama_instansi,
+            'no_hp' => $request->no_hp
+        ];
+
+        // data yang akan di update ke table users
+        $users = [
+            'name' => $request->nama_lengkap
+        ];
+        
+        // data yang akan di insert ke table ctf
+        $ctf = [
+            'id_peserta' => $request->id_peserta,
+            'nama_team' => $request->nama_team,
+            'anggota1' => $request->anggota1,
+            'anggota2' => $request->anggota2,
+            'foto' => $filename,
+            'validasi' => 'Belum Tervalidasi'
+        ];
+        
+        // Database Transaction untuk insert data ke 3 table
+        try {
+            DB::beginTransaction();
+            
+            // update data ke table peserta 
+            $tb_peserta->update($peserta);
+
+            // update data ke table users yang memiliki email yang sama pada form
+            User::where('email', $request->email)->update($users);
+
+            // insert data ke table wdc
+            Ctf::create($ctf);
+            
+            DB::commit();
+        } catch (\Throwable $th) {
+            throw $th;
+            DB::rollBack();
+        }
+        return redirect('/peserta-ctf');
+    }
+
+
+    public function dashboardctf(){
+        $data_peserta = Ctf::with('peserta')->get();
+        return view('peserta.content.ctf', ['data_peserta' => $data_peserta]);
+    }
+
+    public function pembayaranctf(){
+        return view('peserta.content.pembayaran-lomba');
+    }
+
 }
