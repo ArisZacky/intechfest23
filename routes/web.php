@@ -128,6 +128,8 @@ Route::group(['middleware' => ['auth', 'verified', 'level:admin']], function () 
 
     // Menampilkan Halaman Chilltalks
     Route::get('/chilltalk-admin', [AdminController::class, 'ct']);
+    // Export Excel Chilltalks
+    Route::get('/chilltalk-admin/export_excel', [AdminController::class, 'ctExportExcel']);
     // Menampilkan Halaman Akun Chilltalks Yang terdelete
     Route::get('/deleted-data-chilltalks', [AdminController::class, 'getDeletedChilltalks']);
     // Mengembalikan data akun Chilltalks (restore)

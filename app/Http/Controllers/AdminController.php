@@ -12,6 +12,8 @@ use App\Models\Project;
 use App\Models\Transaksi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Exports\CtExcel;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AdminController extends Controller
 {
@@ -130,6 +132,10 @@ class AdminController extends Controller
         ->get();
         return view('admin.chilltalk.dashct', compact(['ct']));
     }
+    public function ctExportExcel()
+	{
+		return Excel::download(new CtExcel, 'Chilltalks.xlsx');
+	}
     // UPDATE PESERTA
     public function updateCt(Request $request)
     {
