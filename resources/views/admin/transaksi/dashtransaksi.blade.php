@@ -74,8 +74,8 @@
                             <tr>
                                 <th scope="col" class="px-4 py-4">No</th>
                                 <th scope="col" class="px-4 py-3">NAMA PESERTA</th>
+                                <th scope="col" class="px-4 py-3">DI VERIFIKASI OLEH</th>
                                 <th scope="col" class="px-4 py-3">BUKTI TRANSAKSI</th>
-                                <th scope="col" class="px-4 py-3">PROJECT</th>
                                 <th scope="col" class="px-4 py-3">VALIDASI</th>
                                 <th scope="col" class="px-4 py-3">
                                     <span class="sr-only">Actions</span>
@@ -83,16 +83,21 @@
                             </tr>
                         </thead>
                         <tbody>
+
                             @foreach($transaksi as $data)
                             <tr
-                                class="border-b dark:border-gray-700 {{($loop->iteration % 2 == 0) ? 'bg-slate-100' : ''}}">
-                                <td class="px-4 py-3">{{$loop->iteration}}</td>
+                                class="border-b dark:border-gray-700 {{($loop->iteration % 2 == 0) ? 'bg-slate-100' : ''}}" id="baris{{$loop->iteration}}">
+                                <th class="px-4 py-3">{{$loop->iteration}}</th>
                                 <td class="px-4 py-3">{{$data->id_peserta}}</td>
-                                <td class="px-4 py-3">{{$data->id_transaksi}}</td>
-                                <td class="px-4 py-3">{{$data->id_project}}</td>
+                                <td class="px-4 py-3">{{$data->id_panitia}}</td>
+                                <td class="px-4 py-3">
+                                    <a class="" href="{{ asset('storage/Transaksi/'.$data->foto) }}" data-lightbox="example-1" target="__blank" id='link-foto'>
+                                        <img class="w-20 h-20 rounded" src="{{ asset('storage/Transaksi/'.$data->foto) }}" alt="Large avatar" id='foto'>
+                                    </a>
+                                </td>
                                 <td class="px-4 py-3">{{$data->validasi}}</td>
                                 <td class="px-4 py-3">
-                                    <button id="apple-imac-27-dropdown-button"
+                                    <!-- <button id="apple-imac-27-dropdown-button"
                                         data-dropdown-toggle="apple-imac-27-dropdown"
                                         class="inline-flex items-center text-sm font-medium hover:bg-gray-100 dark:hover:bg-gray-700 p-1.5 dark:hover-bg-gray-800 text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100"
                                         type="button">
@@ -103,10 +108,10 @@
                                         </svg>
                                     </button>
                                     <div id="apple-imac-27-dropdown"
-                                        class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
+                                        class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"> -->
                                         <ul class="py-1 text-sm" aria-labelledby="apple-imac-27-dropdown-button">
                                             <li>
-                                                <button type="button" data-modal-target="updateProductModal"
+                                                <button onclick ="edit('baris{{$loop->iteration}}', '{{$data->id_transaksi}}')" type="button" data-modal-target="updateProductModal"
                                                     data-modal-toggle="updateProductModal"
                                                     class="flex w-full items-center py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-gray-700 dark:text-gray-200">
                                                     <svg class="w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg"
@@ -120,7 +125,7 @@
                                                 </button>
                                             </li>
                                             <li>
-                                                <button type="button" data-modal-target="deleteModal"
+                                                <button onclick ="hapus('baris{{$loop->iteration}}', '{{$data->id_transaksi}}')" type="button" data-modal-target="deleteModal"
                                                     data-modal-toggle="deleteModal"
                                                     class="flex w-full items-center py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 text-red-500 dark:hover:text-red-400">
                                                     <svg class="w-4 h-4 mr-2" viewbox="0 0 14 15" fill="none"
@@ -133,7 +138,7 @@
                                                 </button>
                                             </li>
                                         </ul>
-                                    </div>
+                                    <!-- </div> -->
                                 </td>
                             </tr>
                             @endforeach
@@ -224,50 +229,41 @@
                 </button>
             </div>
             <!-- Modal body -->
-            <form action="#">
+            <form action="{{url('/update-transaksi')}}" method ="POST">
+                @csrf
+                <input type="hidden" name="id_transaksi" id="edit-id_transaksi">
                 <div class="grid gap-4 mb-4 sm:grid-cols-2">
                     <div>
-                        <label for="id_peserta" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NAMA PESERTA
-                            Peserta</label>
-                        <input type="text" name="id_peserta" id="id_peserta"
+                        <label for="" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NAMA PESERTA</label>
+                        <input type="text" name="" id="edit-"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Masukkan id_peserta peserta..." required="">
+                            placeholder="Masukkan Nama Peserta..." required="" disabled>
                     </div>
                     <div>
                         <label for="id_transaksi"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">BUKTI TRANSAKSI</label>
-                        <input type="text" name="id_transaksi" id="id_transaksi"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Masukkan nomer peserta..." required="">
-                    </div>
-                    <div>
-                        <label for="id_project"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">PROJECT</label>
-                        <input type="text" name="id_project" id="id_project"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Masukkan nama lengkap peserta..." required="">
+                            <a class="" href="" data-lightbox="example-1" target="__blank" id="a-foto">
+                                <img class="w-20 h-20 rounded" alt="Large avatar" id="edit-foto">
+                            </a>
                     </div>
                     <div>
                         <label for="validasi"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">validasi</label>
-                        <input type="text" name="validasi" id="validasi"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Masukkan"validasi peserta..." required="">
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">VALIDASI</label>
+                            <select name="validasi" id="validasi">
+                                <option value="Belum Tervalidasi">Belum Tervalidasi</option>
+                                <option value="Sudah Valid">Sudah Valid</option>
+                                <option value="Tidak Valid">Tidak Valid</option>
+                            </select>
                     </div>
                     <div>
-                        <label for="nama_instansi"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Instansi
-                            Peserta</label>
-                        <input type="text" name="nama_instansi" id="nama_instansi"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Masukkan nama lengkap peserta..." required="">
-                    </div>
-                    <div>
-                        <label for="no_hp" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Telpon
-                            Peserta</label>
-                        <input type="text" name="no_hp" id="no_hp"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="08xxxx" required="">
+                        <label for="id_panitia"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">DI VALIDASI OLEH</label>
+                            <select name="id_panitia" id="id_panitia">
+                                <option value="">PILIH PANITIA</option>
+                                @foreach($panitia as $p)
+                                <option value="{{$p->id_panitia}}">{{$p->nama_lengkap}}</option>
+                                @endforeach
+                            </select>
                     </div>
                 </div>
                 <div class="flex items-center border-t pt-3 justify-end space-x-4">
@@ -306,16 +302,38 @@
             </svg>
             <p class="mb-4 text-gray-500 dark:text-gray-300">Apakah kamu yakin untuk menghapus data ini?</p>
             <div class="flex justify-center items-center space-x-4">
+            <form action="{{url('/delete-transaksi')}}" method ="POST">
+            @csrf
+            <input type="hidden" id="hapus-id_transaksi" name="id_transaksi">
                 <button data-modal-toggle="deleteModal" type="button"
                     class="py-2 px-3 text-sm font-medium text-gray-500 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-primary-300 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Tidak,
                     Batalkan</button>
-                <button type="submit"
-                    class="py-2 px-3 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-500 dark:hover:bg-red-600 dark:focus:ring-red-900">Ya,
-                    saya yakin!</button>
+                <input type="submit"
+                    class="py-2 px-3 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-500 dark:hover:bg-red-600 dark:focus:ring-red-900"
+                    value="Ya, Saya Yakin!">
+            </form>
             </div>
         </div>
     </div>
 </div>
 <!-- end delete modal -->
 
+<script>
+    function edit(baris, id) {
+        // fungsinya sama seperti hapus hanya beda penamaan
+        const td = document.querySelectorAll('#' + baris + ' td');
+        var img_src = document.getElementById("foto").src;
+        // document.getElementById('edit-email').value = td[0].innerText
+        // document.getElementById('edit-nomer_peserta').value = td[1].innerText
+        document.getElementById('a-foto').href = img_src
+        document.getElementById('edit-foto').src = img_src
+
+        document.getElementById('edit-id_transaksi').value = id;
+    }
+    function hapus(baris, id){
+        const td = document.querySelectorAll('#' + baris + ' td');
+
+        document.getElementById('hapus-id_transaksi').value = id;
+    }
+</script>
 @endsection

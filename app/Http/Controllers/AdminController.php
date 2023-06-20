@@ -26,6 +26,43 @@ class AdminController extends Controller
         $panitia = Panitia::all();
         return view('admin.content.panitia', compact(['panitia']));
     }
+    // UPDATE PANITIA
+    public function updatePanitia(Request $request)
+    {
+        if($request->isMethod('post')){
+            $request->validate([
+                'email_panitia' => 'required',
+                'nama_lengkap' => 'required',
+                'foto' => 'required'
+            ]);
+            
+            $data = $request->all();
+            Panitia::where(['id_panitia' => $request->id_panitia])->update([
+                'email_panitia'=>$data['email_panitia'], 
+                'nama_lengkap'=>$data['nama_lengkap'],
+                'foto'=>$data['foto'], 
+        ]);
+            return redirect()->back()->with('update_success', 'Update Data Berhasil!');
+        }
+    }
+    // DELETE PANITIA
+    public function deletePanitia(Request $request)
+    {      
+        $data = Panitia::findOrFail($request['id_panitia']);
+        $data->delete();
+        return redirect()->back()->with('delete_success', 'delete Data Berhasil!');        
+    }   
+    // MENAMPILKAN PANITIA YANG TER DELETE
+    public function getDeletedPanitia()
+    {
+        $panitia = Panitia::onlyTrashed()->get();
+        return view ('', compact(['panitia']));
+    }
+    // Restore (kembalikan data)
+    public function restorePanitia($id){
+        $panitia = Panitia::withTrashed()->where('id_panitia', $id)->restore();
+        return redirect('');
+    }
     // PANITIA END ============================================================
     
     
@@ -86,7 +123,11 @@ class AdminController extends Controller
     // halaman utama childtalks
     public function ct()
     {
-        $ct = Ct::all();
+        $ct = Ct::          
+        join('peserta', 'ct.id_peserta', '=', 'peserta.id_peserta')
+        ->leftJoin('transaksi', 'ct.id_transaksi', '=', 'transaksi.id_transaksi')
+        ->select('ct.*', 'peserta.*', 'transaksi.foto AS foto_transaksi')
+        ->get();
         return view('admin.chilltalk.dashct', compact(['ct']));
     }
     // UPDATE PESERTA
@@ -130,7 +171,12 @@ class AdminController extends Controller
     // halaman wdc
     public function wdc()
     {
-        $wdc = Wdc::all();
+        $wdc = Wdc::          
+        join('peserta', 'wdc.id_peserta', '=', 'peserta.id_peserta')
+        ->leftJoin('project', 'wdc.id_project', '=', 'project.id_project')
+        ->leftJoin('transaksi', 'wdc.id_transaksi', '=', 'transaksi.id_transaksi')
+        ->select('wdc.*', 'peserta.*', 'transaksi.foto AS foto_transaksi', 'project.file_project')
+        ->get();
         return view('admin.wdc.dashwdc', compact(['wdc']));
     }
     // UPDATE WDC
@@ -138,19 +184,13 @@ class AdminController extends Controller
     {
         if($request->isMethod('post')){
             $request->validate([
-                'id_peserta' => 'required',
-                'foto' => 'required',
-                'id_transaksi' => 'required',
-                'id_project' => 'required',
+                'id_wdc' => 'required',
                 'validasi' => 'required',
             ]);
             
             $data = $request->all();
             Wdc::where(['id_wdc' => $request->id_wdc])->update([
-                'id_peserta'=>$data['id_peserta'], 
-                'foto'=>$data['foto'], 
-                'id_transaksi'=>$data['id_transaksi'],
-                'id_project'=>$data['id_project'], 
+                'id_wdc'=>$data['id_wdc'], 
                 'validasi'=>$data['validasi'], 
         ]);
             return redirect()->back()->with('update_success', 'Update Data Berhasil!');
@@ -181,27 +221,26 @@ class AdminController extends Controller
     // halaman dc
     public function dc()
     {
-        $dc = Dc::all();
+        $dc = Dc::          
+        join('peserta', 'dc.id_peserta', '=', 'peserta.id_peserta')
+        ->leftJoin('project', 'dc.id_project', '=', 'project.id_project')
+        ->leftJoin('transaksi', 'dc.id_transaksi', '=', 'transaksi.id_transaksi')
+        ->select('dc.*', 'peserta.*', 'transaksi.foto AS foto_transaksi', 'project.file_project')
+        ->get();
         return view('admin.dc.dashdc', compact(['dc']));
     }
     // UPDATE DC 
-    public function updateDc()
+    public function updateDc(Request $request)
     {
         if($request->isMethod('post')){
             $request->validate([
-                'id_peserta' => 'required',
-                'foto' => 'required',
-                'id_transaksi' => 'required',
-                'id_project' => 'required',
+                'id_dc' => 'required',
                 'validasi' => 'required',
             ]);
             
             $data = $request->all();
             Dc::where(['id_dc' => $request->id_dc])->update([
-                'id_peserta'=>$data['id_peserta'], 
-                'foto'=>$data['foto'], 
-                'id_transaksi'=>$data['id_transaksi'],
-                'id_project'=>$data['id_project'], 
+                'id_dc'=>$data['id_dc'], 
                 'validasi'=>$data['validasi'], 
         ]);
             return redirect()->back()->with('update_success', 'Update Data Berhasil!');
@@ -232,35 +271,26 @@ class AdminController extends Controller
     // halaman ctf
     public function ctf()
     {
-        $ctf = Ctf::all();
+        $ctf = Ctf::          
+        join('peserta', 'ctf.id_peserta', '=', 'peserta.id_peserta')
+        ->leftJoin('project', 'ctf.id_project', '=', 'project.id_project')
+        ->leftJoin('transaksi', 'ctf.id_transaksi', '=', 'transaksi.id_transaksi')
+        ->select('ctf.*', 'peserta.*', 'transaksi.foto AS foto_transaksi', 'project.file_project')
+        ->get();
         return view('admin.ctf.dashctf', compact(['ctf']));
     }
     // UPDATE CTF 
-    public function updateCtf()
+    public function updateCtf(Request $request)
     {
         if($request->isMethod('post')){
             $request->validate([
-                'id_peserta' => 'required',
-                'nama_team' => 'required',
-                'id_transaksi' => 'required',
-                'id_project' => 'required',
-                'anggota1' => 'required',
-                'foto_1' => 'required',
-                'anggota2' => 'required',
-                'foto_2' => 'required',
+                'id_ctf' => 'required',
                 'validasi' => 'required',
             ]);
             
             $data = $request->all();
             Ctf::where(['id_ctf' => $request->id_ctf])->update([
-                'id_peserta'=>$data['id_peserta'], 
-                'nama_team'=>$data['nama_team'], 
-                'id_transaksi'=>$data['id_transaksi'],
-                'id_project'=>$data['id_project'], 
-                'anggota1'=>$data['anggota1'],
-                'foto_1'=>$data['foto_1'],
-                'anggota2'=>$data['anggota2'],
-                'foto_2'=>$data['foto_2'],
+                'id_ctf'=>$data['id_ctf'], 
                 'validasi'=>$data['validasi'], 
         ]);
             return redirect()->back()->with('update_success', 'Update Data Berhasil!');
@@ -292,28 +322,21 @@ class AdminController extends Controller
     public function transaksi()
     {
         $transaksi = Transaksi::all();
-        return view('admin.transaksi.dashtransaksi', compact(['transaksi']));
-    }
-    // halaman project
-    public function project()
-    {
-        $project = Project::all();
-        return view('admin.project.dashproject', compact(['project']));
+        $panitia = Panitia::all();
+        return view('admin.transaksi.dashtransaksi', compact(['transaksi', 'panitia']));
     }
     // UPDATE TRANSAKSI 
-    public function updateTransaksi()
+    public function updateTransaksi(Request $request)
     {
         if($request->isMethod('post')){
             $request->validate([
                 'id_panitia' => 'required',
-                'foto' => 'required',
                 'validasi' => 'required',
             ]);
             
             $data = $request->all();
-            Transaksi::where(['id_dc' => $request->id_dc])->update([
+            Transaksi::where(['id_transaksi' => $request->id_transaksi])->update([
                 'id_panitia'=>$data['id_panitia'], 
-                'foto'=>$data['foto'], 
                 'validasi'=>$data['validasi'], 
         ]);
             return redirect()->back()->with('update_success', 'Update Data Berhasil!');
@@ -338,7 +361,14 @@ class AdminController extends Controller
         $transaksi = Transaksi::withTrashed()->where('id_transaksi', $id)->restore();
         redirect('');
     }
-
     // TRANSTAKSI END============================================================
 
+    // PROJECT START=============================================================
+    // halaman project
+    public function project()
+    {
+        $project = Project::all();
+        return view('admin.project.dashproject', compact(['project']));
+    }
+    // PROJECT END===============================================================
 }
