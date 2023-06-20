@@ -141,6 +141,8 @@ Route::group(['middleware' => ['auth', 'verified', 'level:admin']], function () 
 
     // Menampilkan Halaman WDC
     Route::get('/wdc-admin', [AdminController::class, 'wdc']);
+    // Menampilkan Halaman WDC
+    Route::get('/wdc-admin/downloadWdc/{file_name}', [AdminController::class, 'downloadWdc']);
     // Menampilkan Halaman Akun WDC Yang terdelete
     Route::get('/deleted-data-wdc', [AdminController::class, 'getDeletedWdc']);
     // Mengembalikan data akun WDC (restore)

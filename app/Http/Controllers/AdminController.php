@@ -11,7 +11,9 @@ use App\Models\Peserta;
 use App\Models\Project;
 use App\Models\Transaksi;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use App\Exports\CtExcel;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -184,6 +186,11 @@ class AdminController extends Controller
         ->select('wdc.*', 'peserta.*', 'transaksi.foto AS foto_transaksi', 'project.file_project')
         ->get();
         return view('admin.wdc.dashwdc', compact(['wdc']));
+    }
+    // DOWNLOAD WDC
+    function downloadWDC($file_name){
+        $file = Storage::download("public/Project/".$file_name);  
+        return $file;
     }
     // UPDATE WDC
     public function updateWdc(Request $request)
