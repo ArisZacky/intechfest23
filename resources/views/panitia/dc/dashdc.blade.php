@@ -57,6 +57,10 @@
                                             class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Hapus
                                             semua</a>
                                     </li>
+                                    <li>
+                                        <a href="updateProductModal"
+                                            class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Edit</a>
+                                    </li>
                                 </ul>
                                 <div class="py-1">
                                     <a href="#"
@@ -250,9 +254,14 @@
                     <div>
                         <label for="validasi"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">validasi</label>
-                        <input type="text" name="validasi" id="validasi"
+                            <select name="validasi" id="validasi" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                <option value="">Sudah Valid</option>
+                                <option value="">Belum Divalidasi</option>
+                                <option value="">Tidak Valid</option>
+                            </select>
+                            {{-- <input type="text" name="validasi" id="validasi"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Masukkan"validasi peserta..." required="">
+                            placeholder="Masukkan"validasi peserta..." required=""> --}}
                     </div>
                     <div>
                         <label for="nama_instansi"
