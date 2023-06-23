@@ -57,6 +57,10 @@
                                             class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Hapus
                                             semua</a>
                                     </li>
+                                    <li>
+                                        <a href="updateProductModal"
+                                            class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Edit</a>
+                                    </li>
                                 </ul>
                                 <div class="py-1">
                                     <a href="#"
@@ -231,7 +235,7 @@
             <!-- Modal body -->
             <form action="{{url('/dc-update')}}" method="post" enctype="multipart/form-data">
             @csrf
-                <input type="hidden" name="id_dc" id="edit-id_dc">
+                <input type="text" name="id_dc" id="edit-id_dc">
                 <div class="grid gap-4 mb-4 sm:grid-cols-2">
                     <div>
                         <label for="edit-nama_peserta" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NAMA PESERTA
@@ -254,15 +258,31 @@
                             placeholder="Masukkan id_peserta peserta..." required="">
                     </div>
                     <div>
-                    <label for="edit-validasi"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">VALIDASI</label>
-                        <select name="validasi" id="edit-validasi" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                            <option value="edit-validasi" hidden></option>
-                            <option value="Belum Tervalidasi">Belum Tervalidasi</option>
-                            <option value="Sudah Valid">Sudah Valid</option>
-                            <option value="Tidak Valid">TIdak Valid</option>
-
-                        </select>
+                        <label for="validasi"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">validasi</label>
+                            <select name="validasi" id="validasi" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                <option value="Sudah Valid">Sudah Valid</option>
+                                <option value="Belum Tervalidasi">Belum Tervalidasi</option>
+                                <option value="Tidak Valid">Tidak Valid</option>
+                            </select>
+                            {{-- <input type="text" name="validasi" id="validasi"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            placeholder="Masukkan"validasi peserta..." required=""> --}}
+                    </div>
+                    <div>
+                        <label for="nama_instansi"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Instansi
+                            Peserta</label>
+                        <input type="text" name="nama_instansi" id="nama_instansi"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            placeholder="Masukkan nama lengkap peserta..." required="">
+                    </div>
+                    <div>
+                        <label for="no_hp" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Telpon
+                            Peserta</label>
+                        <input type="text" name="no_hp" id="no_hp"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            placeholder="08xxxx" required="">
                     </div>
                 </div>
                 <div class="flex items-center border-t pt-3 justify-end space-x-4">
@@ -325,7 +345,6 @@
         document.getElementById('edit-nama_peserta').value = td[0].innerText
         document.getElementById('edit-nomer_peserta').value = td[1].innerText
         document.getElementById('edit-foto_identitas').value = td[2].innerText
-        document.getElementById('edit-validasi').value = td[3].innerText
 
         document.getElementById('edit-id_dc').value = id;
     }
