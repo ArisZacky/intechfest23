@@ -11,6 +11,16 @@ class Ctf extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $fillable = [
+        'id_peserta',
+        'nama_team',
+        'anggota1',
+        'anggota2',
+        'foto',
+        'id_project',
+        'validasi',
+    ];
+
     protected $table = 'ctf';
     protected $primaryKey = 'id_ctf';
     
