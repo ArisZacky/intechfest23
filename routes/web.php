@@ -284,6 +284,7 @@ Route::get('tampilAdmin', function(){
 
 //Route Daftar cabang lomba
 Route::group(['middleware' => ['auth', 'verified', 'level:peserta']], function (){
+    // ========================================================================== WDC
     // Menampilkan Form Daftar Lomba WDC
     Route::get('/wdc', [LombaController::class, 'wdc']);
     // Route yang mengarahkan proses daftar wdc
@@ -292,5 +293,27 @@ Route::group(['middleware' => ['auth', 'verified', 'level:peserta']], function (
     Route::get('/peserta-wdc', [LombaController::class, 'dashboardwdc']);
 
     // Menampilkan Transaksi
-    Route::get('/pembayaran', [LombaController::class, 'pembayaran']);
+    Route::get('/pembayaran', [LombaController::class, 'pembayaranwdc']);
+
+    // ============================================================================== DC
+    // Menampilkan Form Daftar Lomba WDC
+    Route::get('/dc', [LombaController::class, 'dc']);
+    // Route yang mengarahkan proses daftar wdc
+    Route::put('/daftar-dc/{id}', [LombaController::class, 'daftardc']);
+    // Menampilkan dashboard peserta wdc
+    Route::get('/peserta-dc', [LombaController::class, 'dashboarddc']);
+
+    // Menampilkan Transaksi
+    Route::get('/pembayaran', [LombaController::class, 'pembayarandc']);
+
+     // ============================================================================== CTF
+    // Menampilkan Form Daftar Lomba WDC
+    Route::get('/ctf', [LombaController::class, 'ctf']);
+    // Route yang mengarahkan proses daftar wdc
+    Route::put('/daftar-ctf/{id}', [LombaController::class, 'daftarctf']);
+    // Menampilkan dashboard peserta wdc
+    Route::get('/peserta-ctf', [LombaController::class, 'dashboardctf']);
+
+    // Menampilkan Transaksi
+    Route::get('/pembayaran', [LombaController::class, 'pembayaranctf']);
 });

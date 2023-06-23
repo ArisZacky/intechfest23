@@ -14,6 +14,14 @@ class Dc extends Model
     protected $table = 'dc';
     protected $primaryKey = 'id_dc';
 
+    protected $fillable = [
+        'id_peserta',
+        'foto',
+        'id_project',
+        'validasi',
+    ];
+
+
      // peserta
      public function peserta(): HasOne
      {
