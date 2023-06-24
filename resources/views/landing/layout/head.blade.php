@@ -6,5 +6,4 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="shortcut icon" href="{{ asset('images/logo/favicon.ico') }}">
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-<title>IntechFest</title>
 @vite('resources/css/app.css')

@@ -11,7 +11,7 @@
         rel="stylesheet">
     <link rel="shortcut icon" href="{{ asset('images/logo/favicon.ico') }}">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <title>IntechFest</title>
+    <title></title>
     @vite('resources/css/app.css')
 </head>
 

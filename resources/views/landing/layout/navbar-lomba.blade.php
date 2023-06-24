@@ -63,24 +63,22 @@
             </button>
         </div>
         <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-cta">
-            <ul
+            <ul id="list-menu"
                 class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                 <li>
-                    <a href="#home" id="menuHome"
+                    <a href="/"
                         class="block py-2 pl-3 pr-4 rounded md:bg-transparent text-gray-900 md:hover:text-primary-lightblue  md:p-0 md:dark:text-blue-500"
                         aria-current="page">Home</a>
                 </li>
                 <li>
-                    <a href="#lomba"
-                        class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-primary-lightblue md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Lomba</a>
+                    <a href="#timeline" id="menu1"
+                        class="block py-2 pl-3 pr-4 rounded md:bg-transparent text-gray-900 md:hover:text-primary-lightblue  md:p-0 md:dark:text-blue-500"
+                        aria-current="page">Timeline</a>
                 </li>
                 <li>
-                    <a href="#chilltalks"
-                        class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-primary-lightblue md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Chilltalks</a>
-                </li>
-                <li>
-                    <a href="#faq" id="menuFaq"
-                        class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-primary-lightblue md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">FAQ</a>
+                    <a href="#gabung" id="menu2"
+                        class="block py-2 pl-3 pr-4 rounded md:bg-transparent text-gray-900 md:hover:text-primary-lightblue  md:p-0 md:dark:text-blue-500"
+                        aria-current="page">Gabung Lomba</a>
                 </li>
             </ul>
         </div>
@@ -116,9 +114,7 @@ var navbar = document.querySelector('nav');
 var navbarHeight = navbar.offsetHeight;
 
 // Mendapatkan semua tautan di navbar
-var navLinks = navbar.querySelectorAll('ul li a');
-console.log(navLinks);
-
+var navLinks = navbar.querySelectorAll('#menu1,#menu2');
 // Menambahkan event listener untuk setiap tautan navbar
 navLinks.forEach(function(link) {
   link.addEventListener('click', function(e) {

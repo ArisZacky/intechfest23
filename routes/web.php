@@ -30,6 +30,9 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 Route::get('/', function(){
     return view('landing.content.home');
 });
+Route::get('/detail-dc', function(){
+    return view('landing.content.dc');
+});
 
 // Login Routes
 Route::get('/login', function () {

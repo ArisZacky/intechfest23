@@ -2,8 +2,10 @@
 
 {{-- judul halaman disini --}}
 @section('title', 'Intechfest')
-
 @section('content')
+
+{{-- navbar --}}
+@include('landing.layout.navbar')
 
 {{-- hero section --}}
 <section id="home" class="bg-white relative overflow-y-hidden" data-aos="fade-down" data-aos-duration="1000">
@@ -326,7 +328,7 @@
 </section>
 
 {{-- sponsor --}}
-<section class="bg-white dark:bg-gray-900">
+<section class="bg-white dark:bg-gray-900" data-aos="fade-down" data-aos-duration="1000">
     <div class="py-8 lg:py-16 mx-auto max-w-screen-xl px-4">
         <h2
             class="mb-8 lg:mb-16 text-3xl font-extrabold tracking-tight leading-tight text-center text-gray-900 dark:text-white md:text-4xl">
@@ -472,7 +474,7 @@
                 class="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 md:col-span-2 xl:col-span-1">
                 <img class="rounded-t-lg w-1/3 md:w-1/2 mx-auto" src="{{asset('images/logo/CD.png')}}" alt="logo dc" />
                 <div class="p-5">
-                    <a href="#" class="text-center">
+                    <a href="/detail-dc" class="text-center">
                         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Design
                             Challenge</h5>
                     </a>
@@ -480,7 +482,7 @@
                         Design Challenge (PNBDC) merupakan kegiatan perlombaan yang akan berfokus dalam pembuatan sebuah
                         desain UI/UX serta penyelesain suatu masalah yang nantinya akan dituangkan dalam sebuah desain.
                     </p>
-                    <a href="#"
+                    <a href="/detail-dc"
                         class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-primary-lightblue rounded-lg hover:bg-primary-blue focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                         Baca Selengkapnya
                         <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20"
@@ -576,7 +578,7 @@
 </section>
 
 {{-- about --}}
-<section class="text-gray-600 body-font">
+<section class="text-gray-600 body-font" data-aos="fade-right" data-aos-duration="1000">
     <div class="container mx-auto flex px-5 mb-24 md:flex-row flex-col items-center">
         <div
             class="order-2 md:order-1 lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
@@ -685,7 +687,7 @@
 </section>
 
 {{-- sponsor --}}
-<section class="bg-white dark:bg-gray-900">
+<section class="bg-white dark:bg-gray-900" data-aos="fade-up" data-aos-duration="1000">
     <div class="py-8 lg:py-16 mx-auto max-w-screen-xl px-4">
         <h2
             class="mb-8 lg:mb-16 text-3xl font-extrabold tracking-tight leading-tight text-center text-gray-900 dark:text-white md:text-4xl">

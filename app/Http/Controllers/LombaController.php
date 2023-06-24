@@ -125,7 +125,7 @@ class LombaController extends Controller
         //pada table users dengan mencocokan email pada table peserta dengan table users
         $data_peserta = Peserta::where('email', $user->email)->first();
         //return view lomba dan data dalam bentuk object
-        return view('lomba.dc', ['user'=> $user, 'data_peserta'=> $data_peserta]);
+        return view('peserta.form-lomba.form-dc', ['user'=> $user, 'data_peserta'=> $data_peserta]);
     }
 
     public function daftardc(Request $request, $id){
