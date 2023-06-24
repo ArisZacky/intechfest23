@@ -226,6 +226,8 @@ Route::group(['middleware' => ['auth', 'verified', 'level:panitia']], function (
     Route::get('/chilltalk-panitia', [PanitiaController::class, 'ct']);
      // delete ct
      Route::post('/ct-delete', [PanitiaController::class, 'delete_ct']);
+     // Export Excel Chilltalks
+    Route::get('/chilltalk-panitia/export_excel', [PanitiaController::class, 'ctExportExcel']);
 
 // WDC ===============================================================================================================
     // Menampilkan Halaman WDC
@@ -234,6 +236,10 @@ Route::group(['middleware' => ['auth', 'verified', 'level:panitia']], function (
     Route::post('/wdc-delete', [PanitiaController::class, 'delete_wdc']);
     // update wdc
     Route::post('/wdc-update', [PanitiaController::class, 'update_wdc']);
+    // Export Excel Wdc
+    Route::get('/wdc-panitia/export_excel', [PanitiaController::class, 'wdcExportExcel']);
+    // Download Project WDC
+    Route::get('/wdc-panitia/downloadWdc/{file_name}', [PanitiaController::class, 'downloadWdc']);
 
 // DC ================================================================================================================
     // Menampilkna Halaman DC
@@ -242,6 +248,10 @@ Route::group(['middleware' => ['auth', 'verified', 'level:panitia']], function (
     Route::post('/dc-delete', [PanitiaController::class, 'delete_dc']);
     // update dc
     Route::post('/dc-update', [PanitiaController::class, 'update_dc']);
+     // Export Excel Wdc
+     Route::get('/dc-panitia/export_excel', [PanitiaController::class, 'DcExportExcel']);
+     // Download Project WDC
+     Route::get('/dc-panitia/downloadDc/{file_name}', [PanitiaController::class, 'downloadDc']);
 
 // CTF ===============================================================================================================
     // Menampilkan Halaman CTF
@@ -250,6 +260,10 @@ Route::group(['middleware' => ['auth', 'verified', 'level:panitia']], function (
      Route::post('/ctf-delete', [PanitiaController::class, 'delete_ctf']);
     // update ctf
      Route::post('/ctf-update', [PanitiaController::class, 'update_ctf']);
+    //  Exkport Excel
+     Route::get('/ctf-panitia/export_excel', [PanitiaController::class, 'CtfExportExcel']);
+     // Download Project WDC
+     Route::get('/ctf-panitia/downloadCtf/{file_name}', [PanitiaController::class, 'downloadCtf']);
 
 // TRANSAKSI =========================================================================================================
     // Menampilkan Halaman Transaksi
