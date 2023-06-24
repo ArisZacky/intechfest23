@@ -28,7 +28,10 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 // landing page
 Route::get('/', function(){
-    return view('landing');
+    return view('landing.content.home');
+});
+Route::get('/detail-dc', function(){
+    return view('landing.content.dc');
 });
 
 // Login Routes
