@@ -314,11 +314,12 @@ Route::group(['middleware' => ['auth', 'verified', 'level:peserta']], function (
 
     // ============================================================================== DC
     // Menampilkan Form Daftar Lomba WDC
-    Route::get('/dc', [LombaController::class, 'dc']);
+    Route::get('/dc', [LombaController::class, 'dc'])->middleware('isRegisteredLomba');
     // Route yang mengarahkan proses daftar wdc
     Route::put('/daftar-dc/{id}', [LombaController::class, 'daftardc']);
     // Menampilkan dashboard peserta wdc
     Route::get('/peserta-dc', [LombaController::class, 'dashboarddc']);
+    Route::put('/transaksi-dc/{id}', [LombaController::class, 'transaksiDc']);
 
     // Menampilkan Transaksi
     Route::get('/pembayaran', [LombaController::class, 'pembayarandc']);

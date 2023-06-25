@@ -29,14 +29,14 @@
                     </div>
                     <ul class="py-1" role="none">
                         <li>
-                            <a href="#"
+                            <a
+                                {{-- buat link berdasarkan level peserta --}}
+                                @if (auth()->user()->level == "peserta") {{ 'href=/peserta' }}
+                                @elseif (auth()->user()->level == "panitia") {{ 'href=/panitia' }}
+                                @elseif (auth()->user()->level == "admin") {{ 'href=/admin' }}
+                                @endif
                                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                                 role="menuitem">Dashboard</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                                role="menuitem">Settings</a>
                         </li>
                         <li>
                             <a href="/logout"
