@@ -57,13 +57,9 @@
                                             class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Hapus
                                             semua</a>
                                     </li>
-                                    <li>
-                                        <a href="updateProductModal"
-                                            class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Edit</a>
-                                    </li>
                                 </ul>
                                 <div class="py-1">
-                                    <a href="#"
+                                    <a href="{{url('/dc-panitia/export_excel')}}"
                                         class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Export
                                         excel</a>
                                 </div>
@@ -76,14 +72,15 @@
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
-                                <th scope="col" class="px-4 py-4">No</th>
+                            <th scope="col" class="px-4 py-4">No</th>
                                 <th scope="col" class="px-4 py-3">NAMA PESERTA</th>
-                                <th scope="col" class="px-4 py-3">NOMER PESERTA</th>
+                                <th scope="col" class="px-4 py-3">NOMOR PESERTA</th>
                                 <th scope="col" class="px-4 py-3">FOTO IDENTITAS</th>
+                                <th scope="col" class="px-4 py-3">BUKTI TRANSAKSI</th>
+                                <th scope="col" class="px-4 py-3">PROJECT</th>
                                 <th scope="col" class="px-4 py-3">VALIDASI</th>
                                 <th scope="col" class="px-4 py-3">
-                                    <!-- <span class="sr-only">Actions</span> -->
-                                    Action
+                                    <span class="sr-only">Actions</span>
                                 </th>
                             </tr>
                         </thead>
@@ -92,13 +89,19 @@
                             <tr
                                 class="border-b dark:border-gray-700 {{($loop->iteration % 2 == 0) ? 'bg-slate-100' : ''}}" id="baris{{$loop->iteration}}">
                                 <th class="px-4 py-3">{{$loop->iteration}}</th>
-                                <td class="px-4 py-3">{{$data->peserta['nama_lengkap']}}</td>
-                                <td class="px-4 py-3">{{$data->peserta['nomer_peserta']}}</td>
-                                @if($data->foto == null || $data->foto == "")
-                                    <td class="px-4 py-3 italic">Belum Ada Foto</td>
-                                @else
-                                    <td class="px-4 py-3">{{$data->foto}}</td>
-                                @endif
+                                <td class="px-4 py-3">{{$data->nama_lengkap}}</td>
+                                <td class="px-4 py-3">{{$data->nomer_peserta}}</td>
+                                <td class="px-4 py-3">
+                                    <a class="" href="{{ asset('storage/Identitas/dc/'.$data->foto) }}" data-lightbox="example-1" target="__blank" id='link-foto'>
+                                        <img class="w-20 h-20 rounded" src="{{ asset('storage/Identitas/dc/'.$data->foto) }}" alt="Large avatar" id='foto'>
+                                    </a>                                    
+                                </td>
+                                <td class="px-4 py-3">
+                                    <a class="" href="{{ asset('storage/Transaksi/'.$data->foto_transaksi) }}" data-lightbox="example-1" target="__blank" id='link-foto_transaksi'>
+                                        <img class="w-20 h-20 rounded" src="{{ asset('storage/Transaksi/'.$data->foto_transaksi) }}" alt="Large avatar" id='foto_transaksi'>
+                                    </a>
+                                </td>
+                                <td class="px-4 py-3"><a href="{{url('/dc-panitia/downloadDc/')}}/{{$data->file_project}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline" target = "__blank">{{$data->file_project}}</a></td>
                                 <td class="px-4 py-3">{{$data->validasi}}</td>
                                 <td class="px-4 py-3">
                                     <!-- <button id="apple-imac-27-dropdown-button"
@@ -235,54 +238,36 @@
             <!-- Modal body -->
             <form action="{{url('/dc-update')}}" method="post" enctype="multipart/form-data">
             @csrf
-                <input type="text" name="id_dc" id="edit-id_dc">
+                <input type="hidden" name="id_dc" id="edit-id_dc">
                 <div class="grid gap-4 mb-4 sm:grid-cols-2">
                     <div>
-                        <label for="edit-nama_peserta" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NAMA PESERTA
-                            Peserta</label>
-                        <input type="text" name="id_peserta" id="edit-nama_peserta"
+                        <label for="nama_peserta" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NAMA PESERTA</label>
+                        <input type="text" name="nama_peserta" id="edit-nama_peserta"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Masukkan id_peserta peserta..." required="">
+                            placeholder="Masukkan Nama Peserta..." required="" disabled>
                     </div>
                     <div>
-                        <label for="edit-nomer_peserta" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NOMER PESERTA
-                            </label>
-                        <input type="text" name="id_peserta" id="edit-nomer_peserta"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Masukkan id_peserta peserta..." required="">
+                        <label for="foto"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">FOTO IDENTITAS</label>
+                            <a class="" href="" data-lightbox="example-1" target="__blank" id="a-foto">
+                                <img class="w-20 h-20 rounded" alt="Large avatar" id="edit-foto">
+                            </a>
                     </div>
                     <div>
-                        <label for="edit-foto_identitas" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">FOTO IDENTITTAS</label>
-                        <input type="text" name="foto" id="edit-foto_identitas"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Masukkan id_peserta peserta..." required="">
+                        <label for="id_transaksi"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">BUKTI TRANSAKSI</label>
+                            <a class="" href="" data-lightbox="example-1" target="__blank" id="a-foto_transaksi">
+                                <img class="w-20 h-20 rounded" alt="Large avatar" id="edit-foto_transaksi">
+                            </a>
                     </div>
                     <div>
                         <label for="validasi"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">validasi</label>
-                            <select name="validasi" id="validasi" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                <option value="Sudah Valid">Sudah Valid</option>
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">VALIDASI</label>
+                            <select name="validasi" id="edit-validasi" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                 <option value="Belum Tervalidasi">Belum Tervalidasi</option>
+                                <option value="Sudah Valid">Sudah Valid</option>
                                 <option value="Tidak Valid">Tidak Valid</option>
                             </select>
-                            {{-- <input type="text" name="validasi" id="validasi"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Masukkan"validasi peserta..." required=""> --}}
-                    </div>
-                    <div>
-                        <label for="nama_instansi"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Instansi
-                            Peserta</label>
-                        <input type="text" name="nama_instansi" id="nama_instansi"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Masukkan nama lengkap peserta..." required="">
-                    </div>
-                    <div>
-                        <label for="no_hp" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Telpon
-                            Peserta</label>
-                        <input type="text" name="no_hp" id="no_hp"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="08xxxx" required="">
                     </div>
                 </div>
                 <div class="flex items-center border-t pt-3 justify-end space-x-4">
@@ -342,9 +327,15 @@
         // fungsinya sama seperti hapus hanya beda penamaan
         const td = document.querySelectorAll('#' + baris + ' td');
 
+        var img_src = document.getElementById("foto").src;
+        var img_src_transaksi = document.getElementById("foto_transaksi").src;
         document.getElementById('edit-nama_peserta').value = td[0].innerText
-        document.getElementById('edit-nomer_peserta').value = td[1].innerText
-        document.getElementById('edit-foto_identitas').value = td[2].innerText
+        document.getElementById('a-foto').href = img_src
+        document.getElementById('edit-foto').src = img_src
+        document.getElementById('a-foto_transaksi').href = img_src_transaksi
+        document.getElementById('edit-foto_transaksi').src = img_src_transaksi
+
+        document.getElementById('edit-validasi').value = td[5].innerText
 
         document.getElementById('edit-id_dc').value = id;
     }
