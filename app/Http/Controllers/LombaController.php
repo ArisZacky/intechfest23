@@ -256,6 +256,8 @@ class LombaController extends Controller
             DB::rollBack();
             throw $th;
         }
+
+        return redirect('/lomba-peserta');
     }
 
     public function uploadTransaksiDc(Request $request, $namaPeserta)
