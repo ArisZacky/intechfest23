@@ -320,7 +320,10 @@ Route::group(['middleware' => ['auth', 'verified', 'level:peserta']], function (
     Route::put('/daftar-dc/{id}', [LombaController::class, 'daftardc']);
     // Menampilkan dashboard peserta wdc
     Route::get('/peserta-dc', [LombaController::class, 'dashboarddc']);
+    // menampilkan halaman upload bukti transaksi
     Route::put('/transaksi-dc/{id}', [LombaController::class, 'transaksiDc']);
+    // menampilkan halaman upload form project
+    Route::put('/form-project-dc/{id}', [LombaController::class, 'formProjectDc']);
 
     // // Menampilkan Transaksi
     // Route::get('/pembayaran', [LombaController::class, 'pembayarandc']);

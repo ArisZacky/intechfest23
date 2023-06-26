@@ -42,19 +42,20 @@
                         </div>
                     </li>
                     <li>
-                        <div class="w-full p-4 text-blue-700 bg-blue-100 border border-blue-300 rounded-lg"
+                        <div class="w-full p-4 text-green-700 bg-green-100 border border-green-300 rounded-lg"
                             role="alert">
                             <div class="flex items-center justify-between">
                                 <h3 class="font-medium">4. Validasi Transaksi</h3>
-                                <i class="fa-solid fa-spinner text-xl animate-spin-slow"></i>
+                                <i class="fa-solid fa-check text-xl"></i>
                             </div>
                         </div>
                     </li>
                     <li>
-                        <div class="w-full p-4 text-gray-900 bg-gray-100 border border-gray-300 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400"
+                        <div class="w-full p-4 text-green-700 bg-green-100 border border-green-300 rounded-lg"
                             role="alert">
                             <div class="flex items-center justify-between">
                                 <h3 class="font-medium">5. Pengumpulan Project</h3>
+                                <i class="fa-solid fa-check text-xl"></i>
                             </div>
                         </div>
                     </li>
@@ -62,15 +63,9 @@
                 <section class="text-gray-600 body-font xl:col-span-2">
                     <div class="mx-auto flex items-center justify-center flex-col">
                         <div class="w-full">
-                            <img src="{{asset('images/maskot/maskot-kepo.jpg')}}" class="w-1/2 lg:w-1/3 mx-auto"
+                            <img src="{{asset('images/maskot/tungguApaLagi.png')}}" class="w-1/2 lg:w-1/3 mx-auto"
                                 alt="ivy wondering">
-                            <p class="mb-8 leading-relaxed mt-10 text-center">Mohon bersabar, bukti transaksi Anda sedang divalidasi oleh
-                                panitia lomba. Jika tidak ada respon dalam waktu 2x24 jam, silahkan hubungi nomor
-                                whatsapp dengan mengklik button dibawah ini. Terima kasih atas kerjasamanya..</p>
-                            <div class="flex justify-center">
-                                <button
-                                    class="inline-flex text-white bg-primary-lightblue border-0 py-2 px-6 focus:outline-none hover:bg-primary-blue rounded text-lg">Hubungi Panitia</button>
-                            </div>
+                            <p class="mb-8 leading-relaxed mt-10 text-center">Terima kasih telah mengupload project Anda untuk lomba kami! Mohon bersabar sejenak, hasil penilaian akan segera diumumkan sesuai dengan waktu yang telah ditentukan. Semoga sukses untuk project Anda!</p>
                         </div>
                     </div>
                 </section>
