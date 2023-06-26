@@ -10,7 +10,14 @@ use App\Models\Content;
 use App\Models\Project;
 use App\Models\Transaksi;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use App\Exports\CtExcel;
+use App\Exports\WdcExcel;
+use App\Exports\DcExcel;
+use App\Exports\CtfExcel;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PanitiaController extends Controller
 {
@@ -24,7 +31,11 @@ class PanitiaController extends Controller
     // halaman utama childtalks
     public function ct()
     {
-        $ct = Ct::all();    
+        $ct = Ct::          
+        join('peserta', 'ct.id_peserta', '=', 'peserta.id_peserta')
+        ->leftJoin('transaksi', 'ct.id_transaksi', '=', 'transaksi.id_transaksi')
+        ->select('ct.*', 'peserta.*', 'transaksi.foto AS foto_transaksi')
+        ->get();
         return view('panitia.chilltalk.dashct', compact(['ct']));
     }
     // Delete ct
@@ -34,13 +45,23 @@ class PanitiaController extends Controller
         $data->delete();
         return redirect()->back()->with('delete_success', 'delete Data Berhasil!');        
     }
+    // Export Excel
+    public function ctExportExcel()
+	{
+		return Excel::download(new CtExcel, 'Chilltalks.xlsx');
+	}
 
 // WDC ===========================================================
 
     // halaman wdc
     public function wdc()
     {
-        $wdc = Wdc::all();
+        $wdc = Wdc::          
+        join('peserta', 'wdc.id_peserta', '=', 'peserta.id_peserta')
+        ->leftJoin('project', 'wdc.id_project', '=', 'project.id_project')
+        ->leftJoin('transaksi', 'wdc.id_transaksi', '=', 'transaksi.id_transaksi')
+        ->select('wdc.*', 'peserta.*', 'transaksi.foto AS foto_transaksi', 'project.file_project')
+        ->get();
         return view('panitia.wdc.dashwdc', compact(['wdc']));
     }
     // delete wdc
@@ -55,19 +76,29 @@ class PanitiaController extends Controller
     {
         if($request->isMethod('post')){
             $request->validate([
-                'id_peserta' => 'required',
-                'foto' => 'required',
+                'id_wdc' => 'required',
                 'validasi' => 'required',
             ]);
             
             $data = $request->all();
             Wdc::where(['id_wdc' => $request->id_wdc])->update([
-                'foto'=>$data['foto'],
-                'validasi'=>$data['validasi'],
-                
+                'id_wdc'=>$data['id_wdc'], 
+                'validasi'=>$data['validasi'], 
         ]);
             return redirect()->back()->with('update_success', 'Update Data Berhasil!');
         }
+    }
+
+    // Export Excel
+    public function wdcExportExcel()
+	{
+		return Excel::download(new WdcExcel, 'Wdc.xlsx');
+	}
+
+    // DOWNLOAD WDC
+    function downloadWDC($file_name){
+        $file = Storage::download("public/Project/".$file_name);  
+        return $file;
     }
 
 
@@ -76,7 +107,12 @@ class PanitiaController extends Controller
     // halaman dc
     public function dc()
     {
-        $dc = Dc::all();
+        $dc = Dc::          
+        join('peserta', 'dc.id_peserta', '=', 'peserta.id_peserta')
+        ->leftJoin('project', 'dc.id_project', '=', 'project.id_project')
+        ->leftJoin('transaksi', 'dc.id_transaksi', '=', 'transaksi.id_transaksi')
+        ->select('dc.*', 'peserta.*', 'transaksi.foto AS foto_transaksi', 'project.file_project')
+        ->get();
         return view('panitia.dc.dashdc', compact(['dc']));
     }
     // menghapus
@@ -91,20 +127,31 @@ class PanitiaController extends Controller
     {
         if($request->isMethod('post')){
             $request->validate([
-                'id_peserta' => 'required',
-                'foto' => 'required',
+                'id_dc' => 'required',
                 'validasi' => 'required',
             ]);
             
             $data = $request->all();
             Dc::where(['id_dc' => $request->id_dc])->update([
-                'foto'=>$data['foto'],
-                'validasi'=>$data['validasi'],
-                
+                'id_dc'=>$data['id_dc'], 
+                'validasi'=>$data['validasi'], 
         ]);
             return redirect()->back()->with('update_success', 'Update Data Berhasil!');
         }
     }
+
+    // Export Excel
+    public function DcExportExcel()
+	{
+		return Excel::download(new DcExcel, 'Dc.xlsx');
+	}
+
+    // DOWNLOAD DC
+    function downloadDC($file_name){
+        $file = Storage::download("public/Project/".$file_name);  
+        return $file;
+    }
+
  
 
 // CTF =========================================================
@@ -112,7 +159,12 @@ class PanitiaController extends Controller
     // halaman ctf
     public function ctf()
     {
-        $ctf = Ctf::all();
+        $ctf = Ctf::          
+        join('peserta', 'ctf.id_peserta', '=', 'peserta.id_peserta')
+        ->leftJoin('project', 'ctf.id_project', '=', 'project.id_project')
+        ->leftJoin('transaksi', 'ctf.id_transaksi', '=', 'transaksi.id_transaksi')
+        ->select('ctf.*', 'peserta.*', 'transaksi.foto AS foto_transaksi', 'project.file_project')
+        ->get();
         return view('panitia.ctf.dashctf', compact(['ctf']));
     }
     public function delete_ctf(Request $request)
@@ -126,25 +178,29 @@ class PanitiaController extends Controller
     {
         if($request->isMethod('post')){
             $request->validate([
-                'id_peserta' => 'required',
-                'nama_team' => 'required',
-                'anggota1' => 'required',
-                'anggota2' => 'required',
-                'foto' => 'required',
+                'id_ctf' => 'required',
                 'validasi' => 'required',
             ]);
             
             $data = $request->all();
-            ctf::where(['id_ctf' => $request->id_ctf])->update([
-                'nama_team'=>$data['nama_team'],
-                'anggota1'=>$data['anggota1'],
-                'anggota2'=>$data['anggota2'],
-                'foto'=>$data['foto'],
-                'validasi'=>$data['validasi'],
-                
+            Ctf::where(['id_ctf' => $request->id_ctf])->update([
+                'id_ctf'=>$data['id_ctf'], 
+                'validasi'=>$data['validasi'], 
         ]);
             return redirect()->back()->with('update_success', 'Update Data Berhasil!');
         }
+    }
+
+    // Export Excel
+    public function CtfExportExcel()
+	{
+		return Excel::download(new CtfExcel, 'Ctf.xlsx');
+	}
+
+    // DOWNLOAD DC
+    function downloadCtf($file_name){
+        $file = Storage::download("public/Project/".$file_name);  
+        return $file;
     }
 
 // TRANSAKSI ===================================================
