@@ -110,14 +110,62 @@ class LombaController extends Controller
         return redirect('/peserta-wdc');
     }
 
+    public function transaksiWdc(Request $request, $id)
+    {
+        // cari data yang login (gk perlu dirubah)
+        $user = Auth::user();
+        $peserta = Peserta::where('email', $user->email)->first();
+        $namaPeserta = $peserta->nama_lengkap;
+        $idPeserta = $peserta->id_peserta;
+
+        // validasi foto (gk perlu diubah)
+        $request->validate([
+            'foto' => 'required|mimes:png,jpg,jpeg|max:5000'
+        ],[
+            'foto.mimes' => 'Format foto harus berupa JPG, JPEG, atau PNG.',
+        ]);
+
+        // jalankan fungsi uploadTransaksi dan dapatkan path foto (sesuaikan dengan nama fungsi)
+        $filePath = $this->uploadTransaksiWdc($request, $namaPeserta);
+        
+        try{
+            DB::beginTransaction();
+            // data yang akan di insert ke table transaksi
+            $data = ['foto' => $filePath, 'validasi' => 'Belum Tervalidasi'];
+            // insert data ke transaksi dan ambil idnya
+            $idTransaksi = DB::table('transaksi')->insertGetId($data);
+            // data yang akan di update ke table dc yaitu kolom id_transaksi aja
+            $data2 = ['id_transaksi' => $idTransaksi];
+            // update kolom id_transaksi pada table dc (sesuaiin dengan cabang lomba)
+            DB::table('wdc')->where('id_peserta', $idPeserta)->update($data2); 
+            DB::commit();
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            throw $th;
+        }
+
+        return redirect('/lomba-peserta');
+    }
+
     public function dashboardwdc()
     {
         $data_peserta = Wdc::with('peserta')->get();
         return view('peserta.content.wdc', ['data_peserta' => $data_peserta]);
     }
-    public function pembayaranwdc()
+
+    public function uploadTransaksiWdc(Request $request, $namaPeserta)
     {
-        return view('peserta.content.pembayaran-lomba');
+        if ($request->hasFile('foto')) {
+            $foto = $request->file('foto');
+            // format nama dan path foto sesuaiin dengan cabang lomba
+            $filename = "WDC_Bukti Transfer_" . $namaPeserta . '.' . $foto->getClientOriginalExtension();
+            $path = 'transfer/wdc/' . $filename;
+            // simpan foto ke storage
+            Storage::disk('public')->put($path, file_get_contents($foto));
+            return $path;
+        }
+        // error message jika gagal upload foto
+        return redirect()->back()->with('error', 'Gagal mengunggah foto.');
     }
 
 
@@ -381,9 +429,56 @@ class LombaController extends Controller
         return view('peserta.content.ctf', ['data_peserta' => $data_peserta]);
     }
 
-    public function pembayaranctf()
+    
+    public function transaksiCtf(Request $request, $id)
     {
-        return view('peserta.content.pembayaran-lomba');
+        // cari data yang login (gk perlu dirubah)
+        $user = Auth::user();
+        $peserta = Peserta::where('email', $user->email)->first();
+        $namaPeserta = $peserta->nama_lengkap;
+        $idPeserta = $peserta->id_peserta;
+        
+        // validasi foto (gk perlu diubah)
+        $request->validate([
+            'foto' => 'required|mimes:png,jpg,jpeg|max:5000'
+        ],[
+            'foto.mimes' => 'Format foto harus berupa JPG, JPEG, atau PNG.',
+        ]);
+        
+        // jalankan fungsi uploadTransaksi dan dapatkan path foto (sesuaikan dengan nama fungsi)
+        $filePath = $this->uploadTransaksiCtf($request, $namaPeserta);
+        
+        try{
+            DB::beginTransaction();
+            // data yang akan di insert ke table transaksi
+            $data = ['foto' => $filePath, 'validasi' => 'Belum Tervalidasi'];
+            // insert data ke transaksi dan ambil idnya
+            $idTransaksi = DB::table('transaksi')->insertGetId($data);
+            // data yang akan di update ke table dc yaitu kolom id_transaksi aja
+            $data2 = ['id_transaksi' => $idTransaksi];
+            // update kolom id_transaksi pada table dc (sesuaiin dengan cabang lomba)
+            DB::table('ctf')->where('id_peserta', $idPeserta)->update($data2); 
+            DB::commit();
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            throw $th;
+        }
+        
+        return redirect('/lomba-peserta');
     }
-
+    
+    public function uploadTransaksiCtf(Request $request, $namaPeserta)
+    {
+        if ($request->hasFile('foto')) {
+            $foto = $request->file('foto');
+            // format nama dan path foto sesuaiin dengan cabang lomba
+            $filename = "CTF_Bukti Transfer_" . $namaPeserta . '.' . $foto->getClientOriginalExtension();
+            $path = 'transfer/ctf/' . $filename;
+            // simpan foto ke storage
+            Storage::disk('public')->put($path, file_get_contents($foto));
+            return $path;
+        }
+        // error message jika gagal upload foto
+        return redirect()->back()->with('error', 'Gagal mengunggah foto.');
+    }
 }

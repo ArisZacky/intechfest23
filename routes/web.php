@@ -303,17 +303,18 @@ Route::get('tampilAdmin', function(){
 Route::group(['middleware' => ['auth', 'verified', 'level:peserta']], function (){
     // ========================================================================== WDC
     // Menampilkan Form Daftar Lomba WDC
-    Route::get('/wdc', [LombaController::class, 'wdc']);
+    Route::get('/wdc', [LombaController::class, 'wdc'])->middleware('isRegisteredLomba');
     // Route yang mengarahkan proses daftar wdc
     Route::put('/daftar-wdc/{id}', [LombaController::class, 'daftarwdc']);
     // Menampilkan dashboard peserta wdc
     Route::get('/peserta-wdc', [LombaController::class, 'dashboardwdc']);
+    Route::put('/transaksi-wdc/{id}', [LombaController::class, 'transaksiWdc']);
 
-    // Menampilkan Transaksi
-    Route::get('/pembayaran', [LombaController::class, 'pembayaranwdc']);
+    // // Menampilkan Transaksi
+    // Route::get('/pembayaran', [LombaController::class, 'pembayaranwdc']);
 
     // ============================================================================== DC
-    // Menampilkan Form Daftar Lomba WDC
+    // Menampilkan Form Daftar Lomba DC
     Route::get('/dc', [LombaController::class, 'dc'])->middleware('isRegisteredLomba');
     // Route yang mengarahkan proses daftar wdc
     Route::put('/daftar-dc/{id}', [LombaController::class, 'daftardc']);
@@ -321,17 +322,18 @@ Route::group(['middleware' => ['auth', 'verified', 'level:peserta']], function (
     Route::get('/peserta-dc', [LombaController::class, 'dashboarddc']);
     Route::put('/transaksi-dc/{id}', [LombaController::class, 'transaksiDc']);
 
-    // Menampilkan Transaksi
-    Route::get('/pembayaran', [LombaController::class, 'pembayarandc']);
+    // // Menampilkan Transaksi
+    // Route::get('/pembayaran', [LombaController::class, 'pembayarandc']);
 
      // ============================================================================== CTF
-    // Menampilkan Form Daftar Lomba WDC
-    Route::get('/ctf', [LombaController::class, 'ctf']);
+    // Menampilkan Form Daftar Lomba CTF
+    Route::get('/ctf', [LombaController::class, 'ctf'])->middleware('isRegisteredLomba');
     // Route yang mengarahkan proses daftar wdc
     Route::put('/daftar-ctf/{id}', [LombaController::class, 'daftarctf']);
     // Menampilkan dashboard peserta wdc
     Route::get('/peserta-ctf', [LombaController::class, 'dashboardctf']);
+    Route::put('/transaksi-ctf/{id}', [LombaController::class, 'transaksiCtf']);
 
-    // Menampilkan Transaksi
-    Route::get('/pembayaran', [LombaController::class, 'pembayaranctf']);
+    // // Menampilkan Transaksi
+    // Route::get('/pembayaran', [LombaController::class, 'pembayaranctf']);
 });
