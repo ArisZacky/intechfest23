@@ -144,8 +144,8 @@ Route::group(['middleware' => ['auth', 'verified', 'level:admin']], function () 
 
     // Menampilkan Halaman WDC
     Route::get('/wdc-admin', [AdminController::class, 'wdc']);
-    // Menampilkan Halaman WDC
-    Route::get('/wdc-admin/downloadWdc/{file_name}', [AdminController::class, 'downloadWdc']);
+    // Export Excel WDC
+    Route::get('/wdc-admin/export_excel', [AdminController::class, 'wdcExportExcel']);
     // Menampilkan Halaman Akun WDC Yang terdelete
     Route::get('/deleted-data-wdc', [AdminController::class, 'getDeletedWdc']);
     // Mengembalikan data akun WDC (restore)
@@ -157,6 +157,8 @@ Route::group(['middleware' => ['auth', 'verified', 'level:admin']], function () 
 
     // Menampilkan Halaman DC
     Route::get('/dc-admin', [AdminController::class, 'dc']);
+    // Export Excel DC
+    Route::get('/dc-admin/export_excel', [AdminController::class, 'dcExportExcel']);
     // Menampilkan Halaman Akun DC Yang terdelete
     Route::get('/deleted-data-dc', [AdminController::class, 'getDeletedDc']);
     // Mengembalikan data akun DC (restore)
@@ -168,6 +170,8 @@ Route::group(['middleware' => ['auth', 'verified', 'level:admin']], function () 
 
     // Menmapilkan Halaman CTF
     Route::get('/ctf-admin', [AdminController::class, 'ctf']);
+    // Export Excel CTF
+    Route::get('/ctf-admin/export_excel', [AdminController::class, 'ctfExportExcel']);
     // Menampilkan Halaman Akun CTF Yang terdelete
     Route::get('/deleted-data-ctf', [AdminController::class, 'getDeletedCtf']);
     // Mengembalikan data akun CTF (restore)
@@ -203,6 +207,24 @@ Route::group(['middleware' => ['auth', 'verified', 'level:admin']], function () 
     Route::get('/data-peserta', [AdminController::class, 'peserta']);
     // Menampilkan Halaman Project 
     Route::get('/project-admin', [AdminController::class, 'project']);
+    // Menampilkan Halaman Project WDC
+    Route::get('/project-wdc', [AdminController::class, 'projectWdc']);
+    // Menampilkan Halaman Project DC
+    Route::get('/project-dc', [AdminController::class, 'projectDc']);
+    // Menampilkan Halaman Project CTF
+    Route::get('/project-ctf', [AdminController::class, 'projectCtf']);
+    // Melakukan Download Project WDC
+    Route::get('/project/downloadProjectWDC/{file_name}', [AdminController::class, 'downloadProjectWDC']);
+    // Melakukan Download Project DC
+    Route::get('/project/downloadProjectDC/{file_name}', [AdminController::class, 'downloadProjectDC']);
+    // Melakukan Download Project CTF
+    Route::get('/project/downloadProjectCTF/{file_name}', [AdminController::class, 'downloadProjectCTF']);
+    // Melakukan Download Semua Project WDC
+    Route::get('/project/downloadAllProjectWDC', [AdminController::class, 'downloadAllProjectWDC']);
+    // Melakukan Download Semua Project DC
+    Route::get('/project/downloadAllProjectDC', [AdminController::class, 'downloadAllProjectDC']);
+    // Melakukan Download Semua Project CTF
+    Route::get('/project/downloadAllProjectCTF', [AdminController::class, 'downloadAllProjectCTF']);
 
     // Menampilkan Halaman Akun Peserta Yang terdelete
     Route::get('/deleted-data-peserta', [AdminController::class, 'getDeletedPeserta']);

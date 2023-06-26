@@ -59,7 +59,7 @@
                                     </li>
                                 </ul>
                                 <div class="py-1">
-                                    <a href="#"
+                                    <a href="{{url('/wdc-admin/export_excel')}}"
                                         class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Export
                                         excel</a>
                                 </div>
@@ -99,7 +99,7 @@
                                         <img class="w-20 h-20 rounded" src="{{ asset('storage/Transaksi/'.$data->foto_transaksi) }}" alt="Large avatar" id='foto_transaksi'>
                                     </a>
                                 </td>
-                                <td class="px-4 py-3"><a href="{{url('/wdc-admin/downloadWdc/')}}/{{$data->file_project}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline" target = "__blank">{{$data->file_project}}</a></td>
+                                <td class="px-4 py-3"><a href="{{url('/project/downloadProject/')}}/{{$data->file_project}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline" target = "__blank">{{$data->file_project}}</a></td>
                                 <td class="px-4 py-3">{{$data->validasi}}</td>
                                 <td class="px-4 py-3">
                                     <!-- <button id="apple-imac-27-dropdown-button"
