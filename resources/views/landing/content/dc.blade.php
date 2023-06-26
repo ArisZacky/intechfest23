@@ -1,4 +1,5 @@
 @extends('landing.main')
+<link rel="shortcut icon" href="{{ asset('images/logo/favicon.ico') }}">
 
 {{-- judul halaman disini --}}
 @section('title', 'Design Challenge')

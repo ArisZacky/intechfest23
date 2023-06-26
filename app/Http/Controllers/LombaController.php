@@ -275,6 +275,58 @@ class LombaController extends Controller
         return redirect()->back()->with('error', 'Gagal mengunggah foto.');
     }
 
+    public function formProjectDc(Request $request, $id)
+    {
+        // cari data yang login (gk perlu dirubah)
+        $user = Auth::user();
+        $peserta = Peserta::where('email', $user->email)->first();
+        $namaPeserta = $peserta->nama_lengkap;
+        $idPeserta = $peserta->id_peserta;
+
+        // validasi file (gk perlu diubah)
+        $request->validate([
+            'project' => 'required|mimes:rar,zip|max:100000'
+        ],[
+            'project.mimes' => 'Format file project harus berupa rar atau zip.',
+            'project.max' => 'Ukuran file project maksimal 100 MB.'
+        ]);
+        // simpan project ke storage dan dapatkan pathnya (sesuaikan dengan nama fungsi)
+        $filePath = $this->uploadProjectDc($request, $namaPeserta);
+        try{
+            DB::beginTransaction();
+            // data yang akan di insert ke table transaksi
+            $data = ['file_project' => $filePath];
+            // insert data ke transaksi dan ambil idnya
+            $idProject = DB::table('project')->insertGetId($data);
+            // data yang akan di update ke table dc yaitu kolom id_transaksi aja
+            $data2 = ['id_project' => $idProject];
+            // update kolom id_transaksi pada table dc (sesuaiin dengan cabang lomba)
+            DB::table('dc')->where('id_peserta', $idPeserta)->update($data2); 
+            DB::commit();
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            throw $th;
+        }
+
+        // redirect
+        return redirect('/lomba-peserta');
+    }
+
+    public function uploadProjectDc(Request $request, $namaPeserta)
+    {
+        if ($request->hasFile('project')) {
+            $project = $request->file('project');
+            // format nama dan path project sesuaiin dengan cabang lomba
+            $filename = "DC_project_" . $namaPeserta . '.' . $project->getClientOriginalExtension();
+            $path = 'project/dc/' . $filename;
+            // simpan project ke storage
+            Storage::disk('public')->put($path, file_get_contents($project));
+            return $path;
+        }
+        // error message jika gagal upload project
+        return redirect()->back()->with('error', 'Gagal mengunggah project.');
+    }
+
     // ====================================================================================== CTF
     public function ctf()
     {

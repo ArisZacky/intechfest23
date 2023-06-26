@@ -87,7 +87,7 @@
                             <tr
                                 class="border-b dark:border-gray-700 {{($loop->iteration % 2 == 0) ? 'bg-slate-100' : ''}}" id="baris{{$loop->iteration}}">
                                 <th class="px-4 py-3">{{$loop->iteration}}</th>
-                                <td class="px-4 py-3">{{$data->panitia['nama_lengkap']}}</td>
+                                {{-- <td class="px-4 py-3">{{$data->panitia['nama_lengkap']}}</td> --}}
                                 <td class="px-4 py-3">{{$data->foto}}</td>
                                 <td class="px-4 py-3">{{$data->validasi}}</td>
                                 <td class="px-4 py-3">
