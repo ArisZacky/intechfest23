@@ -17,9 +17,10 @@ class DcExcel implements FromCollection, WithHeadings
         join('peserta', 'dc.id_peserta', '=', 'peserta.id_peserta')
         ->leftJoin('transaksi', 'dc.id_transaksi', '=', 'transaksi.id_transaksi')
         ->select('peserta.*')
+        ->where('dc.validasi', '=', 'Sudah Valid')
         ->get();
     }
-
+    
     public function headings(): array
     {
         return ["ID", "Email", "Nomer Peserta", "Nama Lengkap", "Alamat", "Instansi", "No HP"];

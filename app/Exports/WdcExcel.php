@@ -17,9 +17,10 @@ class WdcExcel implements FromCollection, WithHeadings
         join('peserta', 'wdc.id_peserta', '=', 'peserta.id_peserta')
         ->leftJoin('transaksi', 'wdc.id_transaksi', '=', 'transaksi.id_transaksi')
         ->select('peserta.*')
+        ->where('wdc.validasi', '=', 'Sudah Valid')
         ->get();
     }
-
+    
     public function headings(): array
     {
         return ["ID", "Email", "Nomer Peserta", "Nama Lengkap", "Alamat", "Instansi", "No HP"];

@@ -59,7 +59,7 @@
                                     </li>
                                 </ul>
                                 <div class="py-1">
-                                    <a href="#"
+                                    <a href="{{url('/ctf-admin/export_excel')}}"
                                         class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Export
                                         excel</a>
                                 </div>
@@ -378,7 +378,12 @@
         var img_src_1 = document.getElementById("foto_1").src;
         var img_src_2 = document.getElementById("foto_2").src;
         var img_src_transaksi = document.getElementById("foto_transaksi").src;
-        document.getElementById('edit-nama_peserta').value = td[0].innerText
+
+        document.getElementById('edit-nama_team').value = td[0].innerText
+        document.getElementById('edit-nama_peserta').value = td[1].innerText
+        document.getElementById('edit-anggota1').value = td[3].innerText
+        document.getElementById('edit-anggota2').value = td[5].innerText
+
         document.getElementById('a-foto').href = img_src
         document.getElementById('edit-foto').src = img_src
         document.getElementById('a-foto_1').href = img_src_1
