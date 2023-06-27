@@ -417,17 +417,17 @@ class AdminController extends Controller
         ->get();
         return view('admin.project.dashprojectdc', compact(['project']));
     }
-    // HALAMAN PROJECT CTF
-    public function projectCtf()
-    {
-        $project = Project::
-        join('ctf', 'project.id_project', '=', 'ctf.id_project')
-        ->join('peserta', 'ctf.id_peserta', '=', 'peserta.id_peserta')
-        ->select('project.*', 'peserta.*')
-        ->where('file_project', 'LIKE', 'CTF%')
-        ->get();
-        return view('admin.project.dashprojectctf', compact(['project']));
-    }
+    // // HALAMAN PROJECT CTF
+    // public function projectCtf()
+    // {
+    //     $project = Project::
+    //     join('ctf', 'project.id_project', '=', 'ctf.id_project')
+    //     ->join('peserta', 'ctf.id_peserta', '=', 'peserta.id_peserta')
+    //     ->select('project.*', 'peserta.*')
+    //     ->where('file_project', 'LIKE', 'CTF%')
+    //     ->get();
+    //     return view('admin.project.dashprojectctf', compact(['project']));
+    // }
     // DOWNLOAD PROJECT WDC SATU SATU
     function downloadProjectWDC($file_name){
         $file = Storage::download("public/Project/WDC/".$file_name);  
@@ -440,11 +440,11 @@ class AdminController extends Controller
         return $file;
     }
 
-    // DOWNLOAD PROJECT CTF SATU SATU
-    function downloadProjectCTF($file_name){
-        $file = Storage::download("public/Project/CTF/".$file_name);  
-        return $file;
-    }
+    // // DOWNLOAD PROJECT CTF SATU SATU
+    // function downloadProjectCTF($file_name){
+    //     $file = Storage::download("public/Project/CTF/".$file_name);  
+    //     return $file;
+    // }
 
     // DOWNLOAD ALL PROJECT WDC
     function downloadAllProjectWDC()
@@ -512,38 +512,38 @@ class AdminController extends Controller
         return response()->download(public_path($fileName));
     }
 
-    // DOWNLOAD ALL PROJECT CTF
-    function downloadAllProjectCTF()
-    {
-        // memanggil object zip archive dari laravel yang disimpan ke variabel
-        $zip = new ZipArchive;
+    // // DOWNLOAD ALL PROJECT CTF
+    // function downloadAllProjectCTF()
+    // {
+    //     // memanggil object zip archive dari laravel yang disimpan ke variabel
+    //     $zip = new ZipArchive;
     
-        // membuat nama file yang nantinya akan di download
-        $fileName = 'ProjectCTF.zip';
+    //     // membuat nama file yang nantinya akan di download
+    //     $fileName = 'ProjectCTF.zip';
      
-        // mendeklarasikan path yang akan di download
-        $path = public_path('storage/Project/CTF');
+    //     // mendeklarasikan path yang akan di download
+    //     $path = public_path('storage/Project/CTF');
 
-        // cek jika variabel yang berisi object filearchive tadi berjalan dan membuat file zip
-        if ($zip->open(public_path($fileName), ZipArchive::CREATE) === TRUE)
-        {
-            // mengambil file file yang ada di path
-            $files = File::files($path);
+    //     // cek jika variabel yang berisi object filearchive tadi berjalan dan membuat file zip
+    //     if ($zip->open(public_path($fileName), ZipArchive::CREATE) === TRUE)
+    //     {
+    //         // mengambil file file yang ada di path
+    //         $files = File::files($path);
 
-            // perulangan untuk mengambil setiap file yang ada di path
-            foreach ($files as $key => $value) {
-                // mengambil nama file dari path lengkap filenya
-                $relativeNameInZipFile = basename($value);
-                // menambah file ke dalam zip
-                $zip->addFile($value, $relativeNameInZipFile);
-            }
+    //         // perulangan untuk mengambil setiap file yang ada di path
+    //         foreach ($files as $key => $value) {
+    //             // mengambil nama file dari path lengkap filenya
+    //             $relativeNameInZipFile = basename($value);
+    //             // menambah file ke dalam zip
+    //             $zip->addFile($value, $relativeNameInZipFile);
+    //         }
                
-            $zip->close();
-        }
+    //         $zip->close();
+    //     }
         
-        // fucntion mereturn response yang mendownload zip tadi
-        return response()->download(public_path($fileName));
-    }
+    //     // fucntion mereturn response yang mendownload zip tadi
+    //     return response()->download(public_path($fileName));
+    // }
     
     // PROJECT END===============================================================
 }

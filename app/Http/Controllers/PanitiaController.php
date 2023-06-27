@@ -18,6 +18,8 @@ use App\Exports\WdcExcel;
 use App\Exports\DcExcel;
 use App\Exports\CtfExcel;
 use Maatwebsite\Excel\Facades\Excel;
+use File;
+use ZipArchive;
 
 class PanitiaController extends Controller
 {
@@ -245,11 +247,166 @@ class PanitiaController extends Controller
         $project = Project::all();
         return view('panitia.project.dashproject', compact(['project']));
     }
-     // delete project
-     public function delete_project(Request $request)
+    //  // delete project
+    //  public function delete_project(Request $request)
+    //  {
+    //      $data = Project::findOrFail($request['id_project']);
+    //      $data->delete();
+    //      return redirect()->back()->with('delete_success', 'delete Data Berhasil!');  
+    //  }
+
+    // Manampilkan Halaman Project Lomba WDC
+    public function projectWdc()
+    {
+        $project = Project::
+        join('wdc', 'project.id_project', '=', 'wdc.id_project')
+        ->join('peserta', 'wdc.id_peserta', '=', 'peserta.id_peserta')
+        ->select('project.*', 'peserta.*')
+        ->where('file_project', 'LIKE', 'WDC%')
+        ->get();
+        return view('panitia.project.dashprojectwdc', compact(['project']));
+    }
+
+     // Manampilkan Halaman Project Lomba DC
+     public function projectDc()
      {
-         $data = Project::findOrFail($request['id_project']);
-         $data->delete();
-         return redirect()->back()->with('delete_success', 'delete Data Berhasil!');  
+         $project = Project::
+         join('dc', 'project.id_project', '=', 'dc.id_project')
+         ->join('peserta', 'dc.id_peserta', '=', 'peserta.id_peserta')
+         ->select('project.*', 'peserta.*')
+         ->where('file_project', 'LIKE', 'DC%')
+         ->get();
+         return view('panitia.project.dashprojectdc', compact(['project']));
      }
+
+     // Manampilkan Halaman Project Lomba CTF
+    //  public function projectCtf()
+    //  {
+    //      $project = Project::
+    //      join('ctf', 'project.id_project', '=', 'ctf.id_project')
+    //      ->join('peserta', 'ctf.id_peserta', '=', 'peserta.id_peserta')
+    //      ->select('project.*', 'peserta.*')
+    //      ->where('file_project', 'LIKE', 'CTF%')
+    //      ->get();
+    //      return view('panitia.project.dashprojectctf', compact(['project']));
+    //  }
+
+    // DOWNLOAD PROJECT WDC SATU SATU
+    function downloadProjectWDC($file_name){
+        $file = Storage::download("public/Project/WDC/".$file_name);  
+        return $file;
+    }
+
+    // DOWNLOAD PROJECT DC SATU SATU
+    function downloadProjectDC($file_name){
+        $file = Storage::download("public/Project/DC/".$file_name);  
+        return $file;
+    }
+
+    // DOWNLOAD PROJECT CTF SATU SATU
+    // function downloadProjectCTF($file_name){
+    //     $file = Storage::download("public/Project/CTF/".$file_name);  
+    //     return $file;
+    // }
+
+     // DOWNLOAD SEMUA PROJECT LOMBA WDC
+     function downloadAllProjectWDC()
+     {
+         // memanggil object zip archive dari laravel yang disimpan ke variabel
+         $zip = new ZipArchive;
+     
+         // membuat nama file yang nantinya akan di download
+         $fileName = 'ProjectWDC.zip';
+      
+         // mendeklarasikan path yang akan di download
+         $path = public_path('storage/Project/WDC');
+ 
+         // cek jika variabel yang berisi object filearchive tadi berjalan dan membuat file zip
+         if ($zip->open(public_path($fileName), ZipArchive::CREATE) === TRUE)
+         {
+             // mengambil file file yang ada di path
+             $files = File::files($path);
+ 
+             // perulangan untuk mengambil setiap file yang ada di path
+             foreach ($files as $key => $value) {
+                 // mengambil nama file dari path lengkap filenya
+                 $relativeNameInZipFile = basename($value);
+                 // menambah file ke dalam zip
+                 $zip->addFile($value, $relativeNameInZipFile);
+             }
+                
+             $zip->close();
+         }
+         
+         // fucntion mereturn response yang mendownload zip tadi
+         return response()->download(public_path($fileName));
+     }
+     
+     /// DOWNLOAD SEMUA PROJECT LOMBA DC
+     function downloadAllProjectDC()
+     {
+         // memanggil object zip archive dari laravel yang disimpan ke variabel
+         $zip = new ZipArchive;
+     
+         // membuat nama file yang nantinya akan di download
+         $fileName = 'ProjectDC.zip';
+         
+         // mendeklarasikan path yang akan di download
+         $path = public_path('storage/Project/DC');
+ 
+         // cek jika variabel yang berisi object filearchive tadi berjalan dan membuat file zip
+         if ($zip->open(public_path($fileName), ZipArchive::CREATE) === TRUE)
+         {
+             // mengambil file file yang ada di path
+             $files = File::files($path);
+ 
+             // perulangan untuk mengambil setiap file yang ada di path
+             foreach ($files as $key => $value) {
+                 // mengambil nama file dari path lengkap filenya
+                 $relativeNameInZipFile = basename($value);
+                 // menambah file ke dalam zip
+                 $zip->addFile($value, $relativeNameInZipFile);
+             }
+                 
+             $zip->close();
+         }
+         
+         // fucntion mereturn response yang mendownload zip tadi
+         return response()->download(public_path($fileName));
+     }
+ 
+     // DOWNLOAD SEMUA PROJECT LOMBA CTF
+    //  function downloadAllProjectCTF()
+    //  {
+    //      // memanggil object zip archive dari laravel yang disimpan ke variabel
+    //      $zip = new ZipArchive;
+     
+    //      // membuat nama file yang nantinya akan di download
+    //      $fileName = 'ProjectCTF.zip';
+      
+    //      // mendeklarasikan path yang akan di download
+    //      $path = public_path('storage/Project/CTF');
+ 
+    //      // cek jika variabel yang berisi object filearchive tadi berjalan dan membuat file zip
+    //      if ($zip->open(public_path($fileName), ZipArchive::CREATE) === TRUE)
+    //      {
+    //          // mengambil file file yang ada di path
+    //          $files = File::files($path);
+ 
+    //          // perulangan untuk mengambil setiap file yang ada di path
+    //          foreach ($files as $key => $value) {
+    //              // mengambil nama file dari path lengkap filenya
+    //              $relativeNameInZipFile = basename($value);
+    //              // menambah file ke dalam zip
+    //              $zip->addFile($value, $relativeNameInZipFile);
+    //          }
+                
+    //          $zip->close();
+    //      }
+         
+    //      // fucntion mereturn response yang mendownload zip tadi
+    //      return response()->download(public_path($fileName));
+    //  }
+     
+
 }
