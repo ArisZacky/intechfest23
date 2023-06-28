@@ -31,8 +31,18 @@ class AdminController extends Controller
 
     // PANITIA START ============================================================
     // Halaman Setting Akun Panitia
-    public function panitia(){
-        $panitia = Panitia::all();
+    public function panitia(Request $request){
+        // MENDAPATKAN REQUEST SEARCH 
+        $search = $request->search;
+        
+        // CEK JIKA SEARCH = TRUE
+        if($search){
+            $panitia = Panitia::where('nama_lengkap','LIKE','%'.$search.'%')
+            ->paginate();    
+        }else{
+            $panitia = Panitia::all();
+        }
+
         return view('admin.content.panitia', compact(['panitia']));
     }
     // UPDATE PANITIA
@@ -77,8 +87,17 @@ class AdminController extends Controller
     
     // PESERTA ============================================================
     // Halaman Setting Akun Peserta
-    public function peserta(){
-        $peserta = Peserta::all();
+    public function peserta(Request $request){
+        // MENDAPATKAN REQUEST SEARCH
+        $search = $request->search;
+
+        // CEK JIKA SEARCH = TRUE
+        if($search){
+            $peserta = Peserta::where('nama_lengkap','LIKE','%'.$search.'%')
+            ->paginate();    
+        }else{
+            $peserta = Peserta::all();
+        }
 
         // return view('admin.setting_akun.peserta.dashpeserta', compact(['peserta']));
         return view('admin.content.peserta', compact(['peserta']));
@@ -130,13 +149,27 @@ class AdminController extends Controller
 
     // CT START ============================================================
     // halaman utama childtalks
-    public function ct()
+    public function ct(Request $request)
     {
-        $ct = Ct::          
-        join('peserta', 'ct.id_peserta', '=', 'peserta.id_peserta')
-        ->leftJoin('transaksi', 'ct.id_transaksi', '=', 'transaksi.id_transaksi')
-        ->select('ct.*', 'peserta.*', 'transaksi.foto AS foto_transaksi')
-        ->get();
+        // MENDAPAKATKAN REQUEST SEARCH
+        $search = $request->search;
+
+        // CEK JIKA SEARCH = TRUE
+        if($search){
+            $ct = Ct::          
+            join('peserta', 'ct.id_peserta', '=', 'peserta.id_peserta')
+            ->leftJoin('transaksi', 'ct.id_transaksi', '=', 'transaksi.id_transaksi')
+            ->select('ct.*', 'peserta.*', 'transaksi.foto AS foto_transaksi')
+            ->where('peserta.nama_lengkap','LIKE','%'.$search.'%')
+            ->paginate();    
+        }else{
+            $ct = Ct::          
+            join('peserta', 'ct.id_peserta', '=', 'peserta.id_peserta')
+            ->leftJoin('transaksi', 'ct.id_transaksi', '=', 'transaksi.id_transaksi')
+            ->select('ct.*', 'peserta.*', 'transaksi.foto AS foto_transaksi')
+            ->get();    
+        }
+
         return view('admin.chilltalk.dashct', compact(['ct']));
     }
     public function ctExportExcel()
@@ -182,15 +215,29 @@ class AdminController extends Controller
 
     // WDC START============================================================
     // halaman wdc
-    public function wdc()
+    public function wdc(Request $request)
     {
-        $wdc = Wdc::          
-        join('peserta', 'wdc.id_peserta', '=', 'peserta.id_peserta')
-        ->leftJoin('project', 'wdc.id_project', '=', 'project.id_project')
-        ->leftJoin('transaksi', 'wdc.id_transaksi', '=', 'transaksi.id_transaksi')
-        ->select('wdc.*', 'peserta.*', 'transaksi.foto AS foto_transaksi', 'project.file_project')
-        ->get();
-        return view('admin.wdc.dashwdc', compact(['wdc']));
+        // MENDAPATKAN REQUEST SEARCH
+        $search = $request->search;
+
+        if($search){
+            $wdc = Wdc::          
+            join('peserta', 'wdc.id_peserta', '=', 'peserta.id_peserta')
+            ->leftJoin('project', 'wdc.id_project', '=', 'project.id_project')
+            ->leftJoin('transaksi', 'wdc.id_transaksi', '=', 'transaksi.id_transaksi')
+            ->select('wdc.*', 'peserta.*', 'transaksi.foto AS foto_transaksi', 'project.file_project')
+            ->where('peserta.nama_lengkap','LIKE','%'.$search.'%')
+            ->paginate();    
+        }else{
+            $wdc = Wdc::          
+            join('peserta', 'wdc.id_peserta', '=', 'peserta.id_peserta')
+            ->leftJoin('project', 'wdc.id_project', '=', 'project.id_project')
+            ->leftJoin('transaksi', 'wdc.id_transaksi', '=', 'transaksi.id_transaksi')
+            ->select('wdc.*', 'peserta.*', 'transaksi.foto AS foto_transaksi', 'project.file_project')
+            ->get();             
+        }
+
+        return view('admin.wdc.dashwdc', compact(['wdc']));   
     }
     public function WdcExportExcel()
 	{
@@ -236,14 +283,28 @@ class AdminController extends Controller
 
     // DC START============================================================
     // halaman dc
-    public function dc()
+    public function dc(Request $request)
     {
-        $dc = Dc::          
-        join('peserta', 'dc.id_peserta', '=', 'peserta.id_peserta')
-        ->leftJoin('project', 'dc.id_project', '=', 'project.id_project')
-        ->leftJoin('transaksi', 'dc.id_transaksi', '=', 'transaksi.id_transaksi')
-        ->select('dc.*', 'peserta.*', 'transaksi.foto AS foto_transaksi', 'project.file_project')
-        ->get();
+        // MENDAPATKAN REQUEST SEARCH
+        $search = $request->search;
+
+        if($search){
+            $dc = Dc::          
+            join('peserta', 'dc.id_peserta', '=', 'peserta.id_peserta')
+            ->leftJoin('project', 'dc.id_project', '=', 'project.id_project')
+            ->leftJoin('transaksi', 'dc.id_transaksi', '=', 'transaksi.id_transaksi')
+            ->select('dc.*', 'peserta.*', 'transaksi.foto AS foto_transaksi', 'project.file_project')
+            ->where('peserta.nama_lengkap','LIKE','%'.$search.'%')
+            ->paginate(); 
+        }else{
+            $dc = Dc::          
+            join('peserta', 'dc.id_peserta', '=', 'peserta.id_peserta')
+            ->leftJoin('project', 'dc.id_project', '=', 'project.id_project')
+            ->leftJoin('transaksi', 'dc.id_transaksi', '=', 'transaksi.id_transaksi')
+            ->select('dc.*', 'peserta.*', 'transaksi.foto AS foto_transaksi', 'project.file_project')
+            ->get();    
+        }
+
         return view('admin.dc.dashdc', compact(['dc']));
     }
     public function dcExportExcel()
@@ -290,14 +351,28 @@ class AdminController extends Controller
 
     // CTF START============================================================
     // halaman ctf
-    public function ctf()
+    public function ctf(Request $request)
     {
-        $ctf = Ctf::          
-        join('peserta', 'ctf.id_peserta', '=', 'peserta.id_peserta')
-        ->leftJoin('project', 'ctf.id_project', '=', 'project.id_project')
-        ->leftJoin('transaksi', 'ctf.id_transaksi', '=', 'transaksi.id_transaksi')
-        ->select('ctf.*', 'peserta.*', 'transaksi.foto AS foto_transaksi', 'project.file_project')
-        ->get();
+        // MENDAPATKAN REQUEST SEARCH
+        $search = $request->search;
+
+        if($search){
+            $ctf = Ctf::          
+            join('peserta', 'ctf.id_peserta', '=', 'peserta.id_peserta')
+            ->leftJoin('project', 'ctf.id_project', '=', 'project.id_project')
+            ->leftJoin('transaksi', 'ctf.id_transaksi', '=', 'transaksi.id_transaksi')
+            ->select('ctf.*', 'peserta.*', 'transaksi.foto AS foto_transaksi', 'project.file_project')
+            ->where('peserta.nama_lengkap','LIKE','%'.$search.'%')
+            ->paginate();
+        }else{
+            $ctf = Ctf::          
+            join('peserta', 'ctf.id_peserta', '=', 'peserta.id_peserta')
+            ->leftJoin('project', 'ctf.id_project', '=', 'project.id_project')
+            ->leftJoin('transaksi', 'ctf.id_transaksi', '=', 'transaksi.id_transaksi')
+            ->select('ctf.*', 'peserta.*', 'transaksi.foto AS foto_transaksi', 'project.file_project')
+            ->get();    
+        }
+
         return view('admin.ctf.dashctf', compact(['ctf']));
     }
     public function ctfExportExcel()
@@ -344,10 +419,29 @@ class AdminController extends Controller
 
     // TRANSTAKSI START============================================================
     // halaman transaksi
-    public function transaksi()
+    public function transaksi(Request $request)
     {
-        $transaksi = Transaksi::all();
+        // MENDAPATKAN REQUEST SEARCH
+        $search = $request->search;
+
+        // MENDAPATKAN DATA PANITIA YANG AKAN MEMVERIFIKASI
         $panitia = Panitia::all();
+
+        if($search){
+            $transaksi = Transaksi::
+            join('peserta', 'transaksi.id_peserta', '=', 'peserta.id_peserta')
+            ->join('panitia', 'transaksi.id_panitia', '=', 'panitia.id_panitia')
+            ->select('transaksi.*', 'peserta.nama_lengkap AS nama_peserta', 'panitia.nama_lengkap AS nama_panitia')
+            ->where('peserta.nama_lengkap','LIKE','%'.$search.'%')
+            ->paginate();
+        }else{
+            $transaksi = Transaksi::
+            join('peserta', 'transaksi.id_peserta', '=', 'peserta.id_peserta')
+            ->join('panitia', 'transaksi.id_panitia', '=', 'panitia.id_panitia')
+            ->select('transaksi.*', 'peserta.nama_lengkap AS nama_peserta', 'panitia.nama_lengkap AS nama_panitia')
+            ->get();
+        }
+
         return view('admin.transaksi.dashtransaksi', compact(['transaksi', 'panitia']));
     }
     // UPDATE TRANSAKSI 
@@ -396,36 +490,78 @@ class AdminController extends Controller
         return view('admin.project.dashproject', compact(['project']));
     }
     // HALAMAN PROJECT WDC
-    public function projectWdc()
+    public function projectWdc(Request $request)
     {
-        $project = Project::
-        join('wdc', 'project.id_project', '=', 'wdc.id_project')
-        ->join('peserta', 'wdc.id_peserta', '=', 'peserta.id_peserta')
-        ->select('project.*', 'peserta.*')
-        ->where('file_project', 'LIKE', 'WDC%')
-        ->get();
+        // MENDAPATKAN REQUEST SEARCH
+        $search = $request->search;
+
+        if($search){
+            $project = Project::
+            join('wdc', 'project.id_project', '=', 'wdc.id_project')
+            ->join('peserta', 'wdc.id_peserta', '=', 'peserta.id_peserta')
+            ->select('project.*', 'peserta.*')
+            ->where('file_project', 'LIKE', 'WDC%')
+            ->where('peserta.nama_lengkap','LIKE','%'.$search.'%')
+            ->paginate();
+        }else{
+            $project = Project::
+            join('wdc', 'project.id_project', '=', 'wdc.id_project')
+            ->join('peserta', 'wdc.id_peserta', '=', 'peserta.id_peserta')
+            ->select('project.*', 'peserta.*')
+            ->where('file_project', 'LIKE', 'WDC%')
+            ->get();    
+        }
+
         return view('admin.project.dashprojectwdc', compact(['project']));
     }
     // HALAMAN PROJECT DC 
-    public function projectDc()
+    public function projectDc(Request $request)
     {
-        $project = Project::
-        join('dc', 'project.id_project', '=', 'dc.id_project')
-        ->join('peserta', 'dc.id_peserta', '=', 'peserta.id_peserta')
-        ->select('project.*', 'peserta.*')
-        ->where('file_project', 'LIKE', 'DC%')
-        ->get();
+        // MENDAPATKAN REQUEST SEARCH
+        $search = $request->search;
+
+        if($search){
+            $project = Project::
+            join('dc', 'project.id_project', '=', 'dc.id_project')
+            ->join('peserta', 'dc.id_peserta', '=', 'peserta.id_peserta')
+            ->select('project.*', 'peserta.*')
+            ->where('file_project', 'LIKE', 'DC%')
+            ->where('peserta.nama_lengkap','LIKE','%'.$search.'%')
+            ->paginate();
+        }else{
+            $project = Project::
+            join('dc', 'project.id_project', '=', 'dc.id_project')
+            ->join('peserta', 'dc.id_peserta', '=', 'peserta.id_peserta')
+            ->select('project.*', 'peserta.*')
+            ->where('file_project', 'LIKE', 'DC%')
+            ->get();    
+        }
+
         return view('admin.project.dashprojectdc', compact(['project']));
     }
     // HALAMAN PROJECT CTF
-    public function projectCtf()
+    public function projectCtf(Request $request)
     {
-        $project = Project::
-        join('ctf', 'project.id_project', '=', 'ctf.id_project')
-        ->join('peserta', 'ctf.id_peserta', '=', 'peserta.id_peserta')
-        ->select('project.*', 'peserta.*')
-        ->where('file_project', 'LIKE', 'CTF%')
-        ->get();
+        // MENDAPATKAN REQUEST SEARCH
+        $search = $request->search;
+
+        if($search){
+            $project = Project::
+            join('ctf', 'project.id_project', '=', 'ctf.id_project')
+            ->join('peserta', 'ctf.id_peserta', '=', 'peserta.id_peserta')
+            ->select('project.*', 'peserta.*')
+            ->where('file_project', 'LIKE', 'CTF%')
+            ->where('peserta.nama_lengkap','LIKE','%'.$search.'%')
+            ->paginate();
+        }else{
+            $project = Project::
+            join('ctf', 'project.id_project', '=', 'ctf.id_project')
+            ->join('peserta', 'ctf.id_peserta', '=', 'peserta.id_peserta')
+            ->select('project.*', 'peserta.*')
+            ->where('file_project', 'LIKE', 'CTF%')
+            ->get();    
+        }
+
         return view('admin.project.dashprojectctf', compact(['project']));
     }
     // DOWNLOAD PROJECT WDC SATU SATU
