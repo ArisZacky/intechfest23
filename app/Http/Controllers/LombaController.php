@@ -62,7 +62,7 @@ class LombaController extends Controller
 
         //================================Upload Foto====================
         $foto = $request->foto;
-        $filename = "WDC_" . $request->nama_lengkap . '_' . $foto->getClientOriginalName(); // format nama file
+        $filename = "WDC_Foto Identitas_".$request->nama_lengkap."_".time().".".$foto->getClientOriginalExtension(); // format nama file
         $path = 'Identitas/wdc/' . $filename; // tempat penyimpanan file
 
         Storage::disk('public')->put($path, file_get_contents($foto));
@@ -85,7 +85,7 @@ class LombaController extends Controller
         // data yang akan di insert ke table wdc
         $wdc = [
             'id_peserta' => $request->id_peserta,
-            'foto' => $filename,
+            'foto' => $path,
             'validasi' => 'Belum Tervalidasi'
         ];
 
@@ -158,8 +158,8 @@ class LombaController extends Controller
         if ($request->hasFile('foto')) {
             $foto = $request->file('foto');
             // format nama dan path foto sesuaiin dengan cabang lomba
-            $filename = "WDC_Bukti Transfer_" . $namaPeserta . '.' . $foto->getClientOriginalExtension();
-            $path = 'transfer/wdc/' . $filename;
+            $filename = "WDC_Bukti Transfer_" . $namaPeserta . '_' .time(). '.' . $foto->getClientOriginalExtension();
+            $path = 'transfer/' . $filename;
             // simpan foto ke storage
             Storage::disk('public')->put($path, file_get_contents($foto));
             return $path;
@@ -216,7 +216,7 @@ class LombaController extends Controller
 
         //================================Upload Foto====================
         $foto = $request->foto;
-        $filename = "DC_" . $request->nama_lengkap . '_' . $foto->getClientOriginalName(); // format nama file
+        $filename = "DC_Foto Identitas_".$request->nama_lengkap."_".time().".".$foto->getClientOriginalExtension(); // format nama file
         $path = 'Identitas/dc/' . $filename; // tempat penyimpanan file
 
         Storage::disk('public')->put($path, file_get_contents($foto));
@@ -239,7 +239,7 @@ class LombaController extends Controller
         // data yang akan di insert ke table dc
         $dc = [
             'id_peserta' => $request->id_peserta,
-            'foto' => $filename,
+            'foto' => $path,
             'validasi' => 'Belum Tervalidasi'
         ];
 
@@ -313,8 +313,8 @@ class LombaController extends Controller
         if ($request->hasFile('foto')) {
             $foto = $request->file('foto');
             // format nama dan path foto sesuaiin dengan cabang lomba
-            $filename = "DC_Bukti Transfer_" . $namaPeserta . '.' . $foto->getClientOriginalExtension();
-            $path = 'transfer/dc/' . $filename;
+            $filename = "DC_Bukti Transfer_" . $namaPeserta . '_' .time(). '.' . $foto->getClientOriginalExtension();
+            $path = 'transfer/' . $filename;
             // simpan foto ke storage
             Storage::disk('public')->put($path, file_get_contents($foto));
             return $path;
@@ -423,7 +423,7 @@ class LombaController extends Controller
 
         //================================Upload Foto====================
         $foto = $request->foto;
-        $filename = "Ctf_" . $request->nama_lengkap . '_' . $foto->getClientOriginalName(); // format nama file
+        $filename = "WDC_Foto Identitas_".$request->nama_lengkap."_".time().".".$foto->getClientOriginalExtension(); // format nama file
         $path = 'Identitas/ctf/' . $filename; // tempat penyimpanan file
 
         Storage::disk('public')->put($path, file_get_contents($foto));
@@ -449,7 +449,7 @@ class LombaController extends Controller
             'nama_team' => $request->nama_team,
             'anggota1' => $request->anggota1,
             'anggota2' => $request->anggota2,
-            'foto' => $filename,
+            'foto' => $path,
             'validasi' => 'Belum Tervalidasi'
         ];
 
@@ -524,8 +524,8 @@ class LombaController extends Controller
         if ($request->hasFile('foto')) {
             $foto = $request->file('foto');
             // format nama dan path foto sesuaiin dengan cabang lomba
-            $filename = "CTF_Bukti Transfer_" . $namaPeserta . '.' . $foto->getClientOriginalExtension();
-            $path = 'transfer/ctf/' . $filename;
+            $filename = "CTF_Bukti Transfer_" . $namaPeserta . '_' .time(). '.' . $foto->getClientOriginalExtension();
+            $path = 'transfer/' . $filename;
             // simpan foto ke storage
             Storage::disk('public')->put($path, file_get_contents($foto));
             return $path;
