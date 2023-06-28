@@ -2,7 +2,7 @@
 @extends('panitia.main')
 
 {{-- judul halaman disini --}}
-@section('title', 'Data Project DC')
+@section('title', 'Data Peserta DC')
 
 {{-- membuat content disini --}}
 @section('content')
@@ -79,7 +79,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($project as $data)
+                            @foreach($projectdc as $data)
                             <tr
                                 class="border-b dark:border-gray-700 {{($loop->iteration % 2 == 0) ? 'bg-slate-100' : ''}}">
                                 <td class="px-4 py-3">{{$loop->iteration}}</td>

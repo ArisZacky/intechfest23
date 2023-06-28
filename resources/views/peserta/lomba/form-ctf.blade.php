@@ -154,6 +154,19 @@
                     </div>
                     <div>
                         <label for="username" class="block text-sm font-medium leading-6 text-gray-900">Nama
+                            Team</label>
+                        <div class="my-2">
+                            <div
+                                class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-primary-lightblue w-full">
+                                <input type="text" name="nama_team" id="username" autocomplete="username"
+                                    class="block flex-1 border-0 bg-transparent py-1.5 pl-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                                    placeholder="Masukkan nama Team..." value="{{ $data_peserta->anggota2 ? $data_peserta->anggota2 : '' }}"
+                                    required>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="username" class="block text-sm font-medium leading-6 text-gray-900">Nama
                             Anggota 1</label>
                         <div class="my-2">
                             <div

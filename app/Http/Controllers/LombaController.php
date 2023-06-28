@@ -25,7 +25,7 @@ class LombaController extends Controller
         //pada table users dengan mencocokan email pada table peserta dengan table users
         $data_peserta = Peserta::where('email', $user->email)->first();
         //return view lomba dan data dalam bentuk object
-        return view('lomba.wdc', ['user' => $user, 'data_peserta' => $data_peserta]);
+        return view('peserta.lomba.form-wdc', ['user' => $user, 'data_peserta' => $data_peserta]);
     }
 
     public function daftarwdc(Request $request, $id)
@@ -107,7 +107,7 @@ class LombaController extends Controller
             throw $th;
             DB::rollBack();
         }
-        return redirect('/peserta-wdc');
+        return redirect('/lomba-peserta');
     }
 
     public function transaksiWdc(Request $request, $id)
@@ -159,7 +159,7 @@ class LombaController extends Controller
             $foto = $request->file('foto');
             // format nama dan path foto sesuaiin dengan cabang lomba
             $filename = "WDC_Bukti Transfer_" . $namaPeserta . '.' . $foto->getClientOriginalExtension();
-            $path = 'transfer/wdc/' . $filename;
+            $path = 'Transaksi/wdc/' . $filename;
             // simpan foto ke storage
             Storage::disk('public')->put($path, file_get_contents($foto));
             return $path;
@@ -184,7 +184,7 @@ class LombaController extends Controller
             'project.max' => 'Ukuran file project maksimal 100 MB.'
         ]);
         // simpan project ke storage dan dapatkan pathnya (sesuaikan dengan nama fungsi)
-        $filePath = $this->uploadProjectDc($request, $namaPeserta);
+        $filePath = $this->uploadProjectWdc($request, $namaPeserta);
         try{
             DB::beginTransaction();
             // data yang akan di insert ke table transaksi
@@ -211,10 +211,10 @@ class LombaController extends Controller
             $project = $request->file('project');
             // format nama dan path project sesuaiin dengan cabang lomba
             $filename = "WDC_project_" . $namaPeserta . '.' . $project->getClientOriginalExtension();
-            $path = 'project/wdc/' . $filename;
+            $path = 'Project/wdc/' . $filename;
             // simpan project ke storage
             Storage::disk('public')->put($path, file_get_contents($project));
-            return $path;
+            return $filename;
         }
         // error message jika gagal upload project
         return redirect()->back()->with('error', 'Gagal mengunggah project.');
@@ -366,7 +366,7 @@ class LombaController extends Controller
             $foto = $request->file('foto');
             // format nama dan path foto sesuaiin dengan cabang lomba
             $filename = "DC_Bukti Transfer_" . $namaPeserta . '.' . $foto->getClientOriginalExtension();
-            $path = 'transfer/dc/' . $filename;
+            $path = 'Transaksi/dc/' . $filename;
             // simpan foto ke storage
             Storage::disk('public')->put($path, file_get_contents($foto));
             return $path;
@@ -418,10 +418,10 @@ class LombaController extends Controller
             $project = $request->file('project');
             // format nama dan path project sesuaiin dengan cabang lomba
             $filename = "DC_project_" . $namaPeserta . '.' . $project->getClientOriginalExtension();
-            $path = 'project/dc/' . $filename;
+            $path = 'Project/dc/' . $filename;
             // simpan project ke storage
             Storage::disk('public')->put($path, file_get_contents($project));
-            return $path;
+            return $filename;
         }
         // error message jika gagal upload project
         return redirect()->back()->with('error', 'Gagal mengunggah project.');
@@ -436,7 +436,7 @@ class LombaController extends Controller
         //pada table users dengan mencocokan email pada table peserta dengan table users
         $data_peserta = Peserta::where('email', $user->email)->first();
         //return view lomba dan data dalam bentuk object
-        return view('lomba.ctf', ['user' => $user, 'data_peserta' => $data_peserta]);
+        return view('peserta.lomba.form-ctf', ['user' => $user, 'data_peserta' => $data_peserta]);
     }
 
     public function daftarctf(Request $request, $id)
@@ -523,7 +523,7 @@ class LombaController extends Controller
             throw $th;
             DB::rollBack();
         }
-        return redirect('/peserta-ctf');
+        return redirect('/lomba-peserta');
     }
 
 
@@ -577,7 +577,7 @@ class LombaController extends Controller
             $foto = $request->file('foto');
             // format nama dan path foto sesuaiin dengan cabang lomba
             $filename = "CTF_Bukti Transfer_" . $namaPeserta . '.' . $foto->getClientOriginalExtension();
-            $path = 'transfer/ctf/' . $filename;
+            $path = 'Transaksi/ctf/' . $filename;
             // simpan foto ke storage
             Storage::disk('public')->put($path, file_get_contents($foto));
             return $path;

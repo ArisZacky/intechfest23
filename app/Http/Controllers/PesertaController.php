@@ -69,7 +69,7 @@ class PesertaController extends Controller
         } // jika sudah divalidasi tapi belum melakukan pembayaran untuk lomba wdc (step 3)
         else if($peserta->validasi == "Sudah Valid" AND empty($peserta->id_transaksi) AND $lomba == "CTF") {
             return view('peserta.lomba.transaksiCtf', compact('peserta'));
-        } else if(isset($peserta->id_transaksi) AND $lomba == "DC"){
+        }else if(isset($peserta->id_transaksi) AND $lomba == "DC"){
             $transaksi = Transaksi::where('id_transaksi', $peserta->id_transaksi)->first();
             // jika sudah melakukan pembayaran dan belum divalidasi (step 4)
             if($transaksi->validasi == "Belum Tervalidasi"){
@@ -82,7 +82,30 @@ class PesertaController extends Controller
                 return view('peserta.lomba.projectDc', compact('peserta', 'transaksi'));
             } 
             return view('peserta.lomba.transaksi', compact('peserta', 'transaksi'));
-        } else {
+        }else if(isset($peserta->id_transaksi) AND $lomba == "WDC"){
+            $transaksi = Transaksi::where('id_transaksi', $peserta->id_transaksi)->first();
+            // jika sudah melakukan pembayaran dan belum divalidasi (step 4)
+            if($transaksi->validasi == "Belum Tervalidasi"){
+                return view('peserta.lomba.validasi_transaksi');
+            }  // jika sudah mengupload project (step 6)
+            else if(isset($peserta->id_project)) {
+                return view('peserta.lomba.suksesProject');
+            } // jika sudah melakukan pembayaran dan sudah divalidasi (step 5)
+            else if($transaksi->validasi == "Sudah Valid" AND empty($peserta->id_project)){
+                return view('peserta.lomba.projectWdc', compact('peserta', 'transaksi'));
+            } 
+            return view('peserta.lomba.transaksi', compact('peserta', 'transaksi'));
+        }else if(isset($peserta->id_transaksi) AND $lomba == "CTF"){
+            $transaksi = Transaksi::where('id_transaksi', $peserta->id_transaksi)->first();
+            // jika sudah melakukan pembayaran dan belum divalidasi (step 4)
+            if($transaksi->validasi == "Belum Tervalidasi"){
+                return view('peserta.lomba.validasi_transaksi');
+            }  // jika sudah mengupload project (step 5)
+            else if($transaksi->validasi == "Sudah Valid") {
+                return view('peserta.lomba.suksesProject');
+            } 
+            return view('peserta.lomba.transaksi', compact('peserta', 'transaksi'));
+        }else {
             return view('peserta.content.lomba');
         }
     }

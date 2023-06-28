@@ -97,11 +97,12 @@
                                     </a>                                    
                                 </td>
                                 <td class="px-4 py-3">
-                                    <a class="" href="{{ asset('storage/Transaksi/'.$data->foto_transaksi) }}" data-lightbox="example-1" target="__blank" id='link-foto_transaksi'>
-                                        <img class="w-20 h-20 rounded" src="{{ asset('storage/Transaksi/'.$data->foto_transaksi) }}" alt="Large avatar" id='foto_transaksi'>
+
+                                    <a class="" href="{{ asset('storage/'.$data->foto_transaksi) }}" data-lightbox="example-1" target="__blank" id='link-foto_transaksi'>
+                                        <img class="w-20 h-20 rounded" src="{{ asset('storage/'.$data->foto_transaksi) }}" alt="Large avatar" id='foto_transaksi'>
                                     </a>
                                 </td>
-                                <td class="px-4 py-3"><a href="{{url('/wdc-panitia/downloadWdc/')}}/{{$data->file_project}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline" target = "__blank">{{$data->file_project}}</a></td>
+                                <td class="px-4 py-3">{{$data->file_project}}</td>
                                 <td class="px-4 py-3">{{$data->validasi}}</td>
                                 <td class="px-4 py-3">
                                     <!-- <button id="apple-imac-27-dropdown-button"
