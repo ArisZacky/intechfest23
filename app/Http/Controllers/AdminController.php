@@ -225,7 +225,7 @@ class AdminController extends Controller
             join('peserta', 'wdc.id_peserta', '=', 'peserta.id_peserta')
             ->leftJoin('project', 'wdc.id_project', '=', 'project.id_project')
             // ->leftJoin('transaksi', 'wdc.id_transaksi', '=', 'transaksi.id_transaksi')
-            ->select('wdc.*', 'peserta.*', 'transaksi.foto AS foto_transaksi', 'project.file_project')
+            ->select('wdc.*', 'peserta.*', 'project.file_project')
             ->where('peserta.nama_lengkap','LIKE','%'.$search.'%')
             ->paginate();    
         }else{
@@ -233,7 +233,7 @@ class AdminController extends Controller
             join('peserta', 'wdc.id_peserta', '=', 'peserta.id_peserta')
             ->leftJoin('project', 'wdc.id_project', '=', 'project.id_project')
             // ->leftJoin('transaksi', 'wdc.id_transaksi', '=', 'transaksi.id_transaksi')
-            ->select('wdc.*', 'peserta.*', 'transaksi.foto AS foto_transaksi', 'project.file_project')
+            ->select('wdc.*', 'peserta.*', 'project.file_project')
             ->get();             
         }
 
@@ -292,14 +292,14 @@ class AdminController extends Controller
             $dc = Dc::          
             join('peserta', 'dc.id_peserta', '=', 'peserta.id_peserta')
             ->leftJoin('project', 'dc.id_project', '=', 'project.id_project')
-            ->select('dc.*', 'peserta.*', 'transaksi.foto AS foto_transaksi', 'project.file_project')
+            ->select('dc.*', 'peserta.*', 'project.file_project')
             ->where('peserta.nama_lengkap','LIKE','%'.$search.'%')
             ->paginate(); 
         }else{
             $dc = Dc::          
             join('peserta', 'dc.id_peserta', '=', 'peserta.id_peserta')
             ->leftJoin('project', 'dc.id_project', '=', 'project.id_project')
-            ->select('dc.*', 'peserta.*', 'transaksi.foto AS foto_transaksi', 'project.file_project')
+            ->select('dc.*', 'peserta.*', 'project.file_project')
             ->get();    
         }
 
@@ -358,14 +358,14 @@ class AdminController extends Controller
             $ctf = Ctf::          
             join('peserta', 'ctf.id_peserta', '=', 'peserta.id_peserta')
             ->leftJoin('project', 'ctf.id_project', '=', 'project.id_project')
-            ->select('ctf.*', 'peserta.*', 'transaksi.foto AS foto_transaksi', 'project.file_project')
+            ->select('ctf.*', 'peserta.*', 'project.file_project')
             ->where('peserta.nama_lengkap','LIKE','%'.$search.'%')
             ->paginate();
         }else{
             $ctf = Ctf::          
             join('peserta', 'ctf.id_peserta', '=', 'peserta.id_peserta')
             ->leftJoin('project', 'ctf.id_project', '=', 'project.id_project')
-            ->select('ctf.*', 'peserta.*', 'transaksi.foto AS foto_transaksi', 'project.file_project')
+            ->select('ctf.*', 'peserta.*', 'project.file_project')
             ->get();    
         }
 
