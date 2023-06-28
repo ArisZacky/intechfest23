@@ -67,7 +67,7 @@
                         </div>
                         <button id="submitRegis" type="submit" class="w-full box-border focus:border-cyan-500 focus:outline-cyan-500 focus:ring-cyan-500 text-slate-100 hover:text-white bg-primary-lightblue hover:bg-primary-blue font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Buat Akun</button>
                         <p class="text-sm font-light text-gray-500 dark:text-gray-400 text-center">
-                            Sudah punya akun? <a href="/login" class="font-medium focus:outline-cyan-500 text-primary-600 hover:underline dark:text-primary-500">Login disini</a>
+                            Sudah punya akun? <a href="/login" class="font-medium focus:outline-cyan-500 text-primary-blue hover:underline dark:text-primary-500">Login disini</a>
                         </p>
                     </form>
                 </div>

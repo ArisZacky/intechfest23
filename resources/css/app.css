@@ -2,67 +2,145 @@
 @tailwind components;
 @tailwind utilities;
 
-    .ivy {
-        width: 20%;
-        position: absolute;
-        z-index: 1;
-        top: 50%;
+.ivy {
+    width: 20%;
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    transform: translate(400%, -50%);
+    animation: ivyTerbangMendarat 30s infinite ease-in-out;
+}
+html {
+    scroll-behavior: smooth;
+}
+.slider, .slider-reverse {
+    background: white;
+    height: 100px;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+}
+.slider::before,
+.slider::after,
+.slider-reverse::before,
+.slider-reverse::after{
+    background: linear-gradient(
+        to right,
+        white 0%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    content: "";
+    height: 100px;
+    position: absolute;
+    width: 100px;
+    z-index: 2;
+}
+.slider::after {
+    right: 0;
+    top: 0;
+    transform: rotateZ(180deg);
+}
+.slider-reverse::after {
+    right: 0;
+    top: 0;
+    transform: rotateZ(-180deg);
+}
+.slider::before, .slider-reverse::before {
+    left: 0;
+    top: 0;
+}
+.slider .slide-track {
+    -webkit-animation: scroll 30s linear infinite;
+    animation: scroll 30s linear infinite;
+    display: flex;
+    width: calc(250px * 14);
+}
+.slider .slide, .slider-reverse .slide-reverse {
+    height: 100px;
+    width: 250px;
+}
+.slider .slide-track:hover, .slider-reverse .slide-track-reverse:hover {
+    animation-play-state: paused;
+}
+/* reverse */
+.slider-reverse .slide-track-reverse {
+    -webkit-animation: scrollReverse 30s linear infinite;
+    animation: scrollReverse 30s linear infinite;
+    display: flex;
+    width: calc(250px * 14);
+}
+
+/* create carousel with keyframes */
+@-webkit-keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-250px * 7));
+    }
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-250px * 7));
+    }
+}
+
+@-webkit-keyframes scrollReverse {
+    0% {
+        transform: translateX(calc(-250px * 7));
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes scrollReverse {
+    0% {
+        transform: translateX(calc(-250px * 7));
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes ivyTerbangMendarat {
+    0% {
+        transform: translate(0%, -50%);
+    }
+
+    30% {
+        transform: translate(0%, -50%);
+    }
+
+    35% {
+        transform: translate(0%, -250%);
+    }
+
+    40% {
+        transform: translate(400%, -250%);
+    }
+
+    50% {
         transform: translate(400%, -50%);
-        animation: ivyTerbangMendarat 30s infinite ease-in-out;
     }
 
-    .ivy-pulse {
-        animation: circle-pulse 3s infinite ease-in-out;
+    80% {
+        transform: translate(400%, -50%);
     }
 
-    html {
-        scroll-behavior: smooth;
+    85% {
+        transform: translate(400%, -250%);
     }
 
-    @keyframes circle-pulse {
-        0% {
-            transform: scale(100%);
-        }
-
-        100% {
-            transform: scale(120%);
-        }
+    90% {
+        transform: translate(0%, -250%);
     }
 
-    @keyframes ivyTerbangMendarat {
-        0% {
-            transform: translate(0%, -50%);
-        }
-
-        30% {
-            transform: translate(0%, -50%);
-        }
-
-        35% {
-            transform: translate(0%, -250%);
-        }
-
-        40% {
-            transform: translate(400%, -250%);
-        }
-
-        50% {
-            transform: translate(400%, -50%);
-        }
-
-        80% {
-            transform: translate(400%, -50%);
-        }
-
-        85% {
-            transform: translate(400%, -250%);
-        }
-
-        90% {
-            transform: translate(0%, -250%);
-        }
-
-        100% {
-            transform: translate(0%, -50%);
-        }
+    100% {
+        transform: translate(0%, -50%);
     }
+}
