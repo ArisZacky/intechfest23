@@ -93,7 +93,7 @@
                                 <td class="px-4 py-3">
                                     <button  onclick ="previewTransaksi('baris{{$loop->iteration}}', '{{$data->id_transaksi}}')" data-modal-target="imageModal"
                                             data-modal-toggle="imageModal" id='link-foto'>
-                                        <img class="w-20 h-20 rounded" src="{{ asset('storage/Transaksi/'.$data->foto) }}" alt="Large avatar" id='foto'>
+                                        <img class="w-20 h-20 rounded" src="{{ asset('storage/'.$data->foto) }}" alt="Large avatar" id='foto'>
                                     </button>
                                 </td>
                                 <td class="px-4 py-3">{{$data->validasi}}</td>
@@ -352,8 +352,8 @@
         const td = document.querySelectorAll('#' + baris + ' td');
         var img_src = document.getElementById("foto").src;
 
-        document.getElementById('a-foto').href = img_src
-        document.getElementById('edit-foto').src = img_src
+        document.getElementById('a-foto').href = td[2].querySelector('#foto').src
+        document.getElementById('edit-foto').src = td[2].querySelector('#foto').src
         document.getElementById('edit-nama_peserta').value = td[0].innerText
 
         document.getElementById('edit-id_transaksi').value = id;

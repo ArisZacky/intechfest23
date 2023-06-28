@@ -88,7 +88,7 @@
                                 <td class="px-4 py-3">
                                     <button onclick ="previewImage('baris{{$loop->iteration}}', '{{$data->id_ct}}')" data-modal-target="imageModal"
                                             data-modal-toggle="imageModal" id='link-foto'>
-                                        <img class="w-20 h-20 rounded" src="{{ asset('storage/Transaksi/'.$data->foto_transaksi) }}" alt="Large avatar" id='foto'>
+                                        <img class="w-20 h-20 rounded" src="{{ asset('storage/'.$data->foto_transaksi) }}" alt="Large avatar" id='foto'>
                                     </button>
                                 </td>
                             </tr>

@@ -97,7 +97,7 @@
                                 <td class="px-4 py-3">
                                     <button onclick ="previewIdentitas('baris{{$loop->iteration}}', '{{$data->id_ctf}}')" data-modal-target="imageModal"
                                             data-modal-toggle="imageModal" id='link-foto'>
-                                        <img class="w-20 h-20 rounded" src="{{ asset('storage/Identitas/ctf/'.$data->foto) }}" alt="Large avatar" id='foto'>
+                                        <img class="w-20 h-20 rounded" src="{{ asset('storage/'.$data->foto) }}" alt="Large avatar" id='foto'>
                                     </button>                                    
                                 </td>
                                 <td class="px-4 py-3"><a href="{{url('/project/downloadProject/')}}/{{$data->file_project}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline" target = "__blank">{{$data->file_project}}</a></td>
