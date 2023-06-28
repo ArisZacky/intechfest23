@@ -17,7 +17,7 @@
                     class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
                     <!-- search form -->
                     <div class="w-full md:w-1/2">
-                        <form class="flex items-center">
+                        <form class="flex items-center" method="GET">
                             <label for="simple-search" class="sr-only">Search</label>
                             <div class="relative w-full">
                                 <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -28,7 +28,7 @@
                                             clip-rule="evenodd" />
                                     </svg>
                                 </div>
-                                <input type="text" id="simple-search"
+                                <input type="text" id="simple-search" name="search"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                     placeholder="Search" required="">
                             </div>
@@ -88,8 +88,8 @@
                             <tr
                                 class="border-b dark:border-gray-700 {{($loop->iteration % 2 == 0) ? 'bg-slate-100' : ''}}" id="baris{{$loop->iteration}}">
                                 <th class="px-4 py-3">{{$loop->iteration}}</th>
-                                <td class="px-4 py-3">{{$data->id_peserta}}</td>
-                                <td class="px-4 py-3">{{$data->id_panitia}}</td>
+                                <td class="px-4 py-3">{{$data->nama_peserta}}</td>
+                                <td class="px-4 py-3">{{$data->nama_panitia}}</td>
                                 <td class="px-4 py-3">
                                     <a class="" href="{{ asset('storage/Transaksi/'.$data->foto) }}" data-lightbox="example-1" target="__blank" id='link-foto'>
                                         <img class="w-20 h-20 rounded" src="{{ asset('storage/Transaksi/'.$data->foto) }}" alt="Large avatar" id='foto'>
@@ -235,7 +235,7 @@
                 <div class="grid gap-4 mb-4 sm:grid-cols-2">
                     <div>
                         <label for="" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NAMA PESERTA</label>
-                        <input type="text" name="" id="edit-"
+                        <input type="text" name="" id="edit-nama_peserta"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             placeholder="Masukkan Nama Peserta..." required="" disabled>
                     </div>
@@ -323,10 +323,10 @@
         // fungsinya sama seperti hapus hanya beda penamaan
         const td = document.querySelectorAll('#' + baris + ' td');
         var img_src = document.getElementById("foto").src;
-        // document.getElementById('edit-email').value = td[0].innerText
-        // document.getElementById('edit-nomer_peserta').value = td[1].innerText
+
         document.getElementById('a-foto').href = img_src
         document.getElementById('edit-foto').src = img_src
+        document.getElementById('edit-nama_peserta').value = td[0].innerText
 
         document.getElementById('edit-id_transaksi').value = id;
     }
