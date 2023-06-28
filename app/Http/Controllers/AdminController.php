@@ -158,7 +158,7 @@ class AdminController extends Controller
         if($search){
             $ct = Ct::          
             join('peserta', 'ct.id_peserta', '=', 'peserta.id_peserta')
-            ->leftJoin('transaksi', 'ct.id_transaksi', '=', 'transaksi.id_transaksi')
+            ->join('transaksi', 'ct.id_transaksi', '=', 'transaksi.id_transaksi')
             ->select('ct.*', 'peserta.*', 'transaksi.foto AS foto_transaksi')
             ->where('peserta.nama_lengkap','LIKE','%'.$search.'%')
             ->paginate();    
@@ -224,16 +224,16 @@ class AdminController extends Controller
             $wdc = Wdc::          
             join('peserta', 'wdc.id_peserta', '=', 'peserta.id_peserta')
             ->leftJoin('project', 'wdc.id_project', '=', 'project.id_project')
-            ->leftJoin('transaksi', 'wdc.id_transaksi', '=', 'transaksi.id_transaksi')
-            ->select('wdc.*', 'peserta.*', 'transaksi.foto AS foto_transaksi', 'project.file_project')
+            // ->leftJoin('transaksi', 'wdc.id_transaksi', '=', 'transaksi.id_transaksi')
+            ->select('wdc.*', 'peserta.*', 'project.file_project')
             ->where('peserta.nama_lengkap','LIKE','%'.$search.'%')
             ->paginate();    
         }else{
             $wdc = Wdc::          
             join('peserta', 'wdc.id_peserta', '=', 'peserta.id_peserta')
             ->leftJoin('project', 'wdc.id_project', '=', 'project.id_project')
-            ->leftJoin('transaksi', 'wdc.id_transaksi', '=', 'transaksi.id_transaksi')
-            ->select('wdc.*', 'peserta.*', 'transaksi.foto AS foto_transaksi', 'project.file_project')
+            // ->leftJoin('transaksi', 'wdc.id_transaksi', '=', 'transaksi.id_transaksi')
+            ->select('wdc.*', 'peserta.*', 'project.file_project')
             ->get();             
         }
 
@@ -292,16 +292,14 @@ class AdminController extends Controller
             $dc = Dc::          
             join('peserta', 'dc.id_peserta', '=', 'peserta.id_peserta')
             ->leftJoin('project', 'dc.id_project', '=', 'project.id_project')
-            ->leftJoin('transaksi', 'dc.id_transaksi', '=', 'transaksi.id_transaksi')
-            ->select('dc.*', 'peserta.*', 'transaksi.foto AS foto_transaksi', 'project.file_project')
+            ->select('dc.*', 'peserta.*', 'project.file_project')
             ->where('peserta.nama_lengkap','LIKE','%'.$search.'%')
             ->paginate(); 
         }else{
             $dc = Dc::          
             join('peserta', 'dc.id_peserta', '=', 'peserta.id_peserta')
             ->leftJoin('project', 'dc.id_project', '=', 'project.id_project')
-            ->leftJoin('transaksi', 'dc.id_transaksi', '=', 'transaksi.id_transaksi')
-            ->select('dc.*', 'peserta.*', 'transaksi.foto AS foto_transaksi', 'project.file_project')
+            ->select('dc.*', 'peserta.*', 'project.file_project')
             ->get();    
         }
 
@@ -360,16 +358,14 @@ class AdminController extends Controller
             $ctf = Ctf::          
             join('peserta', 'ctf.id_peserta', '=', 'peserta.id_peserta')
             ->leftJoin('project', 'ctf.id_project', '=', 'project.id_project')
-            ->leftJoin('transaksi', 'ctf.id_transaksi', '=', 'transaksi.id_transaksi')
-            ->select('ctf.*', 'peserta.*', 'transaksi.foto AS foto_transaksi', 'project.file_project')
+            ->select('ctf.*', 'peserta.*', 'project.file_project')
             ->where('peserta.nama_lengkap','LIKE','%'.$search.'%')
             ->paginate();
         }else{
             $ctf = Ctf::          
             join('peserta', 'ctf.id_peserta', '=', 'peserta.id_peserta')
             ->leftJoin('project', 'ctf.id_project', '=', 'project.id_project')
-            ->leftJoin('transaksi', 'ctf.id_transaksi', '=', 'transaksi.id_transaksi')
-            ->select('ctf.*', 'peserta.*', 'transaksi.foto AS foto_transaksi', 'project.file_project')
+            ->select('ctf.*', 'peserta.*', 'project.file_project')
             ->get();    
         }
 
@@ -430,14 +426,14 @@ class AdminController extends Controller
         if($search){
             $transaksi = Transaksi::
             join('peserta', 'transaksi.id_peserta', '=', 'peserta.id_peserta')
-            ->join('panitia', 'transaksi.id_panitia', '=', 'panitia.id_panitia')
+            ->leftjoin('panitia', 'transaksi.id_panitia', '=', 'panitia.id_panitia')
             ->select('transaksi.*', 'peserta.nama_lengkap AS nama_peserta', 'panitia.nama_lengkap AS nama_panitia')
             ->where('peserta.nama_lengkap','LIKE','%'.$search.'%')
             ->paginate();
         }else{
             $transaksi = Transaksi::
             join('peserta', 'transaksi.id_peserta', '=', 'peserta.id_peserta')
-            ->join('panitia', 'transaksi.id_panitia', '=', 'panitia.id_panitia')
+            ->leftjoin('panitia', 'transaksi.id_panitia', '=', 'panitia.id_panitia')
             ->select('transaksi.*', 'peserta.nama_lengkap AS nama_peserta', 'panitia.nama_lengkap AS nama_panitia')
             ->get();
         }
