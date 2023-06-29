@@ -62,7 +62,7 @@ class LombaController extends Controller
 
         //================================Upload Foto====================
         $foto = $request->foto;
-        $filename = "WDC_" . $request->nama_lengkap . '_' . $foto->getClientOriginalName(); // format nama file
+        $filename = "WDC_Foto Identitas_".$request->nama_lengkap."_".time().".".$foto->getClientOriginalExtension(); // format nama file
         $path = 'Identitas/wdc/' . $filename; // tempat penyimpanan file
 
         Storage::disk('public')->put($path, file_get_contents($foto));
@@ -85,7 +85,7 @@ class LombaController extends Controller
         // data yang akan di insert ke table wdc
         $wdc = [
             'id_peserta' => $request->id_peserta,
-            'foto' => $filename,
+            'foto' => $path,
             'validasi' => 'Belum Tervalidasi'
         ];
 
@@ -104,8 +104,8 @@ class LombaController extends Controller
 
             DB::commit();
         } catch (\Throwable $th) {
-            throw $th;
             DB::rollBack();
+            throw $th;
         }
         return redirect('/lomba-peserta');
     }
@@ -158,8 +158,8 @@ class LombaController extends Controller
         if ($request->hasFile('foto')) {
             $foto = $request->file('foto');
             // format nama dan path foto sesuaiin dengan cabang lomba
-            $filename = "WDC_Bukti Transfer_" . $namaPeserta . '.' . $foto->getClientOriginalExtension();
-            $path = 'Transaksi/wdc/' . $filename;
+            $filename = "WDC_Bukti Transfer_" . $namaPeserta . '_' .time(). '.' . $foto->getClientOriginalExtension();
+            $path = 'transfer/' . $filename;
             // simpan foto ke storage
             Storage::disk('public')->put($path, file_get_contents($foto));
             return $path;
@@ -168,7 +168,7 @@ class LombaController extends Controller
         return redirect()->back()->with('error', 'Gagal mengunggah foto.');
     }
 
-     public function formProjectWdc(Request $request, $id)
+    public function formProjectWdc(Request $request, $id)
     {
         // cari data yang login (gk perlu dirubah)
         $user = Auth::user();
@@ -210,7 +210,7 @@ class LombaController extends Controller
         if ($request->hasFile('project')) {
             $project = $request->file('project');
             // format nama dan path project sesuaiin dengan cabang lomba
-            $filename = "WDC_project_" . $namaPeserta . '.' . $project->getClientOriginalExtension();
+            $filename = "WDC_project_" . $namaPeserta .'_'. time() .'.' . $project->getClientOriginalExtension();
             $path = 'Project/wdc/' . $filename;
             // simpan project ke storage
             Storage::disk('public')->put($path, file_get_contents($project));
@@ -268,7 +268,7 @@ class LombaController extends Controller
 
         //================================Upload Foto====================
         $foto = $request->foto;
-        $filename = "DC_" . $request->nama_lengkap . '_' . $foto->getClientOriginalName(); // format nama file
+        $filename = "DC_Foto Identitas_".$request->nama_lengkap."_".time().".".$foto->getClientOriginalExtension(); // format nama file
         $path = 'Identitas/dc/' . $filename; // tempat penyimpanan file
 
         Storage::disk('public')->put($path, file_get_contents($foto));
@@ -291,7 +291,7 @@ class LombaController extends Controller
         // data yang akan di insert ke table dc
         $dc = [
             'id_peserta' => $request->id_peserta,
-            'foto' => $filename,
+            'foto' => $path,
             'validasi' => 'Belum Tervalidasi'
         ];
 
@@ -365,8 +365,8 @@ class LombaController extends Controller
         if ($request->hasFile('foto')) {
             $foto = $request->file('foto');
             // format nama dan path foto sesuaiin dengan cabang lomba
-            $filename = "DC_Bukti Transfer_" . $namaPeserta . '.' . $foto->getClientOriginalExtension();
-            $path = 'Transaksi/dc/' . $filename;
+            $filename = "DC_Bukti Transfer_" . $namaPeserta . '_' .time(). '.' . $foto->getClientOriginalExtension();
+            $path = 'transfer/' . $filename;
             // simpan foto ke storage
             Storage::disk('public')->put($path, file_get_contents($foto));
             return $path;
@@ -417,7 +417,7 @@ class LombaController extends Controller
         if ($request->hasFile('project')) {
             $project = $request->file('project');
             // format nama dan path project sesuaiin dengan cabang lomba
-            $filename = "DC_project_" . $namaPeserta . '.' . $project->getClientOriginalExtension();
+            $filename = "DC_project_" . $namaPeserta .'_'. time() . '.' . $project->getClientOriginalExtension();
             $path = 'Project/dc/' . $filename;
             // simpan project ke storage
             Storage::disk('public')->put($path, file_get_contents($project));
@@ -475,7 +475,7 @@ class LombaController extends Controller
 
         //================================Upload Foto====================
         $foto = $request->foto;
-        $filename = "Ctf_" . $request->nama_lengkap . '_' . $foto->getClientOriginalName(); // format nama file
+        $filename = "WDC_Foto Identitas_".$request->nama_lengkap."_".time().".".$foto->getClientOriginalExtension(); // format nama file
         $path = 'Identitas/ctf/' . $filename; // tempat penyimpanan file
 
         Storage::disk('public')->put($path, file_get_contents($foto));
@@ -501,7 +501,7 @@ class LombaController extends Controller
             'nama_team' => $request->nama_team,
             'anggota1' => $request->anggota1,
             'anggota2' => $request->anggota2,
-            'foto' => $filename,
+            'foto' => $path,
             'validasi' => 'Belum Tervalidasi'
         ];
 
@@ -520,8 +520,8 @@ class LombaController extends Controller
 
             DB::commit();
         } catch (\Throwable $th) {
-            throw $th;
             DB::rollBack();
+            throw $th;
         }
         return redirect('/lomba-peserta');
     }
@@ -576,8 +576,8 @@ class LombaController extends Controller
         if ($request->hasFile('foto')) {
             $foto = $request->file('foto');
             // format nama dan path foto sesuaiin dengan cabang lomba
-            $filename = "CTF_Bukti Transfer_" . $namaPeserta . '.' . $foto->getClientOriginalExtension();
-            $path = 'Transaksi/ctf/' . $filename;
+            $filename = "CTF_Bukti Transfer_" . $namaPeserta . '_' .time(). '.' . $foto->getClientOriginalExtension();
+            $path = 'transfer/' . $filename;
             // simpan foto ke storage
             Storage::disk('public')->put($path, file_get_contents($foto));
             return $path;
@@ -586,55 +586,55 @@ class LombaController extends Controller
         return redirect()->back()->with('error', 'Gagal mengunggah foto.');
     }
 
-    //  public function formProjectCtf(Request $request, $id)
-    // {
-    //     // cari data yang login (gk perlu dirubah)
-    //     $user = Auth::user();
-    //     $peserta = Peserta::where('email', $user->email)->first();
-    //     $namaPeserta = $peserta->nama_lengkap;
-    //     $idPeserta = $peserta->id_peserta;
+     public function formProjectCtf(Request $request, $id)
+    {
+        // cari data yang login (gk perlu dirubah)
+        $user = Auth::user();
+        $peserta = Peserta::where('email', $user->email)->first();
+        $namaPeserta = $peserta->nama_lengkap;
+        $idPeserta = $peserta->id_peserta;
 
-    //     // validasi file (gk perlu diubah)
-    //     $request->validate([
-    //         'project' => 'required|mimes:pdf'
-    //     ],[
-    //         'project.mimes' => 'Format file project harus berupa Pdf.'
-    //         // 'project.max' => 'Ukuran file project maksimal 100 MB.'
-    //     ]);
-    //     // simpan project ke storage dan dapatkan pathnya (sesuaikan dengan nama fungsi)
-    //     $filePath = $this->uploadProjectDc($request, $namaPeserta);
-    //     try{
-    //         DB::beginTransaction();
-    //         // data yang akan di insert ke table transaksi
-    //         $data = ['file_project' => $filePath];
-    //         // insert data ke transaksi dan ambil idnya
-    //         $idProject = DB::table('project')->insertGetId($data);
-    //         // data yang akan di update ke table dc yaitu kolom id_transaksi aja
-    //         $data2 = ['id_project' => $idProject];
-    //         // update kolom id_transaksi pada table dc (sesuaiin dengan cabang lomba)
-    //         DB::table('ctf')->where('id_peserta', $idPeserta)->update($data2); 
-    //         DB::commit();
-    //     } catch (\Throwable $th) {
-    //         DB::rollBack();
-    //         throw $th;
-    //     }
+        // validasi file (gk perlu diubah)
+        $request->validate([
+            'project' => 'required|mimes:pdf'
+        ],[
+            'project.mimes' => 'Format file project harus berupa Pdf.'
+            // 'project.max' => 'Ukuran file project maksimal 100 MB.'
+        ]);
+        // simpan project ke storage dan dapatkan pathnya (sesuaikan dengan nama fungsi)
+        $filePath = $this->uploadProjectDc($request, $namaPeserta);
+        try{
+            DB::beginTransaction();
+            // data yang akan di insert ke table transaksi
+            $data = ['file_project' => $filePath];
+            // insert data ke transaksi dan ambil idnya
+            $idProject = DB::table('project')->insertGetId($data);
+            // data yang akan di update ke table dc yaitu kolom id_transaksi aja
+            $data2 = ['id_project' => $idProject];
+            // update kolom id_transaksi pada table dc (sesuaiin dengan cabang lomba)
+            DB::table('ctf')->where('id_peserta', $idPeserta)->update($data2); 
+            DB::commit();
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            throw $th;
+        }
 
-    //     // redirect
-    //     return redirect('/lomba-peserta');
-    // }
+        // redirect
+        return redirect('/lomba-peserta');
+    }
 
-    // public function uploadProjectCtf(Request $request, $namaPeserta)
-    // {
-    //     if ($request->hasFile('project')) {
-    //         $project = $request->file('project');
-    //         // format nama dan path project sesuaiin dengan cabang lomba
-    //         $filename = "CTF_project_" . $namaPeserta . '.' . $project->getClientOriginalExtension();
-    //         $path = 'project/ctf/' . $filename;
-    //         // simpan project ke storage
-    //         Storage::disk('public')->put($path, file_get_contents($project));
-    //         return $path;
-    //     }
-    //     // error message jika gagal upload project
-    //     return redirect()->back()->with('error', 'Gagal mengunggah project.');
-    // }
+    public function uploadProjectCtf(Request $request, $namaPeserta)
+    {
+        if ($request->hasFile('project')) {
+            $project = $request->file('project');
+            // format nama dan path project sesuaiin dengan cabang lomba
+            $filename = "CTF_project_" . $namaPeserta .'_'. time() . '.' . $project->getClientOriginalExtension();
+            $path = 'project/ctf/' . $filename;
+            // simpan project ke storage
+            Storage::disk('public')->put($path, file_get_contents($project));
+            return $path;
+        }
+        // error message jika gagal upload project
+        return redirect()->back()->with('error', 'Gagal mengunggah project.');
+    }
 }
