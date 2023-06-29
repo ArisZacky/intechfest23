@@ -12,6 +12,7 @@ use App\Http\Controllers\LombaController;
 use Illuminate\Auth\Events\PasswordReset;
 use App\Http\Controllers\PanitiaController;
 use App\Http\Controllers\PesertaController;
+use App\Http\Controllers\ChillTalksController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -338,16 +339,18 @@ Route::group(['middleware' => ['auth', 'verified', 'level:peserta']], function (
         Route::put('/profile-peserta/{id}', [PesertaController::class, 'edit_profile']);
         // Menampilkan Halaman lomba
         Route::get('/lomba-peserta', [PesertaController::class, 'lomba']);
-        // Menampilkan Halaman lomba
-        Route::get('/chilltalks-peserta', [PesertaController::class, 'chilltalks']);
     });
 
 Route::get('tampilAdmin', function(){
     return view('admin');
 });
 
-//Route Daftar cabang lomba
+//Route Daftar cabang lomba dan chilltalks peserta
 Route::group(['middleware' => ['auth', 'verified', 'level:peserta']], function (){
+    // Menampilkan Form Daftar Lomba CT
+    Route::get('/chilltalks-peserta', [PesertaController::class, 'chilltalks']);
+    // Route yang mengarahkan proses daftar ct
+    Route::put('/daftar-ct/{id}', [ChillTalksController::class, 'daftarct']);
     // ========================================================================== WDC
     // Menampilkan Form Daftar Lomba WDC
     Route::get('/wdc', [LombaController::class, 'wdc'])->middleware('isRegisteredLomba');

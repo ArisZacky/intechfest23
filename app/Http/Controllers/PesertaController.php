@@ -112,7 +112,23 @@ class PesertaController extends Controller
 
     public function chilltalks()
     {
-        return view('peserta.content.chilltalks');
+        $user = Auth::user();
+        $data_peserta = Peserta::where('email', $user->email)->first();
+        $id_peserta = $data_peserta->id_peserta;
+        // cek jika table ct sudah ada data peserta dengan id yang sama
+        $ctPeserta = Ct::where('id_peserta', $id_peserta)->first();
+        // jika ctPeserta tidak ada datanya
+        if(empty($ctPeserta)){
+            return view('peserta.chilltalks.form-ct', compact('data_peserta'));
+        } // jika ada ambil transaksi dan cek jika belum validasi
+        else if(isset($ctPeserta->id_transaksi)){
+            $transaksi = Transaksi::where('id_transaksi', $ctPeserta->id_transaksi)->first();
+            if($transaksi->validasi == "Belum Tervalidasi"){
+                return view('peserta.chilltalks.validasi_transaksi');
+            } else if($transaksi->validasi == "Sudah Valid") {
+                return view('peserta.chilltalks.nomor_peserta', compact('ctPeserta'));
+            }
+        }
     }
 
     public function edit_profile(Request $request, $id)
