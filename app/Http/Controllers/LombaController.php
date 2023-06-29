@@ -315,8 +315,7 @@ class LombaController extends Controller
         }
         return redirect('/lomba-peserta');
     }
-
-
+    
     public function dashboarddc()
     {
         $data_peserta = Dc::with('peserta')->get();
