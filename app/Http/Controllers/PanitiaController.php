@@ -268,7 +268,7 @@ class PanitiaController extends Controller
          $path = public_path('storage/Project/wdc');
  
          // cek jika variabel yang berisi object filearchive tadi berjalan dan membuat file zip
-         if ($zip->open(public_path($fileName), ZipArchive::CREATE) === TRUE)
+         if ($zip->open(public_path('storage/'.$fileName), ZipArchive::CREATE) === TRUE)
          {
              // mengambil file file yang ada di path
              $files = File::files($path);
@@ -285,7 +285,7 @@ class PanitiaController extends Controller
          }
          
          // fucntion mereturn response yang mendownload zip tadi
-         return response()->download(public_path($fileName));
+         return response()->download(public_path('storage/'.$fileName));
      }
      
      /// DOWNLOAD SEMUA PROJECT LOMBA DC
@@ -301,7 +301,7 @@ class PanitiaController extends Controller
          $path = public_path('storage/Project/dc');
  
          // cek jika variabel yang berisi object filearchive tadi berjalan dan membuat file zip
-         if ($zip->open(public_path($fileName), ZipArchive::CREATE) === TRUE)
+         if ($zip->open(public_path('storage/'.$fileName), ZipArchive::CREATE) === TRUE)
          {
              // mengambil file file yang ada di path
              $files = File::files($path);
@@ -318,7 +318,7 @@ class PanitiaController extends Controller
          }
          
          // fucntion mereturn response yang mendownload zip tadi
-         return response()->download(public_path($fileName));
+         return response()->download(public_path('storage/'.$fileName));
      }
  
      // DOWNLOAD SEMUA PROJECT LOMBA CTF
