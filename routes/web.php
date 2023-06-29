@@ -272,8 +272,6 @@ Route::group(['middleware' => ['auth', 'verified', 'level:panitia']], function (
     Route::post('/dc-update', [PanitiaController::class, 'update_dc']);
      // Export Excel Wdc
      Route::get('/dc-panitia/export_excel', [PanitiaController::class, 'DcExportExcel']);
-     // Download Project WDC
-     Route::get('/dc-panitia/downloadDc/{file_name}', [PanitiaController::class, 'downloadDc']);
 
 // CTF ===============================================================================================================
     // Menampilkan Halaman CTF
@@ -298,8 +296,35 @@ Route::group(['middleware' => ['auth', 'verified', 'level:panitia']], function (
 // PROJECT ===========================================================================================================
     // Menampilkan Halaman Project
     Route::get('/project-panitia', [PanitiaController::class, 'project']);
-     // delete project
-     Route::post('project-delete', [PanitiaController::class, 'delete_project']);
+
+    // Menampilkan Halaman Project
+    Route::get('/project-panitia-wdc', [PanitiaController::class, 'projectWdc']);
+
+    // Menampilkan Halaman Project
+    Route::get('/project-panitia-dc', [PanitiaController::class, 'projectDc']);
+
+    // // Menampilkan Halaman Project
+    // Route::get('/project-panitia-ctf', [PanitiaController::class, 'projectCtf']);
+
+    // Melakukan Download Project WDC
+    Route::get('/project/downloadProjectWDC/{file_name}', [PanitiaController::class, 'downloadProjectWDC']);
+    // Melakukan Download Project DC
+    Route::get('/project/downloadProjectDC/{file_name}', [PanitiaController::class, 'downloadProjectDC']);
+    // // Melakukan Download Project CTF
+    // Route::get('/project/downloadProjectCTF/{file_name}', [PanitiaController::class, 'downloadProjectCTF']);
+
+    // Melakukan Download Semua Project WDC
+    Route::get('/project/download-All-ProjectWDC', [PanitiaController::class, 'downloadAllProjectWDC']);
+    // Melakukan Download Semua Project DC
+    Route::get('/project/download-All-ProjectDC', [PanitiaController::class, 'downloadAllProjectDC']);
+    // // Melakukan Download Semua Project CTF
+    // Route::get('/project/download-All-ProjectCTF', [PanitiaController::class, 'downloadAllProjectCTF']);
+
+
+
+
+    //  // delete project
+    //  Route::post('project-delete', [PanitiaController::class, 'delete_project']);
 
 });
 
@@ -329,8 +354,11 @@ Route::group(['middleware' => ['auth', 'verified', 'level:peserta']], function (
     // Route yang mengarahkan proses daftar wdc
     Route::put('/daftar-wdc/{id}', [LombaController::class, 'daftarwdc']);
     // Menampilkan dashboard peserta wdc
-    Route::get('/peserta-wdc', [LombaController::class, 'dashboardwdc']);
+    // Route::get('/peserta-wdc', [LombaController::class, 'dashboardwdc']);
+    // menampilkan halaman upload transaksi
     Route::put('/transaksi-wdc/{id}', [LombaController::class, 'transaksiWdc']);
+    // menampilkan halaman upload form project
+    Route::put('/form-project-wdc/{id}', [LombaController::class, 'formProjectWdc']);
 
     // // Menampilkan Transaksi
     // Route::get('/pembayaran', [LombaController::class, 'pembayaranwdc']);
@@ -340,8 +368,8 @@ Route::group(['middleware' => ['auth', 'verified', 'level:peserta']], function (
     Route::get('/dc', [LombaController::class, 'dc'])->middleware('isRegisteredLomba');
     // Route yang mengarahkan proses daftar wdc
     Route::put('/daftar-dc/{id}', [LombaController::class, 'daftardc']);
-    // Menampilkan dashboard peserta wdc
-    Route::get('/peserta-dc', [LombaController::class, 'dashboarddc']);
+    // Menampilkan dashboard peserta dc
+    // Route::get('/peserta-dc', [LombaController::class, 'dashboarddc']);
     // menampilkan halaman upload bukti transaksi
     Route::put('/transaksi-dc/{id}', [LombaController::class, 'transaksiDc']);
     // menampilkan halaman upload form project
@@ -350,14 +378,17 @@ Route::group(['middleware' => ['auth', 'verified', 'level:peserta']], function (
     // // Menampilkan Transaksi
     // Route::get('/pembayaran', [LombaController::class, 'pembayarandc']);
 
-     // ============================================================================== CTF
+    //  ============================================================================== CTF
     // Menampilkan Form Daftar Lomba CTF
     Route::get('/ctf', [LombaController::class, 'ctf'])->middleware('isRegisteredLomba');
     // Route yang mengarahkan proses daftar wdc
     Route::put('/daftar-ctf/{id}', [LombaController::class, 'daftarctf']);
     // Menampilkan dashboard peserta wdc
-    Route::get('/peserta-ctf', [LombaController::class, 'dashboardctf']);
+    // Route::get('/peserta-ctf', [LombaController::class, 'dashboardctf']);
+    // menampilkan bukti transaksi
     Route::put('/transaksi-ctf/{id}', [LombaController::class, 'transaksiCtf']);
+    // menampilkan halaman upload form project
+    Route::put('/form-project-ctf/{id}', [LombaController::class, 'formProjectCtf']);
 
     // // Menampilkan Transaksi
     // Route::get('/pembayaran', [LombaController::class, 'pembayaranctf']);

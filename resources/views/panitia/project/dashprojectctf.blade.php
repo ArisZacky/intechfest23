@@ -2,7 +2,7 @@
 @extends('panitia.main')
 
 {{-- judul halaman disini --}}
-@section('title', 'Data Project')
+@section('title', 'Data Project CTF')
 
 {{-- membuat content disini --}}
 @section('content')
@@ -53,8 +53,8 @@
                                 <ul class="py-1 text-sm text-gray-700 dark:text-gray-200"
                                     aria-labelledby="actionsDropdownButton">
                                     <li>
-                                        <a href="#"
-                                            class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Hapus
+                                        <a href="{{url('/project/download-All-ProjectCTF')}}"
+                                            class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Download
                                             semua</a>
                                     </li>
                                 </ul>
@@ -73,8 +73,9 @@
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
                                 <th scope="col" class="px-4 py-4">No</th>
-                                <th scope="col" class="px-4 py-3">NAMA PESERTA</th>
+                                <th scope="col" class="px-4 py-3">NAMA TEAM</th>
                                 <th scope="col" class="px-4 py-3">PROJECT</th>
+                                <th scope="col" class="px-4 py-3">AKSI</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -82,8 +83,9 @@
                             <tr
                                 class="border-b dark:border-gray-700 {{($loop->iteration % 2 == 0) ? 'bg-slate-100' : ''}}">
                                 <td class="px-4 py-3">{{$loop->iteration}}</td>
-                                <td class="px-4 py-3">{{$data->id_peserta}}</td>
-                                <td class="px-4 py-3">{{$data->id_project}}</td>
+                                <td class="px-4 py-3">{{$data->nama_lengkap}}</td>
+                                <td class="px-4 py-3">{{$data->file_project}}</td>
+                                <td class="px-4 py-3"><a href="{{url('/project/downloadProjectCTF/')}}/{{$data->file_project}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline" target = "__blank">Download</a></td>
                             </tr>
                             @endforeach
                         </tbody>

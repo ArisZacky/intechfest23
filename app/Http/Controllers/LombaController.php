@@ -25,7 +25,7 @@ class LombaController extends Controller
         //pada table users dengan mencocokan email pada table peserta dengan table users
         $data_peserta = Peserta::where('email', $user->email)->first();
         //return view lomba dan data dalam bentuk object
-        return view('lomba.wdc', ['user' => $user, 'data_peserta' => $data_peserta]);
+        return view('peserta.lomba.form-wdc', ['user' => $user, 'data_peserta' => $data_peserta]);
     }
 
     public function daftarwdc(Request $request, $id)
@@ -104,10 +104,10 @@ class LombaController extends Controller
 
             DB::commit();
         } catch (\Throwable $th) {
-            throw $th;
             DB::rollBack();
+            throw $th;
         }
-        return redirect('/peserta-wdc');
+        return redirect('/lomba-peserta');
     }
 
     public function transaksiWdc(Request $request, $id)
@@ -166,6 +166,58 @@ class LombaController extends Controller
         }
         // error message jika gagal upload foto
         return redirect()->back()->with('error', 'Gagal mengunggah foto.');
+    }
+
+    public function formProjectWdc(Request $request, $id)
+    {
+        // cari data yang login (gk perlu dirubah)
+        $user = Auth::user();
+        $peserta = Peserta::where('email', $user->email)->first();
+        $namaPeserta = $peserta->nama_lengkap;
+        $idPeserta = $peserta->id_peserta;
+
+        // validasi file (gk perlu diubah)
+        $request->validate([
+            'project' => 'required|mimes:rar,zip|max:100000'
+        ],[
+            'project.mimes' => 'Format file project harus berupa rar atau zip.',
+            'project.max' => 'Ukuran file project maksimal 100 MB.'
+        ]);
+        // simpan project ke storage dan dapatkan pathnya (sesuaikan dengan nama fungsi)
+        $filePath = $this->uploadProjectWdc($request, $namaPeserta);
+        try{
+            DB::beginTransaction();
+            // data yang akan di insert ke table transaksi
+            $data = ['file_project' => $filePath];
+            // insert data ke transaksi dan ambil idnya
+            $idProject = DB::table('project')->insertGetId($data);
+            // data yang akan di update ke table dc yaitu kolom id_transaksi aja
+            $data2 = ['id_project' => $idProject];
+            // update kolom id_transaksi pada table dc (sesuaiin dengan cabang lomba)
+            DB::table('wdc')->where('id_peserta', $idPeserta)->update($data2); 
+            DB::commit();
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            throw $th;
+        }
+
+        // redirect
+        return redirect('/lomba-peserta');
+    }
+
+    public function uploadProjectWdc(Request $request, $namaPeserta)
+    {
+        if ($request->hasFile('project')) {
+            $project = $request->file('project');
+            // format nama dan path project sesuaiin dengan cabang lomba
+            $filename = "WDC_project_" . $namaPeserta .'_'. time() .'.' . $project->getClientOriginalExtension();
+            $path = 'Project/wdc/' . $filename;
+            // simpan project ke storage
+            Storage::disk('public')->put($path, file_get_contents($project));
+            return $filename;
+        }
+        // error message jika gagal upload project
+        return redirect()->back()->with('error', 'Gagal mengunggah project.');
     }
 
 
@@ -365,11 +417,11 @@ class LombaController extends Controller
         if ($request->hasFile('project')) {
             $project = $request->file('project');
             // format nama dan path project sesuaiin dengan cabang lomba
-            $filename = "DC_project_" . $namaPeserta . '.' . $project->getClientOriginalExtension();
-            $path = 'project/dc/' . $filename;
+            $filename = "DC_project_" . $namaPeserta .'_'. time() . '.' . $project->getClientOriginalExtension();
+            $path = 'Project/dc/' . $filename;
             // simpan project ke storage
             Storage::disk('public')->put($path, file_get_contents($project));
-            return $path;
+            return $filename;
         }
         // error message jika gagal upload project
         return redirect()->back()->with('error', 'Gagal mengunggah project.');
@@ -384,7 +436,7 @@ class LombaController extends Controller
         //pada table users dengan mencocokan email pada table peserta dengan table users
         $data_peserta = Peserta::where('email', $user->email)->first();
         //return view lomba dan data dalam bentuk object
-        return view('lomba.ctf', ['user' => $user, 'data_peserta' => $data_peserta]);
+        return view('peserta.lomba.form-ctf', ['user' => $user, 'data_peserta' => $data_peserta]);
     }
 
     public function daftarctf(Request $request, $id)
@@ -468,10 +520,10 @@ class LombaController extends Controller
 
             DB::commit();
         } catch (\Throwable $th) {
-            throw $th;
             DB::rollBack();
+            throw $th;
         }
-        return redirect('/peserta-ctf');
+        return redirect('/lomba-peserta');
     }
 
 
@@ -532,5 +584,57 @@ class LombaController extends Controller
         }
         // error message jika gagal upload foto
         return redirect()->back()->with('error', 'Gagal mengunggah foto.');
+    }
+
+     public function formProjectCtf(Request $request, $id)
+    {
+        // cari data yang login (gk perlu dirubah)
+        $user = Auth::user();
+        $peserta = Peserta::where('email', $user->email)->first();
+        $namaPeserta = $peserta->nama_lengkap;
+        $idPeserta = $peserta->id_peserta;
+
+        // validasi file (gk perlu diubah)
+        $request->validate([
+            'project' => 'required|mimes:pdf'
+        ],[
+            'project.mimes' => 'Format file project harus berupa Pdf.'
+            // 'project.max' => 'Ukuran file project maksimal 100 MB.'
+        ]);
+        // simpan project ke storage dan dapatkan pathnya (sesuaikan dengan nama fungsi)
+        $filePath = $this->uploadProjectDc($request, $namaPeserta);
+        try{
+            DB::beginTransaction();
+            // data yang akan di insert ke table transaksi
+            $data = ['file_project' => $filePath];
+            // insert data ke transaksi dan ambil idnya
+            $idProject = DB::table('project')->insertGetId($data);
+            // data yang akan di update ke table dc yaitu kolom id_transaksi aja
+            $data2 = ['id_project' => $idProject];
+            // update kolom id_transaksi pada table dc (sesuaiin dengan cabang lomba)
+            DB::table('ctf')->where('id_peserta', $idPeserta)->update($data2); 
+            DB::commit();
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            throw $th;
+        }
+
+        // redirect
+        return redirect('/lomba-peserta');
+    }
+
+    public function uploadProjectCtf(Request $request, $namaPeserta)
+    {
+        if ($request->hasFile('project')) {
+            $project = $request->file('project');
+            // format nama dan path project sesuaiin dengan cabang lomba
+            $filename = "CTF_project_" . $namaPeserta .'_'. time() . '.' . $project->getClientOriginalExtension();
+            $path = 'project/ctf/' . $filename;
+            // simpan project ke storage
+            Storage::disk('public')->put($path, file_get_contents($project));
+            return $path;
+        }
+        // error message jika gagal upload project
+        return redirect()->back()->with('error', 'Gagal mengunggah project.');
     }
 }

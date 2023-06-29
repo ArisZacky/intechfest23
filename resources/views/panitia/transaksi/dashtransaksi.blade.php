@@ -73,12 +73,11 @@
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
                                 <th scope="col" class="px-4 py-4">No</th>
-                                <th scope="col" class="px-4 py-3">NAMA PANITIA</th>
+                                <th scope="col" class="px-4 py-3">NAMA PESERTA</th>
                                 <th scope="col" class="px-4 py-3">BUKTI TRANSAKSI</th>
                                 <th scope="col" class="px-4 py-3">VALIDASI</th>
                                 <th scope="col" class="px-4 py-3">
-                                    <!-- <span class="sr-only">Actions</span> -->
-                                    action
+                                    <span class="sr-only">Actions</span>
                                 </th>
                             </tr>
                         </thead>
@@ -87,8 +86,12 @@
                             <tr
                                 class="border-b dark:border-gray-700 {{($loop->iteration % 2 == 0) ? 'bg-slate-100' : ''}}" id="baris{{$loop->iteration}}">
                                 <th class="px-4 py-3">{{$loop->iteration}}</th>
-                                {{-- <td class="px-4 py-3">{{$data->panitia['nama_lengkap']}}</td> --}}
-                                <td class="px-4 py-3">{{$data->foto}}</td>
+                                <td class="px-4 py-3">{{$data->id_peserta}}</td>
+                                <td class="px-4 py-3">
+                                    <a class="" href="{{ asset('storage/'.$data->foto) }}" data-lightbox="example-1" target="__blank" id='link-foto'>
+                                        <img class="w-20 h-20 rounded" src="{{ asset('storage/'.$data->foto) }}" alt="Large avatar" id='foto'>
+                                    </a>
+                                </td>
                                 <td class="px-4 py-3">{{$data->validasi}}</td>
                                 <td class="px-4 py-3">
                                     <!-- <button id="apple-imac-27-dropdown-button"
@@ -226,29 +229,28 @@
             <form action="{{url('/transaksi-update')}}" method="post" enctype="multipart/form-data">
             @csrf
             <input type="hidden" id="edit-id_transaksi" name="id_transaksi">
-                <div class="grid gap-4 mb-4 sm:grid-cols-2">
+            <div class="grid gap-4 mb-4 sm:grid-cols-2">
                     <div>
-                        <label for="edit-nama_panitia" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NAMA PANITIA</label>
-                        <input type="text" name="id_panitia" id="edit-nama_panitia"
+                        <label for="" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NAMA PESERTA</label>
+                        <input type="text" name="" id="edit-"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Masukkan Nama Peserta" required="">
+                            placeholder="Masukkan Nama Peserta..." required="" disabled>
                     </div>
                     <div>
-                        <label for="edit-foto" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">FOTO TRANSAKSI</label>
-                        <input type="text" name="foto" id="edit-foto"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Masukkan Nama Peserta" required="">
+                        <label for="id_transaksi"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">BUKTI TRANSAKSI</label>
+                            <a class="" href="" data-lightbox="example-1" target="__blank" id="a-foto">
+                                <img class="w-20 h-20 rounded" alt="Large avatar" id="edit-foto">
+                            </a>
                     </div>
                     <div>
-                        <label for="edit-validasi"
+                        <label for="validasi"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">VALIDASI</label>
-                        <select name="validasi" id="edit-validasi" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                            <option value="edit-validasi" hidden></option>
-                            <option value="Belum Tervalidasi">Belum Tervalidasi</option>
-                            <option value="Sudah Valid">Sudah Valid</option>
-                            <option value="Tidak Valid">TIdak Valid</option>
-
-                        </select>
+                            <select name="validasi" id="edit-validasi" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                <option value="Belum Tervalidasi">Belum Tervalidasi</option>
+                                <option value="Sudah Valid">Sudah Valid</option>
+                                <option value="Tidak Valid">Tidak Valid</option>
+                            </select>
                     </div>
                 </div>
                 <div class="flex items-center border-t pt-3 justify-end space-x-4">
@@ -308,8 +310,9 @@
         // fungsinya sama seperti hapus hanya beda penamaan
         const td = document.querySelectorAll('#' + baris + ' td');
 
-        document.getElementById('edit-nama_panitia').value = td[0].innerText
-        document.getElementById('edit-foto').value = td[1].innerText
+        var img_src = document.getElementById("foto").src;
+        document.getElementById('a-foto').href = img_src
+        document.getElementById('edit-foto').src = img_src
         document.getElementById('edit-validasi').value = td[2].innerText
 
         document.getElementById('edit-id_transaksi').value = id;
