@@ -357,14 +357,12 @@ class AdminController extends Controller
         if($search){
             $ctf = Ctf::          
             join('peserta', 'ctf.id_peserta', '=', 'peserta.id_peserta')
-            ->leftJoin('project', 'ctf.id_project', '=', 'project.id_project')
             ->select('ctf.*', 'peserta.*', 'project.file_project')
             ->where('peserta.nama_lengkap','LIKE','%'.$search.'%')
             ->paginate();
         }else{
             $ctf = Ctf::          
             join('peserta', 'ctf.id_peserta', '=', 'peserta.id_peserta')
-            ->leftJoin('project', 'ctf.id_project', '=', 'project.id_project')
             ->select('ctf.*', 'peserta.*', 'project.file_project')
             ->paginate(15);    
         }
