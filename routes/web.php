@@ -182,8 +182,14 @@ Route::group(['middleware' => ['auth', 'verified', 'level:admin']], function () 
     // Delete Akun CTF
     Route::post('/delete-ctf', [AdminController::class, 'deleteCtf']); 
 
-    // Menampilkan Halaman Transaksi
-    Route::get('/transaksi-admin', [AdminController::class, 'transaksi']);
+    // Menampilkan Halaman Transaksi WDC
+    Route::get('/transaksi-wdc', [AdminController::class, 'transaksiWdc']);
+    // Menampilkan Halaman Transaksi DC
+    Route::get('/transaksi-dc', [AdminController::class, 'transaksidc']);
+    // Menampilkan Halaman Transaksi CTF
+    Route::get('/transaksi-ctf', [AdminController::class, 'transaksiCtf']);
+    // Menampilkan Halaman Transaksi CT
+    Route::get('/transaksi-ct', [AdminController::class, 'transaksiCt']);
     // Menampilkan Halaman Akun Transaksi Yang terdelete
     Route::get('/deleted-data-transaksi', [AdminController::class, 'getDeletedTransaksi']);
     // Mengembalikan data akun Transaksi (restore)
@@ -215,11 +221,9 @@ Route::group(['middleware' => ['auth', 'verified', 'level:admin']], function () 
     // Menampilkan Halaman Project CTF
     Route::get('/project-ctf', [AdminController::class, 'projectCtf']);
     // Melakukan Download Project WDC
-    Route::get('/project/downloadProjectWDC/{file_name}', [AdminController::class, 'downloadProjectWDC']);
+    Route::get('/project-admin/downloadProjectWDC/{file_name}', [AdminController::class, 'downloadProjectWDC']);
     // Melakukan Download Project DC
-    Route::get('/project/downloadProjectDC/{file_name}', [AdminController::class, 'downloadProjectDC']);
-    // Melakukan Download Project CTF
-    Route::get('/project/downloadProjectCTF/{file_name}', [AdminController::class, 'downloadProjectCTF']);
+    Route::get('/project-admin/downloadProjectDC/{file_name}', [AdminController::class, 'downloadProjectDC']);
     // Melakukan Download Semua Project WDC
     Route::get('/project/downloadAllProjectWDC', [AdminController::class, 'downloadAllProjectWDC']);
     // Melakukan Download Semua Project DC
