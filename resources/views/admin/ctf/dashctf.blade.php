@@ -97,7 +97,8 @@
                                 <td class="px-4 py-3">
                                     <button onclick ="previewIdentitas('baris{{$loop->iteration}}', '{{$data->id_ctf}}')" data-modal-target="imageModal"
                                             data-modal-toggle="imageModal" id='link-foto'>
-                                        <img class="w-20 h-20 rounded" src="{{ asset('storage/'.$data->foto) }}" alt="Large avatar" id='foto'>
+                                            <i id='foto' value="" title="{{ asset('storage/'.$data->foto) }}" style="color: blue">Lihat Foto</i>
+                                        <!-- <img class="w-20 h-20 rounded" src="{{ asset('storage/'.$data->foto) }}" alt="Large avatar" id='foto'> -->
                                     </button>                                    
                                 </td>
                                 <td class="px-4 py-3"><a href="{{url('/project/downloadProject/')}}/{{$data->file_project}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline" target = "__blank">{{$data->file_project}}</a></td>
@@ -335,7 +336,7 @@
 <!-- Image modal -->
 <div id="imageModal" tabindex="-1" aria-hidden="true"
     class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-    <div class="relative p-4 w-full max-w-2xl max-h-full">
+    <div class="relative w-full max-w-7xl max-h-full">
         <!-- Modal content -->
         <div class="relative p-4 text-center bg-white rounded-lg shadow dark:bg-gray-800 sm:p-5">
             <button type="button"
@@ -349,9 +350,14 @@
                 </svg>
                 <span class="sr-only">Close modal</span>
             </button>
-            <div class="flex justify-center items-center space-x-4">
+            <div class="flex justify-center items-center space-x-4 h-screen">
+                <object data="" type="application/pdf" id='preview-foto' width='100%' height='100%'>
+                <p> Yahh... web browser kamu tidak mendukung plugin PDF.
+                Kamu masih bisa mendownloadnya <a href="" id='preview-foto-link' style='color: blue' target='__blank'>disini.</a> </p>
+                </object>
                 <!-- <h2>TES</h2>   -->
-                <img id='preview-foto'>
+                <!-- <iframe id='preview-foto' type="application/pdf" height="600" width="100%" frameborder="0"></iframe> -->
+                <!-- <img id='preview-foto'> -->
             </div>
         </div>
     </div>
@@ -365,8 +371,8 @@
 
         document.getElementById('edit-nama_team').value = td[0].innerText
         document.getElementById('edit-nama_peserta').value = td[1].innerText
-        document.getElementById('edit-anggota1').value = td[3].innerText
-        document.getElementById('edit-anggota2').value = td[5].innerText
+        document.getElementById('edit-anggota1').value = td[2].innerText
+        document.getElementById('edit-anggota2').value = td[3].innerText
 
         document.getElementById('a-foto').href = td[4].querySelector('#foto').src
         document.getElementById('edit-foto').src = td[4].querySelector('#foto').src
@@ -381,7 +387,8 @@
     function previewIdentitas(baris, id){
         const td = document.querySelectorAll('#' + baris + ' td');
 
-        document.getElementById('preview-foto').src = td[4].querySelector('#foto').src;
+        document.getElementById('preview-foto').data = td[4].querySelector('#foto').title;
+        document.getElementById('preview-foto-link').href = td[4].querySelector('#foto').title;
     }
 
 </script>

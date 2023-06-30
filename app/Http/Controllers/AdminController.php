@@ -40,7 +40,7 @@ class AdminController extends Controller
             $panitia = Panitia::where('nama_lengkap','LIKE','%'.$search.'%')
             ->paginate();    
         }else{
-            $panitia = Panitia::all();
+            $panitia = Panitia::paginate(15);
         }
 
         return view('admin.content.panitia', compact(['panitia']));
@@ -96,7 +96,7 @@ class AdminController extends Controller
             $peserta = Peserta::where('nama_lengkap','LIKE','%'.$search.'%')
             ->paginate();    
         }else{
-            $peserta = Peserta::all();
+            $peserta = Peserta::paginate(15);
         }
 
         // return view('admin.setting_akun.peserta.dashpeserta', compact(['peserta']));
@@ -167,7 +167,7 @@ class AdminController extends Controller
             join('peserta', 'ct.id_peserta', '=', 'peserta.id_peserta')
             ->leftJoin('transaksi', 'ct.id_transaksi', '=', 'transaksi.id_transaksi')
             ->select('ct.*', 'peserta.*', 'transaksi.foto AS foto_transaksi')
-            ->get();    
+            ->paginate(15);    
         }
 
         return view('admin.chilltalk.dashct', compact(['ct']));
@@ -234,7 +234,7 @@ class AdminController extends Controller
             ->leftJoin('project', 'wdc.id_project', '=', 'project.id_project')
             // ->leftJoin('transaksi', 'wdc.id_transaksi', '=', 'transaksi.id_transaksi')
             ->select('wdc.*', 'peserta.*', 'project.file_project')
-            ->get();             
+            ->paginate(15);             
         }
 
         return view('admin.wdc.dashwdc', compact(['wdc']));   
@@ -300,7 +300,7 @@ class AdminController extends Controller
             join('peserta', 'dc.id_peserta', '=', 'peserta.id_peserta')
             ->leftJoin('project', 'dc.id_project', '=', 'project.id_project')
             ->select('dc.*', 'peserta.*', 'project.file_project')
-            ->get();    
+            ->paginate(15);    
         }
 
         return view('admin.dc.dashdc', compact(['dc']));
@@ -336,7 +336,7 @@ class AdminController extends Controller
     // MENAMPILKAN DC YANG TER DELETE 
     public function getDeletedDc()
     {
-        $dc = Dc::onlyTrashed()->get();
+        $dc = Dc::onlyTrashed()->paginate(15);
         return view('', compact(['dc']));
     }
     // Restore (Kembalikan data)
@@ -366,7 +366,7 @@ class AdminController extends Controller
             join('peserta', 'ctf.id_peserta', '=', 'peserta.id_peserta')
             ->leftJoin('project', 'ctf.id_project', '=', 'project.id_project')
             ->select('ctf.*', 'peserta.*', 'project.file_project')
-            ->get();    
+            ->paginate(15);    
         }
 
         return view('admin.ctf.dashctf', compact(['ctf']));
@@ -437,7 +437,7 @@ class AdminController extends Controller
             ->join('peserta', 'wdc.id_peserta', '=', 'peserta.id_peserta')
             ->leftjoin('panitia', 'transaksi.id_panitia', '=', 'panitia.id_panitia')
             ->select('transaksi.*', 'peserta.nama_lengkap AS nama_peserta', 'panitia.nama_lengkap AS nama_panitia')
-            ->get();
+            ->paginate(15);
         }
 
         return view('admin.transaksi.dashtransaksi', compact(['transaksi', 'panitia']));
@@ -465,7 +465,7 @@ class AdminController extends Controller
             ->join('peserta', 'dc.id_peserta', '=', 'peserta.id_peserta')
             ->leftjoin('panitia', 'transaksi.id_panitia', '=', 'panitia.id_panitia')
             ->select('transaksi.*', 'peserta.nama_lengkap AS nama_peserta', 'panitia.nama_lengkap AS nama_panitia')
-            ->get();
+            ->paginate(15);
         }
 
         return view('admin.transaksi.dashtransaksi', compact(['transaksi', 'panitia']));
@@ -493,7 +493,7 @@ class AdminController extends Controller
             ->join('peserta', 'ctf.id_peserta', '=', 'peserta.id_peserta')
             ->leftjoin('panitia', 'transaksi.id_panitia', '=', 'panitia.id_panitia')
             ->select('transaksi.*', 'peserta.nama_lengkap AS nama_peserta', 'panitia.nama_lengkap AS nama_panitia')
-            ->get();
+            ->paginate(15);
         }
 
         return view('admin.transaksi.dashtransaksi', compact(['transaksi', 'panitia']));
@@ -521,7 +521,7 @@ class AdminController extends Controller
             ->join('peserta', 'ct.id_peserta', '=', 'peserta.id_peserta')
             ->leftjoin('panitia', 'transaksi.id_panitia', '=', 'panitia.id_panitia')
             ->select('transaksi.*', 'peserta.nama_lengkap AS nama_peserta', 'panitia.nama_lengkap AS nama_panitia')
-            ->get();
+            ->paginate(15);
         }
 
         return view('admin.transaksi.dashtransaksi', compact(['transaksi', 'panitia']));
@@ -591,7 +591,7 @@ class AdminController extends Controller
             ->join('peserta', 'wdc.id_peserta', '=', 'peserta.id_peserta')
             ->select('project.*', 'peserta.*')
             ->where('file_project', 'LIKE', 'WDC%')
-            ->get();    
+            ->paginate(15);    
         }
 
         return view('admin.project.dashprojectwdc', compact(['project']));
@@ -616,7 +616,7 @@ class AdminController extends Controller
             ->join('peserta', 'dc.id_peserta', '=', 'peserta.id_peserta')
             ->select('project.*', 'peserta.*')
             ->where('file_project', 'LIKE', 'DC%')
-            ->get();    
+            ->paginate(15);    
         }
 
         return view('admin.project.dashprojectdc', compact(['project']));
@@ -641,7 +641,7 @@ class AdminController extends Controller
             ->join('peserta', 'ctf.id_peserta', '=', 'peserta.id_peserta')
             ->select('project.*', 'peserta.*')
             ->where('file_project', 'LIKE', 'CTF%')
-            ->get();    
+            ->paginate(15);    
         }
 
         return view('admin.project.dashprojectctf', compact(['project']));
