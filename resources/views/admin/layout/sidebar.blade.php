@@ -108,7 +108,7 @@
             <li>
                 <button type="button"
                     class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                    aria-controls="dropdown-project" data-collapse-toggle="dropdown-project">
+                    aria-controls="dropdown-transaksi" data-collapse-toggle="dropdown-transaksi">
                     <i class="fa-solid fa-money-bills text-gray-500"></i>                  
                     <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item>Data Transaksi</span>
                     <svg sidebar-toggle-item class="w-6 h-6 text-gray-500" fill="currentColor" viewBox="0 0 20 20"
@@ -118,7 +118,7 @@
                             clip-rule="evenodd"></path>
                     </svg>
                 </button>
-                <ul id="dropdown-project" class="py-2 space-y-2">
+                <ul id="dropdown-transaksi" class="py-2 space-y-2">
                     <li>
                         <a href="/transaksi-dc"
                             class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">DC</a>

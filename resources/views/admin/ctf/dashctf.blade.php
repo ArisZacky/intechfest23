@@ -50,14 +50,6 @@
                             </button>
                             <div id="actionsDropdown"
                                 class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
-                                <ul class="py-1 text-sm text-gray-700 dark:text-gray-200"
-                                    aria-labelledby="actionsDropdownButton">
-                                    <li>
-                                        <a href="#"
-                                            class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Hapus
-                                            semua</a>
-                                    </li>
-                                </ul>
                                 <div class="py-1">
                                     <a href="{{url('/ctf-admin/export_excel')}}"
                                         class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Export
@@ -78,7 +70,6 @@
                                 <th scope="col" class="px-4 py-3">NAMA ANGGOTA 1</th>
                                 <th scope="col" class="px-4 py-3">NAMA ANGGOTA 2</th>
                                 <th scope="col" class="px-4 py-3">FOTO IDENTITAS</th>
-                                <th scope="col" class="px-4 py-3">PROJECT</th>
                                 <th scope="col" class="px-4 py-3">VALIDASI</th>
                                 <th scope="col" class="px-4 py-3">
                                     <span class="sr-only">Actions</span>
@@ -101,7 +92,6 @@
                                         <!-- <img class="w-20 h-20 rounded" src="{{ asset('storage/'.$data->foto) }}" alt="Large avatar" id='foto'> -->
                                     </button>                                    
                                 </td>
-                                <td class="px-4 py-3"><a href="{{url('/project/downloadProject/')}}/{{$data->file_project}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline" target = "__blank">{{$data->file_project}}</a></td>
                                 <td class="px-4 py-3">{{$data->validasi}}</td>
                                 <td class="px-4 py-3">
                                     <!-- <button id="apple-imac-27-dropdown-button"
