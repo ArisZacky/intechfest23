@@ -132,7 +132,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="flex justify-end">
+                <div class="p-4">
                     {{ $panitia->links() }}
                 </div>
             </div>

@@ -138,7 +138,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="flex justify-end">
+                <div class="p-4">
                     {{ $transaksi->links() }}
                 </div>
             </div>

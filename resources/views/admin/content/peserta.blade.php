@@ -137,7 +137,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="flex justify-end">
+                <div class="p-4">
                     {{ $peserta->links() }}
                 </div>
             </div>
