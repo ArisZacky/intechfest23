@@ -75,12 +75,9 @@
                                 <th scope="col" class="px-4 py-4">No</th>
                                 <th scope="col" class="px-4 py-3">NAMA TEAM</th>
                                 <th scope="col" class="px-4 py-3">NAMA LEADER</th>
-                                <th scope="col" class="px-4 py-3">NOMER PESERTA</th>
                                 <th scope="col" class="px-4 py-3">NAMA ANGGOTA 1</th>
                                 <th scope="col" class="px-4 py-3">NAMA ANGGOTA 2</th>
                                 <th scope="col" class="px-4 py-3">FOTO IDENTITAS</th>
-                                <th scope="col" class="px-4 py-3">BUKTI TRANSAKSI</th>
-                                <!-- <th scope="col" class="px-4 py-3">PROJECT</th> -->
                                 <th scope="col" class="px-4 py-3">VALIDASI</th>
                                 <th scope="col" class="px-4 py-3">
                                     <span class="sr-only">Actions</span>
@@ -94,20 +91,13 @@
                                 <th class="px-4 py-3">{{$loop->iteration}}</th>
                                 <td class="px-4 py-3">{{$data->nama_team}}</td>
                                 <td class="px-4 py-3">{{$data->nama_lengkap}}</td>
-                                <td class="px-4 py-3">{{$data->nomer_peserta}}</td>
                                 <td class="px-4 py-3">{{$data->anggota1}}</td>
                                 <td class="px-4 py-3">{{$data->anggota2}}</td>
                                 <td class="px-4 py-3">
-                                    <a class="" href="{{ asset('storage/Identitas/ctf/'.$data->foto) }}" data-lightbox="example-1" target="__blank" id='link-foto'>
-                                        {{($data->foto) }}
+                                    <a class="" href="{{ asset('storage/'.$data->foto) }}" data-lightbox="example-1" target="__blank" id='link-foto'>
+                                        <h1 class="text-sky-500 italic font-weight-bold hover:underline" value="{{$data->foto}}" id="foto">Lihat Foto</h1>
                                     </a>                                    
                                 </td>
-                                <td class="px-4 py-3">
-                                    <a class="" href="{{ asset('storage/'.$data->foto_transaksi) }}" data-lightbox="example-1" target="__blank" id='link-foto_transaksi'>
-                                        <img class="w-20 h-20 rounded" src="{{ asset('storage/'.$data->foto_transaksi) }}" alt="Large avatar" id='foto_transaksi'>
-                                    </a>
-                                </td>
-                                <!-- <td class="px-4 py-3"><a href="{{url('/ctf-panitia/downloadCtf/')}}/{{$data->file_project}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline" target = "__blank">{{$data->file_project}}</a></td> -->
                                 <td class="px-4 py-3">{{$data->validasi}}</td>
                                 <td class="px-4 py-3">
                                     <!-- <button id="apple-imac-27-dropdown-button"
@@ -270,18 +260,11 @@
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                         placeholder="Masukkan Nama Peserta..." required="" disabled>
                     </div>
-                    <!-- <div>
+                    <div>
                         <label for="foto"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">FOTO IDENTITAS</label>
-                            <a class="" href="" data-lightbox="example-1" target="__blank" id='a-foto'>
-                                <img class="w-20 h-20 rounded" alt="Large avatar" id="edit-foto">
-                            </a>    
-                    </div> -->
-                    <div>
-                        <label for="id_transaksi"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">BUKTI TRANSAKSI</label>
-                            <a class="" href="" data-lightbox="example-1" target="__blank" id="a-foto_transaksi">
-                                <img class="w-20 h-20 rounded" alt="Large avatar" id="edit-foto_transaksi">
+                            <a class="" href="" data-lightbox="example-1" target="__blank" id="a-foto">
+                                <h1 class="text-sky-500 italic font-weight-bold hover:underline" id="edit-foto">Lihat Foto</h1>
                             </a>
                     </div>
                     <div>
@@ -345,23 +328,22 @@
 </div>
 <!-- end delete modal -->
 
+
+
 <script>
     function edit(baris, id) {
         // fungsinya sama seperti hapus hanya beda penamaan
         const td = document.querySelectorAll('#' + baris + ' td');
 
-        // var img_src = document.getElementById("foto").href;
-        var img_src_transaksi = document.getElementById("foto_transaksi").src;
         document.getElementById('edit-nama_team').value = td[0].innerText
         document.getElementById('edit-nama_peserta').value = td[1].innerText
-        document.getElementById('edit-anggota1').value = td[3].innerText
-        document.getElementById('edit-anggota2').value = td[4].innerText
-        // document.getElementById('a-foto').href = img_src
-        // document.getElementById('edit-foto').src = img_src
-        document.getElementById('a-foto_transaksi').href = img_src_transaksi
-        document.getElementById('edit-foto_transaksi').src = img_src_transaksi
+        document.getElementById('edit-anggota1').value = td[2].innerText
+        document.getElementById('edit-anggota2').value = td[3].innerText
 
-        document.getElementById('edit-validasi').value = td[7].innerText
+        document.getElementById('a-foto').href = td[4].querySelector('#link-foto').href;
+        document.getElementById('edit-foto').value = td[4].querySelector('#foto').value;
+
+        document.getElementById('edit-validasi').value = td[5].innerText
 
         document.getElementById('edit-id_ctf').value = id;
     }
@@ -370,6 +352,8 @@
 
         document.getElementById('hapus-id_ctf').value = id;
     }
+
+
 </script>
 
 @endsection

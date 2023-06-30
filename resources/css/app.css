@@ -2,6 +2,134 @@
 @tailwind components;
 @tailwind utilities;
 
+
+.card-back {
+    transform: rotateY(-180deg);
+    transition: all 1s;
+}
+
+.card-front, .card-custom {
+    transition: all 1s;
+}
+
+.card-flip:hover .card-back {
+    transform: rotateY(0deg);
+    opacity: 1;
+}
+
+.card-flip:hover .card-front {
+    transform: translateY(-50%);
+    opacity: 0;
+}
+
+.card-flip:hover .card-custom {
+    transform: rotateY(180deg);
+}
+/* button slides animation with pseuodo element ::before */
+.btn-slide::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -30px;
+    width: 0%;
+    height: 100%;
+    transform: skew(50deg);
+    background: #0F6E80;
+    transition: all 1s;
+    z-index: 1;
+}
+.btn-slide:hover::before {
+    width: 200%;
+}
+
+/* border bawah */
+.btn-border::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: #50BFD0;
+    transition: all 0.5s;
+    z-index: 1;
+}
+
+.btn-border-wrapper:hover .btn-border::after {
+    width: 100%;
+}
+
+/* border kanan */
+.btn-border::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 2px;
+    height: 0;
+    background: #50BFD0;
+    transition: all 0.5s;
+    z-index: 1;
+    transition-delay: 0.5s;
+}
+
+.btn-border-wrapper:hover .btn-border::before {
+    height: 100%;
+}
+
+/* border atas */
+.span-border::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0%;
+    height: 2px;
+    background: #50BFD0;
+    transition: all 0.5s;
+    z-index: 1;
+}
+
+.btn-border-wrapper:hover .span-border::after {
+    width: 100%;
+}
+
+
+.btn-border-wrapper:hover a {
+    animation: border-animation 0.9s forwards step-end;
+}
+
+@keyframes border-animation {
+    100% {
+        border-color: rgba(255, 255, 255, 0);
+        outline-color: rgba(255, 255, 255, 0);
+    }
+}
+
+/* border kiri */
+.span-border::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 0;
+    background: #50BFD0;
+    transition: all 0.5s;
+    z-index: 1;
+    transition-delay: 0.5s;
+}
+
+.btn-border-wrapper:hover .span-border::before {
+    height: 100%;
+}
+
+/* text */
+.btn-border-wrapper:hover span {
+    color: #0F6E80;
+}
+
+/*  */
 .ivy {
     width: 20%;
     position: absolute;

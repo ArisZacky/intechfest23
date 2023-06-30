@@ -265,8 +265,6 @@ Route::group(['middleware' => ['auth', 'verified', 'level:panitia']], function (
     Route::post('/wdc-update', [PanitiaController::class, 'update_wdc']);
     // Export Excel Wdc
     Route::get('/wdc-panitia/export_excel', [PanitiaController::class, 'wdcExportExcel']);
-    // Download Project WDC
-    Route::get('/wdc-panitia/downloadWdc/{file_name}', [PanitiaController::class, 'downloadWdc']);
 
 // DC ================================================================================================================
     // Menampilkna Halaman DC
