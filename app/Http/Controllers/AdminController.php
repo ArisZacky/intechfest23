@@ -414,8 +414,8 @@ class AdminController extends Controller
     // CTF END============================================================
 
     // TRANSTAKSI START============================================================
-    // halaman transaksi
-    public function transaksi(Request $request)
+    // halaman transaksi wdc
+    public function transaksiWdc(Request $request)
     {
         // MENDAPATKAN REQUEST SEARCH
         $search = $request->search;
@@ -425,14 +425,100 @@ class AdminController extends Controller
 
         if($search){
             $transaksi = Transaksi::
-            join('peserta', 'transaksi.id_peserta', '=', 'peserta.id_peserta')
+            join('wdc', 'transaksi.id_transaksi', '=', 'wdc.id_transaksi')
+            ->join('peserta', 'wdc.id_peserta', '=', 'peserta.id_peserta')
             ->leftjoin('panitia', 'transaksi.id_panitia', '=', 'panitia.id_panitia')
             ->select('transaksi.*', 'peserta.nama_lengkap AS nama_peserta', 'panitia.nama_lengkap AS nama_panitia')
             ->where('peserta.nama_lengkap','LIKE','%'.$search.'%')
             ->paginate();
         }else{
             $transaksi = Transaksi::
-            join('peserta', 'transaksi.id_peserta', '=', 'peserta.id_peserta')
+            join('wdc', 'transaksi.id_transaksi', '=', 'wdc.id_transaksi')
+            ->join('peserta', 'wdc.id_peserta', '=', 'peserta.id_peserta')
+            ->leftjoin('panitia', 'transaksi.id_panitia', '=', 'panitia.id_panitia')
+            ->select('transaksi.*', 'peserta.nama_lengkap AS nama_peserta', 'panitia.nama_lengkap AS nama_panitia')
+            ->get();
+        }
+
+        return view('admin.transaksi.dashtransaksi', compact(['transaksi', 'panitia']));
+    }
+    // halaman transaksi dc
+    public function transaksiDc(Request $request)
+    {
+        // MENDAPATKAN REQUEST SEARCH
+        $search = $request->search;
+
+        // MENDAPATKAN DATA PANITIA YANG AKAN MEMVERIFIKASI
+        $panitia = Panitia::all();
+
+        if($search){
+            $transaksi = Transaksi::
+            join('dc', 'transaksi.id_transaksi', '=', 'dc.id_transaksi')
+            ->join('peserta', 'dc.id_peserta', '=', 'peserta.id_peserta')
+            ->leftjoin('panitia', 'transaksi.id_panitia', '=', 'panitia.id_panitia')
+            ->select('transaksi.*', 'peserta.nama_lengkap AS nama_peserta', 'panitia.nama_lengkap AS nama_panitia')
+            ->where('peserta.nama_lengkap','LIKE','%'.$search.'%')
+            ->paginate();
+        }else{
+            $transaksi = Transaksi::
+            join('dc', 'transaksi.id_transaksi', '=', 'dc.id_transaksi')
+            ->join('peserta', 'dc.id_peserta', '=', 'peserta.id_peserta')
+            ->leftjoin('panitia', 'transaksi.id_panitia', '=', 'panitia.id_panitia')
+            ->select('transaksi.*', 'peserta.nama_lengkap AS nama_peserta', 'panitia.nama_lengkap AS nama_panitia')
+            ->get();
+        }
+
+        return view('admin.transaksi.dashtransaksi', compact(['transaksi', 'panitia']));
+    }
+    // halaman transaksi ctf
+    public function transaksiCtf(Request $request)
+    {
+        // MENDAPATKAN REQUEST SEARCH
+        $search = $request->search;
+
+        // MENDAPATKAN DATA PANITIA YANG AKAN MEMVERIFIKASI
+        $panitia = Panitia::all();
+
+        if($search){
+            $transaksi = Transaksi::
+            join('ctf', 'transaksi.id_transaksi', '=', 'ctf.id_transaksi')
+            ->join('peserta', 'ctf.id_peserta', '=', 'peserta.id_peserta')
+            ->leftjoin('panitia', 'transaksi.id_panitia', '=', 'panitia.id_panitia')
+            ->select('transaksi.*', 'peserta.nama_lengkap AS nama_peserta', 'panitia.nama_lengkap AS nama_panitia')
+            ->where('peserta.nama_lengkap','LIKE','%'.$search.'%')
+            ->paginate();
+        }else{
+            $transaksi = Transaksi::
+            join('ctf', 'transaksi.id_transaksi', '=', 'ctf.id_transaksi')
+            ->join('peserta', 'ctf.id_peserta', '=', 'peserta.id_peserta')
+            ->leftjoin('panitia', 'transaksi.id_panitia', '=', 'panitia.id_panitia')
+            ->select('transaksi.*', 'peserta.nama_lengkap AS nama_peserta', 'panitia.nama_lengkap AS nama_panitia')
+            ->get();
+        }
+
+        return view('admin.transaksi.dashtransaksi', compact(['transaksi', 'panitia']));
+    }
+    // halaman transaksi ct
+    public function transaksiCt(Request $request)
+    {
+        // MENDAPATKAN REQUEST SEARCH
+        $search = $request->search;
+
+        // MENDAPATKAN DATA PANITIA YANG AKAN MEMVERIFIKASI
+        $panitia = Panitia::all();
+
+        if($search){
+            $transaksi = Transaksi::
+            join('ct', 'transaksi.id_transaksi', '=', 'ct.id_transaksi')
+            ->join('peserta', 'ct.id_peserta', '=', 'peserta.id_peserta')
+            ->leftjoin('panitia', 'transaksi.id_panitia', '=', 'panitia.id_panitia')
+            ->select('transaksi.*', 'peserta.nama_lengkap AS nama_peserta', 'panitia.nama_lengkap AS nama_panitia')
+            ->where('peserta.nama_lengkap','LIKE','%'.$search.'%')
+            ->paginate();
+        }else{
+            $transaksi = Transaksi::
+            join('ct', 'transaksi.id_transaksi', '=', 'ct.id_transaksi')
+            ->join('peserta', 'ct.id_peserta', '=', 'peserta.id_peserta')
             ->leftjoin('panitia', 'transaksi.id_panitia', '=', 'panitia.id_panitia')
             ->select('transaksi.*', 'peserta.nama_lengkap AS nama_peserta', 'panitia.nama_lengkap AS nama_panitia')
             ->get();
@@ -562,13 +648,13 @@ class AdminController extends Controller
     }
     // DOWNLOAD PROJECT WDC SATU SATU
     function downloadProjectWDC($file_name){
-        $file = Storage::download("public/Project/WDC/".$file_name);  
+        $file = response()->download(public_path('storage/Project/wdc/'.$file_name));  
         return $file;
     }
 
     // DOWNLOAD PROJECT DC SATU SATU
     function downloadProjectDC($file_name){
-        $file = Storage::download("public/Project/DC/".$file_name);  
+        $file = response()->download(public_path('storage/Project/dc/'.$file_name));
         return $file;
     }
 
@@ -588,10 +674,10 @@ class AdminController extends Controller
         $fileName = 'ProjectWDC.zip';
      
         // mendeklarasikan path yang akan di download
-        $path = public_path('storage/Project/WDC');
+        $path = public_path('storage/Project/wdc');
 
         // cek jika variabel yang berisi object filearchive tadi berjalan dan membuat file zip
-        if ($zip->open(public_path($fileName), ZipArchive::CREATE) === TRUE)
+        if ($zip->open(public_path('storage/'.$fileName), ZipArchive::CREATE) === TRUE)
         {
             // mengambil file file yang ada di path
             $files = File::files($path);
@@ -608,7 +694,7 @@ class AdminController extends Controller
         }
         
         // fucntion mereturn response yang mendownload zip tadi
-        return response()->download(public_path($fileName));
+        return response()->download(public_path('storage/'.$fileName));
     }
 
     // DOWNLOAD ALL PROJECT DC
@@ -621,10 +707,10 @@ class AdminController extends Controller
         $fileName = 'ProjectDC.zip';
         
         // mendeklarasikan path yang akan di download
-        $path = public_path('storage/Project/DC');
+        $path = public_path('storage/Project/dc');
 
         // cek jika variabel yang berisi object filearchive tadi berjalan dan membuat file zip
-        if ($zip->open(public_path($fileName), ZipArchive::CREATE) === TRUE)
+        if ($zip->open(public_path('storage/'.$fileName), ZipArchive::CREATE) === TRUE)
         {
             // mengambil file file yang ada di path
             $files = File::files($path);
@@ -641,7 +727,7 @@ class AdminController extends Controller
         }
         
         // fucntion mereturn response yang mendownload zip tadi
-        return response()->download(public_path($fileName));
+        return response()->download(public_path('storage/'.$fileName));
     }
 
     // // DOWNLOAD ALL PROJECT CTF
