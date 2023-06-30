@@ -78,14 +78,14 @@
                             </div>
                         </div>
                     </li>
-                    <li>
+                    <!-- <li>
                         <div class="w-full p-4 text-gray-900 bg-gray-100 border border-gray-300 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400"
                             role="alert">
                             <div class="flex items-center justify-between">
                                 <h3 class="font-medium">5. Pengumpulan Project</h3>
                             </div>
                         </div>
-                    </li>
+                    </li> -->
                 </ol>
 
                 <form action="/daftar-ctf/{{ $data_peserta->id_peserta }}" method="POST" enctype="multipart/form-data"
