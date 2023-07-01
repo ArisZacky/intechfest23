@@ -424,19 +424,19 @@
             {{-- wdc --}}
             <div
                 class="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 md:col-span-2 md:col-start-3 xl:col-span-1 xl:col-start-2">
-                <a href="#">
+                <a href="/detail-wdc">
                     <img class="rounded-t-lg w-1/3 md:w-1/2 mx-auto" src="{{asset('images/logo/WDC.png')}}"
                         alt="logo dc" />
                 </a>
                 <div class="p-5">
-                    <a href="#" class="text-center">
+                    <a href="/detail-wdc" class="text-center">
                         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Web Design
                             Competition</h5>
                     </a>
                     <p class="mb-3 font-normal text-gray-600 dark:text-gray-400 text-justify">Politeknik Negeri Bali Web
                         Design Competition (PNBWDC) merupakan kegiatan perlombaan yang berfokus dalam merancang serta
                         membuat sebuah website yang memiliki peran sangat penting di era modern ini.</p>
-                    <a href="#"
+                    <a href="/detail-wdc"
                         class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-primary-lightblue rounded-lg hover:bg-primary-blue focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                         Baca Selengkapnya
                         <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20"
@@ -451,12 +451,12 @@
             {{-- ctf --}}
             <div
                 class="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 md:col-start-2 md:col-span-2 xl:col-span-1 xl:col-start-3">
-                <a href="#">
+                <a href="/detail-ctf">
                     <img class="rounded-t-lg w-1/3 md:w-1/2 mx-auto" src="{{asset('images/logo/CTF.png')}}"
                         alt="logo dc" />
                 </a>
                 <div class="p-5">
-                    <a href="#" class="text-center">
+                    <a href="/detail-ctf" class="text-center">
                         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Capture The
                             Flag</h5>
                     </a>
@@ -465,7 +465,7 @@
                         Flags (PNBCTF) Merupakan Kegiatan perlombaan yang akan berfokus dalam mencermati permasalahan
                         keamanan jaringan,
                         keamanan komputer, dan keamanan informasi.</p>
-                    <a href="#"
+                    <a href="/detail-ctf"
                         class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-primary-lightblue rounded-lg hover:bg-primary-blue focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                         Baca Selengkapnya
                         <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20"

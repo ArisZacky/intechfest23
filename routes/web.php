@@ -34,7 +34,13 @@ Route::get('/', function(){
 Route::get('/detail-dc', function(){
     return view('landing.content.dc');
 });
-
+Route::get('/detail-wdc', function(){
+    return view('landing.content.wdc');
+});
+Route::get('/detail-ctf', function(){
+    return view('landing.content.ctf');
+});
+  
 // Login Routes
 Route::get('/login', function () {
     return view('login');
