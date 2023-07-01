@@ -9,11 +9,23 @@
     });
 </script>
 <script>
-    var splide = new Splide( '.splide', {
-  type   : 'loop',
-  perPage: 3,
-  focus  : 'center',
-} );
-
-splide.mount();
+document.addEventListener( 'DOMContentLoaded', function () {
+  new Splide('.splide', {
+    type: 'loop',
+    perPage: 5,
+    focus: 'center',
+    autoplay: true,
+    interval: 3000,
+    updateOnMove: true,
+    pagination: false,
+    breakpoints: {
+      640: {
+        perPage: 2
+      },
+      768: {
+        perPage: 3
+      }
+    }
+  }).mount();
+});
 </script>

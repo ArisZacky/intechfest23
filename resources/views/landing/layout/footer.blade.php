@@ -46,16 +46,16 @@
                 <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Section</h2>
                 <ul class="text-gray-600 dark:text-gray-400">
                     <li class="mb-4">
-                        <a href="https://github.com/themesberg/flowbite" class="hover:underline ">Home</a>
+                        <a href="#home" class="hover:underline ">Home</a>
                     </li>
                     <li class="mb-4">
-                        <a href="https://discord.gg/4eeurUVvTy" class="hover:underline">Lomba</a>
+                        <a href="#lomba" class="hover:underline">Lomba</a>
                     </li>
                     <li class="mb-4">
-                        <a href="https://discord.gg/4eeurUVvTy" class="hover:underline">ChillTalks</a>
+                        <a href="#chilltalks" class="hover:underline">ChillTalks</a>
                     </li>
                     <li>
-                        <a href="https://discord.gg/4eeurUVvTy" class="hover:underline">FAQ</a>
+                        <a href="#faq" class="hover:underline">FAQ</a>
                     </li>
                 </ul>
             </div>

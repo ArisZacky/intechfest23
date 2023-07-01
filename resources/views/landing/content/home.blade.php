@@ -343,28 +343,22 @@
             <div class="splide__track">
                 <ul class="splide__list">
                     <li class="splide__slide">
-                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png" height="100" width="250"
-                            alt="" />
+                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png" alt="" />
                     </li>
-                    <li class="splide__slide">
-                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png" height="100" width="250"
-                            alt="" />
+                    <li class="splide__slide mx-auto">
+                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png" alt="" />
                     </li>
-                    <li class="splide__slide">
-                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png" height="100" width="250"
-                            alt="" />
+                    <li class="splide__slide mx-auto">
+                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png" alt="" />
                     </li>
-                    <li class="splide__slide">
-                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png" height="100" width="250"
-                            alt="" />
+                    <li class="splide__slide mx-auto">
+                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png" alt="" />
                     </li>
-                    <li class="splide__slide">
-                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/5.png" height="100" width="250"
-                            alt="" />
+                    <li class="splide__slide mx-auto">
+                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/5.png" alt="" />
                     </li>
-                    <li class="splide__slide">
-                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png" height="100" width="250"
-                            alt="" />
+                    <li class="splide__slide mx-auto">
+                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png" alt="" />
                     </li>
                 </ul>
             </div>
@@ -372,112 +366,133 @@
     </div>
 </section>
 
-
-<script>
-    new Splide('.splide', {
-  type: 'slide',
-  pagination: false
-}).mount();
-</script>
-
 {{-- lomba --}}
 <section id="lomba" class="bg-white dark:bg-gray-900 mt-16" data-aos="fade-up" data-aos-duration="1000">
     <div class="container px-6 py-10 mx-auto">
         <h1 class="text-2xl text-center font-semibold text-gray-800 lg:text-4xl dark:text-white">Cabang Lomba
         </h1>
-        <div class="grid grid-cols-1 gap-8 mt-8 xl:mt-12 xl:gap-12 md:grid-cols-4 xl:grid-cols-3 items-center">
+        <div class="grid grid-cols-1 gap-8 mt-8 xl:mt-12 xl:gap-12 lg:grid-cols-4 xl:grid-cols-3 items-center">
             {{-- dc --}}
-            <div
-                class="card-flip bg-white border border-gray-200 rounded-lg shadow relative md:col-span-2 xl:col-span-1 group w-96 h-[270px]">
-                <div class="w-full absolute card-front top-1/2 -translate-y-1/2">
-                    <div class="card-custom">
-                        <img class="rounded-t-lg w-1/3 md:w-1/2 mx-auto " src="{{asset('images/logo/CD.png')}}"
-                            alt="logo dc" />
-                            <h5 class="mb-2 text-2xl text-center font-bold tracking-tight text-gray-900 dark:text-white">Design
-                                Challenge</h5>
+            <div class="card-flip lg:col-span-2 xl:col-span-1 mx-auto">
+                <div
+                    class="card-body bg-white border border-gray-200 rounded-lg shadow relative md:col-span-2 xl:col-span-1 group w-96 h-[270px]">
+                    <div class="w-full absolute card-front top-1/2 -translate-y-1/2">
+                        <div class="card-front-sub">
+                            <img class="rounded-t-lg w-1/3 md:w-1/2 mx-auto " src="{{asset('images/logo/CD.png')}}"
+                                alt="logo dc" />
+                            <h5
+                                class="mb-2 text-2xl text-center font-bold tracking-tight text-gray-900 dark:text-white">
+                                Design Challenge</h5>
                             <p class="mb-3 font-normal text-center text-gray-600 dark:text-gray-400">Rp. 75.000</p>
+                        </div>
                     </div>
-                </div>
-                <div class="p-5 absolute left-0 top-0 card-back opacity-0">
-                    <a href="/detail-dc" class="text-center">
-                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Design
-                            Challenge</h5>
-                    </a>
-                    <p class="mb-3 font-normal text-justify text-gray-600 dark:text-gray-400">Politeknik Negeri Bali
-                        Design Challenge (PNBDC) merupakan kegiatan perlombaan yang akan berfokus dalam pembuatan
-                        sebuah
-                        desain UI/UX serta penyelesain suatu masalah yang nantinya akan dituangkan dalam sebuah
-                        desain.
-                    </p>
-                    <a href="/detail-dc"
-                        class="btn-slide relative overflow-hidden inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-primary-lightblue rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300">
-                        <span class="z-10">Baca Selengkapnya</span>
-                        <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1 z-10" fill="currentColor" viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                    </a>
+                    <div
+                        class="card-text p-5 absolute left-0 top-0 card-back opacity-0 bg-primary-lightblue rounded-lg w-96 h-[270px]">
+                        <div class="card-back-sub">
+                            <h5 class="mb-2 text-center text-2xl font-bold tracking-tight text-white">Design Challenge
+                            </h5>
+                            <p class="mb-3 font-normal text-justify text-justif text-gray-50">Politeknik Negeri Bali
+                                Design Challenge (PNBDC) merupakan kegiatan perlombaan yang akan berfokus dalam
+                                pembuatan
+                                sebuah
+                                desain UI/UX serta<span class="xs-appear">...</span><span class="xs-hidden">penyelesain
+                                    suatu masalah yang nantinya akan dituangkan dalam sebuah desain.</span>
+                            </p>
+                            <a href="/detail-dc"
+                                class="btn-slide relative overflow-hidden border inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-primary-lightblue rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300">
+                                <span class="z-10">Baca Selengkapnya</span>
+                                <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1 z-10" fill="currentColor"
+                                    viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
             {{-- wdc --}}
-            <div
-                class="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 md:col-span-2 md:col-start-3 xl:col-span-1 xl:col-start-2">
-                <a href="/detail-wdc">
-                    <img class="rounded-t-lg w-1/3 md:w-1/2 mx-auto" src="{{asset('images/logo/WDC.png')}}"
-                        alt="logo dc" />
-                </a>
-                <div class="p-5">
-                    <a href="/detail-wdc" class="text-center">
-                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Web Design
-                            Competition</h5>
-                    </a>
-                    <p class="mb-3 font-normal text-gray-600 dark:text-gray-400 text-justify">Politeknik Negeri Bali Web
-                        Design Competition (PNBWDC) merupakan kegiatan perlombaan yang berfokus dalam merancang serta
-                        membuat sebuah website yang memiliki peran sangat penting di era modern ini.</p>
-                    <a href="/detail-wdc"
-                        class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-primary-lightblue rounded-lg hover:bg-primary-blue focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                        Baca Selengkapnya
-                        <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                    </a>
+            <div class="card-flip lg:col-span-2 lg:col-start-3 xl:col-start-2 xl:col-span-1 mx-auto">
+                <div
+                    class="card-body bg-white border border-gray-200 rounded-lg shadow relative md:col-span-2 xl:col-span-1 group w-96 h-[270px]">
+                    <div class="w-full absolute card-front top-1/2 -translate-y-1/2">
+                        <div class="card-front-sub">
+                            <img class="rounded-t-lg w-1/3 md:w-1/2 mx-auto " src="{{asset('images/logo/WDC.png')}}"
+                                alt="logo dc" />
+                            <h5
+                                class="mb-2 text-wdc text-center font-bold tracking-tight text-gray-900 dark:text-white">
+                                Web
+                                Design Competition</h5>
+                            <p class="mb-3 font-normal text-center text-gray-600 dark:text-gray-400">Rp. 75.000</p>
+                        </div>
+                    </div>
+                    <div
+                        class="p-5 card-text absolute left-0 top-0 card-back opacity-0 bg-primary-lightblue rounded-lg w-96 h-[270px]">
+                        <div class="card-back-sub">
+                            <h5 class="mb-2 text-center text-2xl font-bold tracking-tight text-white">Web Design
+                                Competition
+                            </h5>
+                            <p class="mb-3 text-justify font-normal text-justif text-gray-50">Politeknik Negeri Bali Web
+                                Design Competition (PNBWDC) merupakan kegiatan perlombaan yang berfokus dalam merancang
+                                serta<span class="xs-appear">...</span><span class="xs-hidden">membuat sebuah website
+                                    yang memiliki peran sangat penting di era modern ini.</span>
+                            </p>
+                            <a href="/detail-wdc"
+                                class="btn-slide relative overflow-hidden border inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-primary-lightblue rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300">
+                                <span class="z-10">Baca Selengkapnya</span>
+                                <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1 z-10" fill="currentColor"
+                                    viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
             {{-- ctf --}}
-            <div
-                class="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 md:col-start-2 md:col-span-2 xl:col-span-1 xl:col-start-3">
-                <a href="/detail-ctf">
-                    <img class="rounded-t-lg w-1/3 md:w-1/2 mx-auto" src="{{asset('images/logo/CTF.png')}}"
-                        alt="logo dc" />
-                </a>
-                <div class="p-5">
-                    <a href="/detail-ctf" class="text-center">
-                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Capture The
-                            Flag</h5>
-                    </a>
-                    <p class="mb-3 font-normal text-gray-600 dark:text-gray-400 text-justify">Politeknik Negeri Bali
-                        Capture The
-                        Flags (PNBCTF) Merupakan Kegiatan perlombaan yang akan berfokus dalam mencermati permasalahan
-                        keamanan jaringan,
-                        keamanan komputer, dan keamanan informasi.</p>
-                    <a href="/detail-ctf"
-                        class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-primary-lightblue rounded-lg hover:bg-primary-blue focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                        Baca Selengkapnya
-                        <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                    </a>
+            <div class="card-flip lg:col-start-2 lg:col-span-2 xl:col-span-1 xl:col-start-3 mx-auto">
+                <div
+                    class="card-body bg-white border border-gray-200 rounded-lg shadow relative md:col-span-2 xl:col-span-1 group w-96 h-[270px]">
+                    <div class="w-full absolute card-front top-1/2 -translate-y-1/2">
+                        <div class="card-front-sub">
+                            <img class="rounded-t-lg w-1/3 md:w-1/2 mx-auto " src="{{asset('images/logo/CTF.png')}}"
+                                alt="logo dc" />
+                            <h5
+                                class="mb-2 text-2xl text-center font-bold tracking-tight text-gray-900 dark:text-white">
+                                Capture The Flag</h5>
+                            <p class="mb-3 font-normal text-center text-gray-600 dark:text-gray-400">Rp. 100.000</p>
+                        </div>
+                    </div>
+                    <div
+                        class="p-5 absolute left-0 top-0 card-back opacity-0 bg-primary-lightblue rounded-lg w-96 h-[270px]">
+                        <div class="card-back-sub">
+                            <a href="/detail-dc" class="text-center">
+                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-white">Capture The Flag</h5>
+                            </a>
+                            <p class="mb-3 font-normal text-justif text-gray-50">
+                                Politeknik Negeri Bali Capture The
+                                Flags (PNBCTF) Merupakan Kegiatan perlombaan yang akan berfokus dalam mencermati
+                                permasalahan
+                                keamanan jaringan,
+                                keamanan komputer, dan keamanan informasi.
+                            </p>
+                            <a href="/detail-ctf"
+                                class="btn-slide relative overflow-hidden border inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-primary-lightblue rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300">
+                                <span class="z-10">Baca Selengkapnya</span>
+                                <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1 z-10" fill="currentColor"
+                                    viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
-
         </div>
     </div>
 </section>
@@ -509,8 +524,8 @@
     <div class="container mx-auto flex px-5 mb-24 md:flex-row flex-col items-center">
         <div
             class="order-2 md:order-1 lg:flex-grow md:w-full lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
-            <h1 class="title-font sm:text-3xl text-2xl mb-4 font-extrabold text-gray-900">Dapatkan informasi tentang
-                kami</h1>
+            <h1 class="title-font sm:text-3xl text-2xl mb-4 font-extrabold text-gray-900">Dapatkan Informasi Tentang
+                Kami</h1>
             <p class="mb-8 leading-relaxed text-justify">
                 Kunjungi website kami dan ikuti akun Instagram resmi kami untuk mendapatkan informasi terkini seputar
                 lomba dan seminar ini. Dapatkan kesempatan untuk memenangkan hadiah menarik, mengeksplorasi teknologi
@@ -543,80 +558,95 @@
 </section>
 
 {{-- faq --}}
-<section class="bg-white dark:bg-gray-900" id="faq" data-aos="fade-up" data-aos-duration="1000">
-    <div class="container px-6 py-10 mx-auto">
-        <h2 class="title-font text-center font-bold sm:text-4xl text-3xl mb-4 text-gray-900">Pertanyaan yang sering
-            ditanyakan</h2>
-        <div id="accordion-flush" data-accordion="collapse"
-            data-active-classes="bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
-            data-inactive-classes="text-gray-500 dark:text-gray-400">
-            <h2 id="accordion-flush-heading-1">
-                <button type="button"
-                    class="flex items-center justify-between w-full py-5 font-medium text-left text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400"
-                    data-accordion-target="#accordion-flush-body-1" aria-expanded="true"
-                    aria-controls="accordion-flush-body-1">
-                    <span>Bagaimana cara pendaftaran lomba Intech Fest?</span>
-                    <svg data-accordion-icon class="w-6 h-6 rotate-180 shrink-0" fill="currentColor" viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                            clip-rule="evenodd"></path>
-                    </svg>
-                </button>
-            </h2>
-            <div id="accordion-flush-body-1" class="hidden" aria-labelledby="accordion-flush-heading-1">
-                <div class="py-5 border-b border-gray-200 dark:border-gray-700">
-                    <p class="mb-2 text-gray-500 dark:text-gray-400 ml-4">Pendaftaran akan dilakukan melalui website
-                        official
-                        Intech Fest atau dapat melihat tata cara pendaftaran melalui Guide Book masing-masing lomba yang
-                        ingin diikuti.</p>
+<!-- component -->
+<div class="bg-white pt-10" id="faq">
+    <h3 class="text-xl font-bold mb-3 text-center text-primary-blue">Punya pertanyaan?</h3>
+    <h2
+        class="lg:mb-16 text-2xl font-extrabold tracking-tight leading-tight text-center text-gray-900 dark:text-white md:text-4xl">
+        Pertanyaan Yang Sering Ditanyakan</h2>
+    <div class="mx-auto max-w-6xl">
+        <div class="p-2 bg-white rounded">
+            <div class="grid grid-cols-1 md:grid-cols-2">
+                <div class="p-4">
+                    <div class="mb-2 bg-white rounded-lg border cursor-pointer p-3 faq-section"
+                        onclick="faqPop('#faq-1', 'h-36')" id="faq-1">
+                        <div class="flex justify-between items-center">
+                            <h5 class="font-medium">Masukkan Pertanyaan disini</h5>
+                            <i class="fa-solid fa-chevron-down transition-all duration-1000"></i>
+                        </div>
+                        <p class="overflow-hidden font-light text-justify h-0 transition-all duration-1000">Lorem ipsum dolor sit amet
+                            consectetur adipisicing elit. Quia magni dolores ea fuga qui delectus consectetur! Repellat
+                            accusamus perspiciatis consectetur eveniet blanditiis aperiam debitis unde labore harum,
+                            soluta cum. Dolores ea ipsam deserunt facilis magni sunt aut veniam nostrum voluptas, porro
+                            consequatur corporis praesentium dolorem odio, ipsa, doloribus suscipit accusamus.</p>
+                    </div>
+                    <div class="mb-2 bg-white rounded-lg border cursor-pointer p-3 faq-section"
+                        onclick="faqPop('#faq-2', 'h-36')" id="faq-2">
+                        <div class="flex justify-between items-center">
+                            <h5 class="font-medium">Masukkan Pertanyaan disini</h5>
+                            <i class="fa-solid fa-chevron-down transition-all duration-1000"></i>
+                        </div>
+                        <p class="overflow-hidden font-light text-justify h-0 transition-all duration-1000">Lorem ipsum dolor sit amet
+                            consectetur adipisicing elit. Quia magni dolores ea fuga qui delectus consectetur! Repellat
+                            accusamus perspiciatis consectetur eveniet blanditiis aperiam debitis unde labore harum,
+                            soluta cum. Dolores ea ipsam deserunt facilis magni sunt aut veniam nostrum voluptas, porro
+                            consequatur corporis praesentium dolorem odio, ipsa, doloribus suscipit accusamus.</p>
+                    </div>
+                    <div class="mb-2 bg-white rounded-lg border cursor-pointer p-3 faq-section"
+                        onclick="faqPop('#faq-3', 'h-36')" id="faq-3">
+                        <div class="flex justify-between items-center">
+                            <h5 class="font-medium">Masukkan Pertanyaan disini</h5>
+                            <i class="fa-solid fa-chevron-down transition-all duration-1000"></i>
+                        </div>
+                        <p class="overflow-hidden font-light text-justify h-0 transition-all duration-1000">Lorem ipsum dolor sit amet
+                            consectetur adipisicing elit. Quia magni dolores ea fuga qui delectus consectetur! Repellat
+                            accusamus perspiciatis consectetur eveniet blanditiis aperiam debitis unde labore harum,
+                            soluta cum. Dolores ea ipsam deserunt facilis magni sunt aut veniam nostrum voluptas, porro
+                            consequatur corporis praesentium dolorem odio, ipsa, doloribus suscipit accusamus.</p>
+                    </div>
                 </div>
-            </div>
-            <h2 id="accordion-flush-heading-2">
-                <button type="button"
-                    class="flex items-center justify-between w-full py-5 font-medium text-left text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400"
-                    data-accordion-target="#accordion-flush-body-2" aria-expanded="false"
-                    aria-controls="accordion-flush-body-2">
-                    <span>Apakah Webinar/ChillTalks dibuka untuk umum
-                        dan apa topik yang akan dibahas?</span>
-                    <svg data-accordion-icon class="w-6 h-6 shrink-0" fill="currentColor" viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                            clip-rule="evenodd"></path>
-                    </svg>
-                </button>
-            </h2>
-            <div id="accordion-flush-body-2" class="hidden" aria-labelledby="accordion-flush-heading-2">
-                <div class="py-5 border-b border-gray-200 dark:border-gray-700">
-                    <p class="mb-2 text-gray-500 dark:text-gray-400 ml-4">Webinar/Chillstalks dibuka untuk umum. Topik
-                        yang
-                        dibahas adalah FinTech dan Data Security.</p>
-                </div>
-            </div>
-            <h2 id="accordion-flush-heading-3">
-                <button type="button"
-                    class="flex items-center justify-between w-full py-5 font-medium text-left text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400"
-                    data-accordion-target="#accordion-flush-body-3" aria-expanded="false"
-                    aria-controls="accordion-flush-body-3">
-                    <span>Apa saja kriteria penilaiannya?</span>
-                    <svg data-accordion-icon class="w-6 h-6 shrink-0" fill="currentColor" viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                            clip-rule="evenodd"></path>
-                    </svg>
-                </button>
-            </h2>
-            <div id="accordion-flush-body-3" class="hidden" aria-labelledby="accordion-flush-heading-3">
-                <div class="py-5 border-b border-gray-200 dark:border-gray-700">
-                    <p class="mb-2 text-gray-500 dark:text-gray-400 ml-4">Kriteria penilaian lomba akan dijelaskan saat
-                        Technical Meeting</p>
+                <div class="p-4">
+                    <div class="mb-2 bg-white rounded-lg border cursor-pointer p-3 faq-section"
+                        onclick="faqPop('#faq-4', 'h-36')" id="faq-4">
+                        <div class="flex justify-between items-center">
+                            <h5 class="font-medium">Masukkan Pertanyaan disini</h5>
+                            <i class="fa-solid fa-chevron-down transition-all duration-1000"></i>
+                        </div>
+                        <p class="overflow-hidden font-light text-justify h-0 transition-all duration-1000">Lorem ipsum dolor sit amet
+                            consectetur adipisicing elit. Quia magni dolores ea fuga qui delectus consectetur! Repellat
+                            accusamus perspiciatis consectetur eveniet blanditiis aperiam debitis unde labore harum,
+                            soluta cum. Dolores ea ipsam deserunt facilis magni sunt aut veniam nostrum voluptas, porro
+                            consequatur corporis praesentium dolorem odio, ipsa, doloribus suscipit accusamus.</p>
+                    </div>
+                    <div class="mb-2 bg-white rounded-lg border cursor-pointer p-3 faq-section"
+                        onclick="faqPop('#faq-5', 'h-36')" id="faq-5">
+                        <div class="flex justify-between items-center">
+                            <h5 class="font-medium">Masukkan Pertanyaan disini</h5>
+                            <i class="fa-solid fa-chevron-down transition-all duration-1000"></i>
+                        </div>
+                        <p class="overflow-hidden font-light text-justify h-0 transition-all duration-1000">Lorem ipsum dolor sit amet
+                            consectetur adipisicing elit. Quia magni dolores ea fuga qui delectus consectetur! Repellat
+                            accusamus perspiciatis consectetur eveniet blanditiis aperiam debitis unde labore harum,
+                            soluta cum. Dolores ea ipsam deserunt facilis magni sunt aut veniam nostrum voluptas, porro
+                            consequatur corporis praesentium dolorem odio, ipsa, doloribus suscipit accusamus.</p>
+                    </div>
+                    <div class="bg-white rounded-lg border cursor-pointer p-3 faq-section"
+                        onclick="faqPop('#faq-6', 'h-36')" id="faq-6">
+                        <div class="flex justify-between items-center">
+                            <h5 class="font-medium">Masukkan Pertanyaan disini</h5>
+                            <i class="fa-solid fa-chevron-down transition-all duration-1000"></i>
+                        </div>
+                        <p class="overflow-hidden font-light text-justify h-0 transition-all duration-1000">Lorem ipsum dolor sit amet
+                            consectetur adipisicing elit. Quia magni dolores ea fuga qui delectus consectetur! Repellat
+                            accusamus perspiciatis consectetur eveniet blanditiis aperiam debitis unde labore harum,
+                            soluta cum. Dolores ea ipsam deserunt facilis magni sunt aut veniam nostrum voluptas, porro
+                            consequatur corporis praesentium dolorem odio, ipsa, doloribus suscipit accusamus.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
+</div>
 
 {{-- media partner --}}
 <section class="bg-white dark:bg-gray-900" data-aos="fade-up" data-aos-duration="1000">
@@ -748,6 +778,16 @@
     </div>
 </section>
 
-<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+<script>
+    function faqPop(id, tinggi)
+    {
+        var p = document.querySelector(id+" p");
+        var i = document.querySelector(id+" div i");
+        p.classList.toggle("h-0");
+        p.classList.toggle("mt-4");
+        p.classList.toggle(tinggi);
+        i.classList.toggle("rotate-180");
+    }
+</script>
 
 @endsection

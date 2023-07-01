@@ -14,7 +14,7 @@
         <article class="flex flex-col shadow my-4">
             <!-- Article Image -->
             <div>
-                <img src="{{asset('images/lomba/ilus dc.jpg')}}" class="w-full md:w-2/3 lg:w-1/2 mx-auto">
+                <img src="{{asset('images/lomba/ilus ctf.jpg')}}" class="w-full md:w-2/3 lg:w-1/2 mx-auto">
             </div>
             <div class="bg-white flex flex-col justify-start p-6">
                 <a href="/#lomba" class="text-blue-700 text-sm font-bold uppercase pb-4">Lomba</a>
@@ -104,7 +104,7 @@
             <p class="text-xl font-semibold pb-5">Gabung Lomba</p>
             <p class="pb-2 text-justify">Jika tertarik silahkan klik tombol daftar lomba dibawah ini, atau klik download
                 guidebook untuk membaca panduan lomba</p>
-            <a href="/dc"
+            <a href="/ctf"
                 class="w-full bg-primary-lightblue text-white font-bold text-sm uppercase rounded hover:bg-primary-blue flex items-center justify-center px-2 py-3 mt-4">
                 Daftar Lomba
             </a>
