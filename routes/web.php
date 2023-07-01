@@ -289,8 +289,13 @@ Route::group(['middleware' => ['auth', 'verified', 'level:panitia']], function (
      Route::get('/ctf-panitia/downloadCtf/{file_name}', [PanitiaController::class, 'downloadCtf']);
 
 // TRANSAKSI =========================================================================================================
-    // Menampilkan Halaman Transaksi
-    Route::get('/transaksi-panitia', [PanitiaController::class, 'transaksi']);
+    Route::get('/panitia-transaksi-wdc', [PanitiaController::class, 'transaksiWdc']);
+    // Menampilkan Halaman Transaksi DC
+    Route::get('/panitia-transaksi-dc', [PanitiaController::class, 'transaksiDc']);
+    // Menampilkan Halaman Transaksi CTF
+    Route::get('/panitia-transaksi-ctf', [PanitiaController::class, 'transaksiCtf']);
+    // Menampilkan Halaman Transaksi CT
+    Route::get('/panitia-transaksi-ct', [PanitiaController::class, 'transaksiCt']);
     // delete Transaksi
     Route::post('/transaksi-delete', [PanitiaController::class, 'delete_transaksi']);
     // update transaksi
