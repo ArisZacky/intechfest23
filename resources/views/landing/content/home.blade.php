@@ -438,7 +438,7 @@
                                 serta<span class="xs-appear">...</span><span class="xs-hidden">membuat sebuah website
                                     yang memiliki peran sangat penting di era modern ini.</span>
                             </p>
-                            <a href="/detail-dc"
+                            <a href="/detail-wdc"
                                 class="btn-slide relative overflow-hidden border inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-primary-lightblue rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300">
                                 <span class="z-10">Baca Selengkapnya</span>
                                 <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1 z-10" fill="currentColor"
@@ -479,7 +479,7 @@
                                 keamanan jaringan,
                                 keamanan komputer, dan keamanan informasi.
                             </p>
-                            <a href="/detail-dc"
+                            <a href="/detail-ctf"
                                 class="btn-slide relative overflow-hidden border inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-primary-lightblue rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300">
                                 <span class="z-10">Baca Selengkapnya</span>
                                 <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1 z-10" fill="currentColor"
