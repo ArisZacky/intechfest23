@@ -40,12 +40,10 @@
                             <div class="hidden sm:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"></div>
                         </div>
                         <div class="mt-3 sm:pr-8">
-                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Flowbite Library v1.0.0</h3>
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Pendaftaran Lomba PNBCTF</h3>
                             <time
-                                class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Released
-                                on December 2, 2021</time>
-                            <p class="text-base font-normal text-gray-500 dark:text-gray-400">Get started with dozens of
-                                web components and interactive elements.</p>
+                                class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Dilakukan Pada Tanggal 27 Juli 2023</time>
+                            <p class="text-base font-normal text-gray-500 dark:text-gray-400">Pendaftaran Lomba PNBDC Akan Dilakukan Pada Tanggal 27 Juli 2023 Hingga Tanggal 7 Agustus 2023</p>
                         </div>
                     </li>
                     <li class="relative mb-6 sm:mb-0">
@@ -62,12 +60,10 @@
                             <div class="hidden sm:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"></div>
                         </div>
                         <div class="mt-3 sm:pr-8">
-                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Flowbite Library v1.2.0</h3>
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Perlaksanaan Perlombaan PNBCTF</h3>
                             <time
-                                class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Released
-                                on December 23, 2021</time>
-                            <p class="text-base font-normal text-gray-500 dark:text-gray-400">Get started with dozens of
-                                web components and interactive elements.</p>
+                                class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Dilakukan Pada Tanggal 09 September 2023</time>
+                            <p class="text-base font-normal text-gray-500 dark:text-gray-400">Perlombaan PNBCTF Akan Dilaksanakan 2 Hari Pada Tanggal 09 September 2023 Hingga Tanggal 10 September 2023</p>
                         </div>
                     </li>
                     <li class="relative mb-6 sm:mb-0">
@@ -84,12 +80,10 @@
                             <div class="hidden sm:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"></div>
                         </div>
                         <div class="mt-3 sm:pr-8">
-                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Flowbite Library v1.3.0</h3>
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Pengumpulan Write Up PNBCTF</h3>
                             <time
-                                class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Released
-                                on January 5, 2022</time>
-                            <p class="text-base font-normal text-gray-500 dark:text-gray-400">Get started with dozens of
-                                web components and interactive elements.</p>
+                                class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Dilakukan pada tanggal 10 September 2023</time>
+                            <p class="text-base font-normal text-gray-500 dark:text-gray-400">Pengumpulan Write Up Akan Dilakukan Pada Tanggal 10 September 2023 Hingga 11 September 2023</p>
                         </div>
                     </li>
                 </ol>
@@ -125,18 +119,17 @@
     </aside>
 
     <div class="w-full flex pt-6">
-        <a href="#" class="w-1/2 bg-white shadow hover:shadow-md text-left p-6">
+        <a href="{{url('/detail-wdc')}}" class="w-1/2 bg-white shadow hover:shadow-md text-left p-6">
             <p class="text-lg text-blue-800 font-bold flex items-center"><i class="fas fa-arrow-left pr-1"></i>
                 Sebelumnya</p>
             <p class="pt-2">Politeknik Negeri Bali Web
                 Design Competition</p>
         </a>
-        <a href="#" class="w-1/2 bg-white shadow hover:shadow-md text-right p-6">
+        <a href="{{url('/detail-dc')}}" class="w-1/2 bg-white shadow hover:shadow-md text-right p-6">
             <p class="text-lg text-blue-800 font-bold flex items-center justify-end">Berikutnya <i
                     class="fas fa-arrow-right pl-1"></i></p>
-            <p class="pt-2">Politeknik Negeri Bali
-                Capture The
-                Flags</p>
+            <p class="pt-2">Politeknik Negeri Bali Web
+                Design Competition</p>
         </a>
     </div>
 </div>
