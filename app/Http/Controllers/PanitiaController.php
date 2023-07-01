@@ -6,6 +6,7 @@ use App\Models\Ct;
 use App\Models\Dc;
 use App\Models\Ctf;
 use App\Models\Wdc;
+use App\Models\Panitia;
 use App\Models\Content;
 use App\Models\Project;
 use App\Models\Transaksi;
@@ -18,6 +19,8 @@ use App\Exports\WdcExcel;
 use App\Exports\DcExcel;
 use App\Exports\CtfExcel;
 use Maatwebsite\Excel\Facades\Excel;
+use File;
+use ZipArchive;
 
 class PanitiaController extends Controller
 {
@@ -54,15 +57,29 @@ class PanitiaController extends Controller
 // WDC ===========================================================
 
     // halaman wdc
-    public function wdc()
+    public function wdc(Request $request)
     {
-        $wdc = Wdc::          
-        join('peserta', 'wdc.id_peserta', '=', 'peserta.id_peserta')
-        ->leftJoin('project', 'wdc.id_project', '=', 'project.id_project')
-        ->leftJoin('transaksi', 'wdc.id_transaksi', '=', 'transaksi.id_transaksi')
-        ->select('wdc.*', 'peserta.*', 'transaksi.foto AS foto_transaksi', 'project.file_project')
-        ->get();
-        return view('panitia.wdc.dashwdc', compact(['wdc']));
+        // MENDAPATKAN REQUEST SEARCH
+        $search = $request->search;
+
+        if($search){
+            $wdc = Wdc::          
+            join('peserta', 'wdc.id_peserta', '=', 'peserta.id_peserta')
+            ->leftJoin('project', 'wdc.id_project', '=', 'project.id_project')
+            // ->leftJoin('transaksi', 'wdc.id_transaksi', '=', 'transaksi.id_transaksi')
+            ->select('wdc.*', 'peserta.*', 'project.file_project')
+            ->where('peserta.nama_lengkap','LIKE','%'.$search.'%')
+            ->paginate();    
+        }else{
+            $wdc = Wdc::          
+            join('peserta', 'wdc.id_peserta', '=', 'peserta.id_peserta')
+            ->leftJoin('project', 'wdc.id_project', '=', 'project.id_project')
+            // ->leftJoin('transaksi', 'wdc.id_transaksi', '=', 'transaksi.id_transaksi')
+            ->select('wdc.*', 'peserta.*', 'project.file_project')
+            ->get();             
+        }
+
+        return view('panitia.wdc.dashwdc', compact(['wdc']));   
     }
     // delete wdc
     public function delete_wdc(Request $request)
@@ -95,24 +112,30 @@ class PanitiaController extends Controller
 		return Excel::download(new WdcExcel, 'Wdc.xlsx');
 	}
 
-    // DOWNLOAD WDC
-    function downloadWDC($file_name){
-        $file = Storage::download("public/Project/".$file_name);  
-        return $file;
-    }
-
 
 // DC ========================================================== 
 
     // halaman dc
-    public function dc()
+    public function dc(Request $request)
     {
-        $dc = Dc::          
-        join('peserta', 'dc.id_peserta', '=', 'peserta.id_peserta')
-        ->leftJoin('project', 'dc.id_project', '=', 'project.id_project')
-        ->leftJoin('transaksi', 'dc.id_transaksi', '=', 'transaksi.id_transaksi')
-        ->select('dc.*', 'peserta.*', 'transaksi.foto AS foto_transaksi', 'project.file_project')
-        ->get();
+        // MENDAPATKAN REQUEST SEARCH
+        $search = $request->search;
+
+        if($search){
+            $dc = Dc::          
+            join('peserta', 'dc.id_peserta', '=', 'peserta.id_peserta')
+            ->leftJoin('project', 'dc.id_project', '=', 'project.id_project')
+            ->select('dc.*', 'peserta.*', 'project.file_project')
+            ->where('peserta.nama_lengkap','LIKE','%'.$search.'%')
+            ->paginate(); 
+        }else{
+            $dc = Dc::          
+            join('peserta', 'dc.id_peserta', '=', 'peserta.id_peserta')
+            ->leftJoin('project', 'dc.id_project', '=', 'project.id_project')
+            ->select('dc.*', 'peserta.*', 'project.file_project')
+            ->get();    
+        }
+
         return view('panitia.dc.dashdc', compact(['dc']));
     }
     // menghapus
@@ -145,14 +168,6 @@ class PanitiaController extends Controller
 	{
 		return Excel::download(new DcExcel, 'Dc.xlsx');
 	}
-
-    // DOWNLOAD DC
-    function downloadDC($file_name){
-        $file = Storage::download("public/Project/".$file_name);  
-        return $file;
-    }
-
- 
 
 // CTF =========================================================
 
@@ -197,19 +212,43 @@ class PanitiaController extends Controller
 		return Excel::download(new CtfExcel, 'Ctf.xlsx');
 	}
 
-    // DOWNLOAD DC
-    function downloadCtf($file_name){
-        $file = Storage::download("public/Project/".$file_name);  
-        return $file;
-    }
-
 // TRANSAKSI ===================================================
 
     // halaman transaksi
-    public function transaksi()
+    public function transaksi(Request $request)
     {
-        $transaksi = Transaksi::all();
-        return view('panitia.transaksi.dashtransaksi', compact(['transaksi']));
+        // MENDAPATKAN REQUEST SEARCH
+        $search = $request->search;
+
+        // MENDAPATKAN DATA PANITIA YANG AKAN MEMVERIFIKASI
+        $panitia = Panitia::all();
+
+         if($search){
+            $transaksi = Transaksi::
+            join('wdc', 'transaksi.id_transaksi', '=', 'wdc.id_transaksi', 
+                'dc', '=', 'dc.id_transaksi',
+                'ctf', '=', 'ctf.id_transaksi')
+            ->leftjoin('peserta', 'peserta.id_peserta', '=', 'wdc.id_peserta',
+                '=', 'dc.id_peserta',
+                '=', 'ctf.id_transaksi')
+            ->leftjoin('panitia', 'transaksi.id_panitia', '=', 'panitia.id_panitia')
+            ->select('transaksi.*', 'peserta.nama_lengkap AS nama_peserta', 'panitia.nama_lengkap AS nama_panitia')
+            ->where('peserta.nama_lengkap','LIKE','%'.$search.'%')
+            ->paginate();
+        }else{
+            $transaksi = Transaksi::
+            join('wdc', 'transaksi.id_transaksi', '=', 'wdc.id_transaksi', 
+                'dc', '=', 'dc.id_transaksi',
+                'ctf', '=', 'ctf.id_transaksi')
+            ->leftjoin('peserta', 'peserta.id_peserta', '=', 'wdc.id_peserta',
+                '=', 'dc.id_peserta',
+                '=', 'ctf.id_transaksi')
+            ->leftjoin('panitia', 'transaksi.id_panitia', '=', 'panitia.id_panitia')
+            ->select('transaksi.*', 'peserta.nama_lengkap AS nama_peserta', 'panitia.nama_lengkap AS nama_panitia')
+            ->get();
+        }
+
+        return view('panitia.transaksi.dashtransaksi', compact(['transaksi', 'panitia']));
     }
     // delete Transaksi
     public function delete_transaksi(Request $request)
@@ -223,8 +262,6 @@ class PanitiaController extends Controller
     {
         if($request->isMethod('post')){
             $request->validate([
-                'id_panitia' => 'required',
-                'foto' => 'required',
                 'validasi' => 'required',
             ]);
             
@@ -239,17 +276,140 @@ class PanitiaController extends Controller
 
 // PROJECT =====================================================
 
-    // halaman Project
-    public function project()
+    // Manampilkan Halaman Project Lomba WDC
+    public function projectWdc()
     {
-        $project = Project::all();
-        return view('panitia.project.dashproject', compact(['project']));
+        $projectwdc = Project::
+        join('wdc', 'project.id_project', '=', 'wdc.id_project')
+        ->join('peserta', 'wdc.id_peserta', '=', 'peserta.id_peserta')
+        ->select('project.*', 'peserta.*')
+        ->where('file_project', 'LIKE', 'WDC%')
+        ->get();
+        return view('panitia.project.dashprojectwdc', compact(['projectwdc']));
     }
-     // delete project
-     public function delete_project(Request $request)
+
+     // Manampilkan Halaman Project Lomba DC
+     public function projectDc()
      {
-         $data = Project::findOrFail($request['id_project']);
-         $data->delete();
-         return redirect()->back()->with('delete_success', 'delete Data Berhasil!');  
+         $projectdc = Project::
+         join('dc', 'project.id_project', '=', 'dc.id_project')
+         ->join('peserta', 'dc.id_peserta', '=', 'peserta.id_peserta')
+         ->select('project.*', 'peserta.*')
+         ->where('file_project', 'LIKE', 'DC%')
+         ->get();
+         return view('panitia.project.dashprojectdc', compact(['projectdc']));
      }
+
+    // DOWNLOAD PROJECT WDC SATU SATU
+    function downloadProjectWDC($file_name){
+        $file = Storage::download("public/Project/wdc/".$file_name);  
+        return $file;
+    }
+
+    // DOWNLOAD PROJECT DC SATU SATU
+    function downloadProjectDC($file_name){
+        $file = Storage::download("public/Project/dc/".$file_name);  
+        return $file;
+    }
+
+     // DOWNLOAD SEMUA PROJECT LOMBA WDC
+     function downloadAllProjectWDC()
+     {
+         // memanggil object zip archive dari laravel yang disimpan ke variabel
+         $zip = new ZipArchive;
+     
+         // membuat nama file yang nantinya akan di download
+         $fileName = 'ProjectWDC.zip';
+      
+         // mendeklarasikan path yang akan di download
+         $path = public_path('storage/Project/wdc');
+ 
+         // cek jika variabel yang berisi object filearchive tadi berjalan dan membuat file zip
+         if ($zip->open(public_path('storage/'.$fileName), ZipArchive::CREATE) === TRUE)
+         {
+             // mengambil file file yang ada di path
+             $files = File::files($path);
+ 
+             // perulangan untuk mengambil setiap file yang ada di path
+             foreach ($files as $key => $value) {
+                 // mengambil nama file dari path lengkap filenya
+                 $relativeNameInZipFile = basename($value);
+                 // menambah file ke dalam zip
+                 $zip->addFile($value, $relativeNameInZipFile);
+             }
+                
+             $zip->close();
+         }
+         
+         // fucntion mereturn response yang mendownload zip tadi
+         return response()->download(public_path('storage/'.$fileName));
+     }
+     
+     /// DOWNLOAD SEMUA PROJECT LOMBA DC
+     function downloadAllProjectDC()
+     {
+         // memanggil object zip archive dari laravel yang disimpan ke variabel
+         $zip = new ZipArchive;
+     
+         // membuat nama file yang nantinya akan di download
+         $fileName = 'ProjectDC.zip';
+         
+         // mendeklarasikan path yang akan di download
+         $path = public_path('storage/Project/dc');
+ 
+         // cek jika variabel yang berisi object filearchive tadi berjalan dan membuat file zip
+         if ($zip->open(public_path('storage/'.$fileName), ZipArchive::CREATE) === TRUE)
+         {
+             // mengambil file file yang ada di path
+             $files = File::files($path);
+ 
+             // perulangan untuk mengambil setiap file yang ada di path
+             foreach ($files as $key => $value) {
+                 // mengambil nama file dari path lengkap filenya
+                 $relativeNameInZipFile = basename($value);
+                 // menambah file ke dalam zip
+                 $zip->addFile($value, $relativeNameInZipFile);
+             }
+                 
+             $zip->close();
+         }
+         
+         // fucntion mereturn response yang mendownload zip tadi
+         return response()->download(public_path('storage/'.$fileName));
+     }
+ 
+     // DOWNLOAD SEMUA PROJECT LOMBA CTF
+    //  function downloadAllProjectCTF()
+    //  {
+    //      // memanggil object zip archive dari laravel yang disimpan ke variabel
+    //      $zip = new ZipArchive;
+     
+    //      // membuat nama file yang nantinya akan di download
+    //      $fileName = 'ProjectCTF.zip';
+      
+    //      // mendeklarasikan path yang akan di download
+    //      $path = public_path('storage/Project/CTF');
+ 
+    //      // cek jika variabel yang berisi object filearchive tadi berjalan dan membuat file zip
+    //      if ($zip->open(public_path($fileName), ZipArchive::CREATE) === TRUE)
+    //      {
+    //          // mengambil file file yang ada di path
+    //          $files = File::files($path);
+ 
+    //          // perulangan untuk mengambil setiap file yang ada di path
+    //          foreach ($files as $key => $value) {
+    //              // mengambil nama file dari path lengkap filenya
+    //              $relativeNameInZipFile = basename($value);
+    //              // menambah file ke dalam zip
+    //              $zip->addFile($value, $relativeNameInZipFile);
+    //          }
+                
+    //          $zip->close();
+    //      }
+         
+    //      // fucntion mereturn response yang mendownload zip tadi
+    //      return response()->download(public_path($fileName));
+    //  }
+     
+
 }

@@ -3,6 +3,7 @@
 
 {{-- judul halaman disini --}}
 @section('title', 'Form Lomba')
+<link rel="shortcut icon" href="{{ asset('images/logo/favicon.ico') }}">
 
 {{-- membuat content disini --}}
 @section('content')
@@ -49,7 +50,7 @@
                         <div class="w-full p-4 text-blue-700 bg-blue-100 border border-blue-300 rounded-lg dark:bg-gray-800 dark:border-blue-800 dark:text-blue-400"
                             role="alert">
                             <div class="flex items-center justify-between">
-                                <h3 class="font-medium">1. Formulir Data Diri</h3>
+                                <h3 class="font-medium">1. Bukti Transfer</h3>
                                 <i class="fa-solid fa-arrow-right text-xl"></i>
                             </div>
                         </div>
@@ -58,7 +59,7 @@
                         <div class="w-full p-4 text-gray-900 bg-gray-100 border border-gray-300 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400"
                             role="alert">
                             <div class="flex items-center justify-between">
-                                <h3 class="font-medium">2. Validasi Admin</h3>
+                                <h3 class="font-medium">2. Validasi Transaksi</h3>
                             </div>
                         </div>
                     </li>
@@ -66,43 +67,18 @@
                         <div class="w-full p-4 text-gray-900 bg-gray-100 border border-gray-300 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400"
                             role="alert">
                             <div class="flex items-center justify-between">
-                                <h3 class="font-medium">3. Transaksi</h3>
+                                <h3 class="font-medium">3. Mendapat Nomor Peserta</h3>
                             </div>
                         </div>
                     </li>
-                    <li>
-                        <div class="w-full p-4 text-gray-900 bg-gray-100 border border-gray-300 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400"
-                            role="alert">
-                            <div class="flex items-center justify-between">
-                                <h3 class="font-medium">4. Validasi Transaksi</h3>
-                            </div>
-                        </div>
-                    </li>
-                    <!-- <li>
-                        <div class="w-full p-4 text-gray-900 bg-gray-100 border border-gray-300 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400"
-                            role="alert">
-                            <div class="flex items-center justify-between">
-                                <h3 class="font-medium">5. Pengumpulan Project</h3>
-                            </div>
-                        </div>
-                    </li> -->
                 </ol>
 
-                <form action="/daftar-ctf/{{ $data_peserta->id_peserta }}" method="POST" enctype="multipart/form-data"
+                <form action="/daftar-ct/{{ $data_peserta->id_peserta }}" method="POST" enctype="multipart/form-data"
                     class="xl:col-span-2">
                     @csrf
                     @method('PUT')
-                    {{-- Id peserta ini digunakan untuk melakukan insert ke table lomba(wdc/dc/ctf) --}}
                     <input type="hidden" name="id_peserta" value="{{ $data_peserta->id_peserta }}">
                     <input type="hidden" name="email" value="{{ $data_peserta->email }}">
-                    {{-- <div class="relative z-0 w-full mb-6 group">
-                        <input type="email" name="email" id="floating_email"
-                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                            placeholder="" value="{{ $data_peserta->email ? $data_peserta->email : '' }}" disabled />
-                        <label for="floating_email"
-                            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email
-                            address</label>
-                    </div> --}}
                     <div>
                         <label for="username" class="block text-sm font-medium leading-6 -mt-2 text-gray-900">Nama
                             Lengkap</label>
@@ -152,52 +128,12 @@
                             </div>
                         </div>
                     </div>
-                    <div>
-                        <label for="username" class="block text-sm font-medium leading-6 text-gray-900">Nama
-                            Team</label>
-                        <div class="my-2">
-                            <div
-                                class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-primary-lightblue w-full">
-                                <input type="text" name="nama_team" id="username" autocomplete="username"
-                                    class="block flex-1 border-0 bg-transparent py-1.5 pl-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                                    placeholder="Masukkan nama Team..." value="{{ $data_peserta->anggota2 ? $data_peserta->anggota2 : '' }}"
-                                    required>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <label for="username" class="block text-sm font-medium leading-6 text-gray-900">Nama
-                            Anggota 1</label>
-                        <div class="my-2">
-                            <div
-                                class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-primary-lightblue w-full">
-                                <input type="text" name="anggota1" id="username" autocomplete="username"
-                                    class="block flex-1 border-0 bg-transparent py-1.5 pl-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                                    placeholder="Masukkan nama Anggota 1..." value="{{ $data_peserta->anggota1 ? $data_peserta->anggota1 : '' }}"
-                                    required>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <label for="username" class="block text-sm font-medium leading-6 text-gray-900">Nama
-                            Anggota 2</label>
-                        <div class="my-2">
-                            <div
-                                class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-primary-lightblue w-full">
-                                <input type="text" name="anggota2" id="username" autocomplete="username"
-                                    class="block flex-1 border-0 bg-transparent py-1.5 pl-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                                    placeholder="Masukkan nama Anggota 2..." value="{{ $data_peserta->anggota2 ? $data_peserta->anggota2 : '' }}"
-                                    required>
-                            </div>
-                        </div>
-                    </div>
                     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="user_avatar">Upload
-                        Foto</label>
+                        Bukti Transfer</label>
                     <input
                         class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                         aria-describedby="user_avatar_help" id="user_avatar" name="foto" type="file">
-                    <div class="mt-1 mb-5 text-sm text-gray-500 dark:text-gray-300" id="user_avatar_help">Foto Data Diri
-                        Berupa KTP/KTM/SIM/Surat Keterangan Mahasiswa/Surat Rekomendasi Sekolah atau Kampus</div>
+                    <div class="mt-1 mb-5 text-sm text-gray-500 dark:text-gray-300" id="user_avatar_help">Bukti transfer harus bertipe png, jpg, atau jpeg. Dan tidak boleh lebih besar dari 2MB</div>
                     <button type="submit"
                         class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Daftar</button>
                 </form>

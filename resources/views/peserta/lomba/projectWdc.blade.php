@@ -33,33 +33,35 @@
                         </div>
                     </li>
                     <li>
-                        <div class="w-full p-4 text-blue-700 bg-blue-100 border border-blue-300 rounded-lg"
+                        <div class="w-full p-4 text-green-700 bg-green-100 border border-green-300 rounded-lg"
                             role="alert">
                             <div class="flex items-center justify-between">
                                 <h3 class="font-medium">3. Transaksi</h3>
-                                <i class="fa-solid fa-arrow-right text-xl"></i>
+                                <i class="fa-solid fa-check text-xl"></i>
                             </div>
                         </div>
                     </li>
                     <li>
-                        <div class="w-full p-4 text-gray-900 bg-gray-100 border border-gray-300 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400"
+                        <div class="w-full p-4 text-green-700 bg-green-100 border border-green-300 rounded-lg"
                             role="alert">
                             <div class="flex items-center justify-between">
                                 <h3 class="font-medium">4. Validasi Transaksi</h3>
+                                <i class="fa-solid fa-check text-xl"></i>
                             </div>
                         </div>
                     </li>
-                    <!-- <li>
-                        <div class="w-full p-4 text-gray-900 bg-gray-100 border border-gray-300 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400"
+                    <li>
+                        <div class="w-full p-4 text-blue-700 bg-blue-100 border border-blue-300 rounded-lg"
                             role="alert">
                             <div class="flex items-center justify-between">
-                                <h3 class="font-medium">5. Pengumpulan Project</h3>
+                                <h3 class="font-medium">5. Pengumpulan project</h3>
+                                <i class="fa-solid fa-arrow-right text-xl"></i>
                             </div>
                         </div>
-                    </li> -->
+                    </li>
                 </ol>
                 <div class="-mt-1 xl:col-span-2">
-                    @if ($errors->has('foto'))    
+                    @if ($errors->has('project'))
                     <div class="flex p-4 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800"
                         role="alert">
                         <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor"
@@ -70,22 +72,24 @@
                         </svg>
                         <span class="sr-only">Error</span>
                         <div>
-                            <span class="font-medium">{{$errors->first('foto')}}</span>
+                            @foreach ($errors->all() as $error)
+                            <div class="font-medium">{{ $error }}</div>
+                            @endforeach
                         </div>
                     </div>
                     @endif
-                    <form method="POST" action="/transaksi-ctf/{{$peserta->id_peserta}}" enctype="multipart/form-data">
+                    <form method="POST" action="/form-project-wdc/{{$peserta->id_peserta}}" id="upload_form"
+                        enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="form-group">
                             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                                for="user_avatar">Upload
-                                Bukti Transfer</label>
-                            <input type="file" name="foto" id="photo"
+                                for="user_avatar">Upload Project</label>
+                            <input type="file" name="project"
                                 class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400">
-                        </div>
-                        <div class="mt-1 mb-3 text-sm text-gray-500 dark:text-gray-300" id="user_avatar_help">Foto bukti
-                            transfer harus dalam format jpg, jpeg, atau png</div>
+                        </div>                    
+                        <div class="mt-1 mb-3 text-sm text-gray-500 dark:text-gray-300" id="user_avatar_help">Project
+                            yang diupload harus dalam format rar atau zip</div>
                         <!-- Tambahkan elemen input lainnya -->
                         <button type="submit"
                             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kirim</button>

@@ -16,7 +16,8 @@ class WdcExcel implements FromCollection, WithHeadings
         return Wdc::          
         join('peserta', 'wdc.id_peserta', '=', 'peserta.id_peserta')
         ->leftJoin('transaksi', 'wdc.id_transaksi', '=', 'transaksi.id_transaksi')
-        ->select('peserta.*')
+        ->select('peserta.id_peserta', 'peserta.email', 'peserta.nomer_peserta', 'peserta.nama_lengkap',
+        'peserta.alamat', 'peserta.nama_instansi', 'peserta.no_hp')
         ->where('wdc.validasi', '=', 'Sudah Valid')
         ->get();
     }
