@@ -2,13 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
+/* sponsor carousel */
+.splide__slide img {
+    transition: all 400ms;
+    transform: scale(0.7);
+    filter: grayscale(100%);
+}
 
+.splide__slide.is-active img {
+    transform: scale(1.2);
+    filter: grayscale(0%);
+}
+
+/* lomba card */
 .card-back {
     transform: rotateY(-180deg);
     transition: all 1s;
 }
 
-.card-front, .card-custom {
+.card-back-sub {
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-front-sub {
     transition: all 1s;
 }
 
@@ -22,9 +38,47 @@
     opacity: 0;
 }
 
-.card-flip:hover .card-custom {
+.card-flip:hover .card-front-sub {
     transform: rotateY(180deg);
 }
+
+.card-body {
+    transition: all 1s;
+}
+
+.card-flip:hover .card-body {
+    transform: rotateY(180deg);
+}
+
+.xs-appear {
+    display: none;
+}
+
+.text-wdc {
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
+
+/* responsive card untuk mobile mini */
+@media (max-width: 424px) {
+    .card-body {
+        width: 280px;
+    }
+    .card-text {
+        width: 280px;
+    }
+    .xs-appear {
+        display: inline;
+    }
+    .xs-hidden {
+        display: none;
+    }
+    .text-wdc {
+        font-size: 1.4rem;
+        line-height: 2rem;
+    }
+}
+
 /* button slides animation with pseuodo element ::before */
 .btn-slide::before {
     content: "";
@@ -122,6 +176,15 @@
 
 .btn-border-wrapper:hover .span-border::before {
     height: 100%;
+}
+
+.btn-border-wrapper:hover a {
+    transition: all 0.5s;
+    transition-delay: 1s;
+}
+
+.btn-border-wrapper:hover a {
+    box-shadow: 0 0 20px rgba(80, 191, 208, 0.8);
 }
 
 /* text */
