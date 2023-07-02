@@ -28,7 +28,7 @@
                 Kegiatan
                 Computer Club
                 Politeknik Negeri Bali yang dilaksanakan setiap 1 (satu) tahun sekali</p>
-            <a href="#"
+            <a href="#lomba"
                 class="btn-slide relative overflow-hidden inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-primary-lightblue focus:ring-4 focus:ring-teal-500">
                 <span class="z-20">Daftar Lomba</span>
                 <svg class="w-5 h-5 ml-2 -mr-1 z-20" fill="currentColor" viewBox="0 0 20 20"
@@ -39,7 +39,7 @@
                 </svg>
             </a>
             <div class="btn-border-wrapper inline">
-                <a href="#"
+                <a href="https://wa.me/+6282340949343"
                     class="btn-border relative inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
                     <span class="span-border">Hubungi Panitia</span>
                 </a>
@@ -511,7 +511,7 @@
             <p class="mb-8 leading-relaxed">ChillTalks Intechfest Merupakan Kegiatan Seminar atau Webinar Nasional yang
                 dimana pada tahun ini mengangkat topik "FinTech dan Data Security".</p>
             <div class="flex justify-center">
-                <a
+                <a href="{{url('/chilltalks-peserta')}}"
                     class="inline-flex text-white bg-primary-lightblue border-0 py-2 px-6 focus:outline-none hover:bg-primary-blue rounded text-lg">Daftar
                     Chilltalks</a>
             </div>
@@ -533,14 +533,14 @@
                 memperluas pengetahuan Anda dalam bidang IT. Mari jalin hubungan yang lebih erat dan
                 temukan potensi Anda dalam dunia digital bersama kami.</p>
             <div class="flex md:flex-row">
-                <button
+                <a href ="https://instagram.com/intechfest.cc?igshid=MzRlODBiNWFlZA=="
                     class="bg-gray-100 inline-flex py-3 px-5 rounded-lg items-center hover:bg-gray-200 focus:outline-none">
                     <i class="fa-brands fa-instagram text-2xl"></i>
                     <span class="ml-4 flex items-start flex-col leading-none">
                         <span class="text-xs text-gray-600 mb-1">Follow melalui</span>
                         <span class="title-font font-medium">Instagram</span>
                     </span>
-                </button>
+                </a>
                 <button
                     class="bg-gray-100 inline-flex py-3 px-5 rounded-lg items-center lg:ml-4 md:ml-0 ml-4 md:mt-4 mt-0 lg:mt-0 hover:bg-gray-200 focus:outline-none">
                     <img src="{{asset('images/logo/monokrom.png')}}" class="w-6" alt="logo">
@@ -571,38 +571,30 @@
                     <div class="mb-2 bg-white rounded-lg border cursor-pointer p-3 faq-section"
                         onclick="faqPop('#faq-1', 'h-36')" id="faq-1">
                         <div class="flex justify-between items-center">
-                            <h5 class="font-medium">Masukkan Pertanyaan disini</h5>
+                            <h5 class="font-medium"> Bagaimana cara pendaftaran lomba Intech Fest 2023?</h5>
                             <i class="fa-solid fa-chevron-down transition-all duration-1000"></i>
                         </div>
-                        <p class="overflow-hidden font-light text-justify h-0 transition-all duration-1000">Lorem ipsum dolor sit amet
-                            consectetur adipisicing elit. Quia magni dolores ea fuga qui delectus consectetur! Repellat
-                            accusamus perspiciatis consectetur eveniet blanditiis aperiam debitis unde labore harum,
-                            soluta cum. Dolores ea ipsam deserunt facilis magni sunt aut veniam nostrum voluptas, porro
-                            consequatur corporis praesentium dolorem odio, ipsa, doloribus suscipit accusamus.</p>
+                        <p class="overflow-hidden font-light text-justify h-0 transition-all duration-1000">
+                            Pendaftaran akan dilakukan melalui website official Intech Fest 2023 atau dapat melihat tata cara pendaftaran melalui Guide Book.</p>
                     </div>
                     <div class="mb-2 bg-white rounded-lg border cursor-pointer p-3 faq-section"
                         onclick="faqPop('#faq-2', 'h-36')" id="faq-2">
                         <div class="flex justify-between items-center">
-                            <h5 class="font-medium">Masukkan Pertanyaan disini</h5>
+                            <h5 class="font-medium">Apakah ChillTalks dibuka untuk umum
+                                    dan apa topik yang akan dibahas?</h5>
                             <i class="fa-solid fa-chevron-down transition-all duration-1000"></i>
                         </div>
-                        <p class="overflow-hidden font-light text-justify h-0 transition-all duration-1000">Lorem ipsum dolor sit amet
-                            consectetur adipisicing elit. Quia magni dolores ea fuga qui delectus consectetur! Repellat
-                            accusamus perspiciatis consectetur eveniet blanditiis aperiam debitis unde labore harum,
-                            soluta cum. Dolores ea ipsam deserunt facilis magni sunt aut veniam nostrum voluptas, porro
-                            consequatur corporis praesentium dolorem odio, ipsa, doloribus suscipit accusamus.</p>
+                        <p class="overflow-hidden font-light text-justify h-0 transition-all duration-1000">
+                            Chillstalks dibukan untuk umum. Topik yang dibahas adalah Tentang Bagaimana Peran AI terhadap bidang ekonomi dan pendidikan.</p>
                     </div>
                     <div class="mb-2 bg-white rounded-lg border cursor-pointer p-3 faq-section"
                         onclick="faqPop('#faq-3', 'h-36')" id="faq-3">
                         <div class="flex justify-between items-center">
-                            <h5 class="font-medium">Masukkan Pertanyaan disini</h5>
+                            <h5 class="font-medium">Benefit dari webinar Intech Fest 2023?</h5>
                             <i class="fa-solid fa-chevron-down transition-all duration-1000"></i>
                         </div>
-                        <p class="overflow-hidden font-light text-justify h-0 transition-all duration-1000">Lorem ipsum dolor sit amet
-                            consectetur adipisicing elit. Quia magni dolores ea fuga qui delectus consectetur! Repellat
-                            accusamus perspiciatis consectetur eveniet blanditiis aperiam debitis unde labore harum,
-                            soluta cum. Dolores ea ipsam deserunt facilis magni sunt aut veniam nostrum voluptas, porro
-                            consequatur corporis praesentium dolorem odio, ipsa, doloribus suscipit accusamus.</p>
+                        <p class="overflow-hidden font-light text-justify h-0 transition-all duration-1000">
+                            Benefit yang akan didapatkan berupa : <br> - E-sertifikat <br> - Ilmu bermanfaat <br> - Relasi <br> - Merchandise Intech
                     </div>
                 </div>
                 <div class="p-4">

@@ -43,7 +43,7 @@
                     <div class="lg:translate-y-[15%] md:translate-y-[10%] p-3 w-full space-y-2 md:space-y-1 sm:p-">
                         <div class="flex justify-between items-center">
                             <p class="text-sm font-light text-gray-500 dark:text-gray-400">
-                                Tidak menerima email? <span href="#" class="font-medium focus:outline-cyan-500 text-primary-blue hover:underline dark:text-primary-500 cursor-pointer">kirim ulang</span>
+                                Tidak menerima email? <a href="{{url ('/email/verification-notification')}}" class="font-medium focus:outline-cyan-500 text-primary-blue hover:underline dark:text-primary-500 cursor-pointer">kirim ulang</a>
                             </p>
                         </div>
                     </div>

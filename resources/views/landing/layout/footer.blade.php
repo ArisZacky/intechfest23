@@ -15,17 +15,17 @@
                 <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Program</h2>
                 <ul class="text-gray-600 dark:text-gray-400">
                     <li class="mb-4">
-                        <a href="https://github.com/themesberg/flowbite" class="hover:underline ">Web Design
+                        <a href="{{url('/detail-wdc')}}" class="hover:underline ">Web Design
                             Competition</a>
                     </li>
                     <li class="mb-4">
-                        <a href="https://discord.gg/4eeurUVvTy" class="hover:underline">Design Challenge</a>
+                        <a href="{{url('/detail-dc')}}" class="hover:underline">Design Challenge</a>
                     </li>
                     <li class="mb-4">
-                        <a href="https://discord.gg/4eeurUVvTy" class="hover:underline">Capture The Flag</a>
+                        <a href="{{url('/detail-ctf')}}" class="hover:underline">Capture The Flag</a>
                     </li>
                     <li>
-                        <a href="https://discord.gg/4eeurUVvTy" class="hover:underline">ChillTalks</a>
+                        <a href="{{url('/chilltalks-peserta')}}" class="hover:underline">ChillTalks</a>
                     </li>
                 </ul>
             </div>
@@ -46,16 +46,16 @@
                 <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Section</h2>
                 <ul class="text-gray-600 dark:text-gray-400">
                     <li class="mb-4">
-                        <a href="#home" class="hover:underline ">Home</a>
+                        <a href="{{url('/#home')}}" class="hover:underline ">Home</a>
                     </li>
                     <li class="mb-4">
-                        <a href="#lomba" class="hover:underline">Lomba</a>
+                        <a href="{{url('/#lomba')}}" class="hover:underline">Lomba</a>
                     </li>
                     <li class="mb-4">
-                        <a href="#chilltalks" class="hover:underline">ChillTalks</a>
+                        <a href="{{url('/#chilltalks')}}" class="hover:underline">ChillTalks</a>
                     </li>
                     <li>
-                        <a href="#faq" class="hover:underline">FAQ</a>
+                        <a href="{{url('/#faq')}}" class="hover:underline">FAQ</a>
                     </li>
                 </ul>
             </div>

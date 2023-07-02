@@ -37,7 +37,7 @@
                     </span>
                     <div
                         class="items-center p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:bg-gray-700 dark:border-gray-600">
-                        <div class="text-sm font-normal text-gray-500 dark:text-gray-300">Pertama-tama yuk isi dulu data diri kalian <a href="#" class="font-semibold text-primary-lightblue dark:text-blue-500 hover:underline">disini</a> agar kita bisa kenal lebih dekat!
+                        <div class="text-sm font-normal text-gray-500 dark:text-gray-300">Pertama-tama yuk isi dulu data diri kalian <a href="{{url('/profil-peserta')}}" class="font-semibold text-primary-lightblue dark:text-blue-500 hover:underline">disini</a> agar kita bisa kenal lebih dekat!
                         </div>
                     </div>
                 </li>
@@ -50,7 +50,7 @@
                     <div
                         class="items-center p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:bg-gray-700 dark:border-gray-600">
                         <div class="text-sm font-normal text-gray-500 dark:text-gray-300">Selanjutnya kalau kalian tertarik untuk mendaftar lomba, bisa dilihat jenis-jenis daftar lomba beserta penjelasannya
-                            <a href="#" class="font-semibold text-primary-lightblue dark:text-blue-500 hover:underline">disini</a>
+                            <a href="{{url('/#lomba')}}" class="font-semibold text-primary-lightblue dark:text-blue-500 hover:underline">disini</a>
                         </div>
                     </div>
                 </li>
@@ -63,7 +63,7 @@
                     <div
                         class="items-center p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:bg-gray-700 dark:border-gray-600">
                         <div class="text-sm font-normal text-gray-500 dark:text-gray-300">Lalu jika kalian tertarik mengikuti seminar kami yang bernama ChillTalks yang tentunya akan diisi dengan narasumber dan topik yang keren, kalian bisa daftar
-                            <a href="#" class="font-semibold text-primary-lightblue dark:text-blue-500 hover:underline">disini</a>
+                            <a href="{{url('/#chilltalks')}}" class="font-semibold text-primary-lightblue dark:text-blue-500 hover:underline">disini</a>
                         </div>
                     </div>
                 </li>
