@@ -1,5 +1,5 @@
 {{-- navbar start --}}
-<nav class="backdrop-blur-lg
+<nav class="backdrop-blur-lg z-10 relative
 [ bg-gradient-to-b from-white/60 to-white/30 ]
 [ border-[1px] border-solid border-opacity-30 ] border-gray-200 dark:bg-gray-900 z-50 transition-all duration-500" id="navbar">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">

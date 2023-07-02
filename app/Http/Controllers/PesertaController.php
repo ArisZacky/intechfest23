@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\Peserta;
 use App\Models\Project;
 use App\Models\Transaksi;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -35,6 +36,11 @@ class PesertaController extends Controller
         $user = Auth::user();
         $id_peserta = Peserta::where('email', $user->email)->first()->id_peserta;
 
+        // waktu saat ini
+        $currentTime = Carbon::now();
+        // waktu pendaftaran ditutup (1 september 2023)
+        $closeTime = Carbon::create(2023, 9, 1);
+        
         $peserta = null;
         $lomba = null;
         // cek jika peserta yang login mendaftar salah 1 dari 3 lomba yang ada

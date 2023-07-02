@@ -18,12 +18,17 @@
             </div>
             <div class="bg-white flex flex-col justify-start p-6">
                 <a href="/#lomba" class="text-blue-700 text-sm font-bold uppercase pb-4">Lomba</a>
-                <a href="#" class="text-3xl font-bold hover:text-gray-700 pb-4">Politeknik Negeri Bali Capture The Flag</a>
+                <a href="#" class="text-3xl font-bold hover:text-gray-700 pb-4">Politeknik Negeri Bali Capture The
+                    Flag</a>
                 <h1 class="text-2xl font-bold pb-3 mt-4">Deskripsi Lomba</h1>
-                <p class="pb-3 text-justify">PNBCTF (Politeknik Negeri Bali Capture The Flag) merupakan salah satu sub event perlombaan yang pertama kali diadakan dalam       kegiatan “Information and Technology Festival (Intech Fest) 2022”. 
-                    Kegiatan ini ditujukan untuk khalayak umum dengan ketentuan umur mulai dari 16 sampai 23 tahun. 
-                    Dengan diadakannya kompetisi PNBCTF ini diharapkan agar dapat meningkatkan minat dan bakat generasi muda terhadap keamanan dan ancaman siber, 
-                    serta meningkatkan kemampuan generasi muda dalam menciptakan keamanan siber dan mencegah berbagai macam ancaman siber seiring berkembangnya informasi dan teknologi</p>
+                <p class="pb-3 text-justify">PNBCTF (Politeknik Negeri Bali Capture The Flag) merupakan salah satu sub
+                    event perlombaan yang pertama kali diadakan dalam kegiatan “Information and Technology Festival
+                    (Intech Fest) 2022”.
+                    Kegiatan ini ditujukan untuk khalayak umum dengan ketentuan umur mulai dari 16 sampai 23 tahun.
+                    Dengan diadakannya kompetisi PNBCTF ini diharapkan agar dapat meningkatkan minat dan bakat generasi
+                    muda terhadap keamanan dan ancaman siber,
+                    serta meningkatkan kemampuan generasi muda dalam menciptakan keamanan siber dan mencegah berbagai
+                    macam ancaman siber seiring berkembangnya informasi dan teknologi</p>
                 <h1 class="text-2xl font-bold pb-3 mt-4" id="timeline">Timeline Lomba</h1>
                 <ol class="items-center sm:flex">
                     <li class="relative mb-6 sm:mb-0">
@@ -40,10 +45,13 @@
                             <div class="hidden sm:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"></div>
                         </div>
                         <div class="mt-3 sm:pr-8">
-                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Pendaftaran Lomba PNBCTF</h3>
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Pendaftaran Lomba PNBCTF
+                            </h3>
                             <time
-                                class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Dilakukan Pada Tanggal 27 Juli 2023</time>
-                            <p class="text-base font-normal text-gray-500 dark:text-gray-400">Pendaftaran Lomba PNBDC Akan Dilakukan Pada Tanggal 27 Juli 2023 Hingga Tanggal 7 Agustus 2023</p>
+                                class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Dilakukan
+                                Pada Tanggal 27 Juli 2023</time>
+                            <p class="text-base font-normal text-gray-500 dark:text-gray-400">Pendaftaran Lomba PNBDC
+                                Akan Dilakukan Pada Tanggal 27 Juli 2023 Hingga Tanggal 7 Agustus 2023</p>
                         </div>
                     </li>
                     <li class="relative mb-6 sm:mb-0">
@@ -60,10 +68,13 @@
                             <div class="hidden sm:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"></div>
                         </div>
                         <div class="mt-3 sm:pr-8">
-                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Perlaksanaan Perlombaan PNBCTF</h3>
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Perlaksanaan Perlombaan
+                                PNBCTF</h3>
                             <time
-                                class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Dilakukan Pada Tanggal 09 September 2023</time>
-                            <p class="text-base font-normal text-gray-500 dark:text-gray-400">Perlombaan PNBCTF Akan Dilaksanakan 2 Hari Pada Tanggal 09 September 2023 Hingga Tanggal 10 September 2023</p>
+                                class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Dilakukan
+                                Pada Tanggal 09 September 2023</time>
+                            <p class="text-base font-normal text-gray-500 dark:text-gray-400">Perlombaan PNBCTF Akan
+                                Dilaksanakan 2 Hari Pada Tanggal 09 September 2023 Hingga Tanggal 10 September 2023</p>
                         </div>
                     </li>
                     <li class="relative mb-6 sm:mb-0">
@@ -80,10 +91,13 @@
                             <div class="hidden sm:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"></div>
                         </div>
                         <div class="mt-3 sm:pr-8">
-                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Pengumpulan Write Up PNBCTF</h3>
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Pengumpulan Write Up PNBCTF
+                            </h3>
                             <time
-                                class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Dilakukan pada tanggal 10 September 2023</time>
-                            <p class="text-base font-normal text-gray-500 dark:text-gray-400">Pengumpulan Write Up Akan Dilakukan Pada Tanggal 10 September 2023 Hingga 11 September 2023</p>
+                                class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Dilakukan
+                                pada tanggal 10 September 2023</time>
+                            <p class="text-base font-normal text-gray-500 dark:text-gray-400">Pengumpulan Write Up Akan
+                                Dilakukan Pada Tanggal 10 September 2023 Hingga 11 September 2023</p>
                         </div>
                     </li>
                 </ol>
@@ -94,25 +108,28 @@
 
     <!-- Sidebar Section -->
     <aside class="w-full md:w-1/3 flex flex-col items-center px-3" id="gabung">
-        <div class="w-full bg-white shadow flex flex-col my-4 p-6">
-            <p class="text-xl font-semibold pb-5">Gabung Lomba</p>
-            <p class="pb-2 text-justify">Jika tertarik silahkan klik tombol daftar lomba dibawah ini, atau klik download
-                guidebook untuk membaca panduan lomba</p>
-            <a href="/ctf"
-                class="w-full bg-primary-lightblue text-white font-bold text-sm uppercase rounded hover:bg-primary-blue flex items-center justify-center px-2 py-3 mt-4">
-                Daftar Lomba
-            </a>
-            <a href="#"
-                class="w-full bg-red-500 text-white font-bold text-sm uppercase rounded hover:bg-red-700 flex items-center justify-center px-2 py-3 mt-4">
-                Download Guidebook
-            </a>
-        </div>
+        <div class="sticky top-[70px]">
+            <div class="w-full bg-white shadow flex flex-col my-4 p-6">
+                <p class="text-xl font-semibold pb-5">Gabung Lomba</p>
+                <p class="pb-2 text-justify">Jika tertarik silahkan klik tombol daftar lomba dibawah ini, atau klik
+                    download
+                    guidebook untuk membaca panduan lomba</p>
+                <a href="/ctf"
+                    class="w-full bg-primary-lightblue text-white font-bold text-sm uppercase rounded hover:bg-primary-blue flex items-center justify-center px-2 py-3 mt-4">
+                    Daftar Lomba
+                </a>
+                <a href="#"
+                    class="w-full bg-red-500 text-white font-bold text-sm uppercase rounded hover:bg-red-700 flex items-center justify-center px-2 py-3 mt-4">
+                    Download Guidebook
+                </a>
+            </div>
 
-        <div class="w-full bg-white shadow flex flex-col my-4 p-6">
-            <div class="flex justify-center">
-                <div class="flex flex-col gap-4 items-center justify-between">
-                    <h3 class="text-2xl font-bold text-gray-900">Penutupan lomba</h3>
-                    <span id="countdown" class="text-2xl font-semibold text-gray-700"></span>
+            <div class="w-full bg-white shadow flex flex-col my-4 p-6">
+                <div class="flex justify-center">
+                    <div class="flex flex-col gap-4 items-center justify-between">
+                        <h3 class="text-2xl font-bold text-gray-900">Penutupan lomba</h3>
+                        <span id="countdown" class="text-2xl font-semibold text-gray-700"></span>
+                    </div>
                 </div>
             </div>
         </div>

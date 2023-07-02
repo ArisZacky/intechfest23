@@ -50,8 +50,10 @@
                         <div class="mt-3 sm:pr-8">
                             <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Pendaftaran Lomba PNBDC</h3>
                             <time
-                                class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Dilakukan Pada Tanggal 27 Juli 2023</time>
-                            <p class="text-base font-normal text-gray-500 dark:text-gray-400">Pendaftaran Lomba PNBDC Akan Dilakukan Pada Tanggal 27 Juli 2023 Hingga Tanggal 25 Agustus 2023</p>
+                                class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Dilakukan
+                                Pada Tanggal 27 Juli 2023</time>
+                            <p class="text-base font-normal text-gray-500 dark:text-gray-400">Pendaftaran Lomba PNBDC
+                                Akan Dilakukan Pada Tanggal 27 Juli 2023 Hingga Tanggal 25 Agustus 2023</p>
                         </div>
                     </li>
                     <li class="relative mb-6 sm:mb-0">
@@ -70,8 +72,10 @@
                         <div class="mt-3 sm:pr-8">
                             <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Pembuatan Project PNBDC</h3>
                             <time
-                                class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Dilakukan Pada Tanggal 26 Agustus 2023</time>
-                            <p class="text-base font-normal text-gray-500 dark:text-gray-400">Pembuatan Project Akan Dilaksanakan Pada Tanggal 26 Agustus 2023 Hingga Tanggal 15 Agustus 2023</p>
+                                class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Dilakukan
+                                Pada Tanggal 26 Agustus 2023</time>
+                            <p class="text-base font-normal text-gray-500 dark:text-gray-400">Pembuatan Project Akan
+                                Dilaksanakan Pada Tanggal 26 Agustus 2023 Hingga Tanggal 15 Agustus 2023</p>
                         </div>
                     </li>
                     <li class="relative mb-6 sm:mb-0">
@@ -88,10 +92,13 @@
                             <div class="hidden sm:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"></div>
                         </div>
                         <div class="mt-3 sm:pr-8">
-                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Babak Final Perlombaan PNBDC</h3>
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Babak Final Perlombaan PNBDC
+                            </h3>
                             <time
-                                class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Dilakukan pada tanggal 30 September 2023</time>
-                            <p class="text-base font-normal text-gray-500 dark:text-gray-400">Final Akan Dilakukan Pada Tanggal 30 September 2023 Yang Berlokasi di Kampus Politeknik Negeri Bali</p>
+                                class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Dilakukan
+                                pada tanggal 30 September 2023</time>
+                            <p class="text-base font-normal text-gray-500 dark:text-gray-400">Final Akan Dilakukan Pada
+                                Tanggal 30 September 2023 Yang Berlokasi di Kampus Politeknik Negeri Bali</p>
                         </div>
                     </li>
                 </ol>
@@ -102,25 +109,28 @@
 
     <!-- Sidebar Section -->
     <aside class="w-full md:w-1/3 flex flex-col items-center px-3" id="gabung">
-        <div class="w-full bg-white shadow flex flex-col my-4 p-6">
-            <p class="text-xl font-semibold pb-5">Gabung Lomba</p>
-            <p class="pb-2 text-justify">Jika tertarik silahkan klik tombol daftar lomba dibawah ini, atau klik download
-                guidebook untuk membaca panduan lomba</p>
-            <a href="/dc"
-                class="w-full bg-primary-lightblue text-white font-bold text-sm uppercase rounded hover:bg-primary-blue flex items-center justify-center px-2 py-3 mt-4">
-                Daftar Lomba
-            </a>
-            <a href="#"
-                class="w-full bg-red-500 text-white font-bold text-sm uppercase rounded hover:bg-red-700 flex items-center justify-center px-2 py-3 mt-4">
-                Download Guidebook
-            </a>
-        </div>
+        <div class="sticky top-[70px]">
+            <div class="w-full bg-white shadow flex flex-col my-4 p-6">
+                <p class="text-xl font-semibold pb-5">Gabung Lomba</p>
+                <p class="pb-2 text-justify">Jika tertarik silahkan klik tombol daftar lomba dibawah ini, atau klik
+                    download
+                    guidebook untuk membaca panduan lomba</p>
+                <a href="/dc"
+                    class="w-full bg-primary-lightblue text-white font-bold text-sm uppercase rounded hover:bg-primary-blue flex items-center justify-center px-2 py-3 mt-4">
+                    Daftar Lomba
+                </a>
+                <a href="#"
+                    class="w-full bg-red-500 text-white font-bold text-sm uppercase rounded hover:bg-red-700 flex items-center justify-center px-2 py-3 mt-4">
+                    Download Guidebook
+                </a>
+            </div>
 
-        <div class="w-full bg-white shadow flex flex-col my-4 p-6">
-            <div class="flex justify-center">
-                <div class="flex flex-col gap-4 items-center justify-between">
-                    <h3 class="text-2xl font-bold text-gray-900">Penutupan lomba</h3>
-                    <span id="countdown" class="text-2xl font-semibold text-gray-700"></span>
+            <div class="w-full bg-white shadow flex flex-col my-4 p-6">
+                <div class="flex justify-center">
+                    <div class="flex flex-col gap-4 items-center justify-between">
+                        <h3 class="text-2xl font-bold text-gray-900">Penutupan lomba</h3>
+                        <span id="countdown" class="text-2xl font-semibold text-gray-700"></span>
+                    </div>
                 </div>
             </div>
         </div>
