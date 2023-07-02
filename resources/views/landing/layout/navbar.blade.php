@@ -1,11 +1,11 @@
 {{-- navbar start --}}
-<nav class="backdrop-blur-lg
+<nav class="backdrop-blur-lg z-50 relative
 [ bg-gradient-to-b from-white/60 to-white/30 ]
 [ border-[1px] border-solid border-opacity-30 ] border-gray-200 dark:bg-gray-900 z-50 transition-all duration-500" id="navbar">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="" class="flex items-center">
             <img src="{{ asset('images/logo/logo.png') }}" class="h-8 mr-3" alt="Intechfest Logo" />
-            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Intechfest</span>
+            <span class="self-center hidden md:block text-2xl font-semibold whitespace-nowrap dark:text-white">Intechfest</span>
         </a>
         <div class="flex md:order-2">
             @auth

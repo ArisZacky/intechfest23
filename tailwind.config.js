@@ -23,7 +23,7 @@ module.exports = {
             }
         },
         fontFamily: {
-            'Plus Jakarta Sans': ['Plus Jakarta Sans']
+            'Plus-Jakarta-Sans': ['Plus Jakarta Sans']
         }
     },
     plugins: [

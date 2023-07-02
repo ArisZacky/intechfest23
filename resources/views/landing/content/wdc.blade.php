@@ -96,25 +96,27 @@
 
     <!-- Sidebar Section -->
     <aside class="w-full md:w-1/3 flex flex-col items-center px-3" id="gabung">
-        <div class="w-full bg-white shadow flex flex-col my-4 p-6">
-            <p class="text-xl font-semibold pb-5">Gabung Lomba</p>
-            <p class="pb-2 text-justify">Jika tertarik silahkan klik tombol daftar lomba dibawah ini, atau klik download
-                guidebook untuk membaca panduan lomba</p>
-            <a href="/wdc"
-                class="w-full bg-primary-lightblue text-white font-bold text-sm uppercase rounded hover:bg-primary-blue flex items-center justify-center px-2 py-3 mt-4">
-                Daftar Lomba
-            </a>
-            <a href="#"
-                class="w-full bg-red-500 text-white font-bold text-sm uppercase rounded hover:bg-red-700 flex items-center justify-center px-2 py-3 mt-4">
-                Download Guidebook
-            </a>
-        </div>
-
-        <div class="w-full bg-white shadow flex flex-col my-4 p-6">
-            <div class="flex justify-center">
-                <div class="flex flex-col gap-4 items-center justify-between">
-                    <h3 class="text-2xl font-bold text-gray-900">Penutupan lomba</h3>
-                    <span id="countdown" class="text-2xl font-semibold text-gray-700"></span>
+        <div class="sticky top-[70px]">
+            <div class="w-full bg-white shadow flex flex-col my-4 p-6">
+                <p class="text-xl font-semibold pb-5">Gabung Lomba</p>
+                <p class="pb-2 text-justify">Jika tertarik silahkan klik tombol daftar lomba dibawah ini, atau klik download
+                    guidebook untuk membaca panduan lomba</p>
+                <a href="/wdc"
+                    class="w-full bg-primary-lightblue text-white font-bold text-sm uppercase rounded hover:bg-primary-blue flex items-center justify-center px-2 py-3 mt-4">
+                    Daftar Lomba
+                </a>
+                <a href="#"
+                    class="w-full bg-red-500 text-white font-bold text-sm uppercase rounded hover:bg-red-700 flex items-center justify-center px-2 py-3 mt-4">
+                    Download Guidebook
+                </a>
+            </div>
+    
+            <div class="w-full bg-white shadow flex flex-col my-4 p-6">
+                <div class="flex justify-center">
+                    <div class="flex flex-col gap-4 items-center justify-between">
+                        <h3 class="text-2xl font-bold text-gray-900">Penutupan lomba</h3>
+                        <span id="countdown" class="text-2xl font-semibold text-gray-700"></span>
+                    </div>
                 </div>
             </div>
         </div>

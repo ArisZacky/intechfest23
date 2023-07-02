@@ -6,7 +6,7 @@
     <title>@yield('title')</title>
 </head>
 
-<body style="font-family: 'Plus Jakarta Sans','sans-serif';">
+<body class="font-Plus-Jakarta-Sans overflow-x-hidden">
     @yield('content')
     @include('landing.layout.footer')
     @yield('scripts')

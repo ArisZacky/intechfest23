@@ -9,10 +9,8 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
 
-
-
 {{-- hero section --}}
-<section id="home" class="bg-white relative overflow-y-hidden" data-aos="fade-down" data-aos-duration="1000">
+<section id="home" class="bg-white relative overflow-y-hidden" data-aos="fade-up" data-aos-duration="1000">
     {{-- abstract --}}
     {{-- <img class="absolute bottom-0 right-0 -z-10" src="{{asset('images/abstract/Group 45.png')}}"
         alt="abstract image"> --}}
@@ -334,7 +332,7 @@
 </section>
 
 {{-- sponsor --}}
-<section class="bg-white dark:bg-gray-900" data-aos="fade-down" data-aos-duration="1000">
+<section class="bg-white dark:bg-gray-900" data-aos="fade-up" data-aos-duration="1000">
     <div class="py-8 lg:py-16 mx-auto max-w-screen-xl px-4">
         <h2
             class="mb-8 lg:mb-16 text-2xl font-extrabold tracking-tight leading-tight text-center text-gray-900 dark:text-white md:text-4xl">
@@ -472,7 +470,7 @@
                             <a href="/detail-dc" class="text-center">
                                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-white">Capture The Flag</h5>
                             </a>
-                            <p class="mb-3 font-normal text-justif text-gray-50">
+                            <p class="mb-3 font-normal text-justify text-gray-50">
                                 Politeknik Negeri Bali Capture The
                                 Flags (PNBCTF) Merupakan Kegiatan perlombaan yang akan berfokus dalam mencermati
                                 permasalahan
@@ -558,8 +556,7 @@
 </section>
 
 {{-- faq --}}
-<!-- component -->
-<div class="bg-white pt-10" id="faq">
+<div class="bg-white pt-10" id="faq" data-aos="fade-up" data-aos-duration="1000">
     <h3 class="text-xl font-bold mb-3 text-center text-primary-blue">Punya pertanyaan?</h3>
     <h2
         class="lg:mb-16 text-2xl font-extrabold tracking-tight leading-tight text-center text-gray-900 dark:text-white md:text-4xl">
@@ -572,9 +569,9 @@
                         onclick="faqPop('#faq-1', 'h-36')" id="faq-1">
                         <div class="flex justify-between items-center">
                             <h5 class="font-medium"> Bagaimana cara pendaftaran lomba Intech Fest 2023?</h5>
-                            <i class="fa-solid fa-chevron-down transition-all duration-1000"></i>
+                            <i class="fa-solid fa-chevron-down transition-all duration-700"></i>
                         </div>
-                        <p class="overflow-hidden font-light text-justify h-0 transition-all duration-1000">
+                        <p class="overflow-hidden font-light text-justify h-0 transition-all duration-700">
                             Pendaftaran akan dilakukan melalui website official Intech Fest 2023 atau dapat melihat tata cara pendaftaran melalui Guide Book.</p>
                     </div>
                     <div class="mb-2 bg-white rounded-lg border cursor-pointer p-3 faq-section"
@@ -582,18 +579,18 @@
                         <div class="flex justify-between items-center">
                             <h5 class="font-medium">Apakah ChillTalks dibuka untuk umum
                                     dan apa topik yang akan dibahas?</h5>
-                            <i class="fa-solid fa-chevron-down transition-all duration-1000"></i>
+                            <i class="fa-solid fa-chevron-down transition-all duration-700"></i>
                         </div>
-                        <p class="overflow-hidden font-light text-justify h-0 transition-all duration-1000">
+                        <p class="overflow-hidden font-light text-justify h-0 transition-all duration-700">
                             Chillstalks dibukan untuk umum. Topik yang dibahas adalah Tentang Bagaimana Peran AI terhadap bidang ekonomi dan pendidikan.</p>
                     </div>
                     <div class="mb-2 bg-white rounded-lg border cursor-pointer p-3 faq-section"
                         onclick="faqPop('#faq-3', 'h-36')" id="faq-3">
                         <div class="flex justify-between items-center">
                             <h5 class="font-medium">Benefit dari webinar Intech Fest 2023?</h5>
-                            <i class="fa-solid fa-chevron-down transition-all duration-1000"></i>
+                            <i class="fa-solid fa-chevron-down transition-all duration-700"></i>
                         </div>
-                        <p class="overflow-hidden font-light text-justify h-0 transition-all duration-1000">
+                        <p class="overflow-hidden font-light text-justify h-0 transition-all duration-700">
                             Benefit yang akan didapatkan berupa : <br> - E-sertifikat <br> - Ilmu bermanfaat <br> - Relasi <br> - Merchandise Intech
                     </div>
                 </div>
@@ -602,9 +599,9 @@
                         onclick="faqPop('#faq-4', 'h-36')" id="faq-4">
                         <div class="flex justify-between items-center">
                             <h5 class="font-medium">Masukkan Pertanyaan disini</h5>
-                            <i class="fa-solid fa-chevron-down transition-all duration-1000"></i>
+                            <i class="fa-solid fa-chevron-down transition-all duration-700"></i>
                         </div>
-                        <p class="overflow-hidden font-light text-justify h-0 transition-all duration-1000">Lorem ipsum dolor sit amet
+                        <p class="overflow-hidden font-light text-justify h-0 transition-all duration-700">Lorem ipsum dolor sit amet
                             consectetur adipisicing elit. Quia magni dolores ea fuga qui delectus consectetur! Repellat
                             accusamus perspiciatis consectetur eveniet blanditiis aperiam debitis unde labore harum,
                             soluta cum. Dolores ea ipsam deserunt facilis magni sunt aut veniam nostrum voluptas, porro
@@ -614,9 +611,9 @@
                         onclick="faqPop('#faq-5', 'h-36')" id="faq-5">
                         <div class="flex justify-between items-center">
                             <h5 class="font-medium">Masukkan Pertanyaan disini</h5>
-                            <i class="fa-solid fa-chevron-down transition-all duration-1000"></i>
+                            <i class="fa-solid fa-chevron-down transition-all duration-700"></i>
                         </div>
-                        <p class="overflow-hidden font-light text-justify h-0 transition-all duration-1000">Lorem ipsum dolor sit amet
+                        <p class="overflow-hidden font-light text-justify h-0 transition-all duration-700">Lorem ipsum dolor sit amet
                             consectetur adipisicing elit. Quia magni dolores ea fuga qui delectus consectetur! Repellat
                             accusamus perspiciatis consectetur eveniet blanditiis aperiam debitis unde labore harum,
                             soluta cum. Dolores ea ipsam deserunt facilis magni sunt aut veniam nostrum voluptas, porro
@@ -626,9 +623,9 @@
                         onclick="faqPop('#faq-6', 'h-36')" id="faq-6">
                         <div class="flex justify-between items-center">
                             <h5 class="font-medium">Masukkan Pertanyaan disini</h5>
-                            <i class="fa-solid fa-chevron-down transition-all duration-1000"></i>
+                            <i class="fa-solid fa-chevron-down transition-all duration-700"></i>
                         </div>
-                        <p class="overflow-hidden font-light text-justify h-0 transition-all duration-1000">Lorem ipsum dolor sit amet
+                        <p class="overflow-hidden font-light text-justify h-0 transition-all duration-700">Lorem ipsum dolor sit amet
                             consectetur adipisicing elit. Quia magni dolores ea fuga qui delectus consectetur! Repellat
                             accusamus perspiciatis consectetur eveniet blanditiis aperiam debitis unde labore harum,
                             soluta cum. Dolores ea ipsam deserunt facilis magni sunt aut veniam nostrum voluptas, porro

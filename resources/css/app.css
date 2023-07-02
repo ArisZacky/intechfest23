@@ -96,6 +96,23 @@
     width: 200%;
 }
 
+/* btn slide warna merah */
+.btn-slide2::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -30px;
+    width: 0%;
+    height: 100%;
+    transform: skew(50deg);
+    background: rgb(200, 30, 30);
+    transition: all 1s;
+    z-index: 1;
+}
+.btn-slide2:hover::before {
+    width: 200%;
+}
+
 /* border bawah */
 .btn-border::after {
     content: "";
