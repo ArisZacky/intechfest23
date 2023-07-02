@@ -31,7 +31,7 @@
                             clip-rule="evenodd"></path>
                     </svg>
                 </button>
-                <ul id="dropdown-example" class="py-2 space-y-2">
+                <ul id="dropdown-example" class="py-2 space-y-2 hidden">
                     <li>
                         <a href="/data-panitia"
                             class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Data Panitia</a>
@@ -55,7 +55,7 @@
                             clip-rule="evenodd"></path>
                     </svg>
                 </button>
-                <ul id="dropdown-lomba" class="py-2 space-y-2">
+                <ul id="dropdown-lomba" class="py-2 space-y-2 hidden">
                     <li>
                         <a href="/dc-admin"
                             class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">DC</a>
@@ -90,7 +90,7 @@
                             clip-rule="evenodd"></path>
                     </svg>
                 </button>
-                <ul id="dropdown-project" class="py-2 space-y-2">
+                <ul id="dropdown-project" class="py-2 space-y-2 hidden">
                     <li>
                         <a href="/project-dc"
                             class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">DC</a>
@@ -118,7 +118,7 @@
                             clip-rule="evenodd"></path>
                     </svg>
                 </button>
-                <ul id="dropdown-transaksi" class="py-2 space-y-2">
+                <ul id="dropdown-transaksi" class="py-2 space-y-2 hidden">
                     <li>
                         <a href="/transaksi-dc"
                             class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">DC</a>
@@ -139,6 +139,62 @@
                         <a href="/project-ctf"
                             class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">CTF</a>
                     </li> -->
+                </ul>
+            </li>
+            <li>
+                <button type="button"
+                    class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                    aria-controls="dropdown-deleted" data-collapse-toggle="dropdown-deleted">
+                    <i class="fa-solid fa-trash text-gray-500"></i>                  
+                    <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item>Data Terhapus</span>
+                    <svg sidebar-toggle-item class="w-6 h-6 text-gray-500" fill="currentColor" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg"> 
+                        <path fill-rule="evenodd"
+                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+                <ul id="dropdown-deleted" class="py-2 space-y-2 hidden">
+                    <li>
+                        <a href="/deleted-data-peserta"
+                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Data Peserta</a>
+                    </li>
+                    <li>
+                        <a href="/deleted-data-panitia"
+                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Data Panitia</a>
+                    </li>
+                    <li>
+                        <a href="/deleted-data-wdc"
+                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">WDC</a>
+                    </li>
+                    <li>
+                        <a href="/deleted-data-dc"
+                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">DC</a>
+                    </li>
+                    <li>
+                        <a href="/deleted-data-ctf"
+                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">CTF</a>
+                    </li>
+                    <li>
+                        <a href="/deleted-data-chilltalks"
+                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Chilltalks</a>
+                    </li>
+                    <li>
+                        <a href="/deleted-data-transaksi-wdc"
+                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Transaksi WDC</a>
+                    </li>
+                    <li>
+                        <a href="/deleted-data-transaksi-dc"
+                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Transaksi DC</a>
+                    </li>
+                    <li>
+                        <a href="/deleted-data-transaksi-ctf"
+                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Transaksi CTF</a>
+                    </li>
+                    <li>
+                        <a href="/deleted-data-transaksi-ct"
+                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Transaksi CT</a>
+                    </li>
                 </ul>
             </li>
         </ul>
