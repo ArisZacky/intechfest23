@@ -1,5 +1,7 @@
 {{-- navbar start --}}
-<nav class="bg-white border-gray-200 dark:bg-gray-900 z-50 transition-all duration-500" id="navbar">
+<nav class="backdrop-blur-lg
+[ bg-gradient-to-b from-white/60 to-white/30 ]
+[ border-[1px] border-solid border-opacity-30 ] border-gray-200 dark:bg-gray-900 z-50 transition-all duration-500" id="navbar">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="" class="flex items-center">
             <img src="{{ asset('images/logo/logo.png') }}" class="h-8 mr-3" alt="Intechfest Logo" />
@@ -64,7 +66,7 @@
         </div>
         <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-cta">
             <ul id="menu"
-                class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                 <li>
                     <a href="#home" id="menuHome"
                         class="block py-2 pl-3 pr-4 rounded md:bg-transparent text-gray-900 md:hover:text-primary-lightblue  md:p-0 md:dark:text-blue-500"
