@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\Compilers\Concerns\CompilesRawPhp;
+use Carbon\Carbon;
 
 class PesertaController extends Controller
 {
@@ -37,6 +38,8 @@ class PesertaController extends Controller
 
         $peserta = null;
         $lomba = null;
+        $batasWaktu = new Carbon('2023-09-16 00:00:00');
+
         // cek jika peserta yang login mendaftar salah 1 dari 3 lomba yang ada
         $wdcPeserta = Wdc::where('id_peserta', $id_peserta)->first();
         if ($wdcPeserta) {
@@ -79,10 +82,10 @@ class PesertaController extends Controller
             if($transaksi->validasi == "Belum Tervalidasi"){
                 return view('peserta.lomba.validasi_transaksi');
             }  // jika sudah mengupload project (step 6)
-            else if(isset($peserta->id_project)) {
+            else if($batasWaktu->isPast()) {
                 return view('peserta.lomba.suksesProject');
             } // jika sudah melakukan pembayaran dan sudah divalidasi (step 5)
-            else if($transaksi->validasi == "Sudah Valid" AND empty($peserta->id_project)){
+            else if($transaksi->validasi == "Sudah Valid"){
                 return view('peserta.lomba.projectDc', compact('peserta', 'transaksi'));
             } 
             return view('peserta.lomba.transaksi', compact('peserta', 'transaksi'));
@@ -93,10 +96,10 @@ class PesertaController extends Controller
             if($transaksi->validasi == "Belum Tervalidasi"){
                 return view('peserta.lomba.validasi_transaksi');
             }  // jika sudah mengupload project (step 6)
-            else if(isset($peserta->id_project)) {
+            else if($batasWaktu->isPast()) {
                 return view('peserta.lomba.suksesProject');
             } // jika sudah melakukan pembayaran dan sudah divalidasi (step 5)
-            else if($transaksi->validasi == "Sudah Valid" AND empty($peserta->id_project)){
+            else if($transaksi->validasi == "Sudah Valid"){
                 return view('peserta.lomba.projectWdc', compact('peserta', 'transaksi'));
             } 
             return view('peserta.lomba.transaksi', compact('peserta', 'transaksi'));
