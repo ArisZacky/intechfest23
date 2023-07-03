@@ -18,14 +18,18 @@
             </div>
             <div class="bg-white flex flex-col justify-start p-6">
                 <a href="/#lomba" class="text-blue-700 text-sm font-bold uppercase pb-4">Lomba</a>
-                <a href="#" class="text-3xl font-bold hover:text-gray-700 pb-4">Politeknik Negeri Bali Web Design Competition</a>
+                <a href="#" class="text-3xl font-bold hover:text-gray-700 pb-4">Politeknik Negeri Bali Web Design
+                    Competition</a>
                 <h1 class="text-2xl font-bold pb-3 mt-4">Deskripsi Lomba</h1>
-                <p class="pb-3 text-justify">Politeknik Negeri Bali Web Design Competition (PNBWDC) Merupakan salah satu sub event perlombaan dalam kegiatan 
+                <p class="pb-3 text-justify">Politeknik Negeri Bali Web Design Competition (PNBWDC) Merupakan salah satu
+                    sub event perlombaan dalam kegiatan
                     “Information and Technology Festival (Intech Fest) 2022”.
-                    Yang dimana kegiatan ini berfokus dalam merancang serta membuat sebuah website yang memiliki peran sangat penting di era modern ini. 
-                    Kegiatan ini ditujukan untuk Mahasiswa/i perguruan tinggi se-indonesia. Melalui kegiatan ini, 
-                    diharapkan dapat meningkatkan kualitas dan membangun peran generasi muda yang terjun dalam bidang IT 
-                    khususnya desain web dalam upaya peningkatan kualitas tenaga terampil melalui peningkatan keahlian dalam bidang desain web.</p>
+                    Yang dimana kegiatan ini berfokus dalam merancang serta membuat sebuah website yang memiliki peran
+                    sangat penting di era modern ini.
+                    Kegiatan ini ditujukan untuk Mahasiswa/i perguruan tinggi se-indonesia. Melalui kegiatan ini,
+                    diharapkan dapat meningkatkan kualitas dan membangun peran generasi muda yang terjun dalam bidang IT
+                    khususnya desain web dalam upaya peningkatan kualitas tenaga terampil melalui peningkatan keahlian
+                    dalam bidang desain web.</p>
                 <h1 class="text-2xl font-bold pb-3 mt-4" id="timeline">Timeline Lomba</h1>
                 <ol class="items-center sm:flex">
                     <li class="relative mb-6 sm:mb-0">
@@ -42,10 +46,13 @@
                             <div class="hidden sm:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"></div>
                         </div>
                         <div class="mt-3 sm:pr-8">
-                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Pendaftaran Lomba PNBWDC</h3>
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Pendaftaran Lomba PNBWDC
+                            </h3>
                             <time
-                                class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Dilakukan Pada Tanggal 27 Juli 2023</time>
-                            <p class="text-base font-normal text-gray-500 dark:text-gray-400">Pendaftaran Lomba PNBWDC Akan Dilakukan Pada Tanggal 27 Juli 2023 Hingga Tanggal 25 Agustus 2023</p>
+                                class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Dilakukan
+                                Pada Tanggal 27 Juli 2023</time>
+                            <p class="text-base font-normal text-gray-500 dark:text-gray-400">Pendaftaran Lomba PNBWDC
+                                Akan Dilakukan Pada Tanggal 27 Juli 2023 Hingga Tanggal 25 Agustus 2023</p>
                         </div>
                     </li>
                     <li class="relative mb-6 sm:mb-0">
@@ -62,10 +69,13 @@
                             <div class="hidden sm:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"></div>
                         </div>
                         <div class="mt-3 sm:pr-8">
-                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Pembuatan Project PNBWDC</h3>
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Pembuatan Project PNBWDC
+                            </h3>
                             <time
-                                class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Dilakukan Pada Tanggal 26 Agustus 2023</time>
-                            <p class="text-base font-normal text-gray-500 dark:text-gray-400">Pembuatan Project Akan Dilaksanakan Pada Tanggal 26 Agustus 2023 Hingga Tanggal 15 Agustus 2023</p>
+                                class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Dilakukan
+                                Pada Tanggal 26 Agustus 2023</time>
+                            <p class="text-base font-normal text-gray-500 dark:text-gray-400">Pembuatan Project Akan
+                                Dilaksanakan Pada Tanggal 26 Agustus 2023 Hingga Tanggal 15 Agustus 2023</p>
                         </div>
                     </li>
                     <li class="relative mb-6 sm:mb-0">
@@ -82,10 +92,13 @@
                             <div class="hidden sm:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"></div>
                         </div>
                         <div class="mt-3 sm:pr-8">
-                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Babak Final Perlombaan PNBWDC</h3>
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Babak Final Perlombaan
+                                PNBWDC</h3>
                             <time
-                                class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Dilakukan pada tanggal 30 September 2023</time>
-                            <p class="text-base font-normal text-gray-500 dark:text-gray-400">Final Akan Dilakukan Pada Tanggal 30 September 2023 Yang Berlokasi di Kampus Politeknik Negeri Bali</p>
+                                class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Dilakukan
+                                pada tanggal 30 September 2023</time>
+                            <p class="text-base font-normal text-gray-500 dark:text-gray-400">Final Akan Dilakukan Pada
+                                Tanggal 30 September 2023 Yang Berlokasi di Kampus Politeknik Negeri Bali</p>
                         </div>
                     </li>
                 </ol>
@@ -99,18 +112,19 @@
         <div class="sticky top-[70px]">
             <div class="w-full bg-white shadow flex flex-col my-4 p-6">
                 <p class="text-xl font-semibold pb-5">Gabung Lomba</p>
-                <p class="pb-2 text-justify">Jika tertarik silahkan klik tombol daftar lomba dibawah ini, atau klik download
+                <p class="pb-2 text-justify">Jika tertarik silahkan klik tombol daftar lomba dibawah ini, atau klik
+                    download
                     guidebook untuk membaca panduan lomba</p>
                 <a href="/wdc"
-                    class="w-full bg-primary-lightblue text-white font-bold text-sm uppercase rounded hover:bg-primary-blue flex items-center justify-center px-2 py-3 mt-4">
-                    Daftar Lomba
+                    class="w-full relative btn-slide overflow-hidden bg-primary-lightblue text-white font-bold text-sm uppercase rounded flex items-center justify-center px-2 py-3 mt-4">
+                    <span class="relative z-10">Daftar Lomba</span>
                 </a>
                 <a href="#"
-                    class="w-full bg-red-500 text-white font-bold text-sm uppercase rounded hover:bg-red-700 flex items-center justify-center px-2 py-3 mt-4">
-                    Download Guidebook
+                    class="w-full relative btn-slide2 overflow-hidden bg-red-500 text-white font-bold text-sm uppercase rounded flex items-center justify-center px-2 py-3 mt-4">
+                    <span class="relative z-10">Download Guidebook</span>
                 </a>
             </div>
-    
+
             <div class="w-full bg-white shadow flex flex-col my-4 p-6">
                 <div class="flex justify-center">
                     <div class="flex flex-col gap-4 items-center justify-between">
@@ -124,17 +138,15 @@
 
     <div class="w-full flex pt-6">
         <a href="{{url('/detail-dc')}}" class="w-1/2 bg-white shadow hover:shadow-md text-left p-6">
-            <p class="text-lg text-blue-800 font-bold flex items-center"><i class="fas fa-arrow-left pr-1"></i>
+            <p class="text-lg text-primary-lightblue hover:text-primary-blue font-bold flex items-center"><i
+                    class="fas fa-arrow-left pr-1"></i>
                 Sebelumnya</p>
-            <p class="pt-2">Politeknik Negeri Bali Web
-                Design Competition</p>
+            <p class="pt-2">Politeknik Negeri Bali Design Challenge</p>
         </a>
         <a href="{{url('/detail-ctf')}}" class="w-1/2 bg-white shadow hover:shadow-md text-right p-6">
-            <p class="text-lg text-blue-800 font-bold flex items-center justify-end">Berikutnya <i
-                    class="fas fa-arrow-right pl-1"></i></p>
-            <p class="pt-2">Politeknik Negeri Bali
-                Capture The
-                Flags</p>
+            <p class="text-lg text-primary-lightblue hover:text-primary-blue font-bold flex items-center justify-end">
+                Berikutnya <i class="fas fa-arrow-right pl-1"></i></p>
+            <p class="pt-2">Politeknik Negeri Bali Capture The Flags</p>
         </a>
     </div>
 </div>
