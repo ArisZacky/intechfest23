@@ -15,7 +15,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\Compilers\Concerns\CompilesRawPhp;
-use Carbon\Carbon;
 
 class PesertaController extends Controller
 {
@@ -36,11 +35,6 @@ class PesertaController extends Controller
     {
         $user = Auth::user();
         $id_peserta = Peserta::where('email', $user->email)->first()->id_peserta;
-
-        // waktu saat ini
-        $currentTime = Carbon::now();
-        // waktu pendaftaran ditutup (1 september 2023)
-        $closeTime = Carbon::create(2023, 9, 1);
         
         $peserta = null;
         $lomba = null;
@@ -92,9 +86,14 @@ class PesertaController extends Controller
                 return view('peserta.lomba.suksesProject');
             } // jika sudah melakukan pembayaran dan sudah divalidasi (step 5)
             else if($transaksi->validasi == "Sudah Valid"){
-                return view('peserta.lomba.projectDc', compact('peserta', 'transaksi'));
+                $projectSebelumnya = null;
+                if($peserta->id_project != null){
+                    $idProjectSebelumnya = $peserta->id_project;
+                    // ambil nama file project sebelumnya
+                    $projectSebelumnya = DB::table('project')->where('id_project', $idProjectSebelumnya)->first();
+                }
+                return view('peserta.lomba.projectDc', compact('peserta', 'projectSebelumnya'));
             } 
-            return view('peserta.lomba.transaksi', compact('peserta', 'transaksi'));
 
         }else if(isset($peserta->id_transaksi) AND $lomba == "WDC"){
             $transaksi = Transaksi::where('id_transaksi', $peserta->id_transaksi)->first();
@@ -102,13 +101,18 @@ class PesertaController extends Controller
             if($transaksi->validasi == "Belum Tervalidasi"){
                 return view('peserta.lomba.validasi_transaksi');
             }  // jika sudah mengupload project (step 6)
-            else if($batasWaktu->isPast()) {
+            else if($batasWaktu->isPast()) {                
                 return view('peserta.lomba.suksesProject');
             } // jika sudah melakukan pembayaran dan sudah divalidasi (step 5)
             else if($transaksi->validasi == "Sudah Valid"){
-                return view('peserta.lomba.projectWdc', compact('peserta', 'transaksi'));
+                $projectSebelumnya = null;
+                if($peserta->id_project != null){
+                    $idProjectSebelumnya = $peserta->id_project;
+                    // ambil nama file project sebelumnya
+                    $projectSebelumnya = DB::table('project')->where('id_project', $idProjectSebelumnya)->first();
+                }
+                return view('peserta.lomba.projectWdc', compact('peserta', 'projectSebelumnya'));
             } 
-            return view('peserta.lomba.transaksi', compact('peserta', 'transaksi'));
 
         }else if(isset($peserta->id_transaksi) AND $lomba == "CTF"){
             $transaksi = Transaksi::where('id_transaksi', $peserta->id_transaksi)->first();
@@ -119,7 +123,6 @@ class PesertaController extends Controller
             else if($transaksi->validasi == "Sudah Valid") {
                 return view('peserta.lomba.suksesValidasictf');
             } 
-            return view('peserta.lomba.transaksi', compact('peserta', 'transaksi'));
         }else {
             return view('peserta.content.lomba');
         }

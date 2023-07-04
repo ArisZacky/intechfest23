@@ -381,6 +381,8 @@ Route::group(['middleware' => ['auth', 'verified', 'level:peserta']], function (
     Route::put('/transaksi-wdc/{id}', [LombaController::class, 'transaksiWdc']);
     // menampilkan halaman upload form project
     Route::put('/form-project-wdc/{id}', [LombaController::class, 'formProjectWdc']);
+    // menampilkan halaman upload form project
+    Route::get('/download-project-wdc/{filename}', [LombaController::class, 'downloadProjectWdc']);
 
     // // Menampilkan Transaksi
     // Route::get('/pembayaran', [LombaController::class, 'pembayaranwdc']);
@@ -396,6 +398,7 @@ Route::group(['middleware' => ['auth', 'verified', 'level:peserta']], function (
     Route::put('/transaksi-dc/{id}', [LombaController::class, 'transaksiDc']);
     // menampilkan halaman upload form project
     Route::put('/form-project-dc/{id}', [LombaController::class, 'formProjectDc']);
+    Route::get('/download-project-dc/{filename}', [LombaController::class, 'downloadProjectDc']);
 
     // // Menampilkan Transaksi
     // Route::get('/pembayaran', [LombaController::class, 'pembayarandc']);
