@@ -540,14 +540,14 @@
                         <span class="title-font font-medium">Instagram</span>
                     </span>
                 </a>
-                <a href="/register"
+                <a href="{{url('/register')}}"
                     class="bg-gray-100 inline-flex py-3 px-5 rounded-lg items-center lg:ml-4 md:ml-0 ml-4 md:mt-4 mt-0 lg:mt-0 hover:bg-gray-200 focus:outline-none">
                     <img src="{{asset('images/logo/monokrom.png')}}" class="w-6" alt="logo">
                     <span class="ml-4 flex items-start flex-col leading-none">
                         <span class="text-xs text-gray-600 mb-1">Daftar akun</span>
                         <span class="title-font font-medium">IntechFest</span>
                     </span>
-                </a href="/register">
+                </a>
             </div>
         </div>
         <div class="order-1 md:order-2 md:w-2/3 lg:w-1/2 w-5/6">
