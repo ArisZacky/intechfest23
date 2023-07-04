@@ -143,7 +143,7 @@
                     </table>
                 </div>
                 <div class="p-4">
-                    {{ $ct->links() }}
+                    {{ $ctf->links() }}
                 </div>
             </div>
         </div>

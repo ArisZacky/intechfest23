@@ -2,12 +2,13 @@
 @extends('admin.main')
 
 {{-- judul halaman disini --}}
-@section('title', 'Data Peserta DC')
+@section('title', 'Data Peserta WDC')
 
 {{-- membuat content disini --}}
 @section('content')
 <!-- start content -->
 <div class="p-4 sm:ml-64 bg-gray-50 mt-14">
+  <h1>Data WDC Terhapus</h1>
     <!-- Start block -->
     <section class="p-3 sm:p-5 antialiased">
         <div class="mx-auto">
@@ -34,30 +35,6 @@
                             </div>
                         </form>
                     </div>
-                    <!-- button top table -->
-                    <div
-                        class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
-                        <div class="flex items-center space-x-3 w-full md:w-auto">
-                            <button id="actionsDropdownButton" data-dropdown-toggle="actionsDropdown"
-                                class="w-full md:w-auto flex items-center justify-center py-2 px-4 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-                                type="button">
-                                <svg class="-ml-1 mr-1.5 w-5 h-5" fill="currentColor" viewbox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                    <path clip-rule="evenodd" fill-rule="evenodd"
-                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
-                                </svg>
-                                Aksi
-                            </button>
-                            <div id="actionsDropdown"
-                                class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
-                                <div class="py-1">
-                                    <a href="{{url('/dc-admin/export_excel')}}"
-                                        class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Export
-                                        excel</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div class="overflow-x-auto">
                     <!-- table data -->
@@ -70,18 +47,18 @@
                                 <th scope="col" class="px-4 py-3">PROJECT</th>
                                 <th scope="col" class="px-4 py-3">VALIDASI</th>
                                 <th scope="col" class="px-4 py-3">
-                                    <span class="sr-only">Actions</span>
+                                  Actions
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($dc as $data)
+                            @foreach($wdc as $data)
                             <tr
                                 class="border-b dark:border-gray-700 {{($loop->iteration % 2 == 0) ? 'bg-slate-100' : ''}}" id="baris{{$loop->iteration}}">
                                 <th class="px-4 py-3">{{$loop->iteration}}</th>
                                 <td class="px-4 py-3">{{$data->nama_lengkap}}</td>
                                 <td class="px-4 py-3">
-                                    <button onclick ="previewIdentitas('baris{{$loop->iteration}}', '{{$data->id_dc}}')" data-modal-target="imageModal"
+                                    <button  onclick ="previewIdentitas('baris{{$loop->iteration}}', '{{$data->id_wdc}}')" data-modal-target="imageModal"
                                             data-modal-toggle="imageModal" id='link-foto'>
                                         <img class="w-20 h-20 rounded" src="{{ asset('storage/'.$data->foto) }}" alt="Large avatar" id='foto'>
                                     </button>                                    
@@ -103,21 +80,7 @@
                                         class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"> -->
                                         <ul class="py-1 text-sm" aria-labelledby="apple-imac-27-dropdown-button">
                                             <li>
-                                                <button onclick ="edit('baris{{$loop->iteration}}', '{{$data->id_dc}}')" type="button" data-modal-target="updateProductModal"
-                                                    data-modal-toggle="updateProductModal"
-                                                    class="flex w-full items-center py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-gray-700 dark:text-gray-200">
-                                                    <svg class="w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg"
-                                                        viewbox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                                        <path
-                                                            d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
-                                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                                            d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" />
-                                                    </svg>
-                                                    Edit
-                                                </button>
-                                            </li>
-                                            <li>
-                                                <button onclick="hapus('baris{{$loop->iteration}}', '{{$data->id_dc}}')" type="button" data-modal-target="deleteModal"
+                                                <button onclick="restore('baris{{$loop->iteration}}', '{{$data->id_wdc}}')" type="button" data-modal-target="deleteModal"
                                                     data-modal-toggle="deleteModal"
                                                     class="flex w-full items-center py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 text-red-500 dark:hover:text-red-400">
                                                     <svg class="w-4 h-4 mr-2" viewbox="0 0 14 15" fill="none"
@@ -138,7 +101,7 @@
                     </table>
                 </div>
                 <div class="p-4">
-                    {{ $dc->links() }}
+                    {{ $wdc->links() }}
                 </div>
             </div>
         </div>
@@ -169,9 +132,9 @@
                 </button>
             </div>
             <!-- Modal body -->
-            <form action="{{url('/update-dc')}}" method ="POST">
+            <form action="{{url('/update-wdc')}}" method ="POST">
                 @csrf
-                <input type="hidden" name="id_dc" id="edit-id_dc">
+                <input type="hidden" name="id_wdc" id="edit-id_wdc">
                 <div class="grid gap-4 mb-4 sm:grid-cols-2">
                     <div>
                         <label for="nama_peserta" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NAMA PESERTA</label>
@@ -230,11 +193,11 @@
                     d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
                     clip-rule="evenodd" />
             </svg>
-            <p class="mb-4 text-gray-500 dark:text-gray-300">Apakah kamu yakin untuk menghapus data ini?</p>
+            <p class="mb-4 text-gray-500 dark:text-gray-300">Apakah kamu yakin untuk mengembalikan data ini?</p>
             <div class="flex justify-center items-center space-x-4">
-            <form action="{{url('/delete-dc')}}" method ="POST">
+            <form action="{{url('/data-wdc/restore')}}" method ="POST">
             @csrf
-            <input type="hidden" id="hapus-id_dc" name="id_dc">
+            <input type="hidden" id="restore-id_wdc" name="id_wdc">
                 <button data-modal-toggle="deleteModal" type="button"
                     class="py-2 px-3 text-sm font-medium text-gray-500 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-primary-300 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Tidak,
                     Batalkan</button>
@@ -275,19 +238,10 @@
 <!-- end image modal -->
 
 <script>
-    function edit(baris, id) {
-        // fungsinya sama seperti hapus hanya beda penamaan
-        const td = document.querySelectorAll('#' + baris + ' td');
-        document.getElementById('edit-nama_peserta').value = td[0].innerText;
-        document.getElementById('a-foto').href = td[1].querySelector('#foto').src;
-        document.getElementById('edit-foto').src = td[1].querySelector('#foto').src;        
-
-        document.getElementById('edit-id_dc').value = id;
-    }
-    function hapus(baris, id){
+    function restore(baris, id){
         const td = document.querySelectorAll('#' + baris + ' td');
 
-        document.getElementById('hapus-id_dc').value = id;
+        document.getElementById('restore-id_wdc').value = id;
     }
     function previewIdentitas(baris, id){
         const td = document.querySelectorAll('#' + baris + ' td');

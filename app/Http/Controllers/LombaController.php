@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Transaksi;
-use App\Models\Wdc;
 use App\Models\Dc;
+use Carbon\Carbon;
 use App\Models\Ctf;
+use App\Models\Wdc;
 use App\Models\User;
 use App\Models\Peserta;
+use App\Models\Transaksi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -175,6 +176,15 @@ class LombaController extends Controller
         $peserta = Peserta::where('email', $user->email)->first();
         $namaPeserta = $peserta->nama_lengkap;
         $idPeserta = $peserta->id_peserta;
+        // cari peserta wdc yang login
+        $pesertaWdc = Wdc::where('id_peserta', $idPeserta)->first();
+        // cek apakah peserta sudah upload project
+        if($pesertaWdc->id_project != null){
+            $idProjectSebelumnya = $pesertaWdc->id_project;
+            // ambil nama file project sebelumnya
+            $projectSebelumnya = DB::table('project')->where('id_project', $idProjectSebelumnya)->first();
+            $namaProjectSebelumnya = $projectSebelumnya->file_project;
+        }
 
         // validasi file (gk perlu diubah)
         $request->validate([
@@ -183,26 +193,41 @@ class LombaController extends Controller
             'project.mimes' => 'Format file project harus berupa rar atau zip.',
             'project.max' => 'Ukuran file project maksimal 100 MB.'
         ]);
-        // simpan project ke storage dan dapatkan pathnya (sesuaikan dengan nama fungsi)
-        $filePath = $this->uploadProjectWdc($request, $namaPeserta);
+
+        // ambil nama file untuk disimpan ke db
+        $filePath = $this->uploadProjectWdc($request, $namaPeserta, true);
+        // data yang akan di insert ke table transaksi
+        $dataTransaksi = [
+            'file_project' => $filePath,
+            'created_at' => Carbon::now(),
+        ];
         try{
             DB::beginTransaction();
-            // data yang akan di insert ke table transaksi
-            $data = ['file_project' => $filePath];
             // insert data ke transaksi dan ambil idnya
-            $idProject = DB::table('project')->insertGetId($data);
+            $idProject = DB::table('project')->insertGetId($dataTransaksi);
             // data yang akan di update ke table dc yaitu kolom id_transaksi aja
-            $data2 = ['id_project' => $idProject];
+            $dataProject = ['id_project' => $idProject, 'updated_at' => Carbon::now()];
             // update kolom id_transaksi pada table dc (sesuaiin dengan cabang lomba)
-            DB::table('wdc')->where('id_peserta', $idPeserta)->update($data2); 
+            DB::table('wdc')->where('id_peserta', $idPeserta)->update($dataProject); 
+            // jika data yang baru berhasil disimpan, hapus data project sebelumnya jika ada
+            if(isset($idProjectSebelumnya)){
+                DB::table('project')->where('id_project', $idProjectSebelumnya)->delete();
+            }
             DB::commit();
+            // jika transaksi berhasil, hapus file project sebelumnya jika ada
+            if(isset($namaProjectSebelumnya)){
+                Storage::disk('public')->delete('Project/wdc/' . $namaProjectSebelumnya);
+            }
+            return redirect('/lomba-peserta')->with('success', 'Berhasil mengunggah project');
         } catch (\Throwable $th) {
+            // jika terjadi error, hapus file yang sudah terupload
+            Storage::disk('public')->delete($filePath);
             DB::rollBack();
-            throw $th;
+            // get error message
+            $error = $th->getMessage();
+            // redirect
+            return redirect('/lomba-peserta')->with('error', $error);
         }
-
-        // redirect
-        return redirect('/lomba-peserta');
     }
 
     public function uploadProjectWdc(Request $request, $namaPeserta)
@@ -220,6 +245,32 @@ class LombaController extends Controller
         return redirect()->back()->with('error', 'Gagal mengunggah project.');
     }
 
+    public function downloadProjectWdc($filename)
+    {
+        // cek apakah file project ada
+        $exists = Storage::disk('public')->exists('Project/wdc/' . $filename);
+        if(!$exists){
+            return redirect('lomba-peserta')->with('error', 'File tidak ditemukan.');
+        }
+        // jika peserta yang login memang benar mengupload file project, maka download file project
+        $user = Auth::user();
+        // cari data peserta yang login
+        $peserta = Peserta::where('email', $user->email)->first();
+        $idPeserta = $peserta->id_peserta;
+        // cari id project peserta yang login
+        $pesertaWdc = Wdc::where('id_peserta', $idPeserta)->first();
+        $idProjectPeserta = $pesertaWdc->id_project;
+        // cari id project yang akan didownload dari url
+        $project = DB::table('project')->where('file_project', $filename)->first();
+        $idProject = $project->id_project;
+        // cek apakah benar peserta yang login mengupload file project yang akan didownload
+        if($idProjectPeserta != $idProject){
+            return redirect('lomba-peserta')->with('error', 'File tidak ditemukan.');
+        }
+        // download file project
+        $filePath = public_path('storage/project/wdc/'.$filename);
+        return response()->download($filePath);
+    }
 
     // =========================================================================================== DC
 
@@ -381,6 +432,15 @@ class LombaController extends Controller
         $peserta = Peserta::where('email', $user->email)->first();
         $namaPeserta = $peserta->nama_lengkap;
         $idPeserta = $peserta->id_peserta;
+        // cari peserta dc yang login
+        $pesertaDc = Dc::where('id_peserta', $idPeserta)->first();
+        // cek apakah peserta sudah upload project
+        if($pesertaDc->id_project != null){
+            $idProjectSebelumnya = $pesertaDc->id_project;
+            // ambil nama file project sebelumnya
+            $projectSebelumnya = DB::table('project')->where('id_project', $idProjectSebelumnya)->first();
+            $namaProjectSebelumnya = $projectSebelumnya->file_project;
+        }
 
         // validasi file (gk perlu diubah)
         $request->validate([
@@ -389,26 +449,40 @@ class LombaController extends Controller
             'project.mimes' => 'Format file project harus berupa rar atau zip.',
             'project.max' => 'Ukuran file project maksimal 100 MB.'
         ]);
-        // simpan project ke storage dan dapatkan pathnya (sesuaikan dengan nama fungsi)
+        // ambil nama file untuk disimpan ke db
         $filePath = $this->uploadProjectDc($request, $namaPeserta);
+        // data yang akan di insert ke table transaksi
+        $dataTransaksi = [
+            'file_project' => $filePath,
+            'created_at' => Carbon::now(),
+        ];
         try{
             DB::beginTransaction();
-            // data yang akan di insert ke table transaksi
-            $data = ['file_project' => $filePath];
             // insert data ke transaksi dan ambil idnya
-            $idProject = DB::table('project')->insertGetId($data);
+            $idProject = DB::table('project')->insertGetId($dataTransaksi);
             // data yang akan di update ke table dc yaitu kolom id_transaksi aja
-            $data2 = ['id_project' => $idProject];
+            $dataProject = ['id_project' => $idProject, 'updated_at' => Carbon::now()];
             // update kolom id_transaksi pada table dc (sesuaiin dengan cabang lomba)
-            DB::table('dc')->where('id_peserta', $idPeserta)->update($data2); 
+            DB::table('dc')->where('id_peserta', $idPeserta)->update($dataProject); 
+            // jika data yang baru berhasil disimpan, hapus data project sebelumnya jika ada
+            if(isset($idProjectSebelumnya)){
+                DB::table('project')->where('id_project', $idProjectSebelumnya)->delete();
+            }
             DB::commit();
+            // jika transaksi berhasil, hapus file project sebelumnya jika ada
+            if(isset($namaProjectSebelumnya)){
+                Storage::disk('public')->delete('Project/dc/' . $namaProjectSebelumnya);
+            }
+            return redirect('/lomba-peserta')->with('success', 'Berhasil mengunggah project');
         } catch (\Throwable $th) {
+            // jika terjadi error, hapus file yang sudah terupload
+            Storage::disk('public')->delete($filePath);
             DB::rollBack();
-            throw $th;
+            // get error message
+            $error = $th->getMessage();
+            // redirect
+            return redirect('/lomba-peserta')->with('error', $error);
         }
-
-        // redirect
-        return redirect('/lomba-peserta');
     }
 
     public function uploadProjectDc(Request $request, $namaPeserta)
@@ -424,6 +498,33 @@ class LombaController extends Controller
         }
         // error message jika gagal upload project
         return redirect()->back()->with('error', 'Gagal mengunggah project.');
+    }
+
+    public function downloadProjectDc($filename)
+    {
+        // cek apakah file project ada
+        $exists = Storage::disk('public')->exists('Project/dc/' . $filename);
+        if(!$exists){
+            return redirect('lomba-peserta')->with('error', 'File tidak ditemukan.');
+        }
+        // jika peserta yang login memang benar mengupload file project, maka download file project
+        $user = Auth::user();
+        // cari data peserta yang login
+        $peserta = Peserta::where('email', $user->email)->first();
+        $idPeserta = $peserta->id_peserta;
+        // cari id project peserta yang login
+        $pesertaDc = Dc::where('id_peserta', $idPeserta)->first();
+        $idProjectPeserta = $pesertaDc->id_project;
+        // cari id project yang akan didownload dari url
+        $project = DB::table('project')->where('file_project', $filename)->first();
+        $idProject = $project->id_project;
+        // cek apakah benar peserta yang login mengupload file project yang akan didownload
+        if($idProjectPeserta != $idProject){
+            return redirect('lomba-peserta')->with('error', 'File tidak ditemukan.');
+        }
+        // download file project
+        $filePath = public_path('storage/project/dc/'.$filename);
+        return response()->download($filePath);
     }
 
     // ====================================================================================== CTF

@@ -115,12 +115,12 @@
                     download
                     guidebook untuk membaca panduan lomba</p>
                 <a href="/ctf"
-                    class="w-full bg-primary-lightblue text-white font-bold text-sm uppercase rounded hover:bg-primary-blue flex items-center justify-center px-2 py-3 mt-4">
-                    Daftar Lomba
+                    class="w-full relative btn-slide overflow-hidden bg-primary-lightblue text-white font-bold text-sm uppercase rounded flex items-center justify-center px-2 py-3 mt-4">
+                    <span class="relative z-10">Daftar Lomba</span>
                 </a>
                 <a href="#"
-                    class="w-full bg-red-500 text-white font-bold text-sm uppercase rounded hover:bg-red-700 flex items-center justify-center px-2 py-3 mt-4">
-                    Download Guidebook
+                    class="w-full relative btn-slide2 overflow-hidden bg-red-500 text-white font-bold text-sm uppercase rounded flex items-center justify-center px-2 py-3 mt-4">
+                    <span class="relative z-10">Download Guidebook</span>
                 </a>
             </div>
 
@@ -137,16 +137,15 @@
 
     <div class="w-full flex pt-6">
         <a href="{{url('/detail-wdc')}}" class="w-1/2 bg-white shadow hover:shadow-md text-left p-6">
-            <p class="text-lg text-blue-800 font-bold flex items-center"><i class="fas fa-arrow-left pr-1"></i>
+            <p class="text-lg text-primary-lightblue hover:text-primary-blue font-bold flex items-center"><i class="fas fa-arrow-left pr-1"></i>
                 Sebelumnya</p>
             <p class="pt-2">Politeknik Negeri Bali Web
                 Design Competition</p>
         </a>
         <a href="{{url('/detail-dc')}}" class="w-1/2 bg-white shadow hover:shadow-md text-right p-6">
-            <p class="text-lg text-blue-800 font-bold flex items-center justify-end">Berikutnya <i
+            <p class="text-lg text-primary-lightblue hover:text-primary-blue font-bold flex items-center justify-end">Berikutnya <i
                     class="fas fa-arrow-right pl-1"></i></p>
-            <p class="pt-2">Politeknik Negeri Bali Web
-                Design Competition</p>
+            <p class="pt-2">Politeknik Negeri Bali Design Challenge</p>
         </a>
     </div>
 </div>
