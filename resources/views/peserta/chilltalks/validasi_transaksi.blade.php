@@ -11,7 +11,7 @@
     <!-- Start block -->
     <section class="p-3 sm:p-5 antialiased">
         <div class="mx-auto">
-            <h2 class="text-base mb-6 font-semibold leading-7 text-gray-900">Validasi Admin</h2>
+            <h2 class="text-base mb-6 font-semibold leading-7 text-gray-900">Validasi Panitia</h2>
             <div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
                 <ol class="space-y-4 w-full">
                     <li>
@@ -50,8 +50,8 @@
                                 panitia Intechfest. Jika tidak ada respon dalam waktu 2x24 jam, silahkan hubungi nomor
                                 whatsapp dengan mengklik button dibawah ini. Terima kasih atas kerjasamanya..</p>
                             <div class="flex justify-center">
-                                <button
-                                    class="inline-flex text-white bg-primary-lightblue border-0 py-2 px-6 focus:outline-none hover:bg-primary-blue rounded text-lg">Hubungi Panitia</button>
+                                <a href="https://wa.me/+6282340949343"
+                                    class="inline-flex text-white bg-primary-lightblue border-0 py-2 px-6 focus:outline-none hover:bg-primary-blue rounded text-lg">Hubungi Panitia</a>
                             </div>
                         </div>
                     </div>

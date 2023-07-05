@@ -11,7 +11,7 @@
     <!-- Start block -->
     <section class="p-3 sm:p-5 antialiased">
         <div class="mx-auto">
-            <h2 class="text-base mb-6 font-semibold leading-7 text-gray-900">Validasi Admin</h2>
+            <h2 class="text-base mb-6 font-semibold leading-7 text-gray-900">Validasi Panitia</h2>
             <div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
                 <ol class="space-y-4 w-full">
                     <li>
