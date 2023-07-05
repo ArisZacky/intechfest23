@@ -3,7 +3,7 @@
 [ bg-gradient-to-b from-white/60 to-white/30 ]
 [ border-[1px] border-solid border-opacity-30 ] border-gray-200 dark:bg-gray-900 z-50 transition-all duration-500" id="navbar">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="" class="flex items-center">
+        <a href="/" class="flex items-center">
             <img src="{{ asset('images/logo/logo.png') }}" class="h-8 mr-3" alt="Intechfest Logo" />
             <span class="self-center hidden md:block text-2xl font-semibold whitespace-nowrap dark:text-white">Intechfest</span>
         </a>
@@ -50,7 +50,9 @@
             </div>
             @else
             <a href="/login"
-                class="text-white bg-primary-lightblue hover:bg-primary-blue focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Login</a>
+                class="text-white relative btn-slide bg-primary-lightblue overflow-hidden focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0">
+                <span class="relative z-10">Login</span>
+            </a>
             @endauth
             <button data-collapse-toggle="navbar-cta" type="button"
                 class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"

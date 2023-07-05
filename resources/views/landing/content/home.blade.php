@@ -511,8 +511,9 @@
                 dimana pada tahun ini mengangkat topik "Artificial Intelligent dalam dunia Pendidikan dan Bisnis di era Society 5.0".</p>
             <div class="flex justify-center">
                 <a href="{{url('/chilltalks-peserta')}}"
-                    class="inline-flex text-white bg-primary-lightblue border-0 py-2 px-6 focus:outline-none hover:bg-primary-blue rounded text-lg">Daftar
-                    Chilltalks</a>
+                    class="inline-flex overflow-hidden relative btn-slide text-white bg-primary-lightblue border-0 py-2 px-6 focus:outline-none rounded text-lg">
+                    <span class="relative z-10">Daftar Chilltalks</span>
+                </a>
             </div>
         </div>
     </div>

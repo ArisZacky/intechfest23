@@ -72,15 +72,23 @@ class AdminController extends Controller
         return redirect()->back()->with('delete_success', 'delete Data Berhasil!');        
     }   
     // MENAMPILKAN PANITIA YANG TER DELETE
-    public function getDeletedPanitia()
+    public function getDeletedPanitia(Request $request)
     {
-        $panitia = Panitia::onlyTrashed()->get();
-        return view ('', compact(['panitia']));
+        // MENDAPATKAN REQUEST SEARCH
+        $search = $request->search;
+
+        if($search){
+            $panitia = Panitia::onlyTrashed()->where('nama_lengkap', 'LIKE', '%'.$search.'%')
+            ->paginate();
+        }else{
+            $panitia = Panitia::onlyTrashed()->paginate(15);
+        }
+        return view ('admin.content.dashdeletepanitia', compact(['panitia']));
     }
     // Restore (kembalikan data)
-    public function restorePanitia($id){
-        $panitia = Panitia::withTrashed()->where('id_panitia', $id)->restore();
-        return redirect('');
+    public function restorePanitia(Request $request){
+        $panitia = Panitia::withTrashed()->where('id_panitia', $request['id_panitia'])->restore();
+        return redirect()->back()->with('restore_success', 'Restore Data Berhasil!');
     }
     // PANITIA END ============================================================
     
@@ -135,15 +143,22 @@ class AdminController extends Controller
         return redirect()->back()->with('delete_success', 'delete Data Berhasil!');        
     }   
     // MENAMPILKAN PESERTA YANG TER DELETE
-    public function getDeletedPeserta()
+    public function getDeletedPeserta(Request $request)
     {
-        $peserta = Peserta::onlyTrashed()->get();
-        return view ('', compact(['peserta']));
+        // MENDAPATKAN REQUEST SEARCH
+        $search = $request->search;
+        if($search){
+            $peserta = Peserta::onlyTrashed()->where('nama_lengkap', 'LIKE', '%'.$search.'%')
+            ->paginate();
+        }else{
+            $peserta = Peserta::onlyTrashed()->paginate(15);
+        }
+        return view ('admin.content.dashdeletepeserta', compact(['peserta']));
     }
     // Restore (kembalikan data)
-    public function restorePeserta($id){
-        $peserta = Peserta::withTrashed()->where('id_peserta', $id)->restore();
-        return redirect('');
+    public function restorePeserta(Request $request){
+        $peserta = Peserta::withTrashed()->where('id_peserta', $request['id_peserta'])->restore();
+        return redirect()->back()->with('restore_success', 'Restore Data Berhasil');
     }
     // PESERTA END ============================================================
 
@@ -198,18 +213,35 @@ class AdminController extends Controller
     {
         $data = Ct::findOrFail($request['id_ct']);
         $data->delete();
-        return redirect()->back()->with('delete_success', 'delete Data Berhasil!');    
+        return redirect()->back()->with('delete_success', 'Delete Data Berhasil!');    
     }
     // MENAMPILKAN CT YANG TER DELETE
-    public function getDeletedCt()
+    public function getDeletedCt(Request $request)
     {
-        $ct = Ct::onlyTrashed()->get();
-        return view ('', compact(['ct']));
+        // MENDAPAKATKAN REQUEST SEARCH
+        $search = $request->search;
+        
+        if($search){
+            $ct = Ct::onlyTrashed()
+            ->join('peserta', 'ct.id_peserta', '=', 'peserta.id_peserta')
+            ->leftJoin('transaksi', 'ct.id_transaksi', '=', 'transaksi.id_transaksi')
+            ->select('ct.*', 'peserta.*', 'transaksi.foto AS foto_transaksi')
+            ->where('peserta.nama_lengkap','LIKE','%'.$search.'%')
+            ->paginate();    
+        }else{
+            $ct = Ct::onlyTrashed()
+            ->join('peserta', 'ct.id_peserta', '=', 'peserta.id_peserta')
+            ->leftJoin('transaksi', 'ct.id_transaksi', '=', 'transaksi.id_transaksi')
+            ->select('ct.*', 'peserta.*', 'transaksi.foto AS foto_transaksi')
+            ->paginate(15);
+    
+        }        
+        return view ('admin.chilltalk.dashdelete', compact(['ct']));
     }
     // Restore (kembalikan data)
-    public function restoreCt($id){
-        $peserta = Ct::withTrashed()->where('id_ct', $id)->restore();
-        return redirect('');
+    public function restoreCt(Request $request){
+        $peserta = Ct::withTrashed()->where('id_ct', $request['id_ct'])->restore();
+        return redirect()->back()->with('restore_success', 'Restore Data Berhasil!');
     }
     // CT END ============================================================
 
@@ -268,16 +300,32 @@ class AdminController extends Controller
         return redirect()->back()->with('delete_success', 'Delete Data Berhasil');
     }
     // MENAMPILKAN DATA WDC YANG TER DELETE 
-    public function getDeletedWdc()
+    public function getDeletedWdc(Request $request)
     {
-        $wdc = Wdc::onlyTrashed()->get();
-        return view ('', compact(['wdc']));
+        // MENDAPATKAN REQUEST SEARCH
+        $search = $request->search;
+
+        if($search){
+            $wdc = Wdc::onlyTrashed()
+            ->join('peserta', 'wdc.id_peserta', '=', 'peserta.id_peserta')
+            ->leftJoin('project', 'wdc.id_project', '=', 'project.id_project')
+            ->select('wdc.*', 'peserta.*', 'project.file_project')
+            ->where('peserta.nama_lengkap','LIKE','%'.$search.'%')
+            ->paginate();  
+        }else{
+            $wdc = Wdc::onlyTrashed()
+            ->join('peserta', 'wdc.id_peserta', '=', 'peserta.id_peserta')
+            ->leftJoin('project', 'wdc.id_project', '=', 'project.id_project')
+            ->select('wdc.*', 'peserta.*', 'project.file_project')
+            ->paginate(15);
+        }
+        return view ('admin.wdc.dashdelete', compact(['wdc']));
     }
     // Restore (kembalikan data)
-    public function restoreWdc($id)
+    public function restoreWdc(Request $request)
     {
-        $wdc = Wdc::withTrashed()->where('id_wdc', $id)->restore();
-        redirect('');
+        $wdc = Wdc::withTrashed()->where('id_wdc', $request['id_wdc'])->restore();
+        redirect()->back()->with('restore_success', 'Restore Data Berhasil');
     }
     // WDC END============================================================
 
@@ -334,16 +382,34 @@ class AdminController extends Controller
         return redirect()->back()->with('delete_success', 'Delete Data Berhasil');
     }
     // MENAMPILKAN DC YANG TER DELETE 
-    public function getDeletedDc()
+    public function getDeletedDc(Request $request)
     {
+        // MENDAPATKAN REQUEST SEARCH
+        $search = $request->search;
+
+        if($search){
+            $dc = DC::onlyTrashed()
+            ->join('peserta', 'dc.id_peserta', '=', 'peserta.id_peserta')
+            ->leftJoin('project', 'dc.id_project', '=', 'project.id_project')
+            ->select('dc.*', 'peserta.*', 'project.file_project')
+            ->where('peserta.nama_lengkap','LIKE','%'.$search.'%')
+            ->paginate(); 
+        }
+        else{
+            $dc = DC::onlyTrashed()
+            ->join('peserta', 'dc.id_peserta', '=', 'peserta.id_peserta')
+            ->leftJoin('project', 'dc.id_project', '=', 'project.id_project')
+            ->select('dc.*', 'peserta.*', 'project.file_project')
+            ->paginate(); 
+        }
         $dc = Dc::onlyTrashed()->paginate(15);
-        return view('', compact(['dc']));
+        return view('admin.dc.dashdelete', compact(['dc']));
     }
     // Restore (Kembalikan data)
-    public function restoreDc($id)
+    public function restoreDc(Request $request)
     {
-        $dc = Dc::withTrashed()->where('id_dc', $id)->restore();
-        redirect('');
+        $dc = Dc::withTrashed()->where('id_dc', $request['id_dc'])->restore();
+        return redirect()->back()->with('restore_success', 'Restore Data Berhasil');
     }
     // DC END============================================================
 
@@ -357,13 +423,13 @@ class AdminController extends Controller
         if($search){
             $ctf = Ctf::          
             join('peserta', 'ctf.id_peserta', '=', 'peserta.id_peserta')
-            ->select('ctf.*', 'peserta.*', 'project.file_project')
+            ->select('ctf.*', 'peserta.*')
             ->where('peserta.nama_lengkap','LIKE','%'.$search.'%')
             ->paginate();
         }else{
             $ctf = Ctf::          
             join('peserta', 'ctf.id_peserta', '=', 'peserta.id_peserta')
-            ->select('ctf.*', 'peserta.*', 'project.file_project')
+            ->select('ctf.*', 'peserta.*')
             ->paginate(15);    
         }
 
@@ -398,16 +464,29 @@ class AdminController extends Controller
         return redirect()->back()->with('delete_success', 'Delete Data Berhasil');
     }
     // MENAMPILKAN CTF YANG TER DELETE 
-    public function getDeletedCtf()
+    public function getDeletedCtf(Request $request)
     {
-        $ctf = Ctf::onlyTrashed()->get();
-        return view('', compact(['ctf']));
+        // MENDAPATKAN REQUEST SEARCH
+        $search = $request->search;
+        if($search){
+            $ctf = Ctf::onlyTrashed()
+            ->join('peserta', 'ctf.id_peserta', '=', 'peserta.id_peserta')
+            ->select('ctf.*', 'peserta.*')
+            ->where('peserta.nama_lengkap','LIKE','%'.$search.'%')
+            ->paginate();
+        }else{
+            $ctf = Ctf::onlyTrashed()
+            ->join('peserta', 'ctf.id_peserta', '=', 'peserta.id_peserta')
+            ->select('ctf.*', 'peserta.*')
+            ->paginate(15);
+        }
+        return view('admin.ctf.dashdelete', compact(['ctf']));
     }
     // Restore (Kembalikan data)
     public function restoreCtf($id)
     {
         $ctf = Ctf::withTrashed()->where('id_ctf', $id)->restore();
-        redirect('');
+        return redirect()->back()->with('restore_success', 'Restore Data Berhasil');
     }
     // CTF END============================================================
 
@@ -548,17 +627,107 @@ class AdminController extends Controller
         $data->delete();
         return redirect()->back()->with('delete_success', 'Delete Data Berhasil');
     }
-    // MENAMPILKAN TRANSAKSI YANG TER DELETE 
-    public function getDeletedTransaksi()
+    // MENAMPILKAN TRANSAKSI WDC YANG TER DELETE 
+    public function getDeletedTransaksiWdc(Request $request)
     {
-        $transaksi = Transaksi::onlyTrashed()->get();
-        return view('', compact(['transaksi']));
+        // MENDAPATKAN REQUEST SEARCH
+        $search = $request->search;
+
+        if($search){
+            $transaksi = Transaksi::onlyTrashed()
+            ->join('wdc', 'transaksi.id_transaksi', '=', 'wdc.id_transaksi')
+            ->join('peserta', 'wdc.id_peserta', '=', 'peserta.id_peserta')
+            ->leftjoin('panitia', 'transaksi.id_panitia', '=', 'panitia.id_panitia')
+            ->select('transaksi.*', 'peserta.nama_lengkap AS nama_peserta', 'panitia.nama_lengkap AS nama_panitia')
+            ->where('peserta.nama_lengkap','LIKE','%'.$search.'%')
+            ->paginate();
+        }else{
+            $transaksi = Transaksi::onlyTrashed()
+            ->join('wdc', 'transaksi.id_transaksi', '=', 'wdc.id_transaksi')
+            ->join('peserta', 'wdc.id_peserta', '=', 'peserta.id_peserta')
+            ->leftjoin('panitia', 'transaksi.id_panitia', '=', 'panitia.id_panitia')
+            ->select('transaksi.*', 'peserta.nama_lengkap AS nama_peserta', 'panitia.nama_lengkap AS nama_panitia')
+            ->paginate();
+        }
+        return view('admin.transaksi.dashdelete', compact(['transaksi']));
     }
-    // Restore (Kembalikan data)
-    public function restoreTransaksi($id)
+    // MENAMPILKAN TRANSAKSI DC YANG TER DELETE 
+    public function getDeletedTransaksiDc(Request $request)
     {
-        $transaksi = Transaksi::withTrashed()->where('id_transaksi', $id)->restore();
-        redirect('');
+        // MENDAPATKAN REQUEST SEARCH
+        $search = $request->search;
+
+        if($search){
+            $transaksi = Transaksi::onlyTrashed()
+            ->join('dc', 'transaksi.id_transaksi', '=', 'dc.id_transaksi')
+            ->join('peserta', 'dc.id_peserta', '=', 'peserta.id_peserta')
+            ->leftjoin('panitia', 'transaksi.id_panitia', '=', 'panitia.id_panitia')
+            ->select('transaksi.*', 'peserta.nama_lengkap AS nama_peserta', 'panitia.nama_lengkap AS nama_panitia')
+            ->where('peserta.nama_lengkap','LIKE','%'.$search.'%')
+            ->paginate();
+        }else{
+            $transaksi = Transaksi::onlyTrashed()
+            ->join('dc', 'transaksi.id_transaksi', '=', 'dc.id_transaksi')
+            ->join('peserta', 'dc.id_peserta', '=', 'peserta.id_peserta')
+            ->leftjoin('panitia', 'transaksi.id_panitia', '=', 'panitia.id_panitia')
+            ->select('transaksi.*', 'peserta.nama_lengkap AS nama_peserta', 'panitia.nama_lengkap AS nama_panitia')
+            ->paginate();
+        }
+        return view('admin.transaksi.dashdelete', compact(['transaksi']));
+    }
+    // MENAMPILKAN TRANSAKSI CTF YANG TER DELETE 
+    public function getDeletedTransaksiCtf(Request $request)
+    {
+        // MENDAPATKAN REQUEST SEARCH
+        $search = $request->search;
+
+        if($search){
+            $transaksi = Transaksi::onlyTrashed()
+            ->join('ctf', 'transaksi.id_transaksi', '=', 'ctf.id_transaksi')
+            ->join('peserta', 'ctf.id_peserta', '=', 'peserta.id_peserta')
+            ->leftjoin('panitia', 'transaksi.id_panitia', '=', 'panitia.id_panitia')
+            ->select('transaksi.*', 'peserta.nama_lengkap AS nama_peserta', 'panitia.nama_lengkap AS nama_panitia')
+            ->where('peserta.nama_lengkap','LIKE','%'.$search.'%')
+            ->paginate();
+        }else{
+            $transaksi = Transaksi::onlyTrashed()
+            ->join('ctf', 'transaksi.id_transaksi', '=', 'ctf.id_transaksi')
+            ->join('peserta', 'ctf.id_peserta', '=', 'peserta.id_peserta')
+            ->leftjoin('panitia', 'transaksi.id_panitia', '=', 'panitia.id_panitia')
+            ->select('transaksi.*', 'peserta.nama_lengkap AS nama_peserta', 'panitia.nama_lengkap AS nama_panitia')
+            ->paginate();
+        }
+        return view('admin.transaksi.dashdelete', compact(['transaksi']));
+    }
+    // MENAMPILKAN TRANSAKSI CT YANG TER DELETE 
+    public function getDeletedTransaksiCt(Request $request)
+    {
+        // MENDAPATKAN REQUEST SEARCH
+        $search = $request->search;
+
+        if($search){
+            $transaksi = Transaksi::onlyTrashed()
+            ->join('ct', 'transaksi.id_transaksi', '=', 'ct.id_transaksi')
+            ->join('peserta', 'ct.id_peserta', '=', 'peserta.id_peserta')
+            ->leftjoin('panitia', 'transaksi.id_panitia', '=', 'panitia.id_panitia')
+            ->select('transaksi.*', 'peserta.nama_lengkap AS nama_peserta', 'panitia.nama_lengkap AS nama_panitia')
+            ->where('peserta.nama_lengkap','LIKE','%'.$search.'%')
+            ->paginate();
+        }else{
+            $transaksi = Transaksi::onlyTrashed()
+            ->join('ct', 'transaksi.id_transaksi', '=', 'ct.id_transaksi')
+            ->join('peserta', 'ct.id_peserta', '=', 'peserta.id_peserta')
+            ->leftjoin('panitia', 'transaksi.id_panitia', '=', 'panitia.id_panitia')
+            ->select('transaksi.*', 'peserta.nama_lengkap AS nama_peserta', 'panitia.nama_lengkap AS nama_panitia')
+            ->paginate();
+        }
+        return view('admin.transaksi.dashdelete', compact(['transaksi']));
+    }    
+    // Restore (Kembalikan data)
+    public function restoreTransaksi(Request $request)
+    {
+        $transaksi = Transaksi::withTrashed()->where('id_transaksi', $request['id_transaksi'])->restore();
+        return redirect()->back()->with('restore_success', 'Restore Data Berhasil');
     }
     // TRANSTAKSI END============================================================
 

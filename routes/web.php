@@ -141,13 +141,13 @@ Route::group(['middleware' => ['auth', 'verified', 'level:admin']], function () 
     // Export Excel Chilltalks
     Route::get('/chilltalk-admin/export_excel', [AdminController::class, 'ctExportExcel']);
     // Menampilkan Halaman Akun Chilltalks Yang terdelete
-    Route::get('/deleted-data-chilltalks', [AdminController::class, 'getDeletedChilltalks']);
+    Route::get('/deleted-data-chilltalks', [AdminController::class, 'getDeletedCt']);
     // Mengembalikan data akun Chilltalks (restore)
-    Route::get('/data-chilltalks/{$id}/restore', [AdminController::class, 'restoreChilltalks']);
+    Route::post('/data-chilltalks/restore', [AdminController::class, 'restoreCt']);
     // Update Akun Chilltalks
-    Route::post('/update-chilltalks', [AdminController::class, 'updateChilltalks']);
+    Route::post('/update-chilltalks', [AdminController::class, 'updateCt']);
     // Delete Akun Chilltalks
-    Route::post('/delete-chilltalks', [AdminController::class, 'deleteChilltalks']); 
+    Route::post('/delete-chilltalks', [AdminController::class, 'deleteCt']); 
 
     // Menampilkan Halaman WDC
     Route::get('/wdc-admin', [AdminController::class, 'wdc']);
@@ -156,7 +156,7 @@ Route::group(['middleware' => ['auth', 'verified', 'level:admin']], function () 
     // Menampilkan Halaman Akun WDC Yang terdelete
     Route::get('/deleted-data-wdc', [AdminController::class, 'getDeletedWdc']);
     // Mengembalikan data akun WDC (restore)
-    Route::get('/data-wdc/{$id}/restore', [AdminController::class, 'restoreWdc']);
+    Route::post('/data-wdc/restore', [AdminController::class, 'restoreWdc']);
     // Update Akun WDC
     Route::post('/update-wdc', [AdminController::class, 'updateWdc']);
     // Delete Akun WDC
@@ -169,7 +169,7 @@ Route::group(['middleware' => ['auth', 'verified', 'level:admin']], function () 
     // Menampilkan Halaman Akun DC Yang terdelete
     Route::get('/deleted-data-dc', [AdminController::class, 'getDeletedDc']);
     // Mengembalikan data akun DC (restore)
-    Route::get('/data-dc/{$id}/restore', [AdminController::class, 'restoreDc']);
+    Route::post('/data-dc/restore', [AdminController::class, 'restoreDc']);
     // Update Akun DC
     Route::post('/update-dc', [AdminController::class, 'updateDc']);
     // Delete Akun DC
@@ -182,7 +182,7 @@ Route::group(['middleware' => ['auth', 'verified', 'level:admin']], function () 
     // Menampilkan Halaman Akun CTF Yang terdelete
     Route::get('/deleted-data-ctf', [AdminController::class, 'getDeletedCtf']);
     // Mengembalikan data akun CTF (restore)
-    Route::get('/data-ctf/{$id}/restore', [AdminController::class, 'restoreCtf']);
+    Route::post('/data-ctf/restore', [AdminController::class, 'restoreCtf']);
     // Update Akun CTF
     Route::post('/update-ctf', [AdminController::class, 'updateCtf']);
     // Delete Akun CTF
@@ -196,10 +196,16 @@ Route::group(['middleware' => ['auth', 'verified', 'level:admin']], function () 
     Route::get('/transaksi-ctf', [AdminController::class, 'transaksiCtf']);
     // Menampilkan Halaman Transaksi CT
     Route::get('/transaksi-ct', [AdminController::class, 'transaksiCt']);
-    // Menampilkan Halaman Akun Transaksi Yang terdelete
-    Route::get('/deleted-data-transaksi', [AdminController::class, 'getDeletedTransaksi']);
+    // Menampilkan Halaman Akun Transaksi WDC Yang terdelete
+    Route::get('/deleted-data-transaksi-wdc', [AdminController::class, 'getDeletedTransaksiWdc']);
+    // Menampilkan Halaman Akun Transaksi DC Yang terdelete
+    Route::get('/deleted-data-transaksi-dc', [AdminController::class, 'getDeletedTransaksiDc']);
+    // Menampilkan Halaman Akun Transaksi CTF Yang terdelete
+    Route::get('/deleted-data-transaksi-ctf', [AdminController::class, 'getDeletedTransaksiCtf']);
+    // Menampilkan Halaman Akun Transaksi CTF Yang terdelete
+    Route::get('/deleted-data-transaksi-ct', [AdminController::class, 'getDeletedTransaksiCt']);    
     // Mengembalikan data akun Transaksi (restore)
-    Route::get('/data-transaksi/{$id}/restore', [AdminController::class, 'restoreTransaksi']);
+    Route::post('/data-transaksi/restore', [AdminController::class, 'restoreTransaksi']);
     // Update Akun Transaksi
     Route::post('/update-transaksi', [AdminController::class, 'updateTransaksi']);
     // Delete Akun Transaksi
@@ -210,7 +216,7 @@ Route::group(['middleware' => ['auth', 'verified', 'level:admin']], function () 
     // Menampilkan Halaman Akun Panitia Yang terdelete
     Route::get('/deleted-data-panitia', [AdminController::class, 'getDeletedPanitia']);
     // Mengembalikan data akun Panitia (restore)
-    Route::get('/data-panitia/{$id}/restore', [AdminController::class, 'restorePanitia']);
+    Route::post('/data-panitia/restore', [AdminController::class, 'restorePanitia']);
     // Update Akun Panitia
     Route::post('/update-panitia', [AdminController::class, 'updatePanitia']);
     // Delete Akun Panitia
@@ -240,7 +246,7 @@ Route::group(['middleware' => ['auth', 'verified', 'level:admin']], function () 
     // Menampilkan Halaman Akun Peserta Yang terdelete
     Route::get('/deleted-data-peserta', [AdminController::class, 'getDeletedPeserta']);
     // Mengembalikan data akun peserta (restore)
-    Route::get('/data-peserta/{$id}/restore', [AdminController::class, 'restorePeserta']);
+    Route::post('/data-peserta/restore', [AdminController::class, 'restorePeserta']);
     // Update Akun Peserta
     Route::post('/update-peserta', [AdminController::class, 'updatePeserta']);
     // Delete Akun Peserta
@@ -375,6 +381,8 @@ Route::group(['middleware' => ['auth', 'verified', 'level:peserta']], function (
     Route::put('/transaksi-wdc/{id}', [LombaController::class, 'transaksiWdc']);
     // menampilkan halaman upload form project
     Route::put('/form-project-wdc/{id}', [LombaController::class, 'formProjectWdc']);
+    // menampilkan halaman upload form project
+    Route::get('/download-project-wdc/{filename}', [LombaController::class, 'downloadProjectWdc']);
 
     // // Menampilkan Transaksi
     // Route::get('/pembayaran', [LombaController::class, 'pembayaranwdc']);
@@ -390,6 +398,7 @@ Route::group(['middleware' => ['auth', 'verified', 'level:peserta']], function (
     Route::put('/transaksi-dc/{id}', [LombaController::class, 'transaksiDc']);
     // menampilkan halaman upload form project
     Route::put('/form-project-dc/{id}', [LombaController::class, 'formProjectDc']);
+    Route::get('/download-project-dc/{filename}', [LombaController::class, 'downloadProjectDc']);
 
     // // Menampilkan Transaksi
     // Route::get('/pembayaran', [LombaController::class, 'pembayarandc']);
