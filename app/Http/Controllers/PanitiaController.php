@@ -6,6 +6,7 @@ use App\Models\Ct;
 use App\Models\Dc;
 use App\Models\Ctf;
 use App\Models\Wdc;
+use App\Models\Panitia;
 use App\Models\Content;
 use App\Models\Project;
 use App\Models\Transaksi;
@@ -49,7 +50,7 @@ class PanitiaController extends Controller
             join('peserta', 'ct.id_peserta', '=', 'peserta.id_peserta')
             ->leftJoin('transaksi', 'ct.id_transaksi', '=', 'transaksi.id_transaksi')
             ->select('ct.*', 'peserta.*', 'transaksi.foto AS foto_transaksi')
-            ->get();    
+            ->paginate(15);    
         }
 
         return view('panitia.chilltalk.dashct', compact(['ct']));
@@ -241,23 +242,27 @@ class PanitiaController extends Controller
         // MENDAPATKAN REQUEST SEARCH
         $search = $request->search;
 
+        $panitia = Panitia::all();
 
         if($search){
             $transaksi = Transaksi::
             join('wdc', 'transaksi.id_transaksi', '=', 'wdc.id_transaksi')
             ->join('peserta', 'wdc.id_peserta', '=', 'peserta.id_peserta')
-            ->select('transaksi.*', 'peserta.nama_lengkap AS nama_peserta')
+            ->leftjoin('panitia', 'transaksi.id_panitia', '=', 'panitia.id_panitia')
+            ->select('transaksi.*', 'peserta.nama_lengkap AS nama_peserta', 'panitia.nama_lengkap AS nama_panitia')
             ->where('peserta.nama_lengkap','LIKE','%'.$search.'%')
             ->paginate();
         }else{
             $transaksi = Transaksi::
             join('wdc', 'transaksi.id_transaksi', '=', 'wdc.id_transaksi')
             ->join('peserta', 'wdc.id_peserta', '=', 'peserta.id_peserta')
-            ->select('transaksi.*', 'peserta.nama_lengkap AS nama_peserta')
+            ->leftjoin('panitia', 'transaksi.id_panitia', '=', 'panitia.id_panitia')
+            ->select('transaksi.*', 'peserta.nama_lengkap AS nama_peserta', 'panitia.nama_lengkap AS nama_panitia')
             ->paginate(15);
         }
 
-        return view('panitia.transaksi.dashtransaksiwdc', compact(['transaksi']));
+
+        return view('panitia.transaksi.dashtransaksiwdc', compact(['transaksi', 'panitia']));
     }
 
     public function transaksiDc(Request $request)
@@ -268,16 +273,18 @@ class PanitiaController extends Controller
 
         if($search){
             $transaksi = Transaksi::
-            join('dc', 'transaksi.id_transaksi', '=', 'dc.id_transaksi')
-            ->join('peserta', 'dc.id_peserta', '=', 'peserta.id_peserta')
-            ->select('transaksi.*', 'peserta.nama_lengkap AS nama_peserta')
+            join('wdc', 'transaksi.id_transaksi', '=', 'wdc.id_transaksi')
+            ->join('peserta', 'wdc.id_peserta', '=', 'peserta.id_peserta')
+            ->leftjoin('users', 'transaksi.id_panitia', '=', 'Auth::user()->id')
+            ->select('transaksi.*', 'peserta.nama_lengkap AS nama_peserta', 'panitia.nama_lengkap AS nama_panitia')
             ->where('peserta.nama_lengkap','LIKE','%'.$search.'%')
             ->paginate();
         }else{
             $transaksi = Transaksi::
-            join('dc', 'transaksi.id_transaksi', '=', 'dc.id_transaksi')
-            ->join('peserta', 'dc.id_peserta', '=', 'peserta.id_peserta')
-            ->select('transaksi.*', 'peserta.nama_lengkap AS nama_peserta')
+            join('wdc', 'transaksi.id_transaksi', '=', 'wdc.id_transaksi')
+            ->join('peserta', 'wdc.id_peserta', '=', 'peserta.id_peserta')
+            ->leftjoin('users', 'transaksi.id_panitia', '=', 'Auth::user()->id')
+            ->select('transaksi.*', 'peserta.nama_lengkap AS nama_peserta', 'panitia.nama_lengkap AS nama_panitia')
             ->paginate(15);
         }
 
@@ -399,7 +406,7 @@ class PanitiaController extends Controller
             ->join('peserta', 'dc.id_peserta', '=', 'peserta.id_peserta')
             ->select('project.*', 'peserta.*')
             ->where('file_project', 'LIKE', 'DC%')
-            ->get();    
+            ->paginate(15);    
         }
 
         return view('panitia.project.dashprojectdc', compact(['projectdc']));

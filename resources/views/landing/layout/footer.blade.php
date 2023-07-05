@@ -33,7 +33,7 @@
                 <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Contact</h2>
                 <ul class="text-gray-600 dark:text-gray-400">
                     <li class="mb-4">
-                        <i class="fa-regular fa-envelope mr-1"></i><a href="/"
+                        <i class="fa-regular fa-envelope mr-1"></i><a href="mailto:intechfestpnb@gmail.com"
                             class="hover:underline">intechfestpnb@gmail.com</a>
                     </li>
                     <li>

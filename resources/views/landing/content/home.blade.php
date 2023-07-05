@@ -381,7 +381,7 @@
                             <h5
                                 class="mb-2 text-2xl text-center font-bold tracking-tight text-gray-900 dark:text-white">
                                 Design Challenge</h5>
-                            <p class="mb-3 font-normal text-center text-gray-600 dark:text-gray-400">Rp. 75.000</p>
+                            <p class="mb-3 font-normal text-center text-gray-600 dark:text-gray-400">Rp. 50.000</p>
                         </div>
                     </div>
                     <div
@@ -422,7 +422,7 @@
                                 class="mb-2 text-wdc text-center font-bold tracking-tight text-gray-900 dark:text-white">
                                 Web
                                 Design Competition</h5>
-                            <p class="mb-3 font-normal text-center text-gray-600 dark:text-gray-400">Rp. 75.000</p>
+                            <p class="mb-3 font-normal text-center text-gray-600 dark:text-gray-400">Rp. 50.000</p>
                         </div>
                     </div>
                     <div
@@ -461,7 +461,7 @@
                             <h5
                                 class="mb-2 text-2xl text-center font-bold tracking-tight text-gray-900 dark:text-white">
                                 Capture The Flag</h5>
-                            <p class="mb-3 font-normal text-center text-gray-600 dark:text-gray-400">Rp. 100.000</p>
+                            <p class="mb-3 font-normal text-center text-gray-600 dark:text-gray-400">Rp. 75.000</p>
                         </div>
                     </div>
                     <div
@@ -499,15 +499,16 @@
 <section id="chilltalks" class="text-gray-600 body-font" data-aos="fade-left" data-aos-duration="1000">
     <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
         <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
-            <img class="object-cover object-center rounded" alt="hero" src="{{asset('images/lomba/ilus ct.jpg')}}">
+            <img class="object-cover object-center rounded" alt="hero" src="{{asset('images/lomba/ct design 2.png')}}">
         </div>
         <div
             class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
             <h1 class="title-font font-bold sm:text-3xl text-2xl mb-4 text-gray-900">ChillTalks Intechfest
                 <br class="hidden lg:inline-block">
             </h1>
-            <p class="mb-8 leading-relaxed">ChillTalks Intechfest Merupakan Kegiatan Seminar atau Webinar Nasional yang
-                dimana pada tahun ini mengangkat topik "FinTech dan Data Security".</p>
+            <p class="mb-8 leading-relaxed">ChillTalks Intechfest Merupakan Kegiatan Seminar atau Webinar Tinggkat Nasional dengan guna
+                memberikan pengalaman dan pengetahuan baru mengenai teknologi yang sedang hype saat ini yang
+                dimana pada tahun ini mengangkat topik "Artificial Intelligent dalam dunia Pendidikan dan Bisnis di era Society 5.0".</p>
             <div class="flex justify-center">
                 <a href="{{url('/chilltalks-peserta')}}"
                     class="inline-flex text-white bg-primary-lightblue border-0 py-2 px-6 focus:outline-none hover:bg-primary-blue rounded text-lg">Daftar

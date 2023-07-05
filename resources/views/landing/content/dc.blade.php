@@ -14,7 +14,7 @@
         <article class="flex flex-col shadow my-4">
             <!-- Article Image -->
             <div>
-                <img src="{{asset('images/lomba/ilus dc.jpg')}}" class="w-full md:w-2/3 lg:w-1/2 mx-auto">
+                <img src="{{asset('images/lomba/Ivy Dc2.png')}}" class="w-full md:w-2/3 lg:w-1/2 mx-auto">
             </div>
             <div class="bg-white flex flex-col justify-start p-6">
                 <a href="/#lomba" class="text-blue-700 text-sm font-bold uppercase pb-4">Lomba</a>
@@ -155,7 +155,7 @@
 
 <script>
     // Set the date we're counting down to
-    var countDownDate = new Date("July 27, 2023 15:37:25").getTime();
+    var countDownDate = new Date("August 25, 2023 23:59:59").getTime();
     // Update the count down every 1 second
     var x = setInterval(function() {            
         // Get today's date and time

@@ -86,7 +86,7 @@
                                         <img class="w-20 h-20 rounded" src="{{ asset('storage/'.$data->foto) }}" alt="Large avatar" id='foto'>
                                     </button>                                    
                                 </td>
-                                @if($data->file_project)
+                                @if($data->file_project == NULL)
                                     <td class="px-4 py-3 italic">Project Belum Ada</td>
                                 @else
                                     <td class="px-4 py-3"><a href="{{url('/project/downloadProjectWDC/')}}/{{$data->file_project}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline" target = "__blank">{{$data->file_project}}</a></td>
@@ -142,7 +142,7 @@
                     </table>
                 </div>
                 <div class="p-4">
-                    {{ $transaksi->links() }}
+                    {{ $wdc->links() }}
                 </div>
             </div>
         </div>
