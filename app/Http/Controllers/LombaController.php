@@ -575,7 +575,7 @@ class LombaController extends Controller
 
         //================================Upload Foto====================
         $foto = $request->foto;
-        $filename = "WDC_Foto Identitas_".$request->nama_lengkap."_".time().".".$foto->getClientOriginalExtension(); // format nama file
+        $filename = "CTF_Foto Identitas_".$request->nama_lengkap."_".time().".".$foto->getClientOriginalExtension(); // format nama file
         $path = 'Identitas/ctf/' . $filename; // tempat penyimpanan file
 
         Storage::disk('public')->put($path, file_get_contents($foto));

@@ -66,6 +66,7 @@
                             <tr>
                                 <th scope="col" class="px-4 py-4">No</th>
                                 <th scope="col" class="px-4 py-3">NAMA PESERTA</th>
+                                <th scope="col" class="px-4 py-3">VERIFIKASI OLEH</th>
                                 <th scope="col" class="px-4 py-3">BUKTI TRANSAKSI</th>
                                 <th scope="col" class="px-4 py-3">VALIDASI</th>
                                 <th scope="col" class="px-4 py-3">
@@ -80,6 +81,11 @@
                                 class="border-b dark:border-gray-700 {{($loop->iteration % 2 == 0) ? 'bg-slate-100' : ''}}" id="baris{{$loop->iteration}}">
                                 <th class="px-4 py-3">{{$loop->iteration}}</th>
                                 <td class="px-4 py-3">{{$data->nama_peserta}}</td>
+                                @if($data->id_panitia == NULL)
+                                    <td class="px-4 py-3 italic">Belum Ada VERIFIKASI</td>
+                                @else
+                                    <td class="px-4 py-3">{{$data->nama_panitia}}</td>
+                                @endif
                                 <td class="px-4 py-3">
                                     <button  onclick ="previewTransaksi('baris{{$loop->iteration}}', '{{$data->id_transaksi}}')" data-modal-target="imageModal"
                                             data-modal-toggle="imageModal" id='link-foto'>
@@ -185,6 +191,7 @@
                                 <img class="w-20 h-20 rounded" alt="Large avatar" id="edit-foto">
                             </a>
                     </div>
+                    <input type="hidden" name="id_panitia"  value="{{$panitia}}">
                     <div>
                         <label for="validasi"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">VALIDASI</label>
@@ -279,11 +286,11 @@
         const td = document.querySelectorAll('#' + baris + ' td');
         var img_src = document.getElementById("foto").src;
 
-        document.getElementById('a-foto').href = td[1].querySelector('#foto').src
-        document.getElementById('edit-foto').src = td[1].querySelector('#foto').src
+        document.getElementById('a-foto').href = td[2].querySelector('#foto').src
+        document.getElementById('edit-foto').src = td[2].querySelector('#foto').src
         document.getElementById('edit-nama_peserta').value = td[0].innerText
 
-        document.getElementById('edit-validasi').value = td[2].innerText
+        document.getElementById('edit-validasi').value = td[3].innerText
 
         document.getElementById('edit-id_transaksi').value = id;
     }
@@ -295,7 +302,7 @@
     function previewTransaksi(baris, id){
         const td = document.querySelectorAll('#' + baris + ' td');
 
-        document.getElementById('preview-foto').src = td[1].querySelector('#foto').src;
+        document.getElementById('preview-foto').src = td[2].querySelector('#foto').src;
     }
 </script>
 @endsection

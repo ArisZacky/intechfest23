@@ -325,7 +325,7 @@ class AdminController extends Controller
     public function restoreWdc(Request $request)
     {
         $wdc = Wdc::withTrashed()->where('id_wdc', $request['id_wdc'])->restore();
-        redirect()->back()->with('restore_success', 'Restore Data Berhasil');
+        return redirect()->back()->with('restore_success', 'Restore Data Berhasil');
     }
     // WDC END============================================================
 
