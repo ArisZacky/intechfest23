@@ -2,7 +2,7 @@
 @extends('admin.main')
 
 {{-- judul halaman disini --}}
-@section('title', 'Data Peserta CTF')
+@section('title', 'Data Peserta CTF Terhapus')
 
 {{-- membuat content disini --}}
 @section('content')

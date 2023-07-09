@@ -2,7 +2,7 @@
 @extends('admin.main')
 
 {{-- judul halaman disini --}}
-@section('title', 'Data Peserta DC')
+@section('title', 'Data Peserta DC Terhapus')
 
 {{-- membuat content disini --}}
 @section('content')

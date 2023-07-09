@@ -568,7 +568,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2">
                 <div class="p-4">
                     <div class="mb-2 bg-white rounded-lg border cursor-pointer p-3 faq-section"
-                        onclick="faqPop('#faq-1', 'h-36')" id="faq-1">
+                        onclick="faqPop('#faq-1', 'h-12')" id="faq-1">
                         <div class="flex justify-between items-center">
                             <h5 class="font-medium"> Bagaimana cara pendaftaran lomba Intech Fest 2023?</h5>
                             <i class="fa-solid fa-chevron-down transition-all duration-700"></i>
@@ -577,19 +577,19 @@
                             Pendaftaran akan dilakukan melalui website official Intech Fest 2023 atau dapat melihat tata cara pendaftaran melalui Guide Book.</p>
                     </div>
                     <div class="mb-2 bg-white rounded-lg border cursor-pointer p-3 faq-section"
-                        onclick="faqPop('#faq-2', 'h-36')" id="faq-2">
+                        onclick="faqPop('#faq-2', 'h-12')" id="faq-2">
                         <div class="flex justify-between items-center">
                             <h5 class="font-medium">Apakah ChillTalks dibuka untuk umum
                                     dan apa topik yang akan dibahas?</h5>
                             <i class="fa-solid fa-chevron-down transition-all duration-700"></i>
                         </div>
                         <p class="overflow-hidden font-light text-justify h-0 transition-all duration-700">
-                            Chillstalks dibukan untuk umum. Topik yang dibahas adalah Tentang Bagaimana Peran AI terhadap bidang ekonomi dan pendidikan.</p>
+                            Chillstalks dibukan untuk umum. Topik yang Akan Dibahas "Artificial Intelligent dalam dunia Pendidikan dan Bisnis di era Society 5.0".</p>
                     </div>
                     <div class="mb-2 bg-white rounded-lg border cursor-pointer p-3 faq-section"
-                        onclick="faqPop('#faq-3', 'h-36')" id="faq-3">
+                        onclick="faqPop('#faq-3', 'h-32')" id="faq-3">
                         <div class="flex justify-between items-center">
-                            <h5 class="font-medium">Benefit dari webinar Intech Fest 2023?</h5>
+                            <h5 class="font-medium">Benefit dari Seminar Intech Fest 2023?</h5>
                             <i class="fa-solid fa-chevron-down transition-all duration-700"></i>
                         </div>
                         <p class="overflow-hidden font-light text-justify h-0 transition-all duration-700">
@@ -609,17 +609,14 @@
                             soluta cum. Dolores ea ipsam deserunt facilis magni sunt aut veniam nostrum voluptas, porro
                             consequatur corporis praesentium dolorem odio, ipsa, doloribus suscipit accusamus.</p>
                     </div>
-                    <div class="mb-2 bg-white rounded-lg border cursor-pointer p-3 faq-section"
-                        onclick="faqPop('#faq-5', 'h-36')" id="faq-5">
+                    <div class="mb-2 bg-white rounded-lg border cursor-pointer p-3 faq-section h-"
+                        onclick="faqPop('#faq-5', 'h-24')" id="faq-5">
                         <div class="flex justify-between items-center">
-                            <h5 class="font-medium">Masukkan Pertanyaan disini</h5>
+                            <h5 class="font-medium">Apakah mengenai akomodasi ditanggung oleh pihak penyelenggara kegitan ?</h5>
                             <i class="fa-solid fa-chevron-down transition-all duration-700"></i>
                         </div>
-                        <p class="overflow-hidden font-light text-justify h-0 transition-all duration-700">Lorem ipsum dolor sit amet
-                            consectetur adipisicing elit. Quia magni dolores ea fuga qui delectus consectetur! Repellat
-                            accusamus perspiciatis consectetur eveniet blanditiis aperiam debitis unde labore harum,
-                            soluta cum. Dolores ea ipsam deserunt facilis magni sunt aut veniam nostrum voluptas, porro
-                            consequatur corporis praesentium dolorem odio, ipsa, doloribus suscipit accusamus.</p>
+                        <p class="overflow-hidden font-light text-justify h-0 transition-all duration-700">
+                        Mengenai akomodasi ditanggung oleh peserta sendiri, namun dari pihak panitia kegiatan akan menyediakan pilihan akomodasi yang mungkin dapat dijadikan tempat akomodasi oleh peserta lomba, namun untuk biayanya ditanggung oleh pihak peserta</p>
                     </div>
                     <div class="bg-white rounded-lg border cursor-pointer p-3 faq-section"
                         onclick="faqPop('#faq-6', 'h-36')" id="faq-6">
@@ -700,7 +697,7 @@
                     <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png" height="100" width="250"
                         alt="" />
                 </div>
-                <div class="slide">
+                <div class="slide"> 
                     <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png" height="100" width="250"
                         alt="" />
                 </div>

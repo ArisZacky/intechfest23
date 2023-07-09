@@ -161,6 +161,8 @@ Route::group(['middleware' => ['auth', 'verified', 'level:admin']], function () 
     Route::post('/update-wdc', [AdminController::class, 'updateWdc']);
     // Delete Akun WDC
     Route::post('/delete-wdc', [AdminController::class, 'deleteWdc']); 
+    // Delete Perma Akun WDC
+    Route::post('/delete-wdc-perma', [AdminController::class, 'deleteWdcPerma']); 
 
     // Menampilkan Halaman DC
     Route::get('/dc-admin', [AdminController::class, 'dc']);

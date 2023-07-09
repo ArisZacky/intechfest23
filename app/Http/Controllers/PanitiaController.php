@@ -192,13 +192,13 @@ class PanitiaController extends Controller
         if($search){
             $ctf = Ctf::          
             join('peserta', 'ctf.id_peserta', '=', 'peserta.id_peserta')
-            ->select('ctf.*', 'peserta.*', 'project.file_project')
+            ->select('ctf.*', 'peserta.*')
             ->where('peserta.nama_lengkap','LIKE','%'.$search.'%')
-            ->paginate(); 
+            ->paginate();
         }else{
             $ctf = Ctf::          
             join('peserta', 'ctf.id_peserta', '=', 'peserta.id_peserta')
-            ->select('ctf.*', 'peserta.*', 'project.file_project')
+            ->select('ctf.*', 'peserta.*')
             ->paginate(15);    
         }
 
