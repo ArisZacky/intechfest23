@@ -67,13 +67,13 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
-    return redirect('/panitia');
-})->middleware(['auth', 'signed', 'level:panitia'])->name('verification.verify');
+    return redirect('/peserta');
+})->middleware(['auth', 'signed', 'level:peserta'])->name('verification.verify');
 
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
-    return redirect('/peserta');
-})->middleware(['auth', 'signed', 'level:peserta'])->name('verification.verify');
+    return redirect('/panitia');
+})->middleware(['auth', 'signed', 'level:panitia'])->name('verification.verify');
 
 //resend email verifikasi
 Route::post('/email/verification-notification', function (Request $request) {

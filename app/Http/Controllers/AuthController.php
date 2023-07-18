@@ -49,7 +49,7 @@ class AuthController extends Controller
             'name' => $request->nama, 
             'email'=>$request->email, 
             'password' => $password, 
-            'level' => 'peserta' // level diganti ke panitia kalo mau pakek daftar panitia
+            'level' => 'panitia' // level diganti ke panitia kalo mau pakek daftar panitia
         ];
 
         $validated = $request->validate([
@@ -58,26 +58,6 @@ class AuthController extends Controller
 
         // ====================================PESERTA====================================
         // Database Transaction untuk insert data ke 2 table
-        try {
-            DB::beginTransaction();
-            
-            // Insert data ke table users menggunakan variavel data
-            $user = User::create($data);
-    
-            // Insert data ke table peserta 
-            Peserta::create([ 
-                'email' => $request->email, 
-                'nama_lengkap' => $request->nama
-            ]);
-
-            DB::commit();
-        } catch (\Throwable $th) {
-            throw $th;
-            DB::rollBack();
-        }
-        // ====================================END PESERTA====================================
-
-        // ====================================PANITIA========================================
         // try {
         //     DB::beginTransaction();
             
@@ -85,8 +65,8 @@ class AuthController extends Controller
         //     $user = User::create($data);
     
         //     // Insert data ke table peserta 
-        //     Panitia::create([ 
-        //         'email_panitia' => $request->email, 
+        //     Peserta::create([ 
+        //         'email' => $request->email, 
         //         'nama_lengkap' => $request->nama
         //     ]);
 
@@ -95,6 +75,26 @@ class AuthController extends Controller
         //     throw $th;
         //     DB::rollBack();
         // }
+        // ====================================END PESERTA====================================
+
+        // ====================================PANITIA========================================
+        try {
+            DB::beginTransaction();
+            
+            // Insert data ke table users menggunakan variavel data
+            $user = User::create($data);
+    
+            // Insert data ke table peserta 
+            Panitia::create([ 
+                'email_panitia' => $request->email, 
+                'nama_lengkap' => $request->nama
+            ]);
+
+            DB::commit();
+        } catch (\Throwable $th) {
+            throw $th;
+            DB::rollBack();
+        }
         // ====================================END PANITIA====================================
 
         //membuat user login tetapi akun belum terverifikasi

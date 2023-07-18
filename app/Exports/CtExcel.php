@@ -16,7 +16,7 @@ class CtExcel implements FromCollection, WithHeadings
         return Ct::          
         join('peserta', 'ct.id_peserta', '=', 'peserta.id_peserta')
         ->leftJoin('transaksi', 'ct.id_transaksi', '=', 'transaksi.id_transaksi')
-        ->select('peserta.*')
+        ->select('peserta.id','peserta.email','ct.nomer_peserta','peserta.lengkap', 'peserta.alamat', 'peserta.nama_instansi', 'peserta.no_hp')
         ->get();
     }
     

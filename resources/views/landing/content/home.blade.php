@@ -341,22 +341,22 @@
             <div class="splide__track">
                 <ul class="splide__list">
                     <li class="splide__slide">
-                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png" alt="" />
+                        <img src="" alt="" />
                     </li>
                     <li class="splide__slide mx-auto">
-                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png" alt="" />
+                        <img src="" alt="" />
                     </li>
                     <li class="splide__slide mx-auto">
-                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png" alt="" />
+                        <img src="" alt="" />
                     </li>
                     <li class="splide__slide mx-auto">
-                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png" alt="" />
+                        <img src="" alt="" />
                     </li>
                     <li class="splide__slide mx-auto">
-                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/5.png" alt="" />
+                        <img src="" alt="" />
                     </li>
                     <li class="splide__slide mx-auto">
-                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png" alt="" />
+                        <img src="" alt="" />
                     </li>
                 </ul>
             </div>
@@ -598,16 +598,12 @@
                 </div>
                 <div class="p-4">
                     <div class="mb-2 bg-white rounded-lg border cursor-pointer p-3 faq-section"
-                        onclick="faqPop('#faq-4', 'h-36')" id="faq-4">
+                        onclick="faqPop('#faq-4', 'h-20')" id="faq-4">
                         <div class="flex justify-between items-center">
-                            <h5 class="font-medium">Masukkan Pertanyaan disini</h5>
+                            <h5 class="font-medium">Kegiatan Intecfest Online Atau Offline?</h5>
                             <i class="fa-solid fa-chevron-down transition-all duration-700"></i>
                         </div>
-                        <p class="overflow-hidden font-light text-justify h-0 transition-all duration-700">Lorem ipsum dolor sit amet
-                            consectetur adipisicing elit. Quia magni dolores ea fuga qui delectus consectetur! Repellat
-                            accusamus perspiciatis consectetur eveniet blanditiis aperiam debitis unde labore harum,
-                            soluta cum. Dolores ea ipsam deserunt facilis magni sunt aut veniam nostrum voluptas, porro
-                            consequatur corporis praesentium dolorem odio, ipsa, doloribus suscipit accusamus.</p>
+                        <p class="overflow-hidden font-light text-justify h-0 transition-all duration-700">Kegiatan Intecfest Akan Diadakan Secara Hybrid yang dimana babak penyisihan akan dilaksanakan secara online, dan babak final akan dilaksanakan secar offline</p>
                     </div>
                     <div class="mb-2 bg-white rounded-lg border cursor-pointer p-3 faq-section h-"
                         onclick="faqPop('#faq-5', 'h-24')" id="faq-5">
@@ -619,16 +615,12 @@
                         Mengenai akomodasi ditanggung oleh peserta sendiri, namun dari pihak panitia kegiatan akan menyediakan pilihan akomodasi yang mungkin dapat dijadikan tempat akomodasi oleh peserta lomba, namun untuk biayanya ditanggung oleh pihak peserta</p>
                     </div>
                     <div class="bg-white rounded-lg border cursor-pointer p-3 faq-section"
-                        onclick="faqPop('#faq-6', 'h-36')" id="faq-6">
+                        onclick="faqPop('#faq-6', 'h-12')" id="faq-6">
                         <div class="flex justify-between items-center">
-                            <h5 class="font-medium">Masukkan Pertanyaan disini</h5>
+                            <h5 class="font-medium">Apakah ketiga cabang lomba dibuka untuk umum?</h5>
                             <i class="fa-solid fa-chevron-down transition-all duration-700"></i>
                         </div>
-                        <p class="overflow-hidden font-light text-justify h-0 transition-all duration-700">Lorem ipsum dolor sit amet
-                            consectetur adipisicing elit. Quia magni dolores ea fuga qui delectus consectetur! Repellat
-                            accusamus perspiciatis consectetur eveniet blanditiis aperiam debitis unde labore harum,
-                            soluta cum. Dolores ea ipsam deserunt facilis magni sunt aut veniam nostrum voluptas, porro
-                            consequatur corporis praesentium dolorem odio, ipsa, doloribus suscipit accusamus.</p>
+                        <p class="overflow-hidden font-light text-justify h-0 transition-all duration-700">Iya, ketiga cabang lomba intechfest 2023 dibuka secara umum dengan syarat peserta berumur 16 - 23 tahun</p>
                     </div>
                 </div>
             </div>
@@ -646,120 +638,96 @@
         <div class="slider">
             <div class="slide-track">
                 <div class="slide">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png" height="100" width="250"
+                    <img src="{{asset('Logo_medpat/Event Network 2.png')}}" class="ms-32" height="100" width="200"
                         alt="" />
                 </div>
                 <div class="slide">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png" height="100" width="250"
+                    <img src="{{asset('Logo_medpat/event_jawa_timur.png')}}" class="ms-32" height="100" width="98"
                         alt="" />
                 </div>
                 <div class="slide">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png" height="100" width="250"
+                    <img src="{{asset('Logo_medpat/logo_infokampusku.png')}}" class="ms-" height="100" width="190"
                         alt="" />
                 </div>
                 <div class="slide">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png" height="100" width="250"
+                    <img src="{{asset('Logo_medpat/Event Lamongan.png')}}" height="100" width="200"
                         alt="" />
                 </div>
                 <div class="slide">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/5.png" height="100" width="250"
+                    <img src="{{asset('Logo_medpat/acara_kampus.png')}}" class="-mt-10" height="100" width="160"
                         alt="" />
                 </div>
                 <div class="slide">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png" height="100" width="250"
+                    <img src="{{asset('Logo_medpat/webinar_center_id.png')}}" class="-ms-12 -mt-1" height="100" width="240"
                         alt="" />
                 </div>
                 <div class="slide">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png" height="100" width="250"
-                        alt="" />
+                    <img src="{{asset('Logo_medpat/info_lomba _ind.png')}}" height="100" width="108"
+                    alt="" />
                 </div>
                 <div class="slide">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png" height="100" width="250"
-                        alt="" />
+                    <img src="{{asset('Logo_medpat/info_lomba.jpg')}}" class="-mt-2 -ms-20 -me-10" height="100" width="125"
+                    alt="" />
                 </div>
                 <div class="slide">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png" height="100" width="250"
-                        alt="" />
+                    <img src="{{asset('Logo_medpat/seputar_infoid.jpg')}}" class="-mt-2 -ms-36" height="100" width="190"
+                    alt="" />
                 </div>
                 <div class="slide">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png" height="100" width="250"
-                        alt="" />
+                    <img src="{{asset('Logo_medpat/seminar_center.png')}}" class="-mt-2 -ms-32" height="100" width="195"
+                    alt="" />
                 </div>
                 <div class="slide">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png" height="100" width="250"
-                        alt="" />
-                </div>
-                <div class="slide">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/5.png" height="100" width="250"
-                        alt="" />
-                </div>
-                <div class="slide">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png" height="100" width="250"
-                        alt="" />
-                </div>
-                <div class="slide"> 
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png" height="100" width="250"
-                        alt="" />
+                    <img src="{{asset('Logo_medpat/kawal_event.png')}}" class="-ms-32" height="100" width="195"
+                    alt="" />
                 </div>
             </div>
         </div>
         <div class="slider-reverse">
             <div class="slide-track-reverse">
                 <div class="slide">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png" height="100" width="250"
-                        alt="" />
+                    <!-- <img src="" height="100" width="250"
+                        alt="" /> -->
                 </div>
                 <div class="slide">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png" height="100" width="250"
-                        alt="" />
+                    <!-- <img src="" height="100" width="250"
+                        alt="" /> -->
                 </div>
                 <div class="slide">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png" height="100" width="250"
-                        alt="" />
+                    <!-- <img src="" height="100" width="250"
+                        alt="" /> -->
                 </div>
                 <div class="slide">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png" height="100" width="250"
-                        alt="" />
+                    <!-- <img src="" height="100" width="250"
+                        alt="" /> -->
                 </div>
                 <div class="slide">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/5.png" height="100" width="250"
-                        alt="" />
+                    <!-- <img src="" height="100" width="250"
+                        alt="" /> -->
                 </div>
                 <div class="slide">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png" height="100" width="250"
-                        alt="" />
+                    <!-- <img src="" height="100" width="250"
+                        alt="" /> -->
                 </div>
                 <div class="slide">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png" height="100" width="250"
-                        alt="" />
+                    <!-- <img src="" height="100" width="250"
+                        alt="" /> -->
                 </div>
                 <div class="slide">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png" height="100" width="250"
-                        alt="" />
+                    <!-- <img src="" height="100" width="250"
+                        alt="" /> -->
                 </div>
                 <div class="slide">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png" height="100" width="250"
-                        alt="" />
+                    <!-- <img src="" height="100" width="250"
+                        alt="" /> -->
                 </div>
                 <div class="slide">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png" height="100" width="250"
-                        alt="" />
+                    <!-- <img src="" height="100" width="250"
+                        alt="" /> -->
                 </div>
                 <div class="slide">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png" height="100" width="250"
-                        alt="" />
-                </div>
-                <div class="slide">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/5.png" height="100" width="250"
-                        alt="" />
-                </div>
-                <div class="slide">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png" height="100" width="250"
-                        alt="" />
-                </div>
-                <div class="slide">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png" height="100" width="250"
-                        alt="" />
+                    <!-- <img src="" height="100" width="250"
+                        alt="" /> -->
                 </div>
             </div>
         </div>
@@ -772,7 +740,7 @@
         var p = document.querySelector(id+" p");
         var i = document.querySelector(id+" div i");
         p.classList.toggle("h-0");
-        p.classList.toggle("mt-4");
+        p.classList.toggle("mt-5");
         p.classList.toggle(tinggi);
         i.classList.toggle("rotate-180");
     }

@@ -89,7 +89,7 @@
                                 @if($data->file_project == NULL)
                                     <td class="px-4 py-3 italic">Project Belum Ada</td>
                                 @else
-                                    <td class="px-4 py-3"><a href="{{url('/project/downloadProject/')}}/{{$data->file_project}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline" target = "__blank">{{$data->file_project}}</a></td>
+                                    <td class="px-4 py-3"><a href="{{url('/project/downloadProjectDC/')}}/{{$data->file_project}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline" target = "__blank">{{$data->file_project}}</a></td>
                                 @endif
                                 <td class="px-4 py-3">{{$data->validasi}}</td>
                                 <td class="px-4 py-3">

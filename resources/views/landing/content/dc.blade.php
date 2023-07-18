@@ -75,7 +75,7 @@
                                 class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Dilakukan
                                 Pada Tanggal 26 Agustus 2023</time>
                             <p class="text-base font-normal text-gray-500 dark:text-gray-400">Pembuatan Project Akan
-                                Dilaksanakan Pada Tanggal 26 Agustus 2023 Hingga Tanggal 15 Agustus 2023</p>
+                                Dilaksanakan Pada Tanggal 26 Agustus 2023 Hingga Tanggal 15 September 2023</p>
                         </div>
                     </li>
                     <li class="relative mb-6 sm:mb-0">
