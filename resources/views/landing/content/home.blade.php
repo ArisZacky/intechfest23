@@ -332,7 +332,7 @@
 </section>
 
 {{-- sponsor --}}
-<section class="bg-white dark:bg-gray-900" data-aos="fade-up" data-aos-duration="1000">
+<!-- <section class="bg-white dark:bg-gray-900" data-aos="fade-up" data-aos-duration="1000">
     <div class="py-8 lg:py-16 mx-auto max-w-screen-xl px-4">
         <h2
             class="mb-8 lg:mb-16 text-2xl font-extrabold tracking-tight leading-tight text-center text-gray-900 dark:text-white md:text-4xl">
@@ -362,7 +362,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 
 {{-- lomba --}}
 <section id="lomba" class="bg-white dark:bg-gray-900 mt-16" data-aos="fade-up" data-aos-duration="1000">
@@ -457,7 +457,7 @@
                     <div class="w-full absolute card-front top-1/2 -translate-y-1/2">
                         <div class="card-front-sub">
                             <img class="rounded-t-lg w-1/3 md:w-1/2 mx-auto " src="{{asset('images/logo/CTF.png')}}"
-                                alt="logo dc" />
+                                alt="logo CTF" />
                             <h5
                                 class="mb-2 text-2xl text-center font-bold tracking-tight text-gray-900 dark:text-white">
                                 Capture The Flag</h5>
@@ -465,16 +465,17 @@
                         </div>
                     </div>
                     <div
-                        class="p-5 absolute left-0 top-0 card-back opacity-0 bg-primary-lightblue rounded-lg w-96 h-[270px]">
+                        class="p-5 card-text absolute left-0 top-0 card-back opacity-0 bg-primary-lightblue rounded-lg w-96 h-[270px]">
                         <div class="card-back-sub">
-                            <a href="/detail-dc" class="text-center">
-                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-white">Capture The Flag</h5>
-                            </a>
+                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-white text-center">
+                                    Capture The Flag
+                                </h5>
                             <p class="mb-3 font-normal text-justify text-gray-50">
                                 Politeknik Negeri Bali Capture The
                                 Flags (PNBCTF) Merupakan Kegiatan perlombaan yang akan berfokus dalam mencermati
-                                permasalahan
+                                permasalahan 
                                 keamanan jaringan,
+                                <span class="xs-appear">...</span><span class="xs-hidden">
                                 keamanan komputer, dan keamanan informasi.
                             </p>
                             <a href="/detail-ctf"
@@ -568,7 +569,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2">
                 <div class="p-4">
                     <div class="mb-2 bg-white rounded-lg border cursor-pointer p-3 faq-section"
-                        onclick="faqPop('#faq-1', 'h-12')" id="faq-1">
+                        onclick="faqPop('#faq-1', 'lg:h-12')" id="faq-1">
                         <div class="flex justify-between items-center">
                             <h5 class="font-medium"> Bagaimana cara pendaftaran lomba Intech Fest 2023?</h5>
                             <i class="fa-solid fa-chevron-down transition-all duration-700"></i>
@@ -577,7 +578,7 @@
                             Pendaftaran akan dilakukan melalui website official Intech Fest 2023 atau dapat melihat tata cara pendaftaran melalui Guide Book.</p>
                     </div>
                     <div class="mb-2 bg-white rounded-lg border cursor-pointer p-3 faq-section"
-                        onclick="faqPop('#faq-2', 'h-12')" id="faq-2">
+                        onclick="faqPop('#faq-2', 'lg:h-12')" id="faq-2">
                         <div class="flex justify-between items-center">
                             <h5 class="font-medium">Apakah ChillTalks dibuka untuk umum
                                     dan apa topik yang akan dibahas?</h5>
@@ -587,7 +588,7 @@
                             Chillstalks dibukan untuk umum. Topik yang Akan Dibahas "Artificial Intelligent dalam dunia Pendidikan dan Bisnis di era Society 5.0".</p>
                     </div>
                     <div class="mb-2 bg-white rounded-lg border cursor-pointer p-3 faq-section"
-                        onclick="faqPop('#faq-3', 'h-32')" id="faq-3">
+                        onclick="faqPop('#faq-3', 'lg:h-32')" id="faq-3">
                         <div class="flex justify-between items-center">
                             <h5 class="font-medium">Benefit dari Seminar Intech Fest 2023?</h5>
                             <i class="fa-solid fa-chevron-down transition-all duration-700"></i>
@@ -598,7 +599,7 @@
                 </div>
                 <div class="p-4">
                     <div class="mb-2 bg-white rounded-lg border cursor-pointer p-3 faq-section"
-                        onclick="faqPop('#faq-4', 'h-20')" id="faq-4">
+                        onclick="faqPop('#faq-4', 'lg:h-20')" id="faq-4">
                         <div class="flex justify-between items-center">
                             <h5 class="font-medium">Kegiatan Intecfest Online Atau Offline?</h5>
                             <i class="fa-solid fa-chevron-down transition-all duration-700"></i>
@@ -606,7 +607,7 @@
                         <p class="overflow-hidden font-light text-justify h-0 transition-all duration-700">Kegiatan Intecfest Akan Diadakan Secara Hybrid yang dimana babak penyisihan akan dilaksanakan secara online, dan babak final akan dilaksanakan secar offline</p>
                     </div>
                     <div class="mb-2 bg-white rounded-lg border cursor-pointer p-3 faq-section h-"
-                        onclick="faqPop('#faq-5', 'h-24')" id="faq-5">
+                        onclick="faqPop('#faq-5', 'lg:h-24')" id="faq-5">
                         <div class="flex justify-between items-center">
                             <h5 class="font-medium">Apakah mengenai akomodasi ditanggung oleh pihak penyelenggara kegitan ?</h5>
                             <i class="fa-solid fa-chevron-down transition-all duration-700"></i>
@@ -615,7 +616,7 @@
                         Mengenai akomodasi ditanggung oleh peserta sendiri, namun dari pihak panitia kegiatan akan menyediakan pilihan akomodasi yang mungkin dapat dijadikan tempat akomodasi oleh peserta lomba, namun untuk biayanya ditanggung oleh pihak peserta</p>
                     </div>
                     <div class="bg-white rounded-lg border cursor-pointer p-3 faq-section"
-                        onclick="faqPop('#faq-6', 'h-12')" id="faq-6">
+                        onclick="faqPop('#faq-6', 'lg:h-12')" id="faq-6">
                         <div class="flex justify-between items-center">
                             <h5 class="font-medium">Apakah ketiga cabang lomba dibuka untuk umum?</h5>
                             <i class="fa-solid fa-chevron-down transition-all duration-700"></i>

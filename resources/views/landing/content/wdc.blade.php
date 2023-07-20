@@ -2,7 +2,7 @@
 <link rel="shortcut icon" href="{{ asset('images/logo/favicon.ico') }}">
 
 {{-- judul halaman disini --}}
-@section('title', 'Design Challenge')
+@section('title', 'Web Design Competition')
 
 {{-- navbar --}}
 @include('landing.layout.navbar-lomba')
@@ -23,13 +23,13 @@
                 <h1 class="text-2xl font-bold pb-3 mt-4">Deskripsi Lomba</h1>
                 <p class="pb-3 text-justify">Politeknik Negeri Bali Web Design Competition (PNBWDC) Merupakan salah satu
                     sub event perlombaan dalam kegiatan
-                    “Information and Technology Festival (Intech Fest) 2022”.
+                    “Information and Technology Festival (Intech Fest) 2023”.
                     Yang dimana kegiatan ini berfokus dalam merancang serta membuat sebuah website yang memiliki peran
                     sangat penting di era modern ini.
                     Kegiatan ini ditujukan untuk Mahasiswa/i perguruan tinggi se-indonesia. Melalui kegiatan ini,
                     diharapkan dapat meningkatkan kualitas dan membangun peran generasi muda yang terjun dalam bidang IT
                     khususnya desain web dalam upaya peningkatan kualitas tenaga terampil melalui peningkatan keahlian
-                    dalam bidang desain web.</p>
+                    dalam bidang desain web.</p>
                 <h1 class="text-2xl font-bold pb-3 mt-4" id="timeline">Timeline Lomba</h1>
                 <ol class="items-center sm:flex">
                     <li class="relative mb-6 sm:mb-0">
@@ -46,11 +46,10 @@
                             <div class="hidden sm:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"></div>
                         </div>
                         <div class="mt-3 sm:pr-8">
-                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Pendaftaran Lomba PNBWDC
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Pendaftaran Lomba
                             </h3>
                             <time
-                                class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Dilakukan
-                                Pada Tanggal 27 Juli 2023</time>
+                                class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Tanggal 27 Juli 2023</time>
                             <p class="text-base font-normal text-gray-500 dark:text-gray-400">Pendaftaran Lomba PNBWDC
                                 Akan Dilakukan Pada Tanggal 27 Juli 2023 Hingga Tanggal 25 Agustus 2023</p>
                         </div>
@@ -69,11 +68,10 @@
                             <div class="hidden sm:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"></div>
                         </div>
                         <div class="mt-3 sm:pr-8">
-                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Pembuatan Project PNBWDC
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Pembuatan Project
                             </h3>
                             <time
-                                class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Dilakukan
-                                Pada Tanggal 26 Agustus 2023</time>
+                                class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Tanggal 26 Agustus 2023</time>
                             <p class="text-base font-normal text-gray-500 dark:text-gray-400">Pembuatan Project Akan
                                 Dilaksanakan Pada Tanggal 26 Agustus 2023 Hingga Tanggal 15 September 2023</p>
                         </div>
@@ -92,11 +90,9 @@
                             <div class="hidden sm:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"></div>
                         </div>
                         <div class="mt-3 sm:pr-8">
-                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Babak Final Perlombaan
-                                PNBWDC</h3>
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Final</h3>
                             <time
-                                class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Dilakukan
-                                pada tanggal 30 September 2023</time>
+                                class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Tanggal 30 September 2023</time>
                             <p class="text-base font-normal text-gray-500 dark:text-gray-400">Final Akan Dilakukan Pada
                                 Tanggal 30 September 2023 Yang Berlokasi di Kampus Politeknik Negeri Bali</p>
                         </div>
