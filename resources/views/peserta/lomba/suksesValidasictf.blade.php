@@ -54,7 +54,7 @@
                 <section class="text-gray-600 body-font xl:col-span-2">
                     <div class="mx-auto flex items-center justify-center flex-col">
                         <div class="w-full">
-                            <img src="{{asset('images/maskot/tungguApaLagi.png')}}" class="w-1/2 lg:w-1/3 mx-auto"
+                            <img src="{{asset('images/maskot/TungguApaLagi.png')}}" class="w-1/2 lg:w-1/3 mx-auto"
                                 alt="ivy wondering">
                             <p class="mb-8 leading-relaxed mt-10 text-center">Terima kasih telah Melakukan Pendaftaran Pada Lomba CTF. Semoga sukses untuk Anda!</p>
                         </div>

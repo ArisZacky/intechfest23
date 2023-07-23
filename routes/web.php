@@ -67,13 +67,13 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
-    return redirect('/panitia');
-})->middleware(['auth', 'signed', 'level:panitia'])->name('verification.verify');
+    return redirect('/peserta');
+})->middleware(['auth', 'signed', 'level:peserta'])->name('verification.verify');
 
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
-    return redirect('/peserta');
-})->middleware(['auth', 'signed', 'level:peserta'])->name('verification.verify');
+    return redirect('/panitia');
+})->middleware(['auth', 'signed', 'level:panitia'])->name('verification.verify');
 
 //resend email verifikasi
 Route::post('/email/verification-notification', function (Request $request) {
@@ -161,6 +161,8 @@ Route::group(['middleware' => ['auth', 'verified', 'level:admin']], function () 
     Route::post('/update-wdc', [AdminController::class, 'updateWdc']);
     // Delete Akun WDC
     Route::post('/delete-wdc', [AdminController::class, 'deleteWdc']); 
+    // Delete Perma Akun WDC
+    Route::post('/delete-wdc-perma', [AdminController::class, 'deleteWdcPerma']); 
 
     // Menampilkan Halaman DC
     Route::get('/dc-admin', [AdminController::class, 'dc']);

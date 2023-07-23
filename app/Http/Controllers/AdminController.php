@@ -325,7 +325,7 @@ class AdminController extends Controller
     public function restoreWdc(Request $request)
     {
         $wdc = Wdc::withTrashed()->where('id_wdc', $request['id_wdc'])->restore();
-        redirect()->back()->with('restore_success', 'Restore Data Berhasil');
+        return redirect()->back()->with('restore_success', 'Restore Data Berhasil');
     }
     // WDC END============================================================
 
@@ -400,9 +400,8 @@ class AdminController extends Controller
             ->join('peserta', 'dc.id_peserta', '=', 'peserta.id_peserta')
             ->leftJoin('project', 'dc.id_project', '=', 'project.id_project')
             ->select('dc.*', 'peserta.*', 'project.file_project')
-            ->paginate(); 
+            ->paginate(15); 
         }
-        $dc = Dc::onlyTrashed()->paginate(15);
         return view('admin.dc.dashdelete', compact(['dc']));
     }
     // Restore (Kembalikan data)
@@ -497,8 +496,9 @@ class AdminController extends Controller
         // MENDAPATKAN REQUEST SEARCH
         $search = $request->search;
 
-        // MENDAPATKAN DATA PANITIA YANG AKAN MEMVERIFIKASI
-        $panitia = Panitia::all();
+         // mendapatkan data Panitia
+         $user = Auth::user();
+         $panitia = Panitia::where('email_panitia', $user->email)->first()->id_panitia;
 
         if($search){
             $transaksi = Transaksi::
@@ -525,8 +525,9 @@ class AdminController extends Controller
         // MENDAPATKAN REQUEST SEARCH
         $search = $request->search;
 
-        // MENDAPATKAN DATA PANITIA YANG AKAN MEMVERIFIKASI
-        $panitia = Panitia::all();
+         // mendapatkan data Panitia
+         $user = Auth::user();
+         $panitia = Panitia::where('email_panitia', $user->email)->first()->id_panitia;
 
         if($search){
             $transaksi = Transaksi::
@@ -553,8 +554,9 @@ class AdminController extends Controller
         // MENDAPATKAN REQUEST SEARCH
         $search = $request->search;
 
-        // MENDAPATKAN DATA PANITIA YANG AKAN MEMVERIFIKASI
-        $panitia = Panitia::all();
+        // mendapatkan data Panitia
+        $user = Auth::user();
+        $panitia = Panitia::where('email_panitia', $user->email)->first()->id_panitia;
 
         if($search){
             $transaksi = Transaksi::
@@ -581,8 +583,9 @@ class AdminController extends Controller
         // MENDAPATKAN REQUEST SEARCH
         $search = $request->search;
 
-        // MENDAPATKAN DATA PANITIA YANG AKAN MEMVERIFIKASI
-        $panitia = Panitia::all();
+         // mendapatkan data Panitia
+        $user = Auth::user();
+        $panitia = Panitia::where('email_panitia', $user->email)->first()->id_panitia;
 
         if($search){
             $transaksi = Transaksi::

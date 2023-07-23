@@ -45,7 +45,7 @@
                 <section class="text-gray-600 body-font xl:col-span-2">
                     <div class="mx-auto flex items-center justify-center flex-col">
                         <div class="w-full text-center">
-                            <img src="{{asset('images/maskot/tungguApaLagi.png')}}" class="w-1/2 lg:w-1/3 mx-auto"
+                            <img src="{{asset('images/maskot/TungguApaLagi.png')}}" class="w-1/2 lg:w-1/3 mx-auto"
                                 alt="ivy wondering">
                             <p class="mb-8 leading-relaxed mt-10 text-center">Terima kasih telah mendaftar webinar kami! Silahkan bergabung dalam group WhatsApp <a href="#" class="text-primary-blue hover:underline">disini</a> untuk mendapatkan informasi tambahan! Dan berikut adalah nomer peserta kamu</p>
                             <span class="border font-medium border-primary-lightblue p-4">Nomer Peserta: <span class="font-bold">{{$ctPeserta->nomer_peserta}}</span></span>

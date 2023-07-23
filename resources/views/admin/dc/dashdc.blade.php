@@ -86,7 +86,11 @@
                                         <img class="w-20 h-20 rounded" src="{{ asset('storage/'.$data->foto) }}" alt="Large avatar" id='foto'>
                                     </button>                                    
                                 </td>
-                                <td class="px-4 py-3"><a href="{{url('/project/downloadProject/')}}/{{$data->file_project}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline" target = "__blank">{{$data->file_project}}</a></td>
+                                @if($data->file_project == NULL)
+                                    <td class="px-4 py-3 italic">Project Belum Ada</td>
+                                @else
+                                    <td class="px-4 py-3"><a href="{{url('/project/downloadProjectDC/')}}/{{$data->file_project}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline" target = "__blank">{{$data->file_project}}</a></td>
+                                @endif
                                 <td class="px-4 py-3">{{$data->validasi}}</td>
                                 <td class="px-4 py-3">
                                     <!-- <button id="apple-imac-27-dropdown-button"
@@ -189,7 +193,7 @@
                     <div>
                         <label for="validasi"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">VALIDASI</label>
-                            <select name="validasi" id="validasi">
+                            <select name="validasi" id="edit-validasi" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                 <option value="Belum Tervalidasi">Belum Tervalidasi</option>
                                 <option value="Sudah Valid">Sudah Valid</option>
                                 <option value="Tidak Valid">Tidak Valid</option>
@@ -280,7 +284,9 @@
         const td = document.querySelectorAll('#' + baris + ' td');
         document.getElementById('edit-nama_peserta').value = td[0].innerText;
         document.getElementById('a-foto').href = td[1].querySelector('#foto').src;
-        document.getElementById('edit-foto').src = td[1].querySelector('#foto').src;        
+        document.getElementById('edit-foto').src = td[1].querySelector('#foto').src;    
+        
+        document.getElementById('edit-validasi').value = td[3].innerText;
 
         document.getElementById('edit-id_dc').value = id;
     }

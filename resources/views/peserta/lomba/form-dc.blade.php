@@ -58,7 +58,7 @@
                         <div class="w-full p-4 text-gray-900 bg-gray-100 border border-gray-300 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400"
                             role="alert">
                             <div class="flex items-center justify-between">
-                                <h3 class="font-medium">2. Validasi Admin</h3>
+                                <h3 class="font-medium">2. Validasi Panitia</h3>
                             </div>
                         </div>
                     </li>

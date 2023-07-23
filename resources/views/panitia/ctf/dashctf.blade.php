@@ -88,7 +88,7 @@
                                 <td class="px-4 py-3">
                                     <a class="" href="{{ asset('storage/'.$data->foto) }}" data-lightbox="example-1" target="__blank" id='link-foto'>
                                         <h1 class="text-sky-500 italic font-weight-bold hover:underline" value="{{$data->foto}}" id="foto">Lihat Foto</h1>
-                                    </a>                                    
+                                    </a>                                          
                                 </td>
                                 <td class="px-4 py-3">{{$data->validasi}}</td>
                                 <td class="px-4 py-3">

@@ -192,13 +192,13 @@ class PanitiaController extends Controller
         if($search){
             $ctf = Ctf::          
             join('peserta', 'ctf.id_peserta', '=', 'peserta.id_peserta')
-            ->select('ctf.*', 'peserta.*', 'project.file_project')
+            ->select('ctf.*', 'peserta.*')
             ->where('peserta.nama_lengkap','LIKE','%'.$search.'%')
-            ->paginate(); 
+            ->paginate();
         }else{
             $ctf = Ctf::          
             join('peserta', 'ctf.id_peserta', '=', 'peserta.id_peserta')
-            ->select('ctf.*', 'peserta.*', 'project.file_project')
+            ->select('ctf.*', 'peserta.*')
             ->paginate(15);    
         }
 
@@ -242,7 +242,9 @@ class PanitiaController extends Controller
         // MENDAPATKAN REQUEST SEARCH
         $search = $request->search;
 
-        $panitia = Panitia::all();
+        // mendapatkan data Panitia
+        $user = Auth::user();
+        $panitia = Panitia::where('email_panitia', $user->email)->first()->id_panitia;
 
         if($search){
             $transaksi = Transaksi::
@@ -270,71 +272,86 @@ class PanitiaController extends Controller
         // MENDAPATKAN REQUEST SEARCH
         $search = $request->search;
 
+        // mendapatkan data Panitia
+        $user = Auth::user();
+        $panitia = Panitia::where('email_panitia', $user->email)->first()->id_panitia;
 
         if($search){
             $transaksi = Transaksi::
-            join('wdc', 'transaksi.id_transaksi', '=', 'wdc.id_transaksi')
-            ->join('peserta', 'wdc.id_peserta', '=', 'peserta.id_peserta')
-            ->leftjoin('users', 'transaksi.id_panitia', '=', 'Auth::user()->id')
+            join('dc', 'transaksi.id_transaksi', '=', 'dc.id_transaksi')
+            ->join('peserta', 'dc.id_peserta', '=', 'peserta.id_peserta')
+            ->leftjoin('panitia', 'transaksi.id_panitia', '=', 'panitia.id_panitia')
             ->select('transaksi.*', 'peserta.nama_lengkap AS nama_peserta', 'panitia.nama_lengkap AS nama_panitia')
             ->where('peserta.nama_lengkap','LIKE','%'.$search.'%')
             ->paginate();
         }else{
             $transaksi = Transaksi::
-            join('wdc', 'transaksi.id_transaksi', '=', 'wdc.id_transaksi')
-            ->join('peserta', 'wdc.id_peserta', '=', 'peserta.id_peserta')
-            ->leftjoin('users', 'transaksi.id_panitia', '=', 'Auth::user()->id')
+            join('dc', 'transaksi.id_transaksi', '=', 'dc.id_transaksi')
+            ->join('peserta', 'dc.id_peserta', '=', 'peserta.id_peserta')
+            ->leftjoin('panitia', 'transaksi.id_panitia', '=', 'panitia.id_panitia')
             ->select('transaksi.*', 'peserta.nama_lengkap AS nama_peserta', 'panitia.nama_lengkap AS nama_panitia')
             ->paginate(15);
         }
 
-        return view('panitia.transaksi.dashtransaksidc', compact(['transaksi']));
+        return view('panitia.transaksi.dashtransaksidc', compact(['transaksi', 'panitia']));
     }
     public function transaksiCtf(Request $request)
     {
         // MENDAPATKAN REQUEST SEARCH
         $search = $request->search;
 
+        // mendapatkan data Panitia
+        $user = Auth::user();
+        $panitia = Panitia::where('email_panitia', $user->email)->first()->id_panitia;
+
 
         if($search){
             $transaksi = Transaksi::
             join('ctf', 'transaksi.id_transaksi', '=', 'ctf.id_transaksi')
             ->join('peserta', 'ctf.id_peserta', '=', 'peserta.id_peserta')
-            ->select('transaksi.*', 'peserta.nama_lengkap AS nama_peserta')
+            ->leftjoin('panitia', 'transaksi.id_panitia', '=', 'panitia.id_panitia')
+            ->select('transaksi.*', 'peserta.nama_lengkap AS nama_peserta', 'panitia.nama_lengkap AS nama_panitia')
             ->where('peserta.nama_lengkap','LIKE','%'.$search.'%')
             ->paginate();
         }else{
             $transaksi = Transaksi::
             join('ctf', 'transaksi.id_transaksi', '=', 'ctf.id_transaksi')
             ->join('peserta', 'ctf.id_peserta', '=', 'peserta.id_peserta')
-            ->select('transaksi.*', 'peserta.nama_lengkap AS nama_peserta')
+            ->leftjoin('panitia', 'transaksi.id_panitia', '=', 'panitia.id_panitia')
+            ->select('transaksi.*', 'peserta.nama_lengkap AS nama_peserta', 'panitia.nama_lengkap AS nama_panitia')
             ->paginate(15);
         }
 
-        return view('panitia.transaksi.dashtransaksictf', compact(['transaksi']));
+        return view('panitia.transaksi.dashtransaksictf', compact(['transaksi', 'panitia']));
     }
     public function transaksiCt(Request $request)
     {
         // MENDAPATKAN REQUEST SEARCH
         $search = $request->search;
 
+        // mendapatkan data Panitia
+        $user = Auth::user();
+        $panitia = Panitia::where('email_panitia', $user->email)->first()->id_panitia;
+
 
         if($search){
             $transaksi = Transaksi::
             join('ct', 'transaksi.id_transaksi', '=', 'ct.id_transaksi')
             ->join('peserta', 'ct.id_peserta', '=', 'peserta.id_peserta')
-            ->select('transaksi.*', 'peserta.nama_lengkap AS nama_peserta')
+            ->leftjoin('panitia', 'transaksi.id_panitia', '=', 'panitia.id_panitia')
+            ->select('transaksi.*', 'peserta.nama_lengkap AS nama_peserta', 'panitia.nama_lengkap AS nama_panitia')
             ->where('peserta.nama_lengkap','LIKE','%'.$search.'%')
             ->paginate();
         }else{
             $transaksi = Transaksi::
             join('ct', 'transaksi.id_transaksi', '=', 'ct.id_transaksi')
             ->join('peserta', 'ct.id_peserta', '=', 'peserta.id_peserta')
-            ->select('transaksi.*', 'peserta.nama_lengkap AS nama_peserta')
+            ->leftjoin('panitia', 'transaksi.id_panitia', '=', 'panitia.id_panitia')
+            ->select('transaksi.*', 'peserta.nama_lengkap AS nama_peserta', 'panitia.nama_lengkap AS nama_panitia')
             ->paginate(15);
         }
 
-        return view('panitia.transaksi.dashtransaksict', compact(['transaksi']));
+        return view('panitia.transaksi.dashtransaksict', compact(['transaksi', 'panitia']));
     }
     // delete Transaksi
     public function delete_transaksi(Request $request)
@@ -348,11 +365,13 @@ class PanitiaController extends Controller
     {
         if($request->isMethod('post')){
             $request->validate([
+                'id_panitia' => 'required',
                 'validasi' => 'required',
             ]);
             
             $data = $request->all();
             Transaksi::where(['id_transaksi' => $request->id_transaksi])->update([
+                'id_panitia'=>$data['id_panitia'], 
                 'validasi'=>$data['validasi'], 
         ]);
             return redirect()->back()->with('update_success', 'Update Data Berhasil!');

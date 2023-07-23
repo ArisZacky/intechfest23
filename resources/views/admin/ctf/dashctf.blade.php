@@ -212,7 +212,7 @@
                     <div>
                         <label for="validasi"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">VALIDASI</label>
-                            <select name="validasi" id="validasi">
+                            <select name="validasi" id="edit-validasi"  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                 <option value="Belum Tervalidasi">Belum Tervalidasi</option>
                                 <option value="Sudah Valid">Sudah Valid</option>
                                 <option value="Tidak Valid">Tidak Valid</option>
@@ -314,6 +314,8 @@
 
         document.getElementById('a-foto').href = td[4].querySelector('#foto').src
         document.getElementById('edit-foto').src = td[4].querySelector('#foto').src
+
+        document.getElementById('edit-validasi').value = td[5].innerText;
 
         document.getElementById('edit-id_ctf').value = id;
     }

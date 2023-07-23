@@ -2,7 +2,7 @@
 <link rel="shortcut icon" href="{{ asset('images/logo/favicon.ico') }}">
 
 {{-- judul halaman disini --}}
-@section('title', 'Design Challenge')
+@section('title', 'Capture The Flag')
 
 {{-- navbar --}}
 @include('landing.layout.navbar-lomba')
@@ -23,12 +23,12 @@
                 <h1 class="text-2xl font-bold pb-3 mt-4">Deskripsi Lomba</h1>
                 <p class="pb-3 text-justify">PNBCTF (Politeknik Negeri Bali Capture The Flag) merupakan salah satu sub
                     event perlombaan yang pertama kali diadakan dalam kegiatan “Information and Technology Festival
-                    (Intech Fest) 2022”.
+                    (Intech Fest) 2023”.
                     Kegiatan ini ditujukan untuk khalayak umum dengan ketentuan umur mulai dari 16 sampai 23 tahun.
                     Dengan diadakannya kompetisi PNBCTF ini diharapkan agar dapat meningkatkan minat dan bakat generasi
                     muda terhadap keamanan dan ancaman siber,
                     serta meningkatkan kemampuan generasi muda dalam menciptakan keamanan siber dan mencegah berbagai
-                    macam ancaman siber seiring berkembangnya informasi dan teknologi</p>
+                    macam ancaman siber seiring berkembangnya informasi dan teknologi</p>
                 <h1 class="text-2xl font-bold pb-3 mt-4" id="timeline">Timeline Lomba</h1>
                 <ol class="items-center sm:flex">
                     <li class="relative mb-6 sm:mb-0">
@@ -45,12 +45,11 @@
                             <div class="hidden sm:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"></div>
                         </div>
                         <div class="mt-3 sm:pr-8">
-                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Pendaftaran Lomba PNBCTF
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Pendaftaran Lomba
                             </h3>
                             <time
-                                class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Dilakukan
-                                Pada Tanggal 27 Juli 2023</time>
-                            <p class="text-base font-normal text-gray-500 dark:text-gray-400">Pendaftaran Lomba PNBDC
+                                class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Tanggal 27 Juli 2023</time>
+                            <p class="text-base font-normal text-gray-500 dark:text-gray-400">Pendaftaran Lomba PNBCTF
                                 Akan Dilakukan Pada Tanggal 27 Juli 2023 Hingga Tanggal 7 Agustus 2023</p>
                         </div>
                     </li>
@@ -68,11 +67,10 @@
                             <div class="hidden sm:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"></div>
                         </div>
                         <div class="mt-3 sm:pr-8">
-                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Perlaksanaan Perlombaan
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Kompetisi
                                 PNBCTF</h3>
                             <time
-                                class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Dilakukan
-                                Pada Tanggal 09 September 2023</time>
+                                class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Tanggal 09 September 2023</time>
                             <p class="text-base font-normal text-gray-500 dark:text-gray-400">Perlombaan PNBCTF Akan
                                 Dilaksanakan 2 Hari Pada Tanggal 09 September 2023 Hingga Tanggal 10 September 2023</p>
                         </div>
@@ -91,11 +89,10 @@
                             <div class="hidden sm:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"></div>
                         </div>
                         <div class="mt-3 sm:pr-8">
-                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Pengumpulan Write Up PNBCTF
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Pengumpulan Write Up
                             </h3>
                             <time
-                                class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Dilakukan
-                                pada tanggal 10 September 2023</time>
+                                class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Tanggal 10 September 2023</time>
                             <p class="text-base font-normal text-gray-500 dark:text-gray-400">Pengumpulan Write Up Akan
                                 Dilakukan Pada Tanggal 10 September 2023 Hingga 11 September 2023</p>
                         </div>
@@ -152,7 +149,7 @@
 
 <script>
     // Set the date we're counting down to
-    var countDownDate = new Date("Sepmtember 7, 2023 23:59:59").getTime();
+    var countDownDate = new Date("September 7, 2023 23:59:59").getTime();
     // Update the count down every 1 second
     var x = setInterval(function() {            
         // Get today's date and time

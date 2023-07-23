@@ -2,7 +2,7 @@
 @extends('admin.main')
 
 {{-- judul halaman disini --}}
-@section('title', 'Data Peserta DC')
+@section('title', 'Data Transaksi')
 
 {{-- membuat content disini --}}
 @section('content')
@@ -190,22 +190,13 @@
                     <div>
                         <label for="validasi"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">VALIDASI</label>
-                            <select name="validasi" id="validasi">
+                            <select name="validasi" id="edit-validasi"  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                 <option value="Belum Tervalidasi">Belum Tervalidasi</option>
                                 <option value="Sudah Valid">Sudah Valid</option>
                                 <option value="Tidak Valid">Tidak Valid</option>
                             </select>
                     </div>
-                    <div>
-                        <label for="id_panitia"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">DI VALIDASI OLEH</label>
-                            <select name="id_panitia" id="id_panitia">
-                                <option value="">PILIH PANITIA</option>
-                                @foreach($panitia as $p)
-                                <option value="{{$p->id_panitia}}">{{$p->nama_lengkap}}</option>
-                                @endforeach
-                            </select>
-                    </div>
+                    <input type="hidden" name="id_panitia"  value="{{$panitia}}">
                 </div>
                 <div class="flex items-center border-t pt-3 justify-end space-x-4">
                     <input type="submit"
@@ -295,6 +286,8 @@
         document.getElementById('a-foto').href = td[2].querySelector('#foto').src
         document.getElementById('edit-foto').src = td[2].querySelector('#foto').src
         document.getElementById('edit-nama_peserta').value = td[0].innerText
+
+        document.getElementById('edit-validasi').value = td[3].innerText;
 
         document.getElementById('edit-id_transaksi').value = id;
     }

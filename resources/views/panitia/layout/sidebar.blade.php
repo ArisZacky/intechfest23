@@ -11,12 +11,11 @@
                     <span class="ml-3 group:text-slate-800">Dashboard</span>
                 </a>
             </li>
-            
             <li>
                 <button type="button"
                     class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                     aria-controls="dropdown-lomba" data-collapse-toggle="dropdown-lomba">
-                    <i class="fa-solid fa-users text-gray-500 text-xl"></i>                    
+                    <i class="fa-solid fa-users text-gray-500 text-xl"></i>
                     <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item>Peserta Lomba</span>
                     <svg sidebar-toggle-item class="w-6 h-6 text-gray-500" fill="currentColor" viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg">
@@ -25,13 +24,13 @@
                             clip-rule="evenodd"></path>
                     </svg>
                 </button>
-                <ul id="dropdown-lomba" class="py-2 space-y-2">
+                <ul id="dropdown-lomba" class="py-2 space-y-2 hidden">
                     <li>
                         <a href="/dc-panitia"
                             class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">DC</a>
                     </li>
                     <li>
-                        <a href="wdc-panitia"
+                        <a href="/wdc-panitia"
                             class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">WDC</a>
                     </li>
                     <li>
@@ -60,7 +59,7 @@
                             clip-rule="evenodd"></path>
                     </svg>
                 </button>
-                <ul id="dropdown-project" class="py-2 space-y-2">
+                <ul id="dropdown-project" class="py-2 space-y-2 hidden">
                     <li>
                         <a href="/project-panitia-dc"
                             class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">DC</a>
@@ -69,18 +68,14 @@
                         <a href="/project-panitia-wdc"
                             class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">WDC</a>
                     </li>
-                    <!-- <li>
-                        <a href="/project-panitia-ctf"
-                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">CTF</a>
-                    </li> -->
                 </ul>
             </li>
             <li>
                 <button type="button"
                     class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                    aria-controls="dropdown-transaksi" data-collapse-toggle="dropdown-project">
-                    <i class="fa-solid fa-money-bills text-gray-500"></i>            
-                    <span class="ml-3">Data Transaksi</span>
+                    aria-controls="dropdown-transaksi" data-collapse-toggle="dropdown-transaksi">
+                    <i class="fa-solid fa-money-bills text-gray-500"></i>                  
+                    <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item>Data Transaksi</span>
                     <svg sidebar-toggle-item class="w-6 h-6 text-gray-500" fill="currentColor" viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg"> 
                         <path fill-rule="evenodd"
@@ -88,24 +83,23 @@
                             clip-rule="evenodd"></path>
                     </svg>
                 </button>
-                <ul id="dropdown-transaksi" class="py-2 space-y-2">
+                <ul id="dropdown-transaksi" class="py-2 space-y-2 hidden">
                     <li>
-                        <a href="panitia-transaksi-wdc"
-                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">WDC</a>
-                    </li>
-                    <li>
-                        <a href="panitia-transaksi-dc"
+                        <a href="/panitia-transaksi-dc"
                             class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">DC</a>
                     </li>
                     <li>
-                        <a href="panitia-transaksi-ctf"
+                        <a href="/panitia-transaksi-wdc"
+                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">WDC</a>
+                    </li>
+                    <li>
+                        <a href="/panitia-transaksi-ctf"
                             class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">CTF</a>
                     </li>
                     <li>
-                        <a href="panitia-transaksi-ct"
+                        <a href="/panitia-transaksi-ct"
                             class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">ChillTalks</a>
                     </li>
-                   
                 </ul>
             </li>
         </ul>
