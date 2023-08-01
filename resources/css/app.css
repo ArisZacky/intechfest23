@@ -5,12 +5,12 @@
 /* sponsor carousel */
 .splide__slide img {
     transition: all 400ms;
-    transform: scale(0.7);
+    transform: scale(0.3);
     filter: grayscale(100%);
 }
 
 .splide__slide.is-active img {
-    transform: scale(1.2);
+    transform: scale(0.5);
     filter: grayscale(0%);
 }
 
@@ -261,7 +261,7 @@ html {
     -webkit-animation: scroll 30s linear infinite;
     animation: scroll 30s linear infinite;
     display: flex;
-    width: calc(250px * 14);
+    width: calc(233px * 15);
 }
 .slider .slide, .slider-reverse .slide-reverse {
     height: 100px;
@@ -275,7 +275,7 @@ html {
     -webkit-animation: scrollReverse 30s linear infinite;
     animation: scrollReverse 30s linear infinite;
     display: flex;
-    width: calc(250px * 14);
+    width: calc(233px * 15);
 }
 
 /* create carousel with keyframes */

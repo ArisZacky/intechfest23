@@ -81,7 +81,7 @@
                                     Kirim Request
                                 </button>
                             </div>
-                            <a href="/login" class="fa-solid fa-arrow-left-long text-xl cursor-pointer" id="back-login"></a>
+                            <a href="{{ url ('/login')}}" class="fa-solid fa-arrow-left-long text-xl cursor-pointer" id="back-login"></a>
                     </form>
                 </div>
             </div>

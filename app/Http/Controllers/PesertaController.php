@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\Compilers\Concerns\CompilesRawPhp;
+use Illuminate\Support\Facades\Storage;
 
 class PesertaController extends Controller
 {
@@ -38,7 +39,7 @@ class PesertaController extends Controller
         
         $peserta = null;
         $lomba = null;
-        $batasWaktu = new Carbon('2023-09-16 00:00:00');
+        $batasWaktu = new Carbon('2023-09-15 23:59:59');
 
         // cek jika peserta yang login mendaftar salah 1 dari 3 lomba yang ada
         $wdcPeserta = Wdc::where('id_peserta', $id_peserta)->first();
@@ -180,6 +181,22 @@ class PesertaController extends Controller
         }
 
         return redirect('/profil-peserta')->with('berhasil', 'Data Berhasil Disimpan !');
+    }
+
+     // DOWNLOAD GB WDC
+     function downloadGuidebookWDC(){
+        $file = Storage::download("public/guidebook/Guide Book Lomba PNBWDC.pdf");  
+        return $file;
+    }
+     // DOWNLOAD GB WDC
+     function downloadGuidebookDC(){
+        $file = Storage::download("public/guidebook/Guide Book Lomba PNBDC.pdf");  
+        return $file;
+    }
+     // DOWNLOAD GB WDC
+     function downloadGuidebookCTF(){
+        $file = Storage::download("public/guidebook/Guide Book Lomba PNBCTF.pdf");  
+        return $file;
     }
 
 }

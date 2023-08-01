@@ -50,7 +50,7 @@
                             <time
                                 class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Tanggal 27 Juli 2023</time>
                             <p class="text-base font-normal text-gray-500 dark:text-gray-400">Pendaftaran Lomba PNBCTF
-                                Akan Dilakukan Pada Tanggal 27 Juli 2023 Hingga Tanggal 7 Agustus 2023</p>
+                                Akan Dilakukan Pada Tanggal 27 Juli 2023 - 25 Agustus 2023</p>
                         </div>
                     </li>
                     <li class="relative mb-6 sm:mb-0">
@@ -72,7 +72,7 @@
                             <time
                                 class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Tanggal 09 September 2023</time>
                             <p class="text-base font-normal text-gray-500 dark:text-gray-400">Perlombaan PNBCTF Akan
-                                Dilaksanakan 2 Hari Pada Tanggal 09 September 2023 Hingga Tanggal 10 September 2023</p>
+                                Dilaksanakan 2 Hari Pada Tanggal 09 September 2023 - 10 September 2023</p>
                         </div>
                     </li>
                     <li class="relative mb-6 sm:mb-0">
@@ -115,7 +115,7 @@
                     class="w-full relative btn-slide overflow-hidden bg-primary-lightblue text-white font-bold text-sm uppercase rounded flex items-center justify-center px-2 py-3 mt-4">
                     <span class="relative z-10">Daftar Lomba</span>
                 </a>
-                <a href="#"
+                <a href="{{url('/gb/download/ctf')}}"
                     class="w-full relative btn-slide2 overflow-hidden bg-red-500 text-white font-bold text-sm uppercase rounded flex items-center justify-center px-2 py-3 mt-4">
                     <span class="relative z-10">Download Guidebook</span>
                 </a>
@@ -149,7 +149,7 @@
 
 <script>
     // Set the date we're counting down to
-    var countDownDate = new Date("September 7, 2023 23:59:59").getTime();
+    var countDownDate = new Date("August 25, 2023 23:59:59").getTime();
     // Update the count down every 1 second
     var x = setInterval(function() {            
         // Get today's date and time

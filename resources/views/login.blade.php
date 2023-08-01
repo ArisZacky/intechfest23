@@ -47,7 +47,7 @@
                         </button>
                       </div>
                     @endif
-                    <form class="space-y-4 md:space-y-6" action="/login" method="POST">
+                    <form class="space-y-4 md:space-y-6" action="{{ url ('/login')}}" method="POST">
                         @csrf
                             <div>
                                 <label for="email-login"
@@ -70,7 +70,7 @@
                             </div>
                             <p class="text-sm font-light text-gray-500 dark:text-gray-400">
                                 Lupa password?
-                                <a href="/forgot-password"
+                                <a href="{{ url ('/forgot-password')}}"
                                     class="font-medium focus:outline-cyan-500 hover:underline dark:text-primary-500 cursor-pointer" id="lupa-password">
                                     Klik disini
                                 </a>
@@ -81,7 +81,7 @@
                             </div>
                             <p class="text-sm font-light text-gray-500 dark:text-gray-400 text-center">
                                 Belum punya akun?
-                                <a href="/register"
+                                <a href="{{ url ('/register')}}"
                                     class="font-medium focus:outline-cyan-500 hover:underline dark:text-primary-500">
                                     Daftar
                                 </a>
