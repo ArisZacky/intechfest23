@@ -638,63 +638,59 @@
         <div class="slider">
             <div class="slide-track">
                 <div class="slide">
-                    <img src="{{asset('logo_medpat/@eventnasional_idn.png')}}" class="ms-28 px-10" height="100" width="233"
+                    <img src="{{asset('logo_medpat/@eventnasional_idn.png')}}" class="ms-28 px-10" height="100" width="250"
                         alt="" />
                 </div>
                 <div class="slide">
-                    <img src="{{asset('logo_medpat/@infokupedia.id.png')}}" class="ms-24 px-12 -mt-1" height="100" width="233"
+                    <img src="{{asset('logo_medpat/@infokupedia.id.png')}}" class="ms-16 px-12 -mt-1" height="100" width="250"
                         alt="" />
                 </div>
                 <div class="slide">
-                    <img src="{{asset('logo_medpat/@infolombanasional.id.png')}}" class="ms-10 px-20" height="100" width="233"
+                    <img src="{{asset('logo_medpat/@infolombanasional.id.png')}}" class="-ms-5 px-20 " height="100" width="230"
                         alt="" />
                 </div>
                 <div class="slide">
-                    <img src="{{asset('logo_medpat/@webinar_indonesia.info.png')}}" class="px-20 -ms-10" height="100" width="233"
+                    <img src="{{asset('logo_medpat/@webinar_indonesia.info.png')}}" class="px-20 -ms-28" height="100" width="230"
                         alt="" />
                 </div>
                 <div class="slide">
-                    <img src="{{asset('logo_medpat/acara_kampus.png')}}" class="px-12 -mt-7 -ms-24" height="100" width="233"
+                    <img src="{{asset('logo_medpat/acara_kampus.png')}}" class=" -mt-12 -ms-36" height="100" width="180"
                         alt="" />
                 </div>
                 <div class="slide">
-                    <img src="{{asset('logo_medpat/Event Lamongan.png')}}" class="px-8 mt-3 -ms-24" height="100" width="233"
+                    <img src="{{asset('logo_medpat/Event Lamongan.png')}}" class=" -ms-36 mt-2" height="100" width="200"
                         alt="" />
                 </div>
                 <div class="slide">
-                    <img src="{{asset('logo_medpat/Event Network 2.png')}}" class="px-8 -ms-16 mt-2" height="100" width="233"
+                    <img src="{{asset('logo_medpat/Event Network 2.png')}}" class="px-8 mt-1 -ms-32" height="100" width="250"
                         alt="" />
                 </div>
                 <div class="slide">
-                    <img src="{{asset('logo_medpat/event_jawa_timur.png')}}" class="px-20 -ms-24"  height="100" width="233"
+                    <img src="{{asset('logo_medpat/event_jawa_timur.png')}}" class="px-20 -ms-32"  height="100" width="250"
                         alt="" />
                 </div>
                 <div class="slide">
-                    <img src="{{asset('logo_medpat/@gudanglomba.ind.jpg')}}" class="-ms-32 px-16 -mt-2" height="100" width="233"
+                    <img src="{{asset('logo_medpat/@gudanglomba.ind.jpg')}}" class="-ms-36 px-20 -mt-2" height="100" width="250"
                         alt="" />
                 </div>
                 <div class="slide">
-                    <img src="{{asset('logo_medpat/@medialombaplus.png')}}" class="px-16" style="margin-left : -10rem" height="100" width="233"
+                    <img src="{{asset('logo_medpat/@medialombaplus.png')}}" class="px-20" style="margin-left :-12rem;" height="100" width="250"
                         alt="" />
                 </div>
                 <div class="slide">
-                    <img src="{{asset('logo_medpat/@infolombait.png')}}" class="px-20 mt-3" style="margin-left : -14rem" height="100" width="233"
+                    <img src="{{asset('logo_medpat/@infolombait.png')}}" class="px-20" style="margin-left :-16rem;" height="100" width="250"
                         alt="" />
                 </div>
                 <div class="slide">
-                    <img src="{{asset('logo_medpat/info_pelajar.png')}}" class="px-16 -mt-2" style="margin-left : -19rem" height="100" width="233"
+                    <img src="{{asset('logo_medpat/info_pelajar.png')}}" class="px-16 -mt-4" style="margin-left :-20rem;" height="100" width="250"
                         alt="" />
                 </div>
                 <div class="slide">
-                    <img src="{{asset('logo_medpat/@lomba.loomba.png')}}" class="px-16" style="margin-left : -22rem" height="100" width="233"
+                    <img src="{{asset('logo_medpat/@lomba.loomba.png')}}" class="px-16" style="margin-left :-23rem;" height="100" width="250"
                         alt="" />
                 </div>
                 <div class="slide">
-                    <img src="{{asset('logo_medpat/@kumpulan.event.png')}}" class="px-16" style="margin-left : -26rem" height="100" width="233"
-                        alt="" />
-                </div>
-                <div class="slide">
-                    <img src="{{asset('logo_medpat/@uiuxindo.png')}}" class="px-20 mt-2" style="margin-left : -30rem" height="100" width="233"
+                    <img src="{{asset('logo_medpat/@kumpulan.event.png')}}" class="px-16" style="margin-left :-27rem;" height="100" width="250"
                         alt="" />
                 </div>
             </div>
@@ -702,63 +698,59 @@
         <div class="slider-reverse">
             <div class="slide-track-reverse">
                 <div class="slide">
-                    <img src="{{asset('logo_medpat/logo rm.png')}}" class="mt-6 px-16" height="100" width="233"
+                    <img src="{{asset('logo_medpat/@updatelomba.id.jpg')}}" class="me-20" height="100" width="220"
                         alt="" />
                 </div>
                 <div class="slide">
-                    <img src="{{asset('logo_medpat/@beritalomba.png')}}" class=" px-16" height="100" width="233"
+                    <img src="{{asset('logo_medpat/@infolomba.mhs.jpg')}}" class="me-20" height="100" width="130"
                         alt="" />
                 </div>
                 <div class="slide">
-                    <img src="{{asset('logo_medpat/@updatelomba.id.jpg')}}" class=" px-16" height="100" width="233"
+                    <img src="{{asset('logo_medpat/@uiuxindo.png')}}" class="me-12 mt-3" height="100" width="90"
                         alt="" />
                 </div>
                 <div class="slide">
-                    <img src="{{asset('logo_medpat/@infolomba.mhs.jpg')}}" class=" px-16" height="100" width="233"
+                    <img src="{{asset('logo_medpat/info_event.png')}}" class="me-16 mt-1" height="100" width="160"
                         alt="" />
                 </div>
                 <div class="slide">
-                    <img src="{{asset('logo_medpat/info_event.png')}}" class=" px-16 mt-4" height="100" width="233"
+                    <img src="{{asset('logo_medpat/info_lomba _ind.png')}}" class="me-16 mt-3" height="100" width="100"
                         alt="" />
                 </div>
                 <div class="slide">
-                    <img src="{{asset('logo_medpat/info_lomba _ind.png')}}" class=" px-16 mt-5" height="100" width="233"
+                    <img src="{{asset('logo_medpat/info_lomba.jpg')}}" class="me-16 mt-2" height="100" width="100"
                         alt="" />
                 </div>
                 <div class="slide">
-                    <img src="{{asset('logo_medpat/info_lomba.jpg')}}" class=" px-16" height="100" width="233"
+                    <img src="{{asset('logo_medpat/kawal_event.png')}}" class="me-16 mt-6" height="100" width="160"
                         alt="" />
                 </div>
                 <div class="slide">
-                    <img src="{{asset('logo_medpat/kawal_event.png')}}" class=" px-16 mt-7" height="100" width="233"
+                    <img src="{{asset('logo_medpat/logo_infokampusku.png')}}" class="me-14 mt-3" height="100" width="170"
                         alt="" />
                 </div>
                 <div class="slide">
-                    <img src="{{asset('logo_medpat/logo_infokampusku.png')}}" class=" px-16 mt-6" height="100" width="233"
+                    <img src="{{asset('logo_medpat/seminar_center.png')}}" class="me-14" height="100" width="180"
                         alt="" />
                 </div>
                 <div class="slide">
-                    <img src="{{asset('logo_medpat/seminar_center.png')}}" class=" px-16 mt-4" height="100" width="233"
+                    <img src="{{asset('logo_medpat/seputar_infoid.jpg')}}" class="mt-5 me-16" height="100" width="120"
                         alt="" />
                 </div>
                 <div class="slide">
-                    <img src="{{asset('logo_medpat/seputar_infoid.jpg')}}" class=" px-16 mt-4" height="100" width="233"
+                    <img src="{{asset('logo_medpat/webinar_center_id.png')}}" class="mt-5 me-16" height="100" width="160"
                         alt="" />
                 </div>
                 <div class="slide">
-                    <img src="{{asset('logo_medpat/webinar_center_id.png')}}" class=" px-16 mt-4" height="100" width="233"
+                    <img src="{{asset('logo_medpat/logo lomba uiux putih.png')}}" class="mt-1 me-24" height="100" width="95"
                         alt="" />
                 </div>
                 <div class="slide">
-                    <img src="{{asset('logo_medpat/logo lomba uiux putih.png')}}" class="px-20 mt-3" height="100" width="233"
-                        alt="" />
-                </div>
-                <div class="slide">
-                    <img src="{{asset('logo_medpat/point kampus.png')}}" class="px-16 mt-2" height="100" width="233"
+                    <img src="{{asset('logo_medpat/point kampus.png')}}" class="mt-3 me-20" height="100" width="80"
                     alt="" />
                 </div>
                 <div class="slide">
-                    <img src="{{asset('logo_medpat/logo rm.png')}}" class="mt-6 px-5" height="100" width="233"
+                    <img src="{{asset('logo_medpat/logo rm.png')}}" class="mt-6" height="100" width="210"
                         alt="" />
                 </div>
             </div>
