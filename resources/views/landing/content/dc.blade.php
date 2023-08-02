@@ -23,7 +23,7 @@
                 <h1 class="text-2xl font-bold pb-3 mt-4">Deskripsi Lomba</h1>
                 <p class="pb-3 text-justify">Politeknik Negeri Bali Design Chellenge (PNBDC) Merupakan salah satu sub
                     event perlombaan dalam kegiatan “Information and Technology Festival (Intech Fest) 2023”.
-                    Kegiatan ini akan berfokus dalam pembuatan sebuah desain UI/UX serta penyelesain suatu masalah yang
+                    Kegiatan ini akan berfokus dalam pembuatan sebuah desain UI/UX serta penyelesaian suatu masalah yang
                     nantinya akan dituangkan dalam sebuah desain yang menarik.
                     Kegiatan ini bertujuan agar mampu memberikan penyelesaian masalah-masalah yang sering terjadi
                     disekitar kita
@@ -52,7 +52,7 @@
                             <time
                                 class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Tanggal 27 Juli 2023</time>
                             <p class="text-base font-normal text-gray-500 dark:text-gray-400">Pendaftaran Lomba PNBDC
-                                Akan Dilakukan Pada Tanggal 27 Juli 2023 Hingga Tanggal 25 Agustus 2023</p>
+                                Akan Dilakukan Pada Tanggal 27 Juli 2023 - 16 Agustus 2023</p>
                         </div>
                     </li>
                     <li class="relative mb-6 sm:mb-0">
@@ -73,7 +73,7 @@
                             <time
                                 class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Tanggal 26 Agustus 2023</time>
                             <p class="text-base font-normal text-gray-500 dark:text-gray-400">Pembuatan Project Akan
-                                Dilaksanakan Pada Tanggal 26 Agustus 2023 Hingga Tanggal 15 September 2023</p>
+                                Dilaksanakan Pada Tanggal 26 Agustus 2023 - 15 September 2023</p>
                         </div>
                     </li>
                     <li class="relative mb-6 sm:mb-0">
@@ -116,7 +116,7 @@
                     class="w-full relative btn-slide overflow-hidden bg-primary-lightblue text-white font-bold text-sm uppercase rounded flex items-center justify-center px-2 py-3 mt-4">
                     <span class="relative z-10">Daftar Lomba</span>
                 </a>
-                <a href="#"
+                <a href="{{url('/gb/download/dc')}}"
                     class="w-full relative btn-slide2 overflow-hidden bg-red-500 text-white font-bold text-sm uppercase rounded flex items-center justify-center px-2 py-3 mt-4">
                     <span class="relative z-10">Download Guidebook</span>
                 </a>
@@ -152,7 +152,7 @@
 
 <script>
     // Set the date we're counting down to
-    var countDownDate = new Date("August 25, 2023 23:59:59").getTime();
+    var countDownDate = new Date("August 16, 2023 23:59:59").getTime();
     // Update the count down every 1 second
     var x = setInterval(function() {            
         // Get today's date and time

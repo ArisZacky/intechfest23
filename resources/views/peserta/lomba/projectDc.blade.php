@@ -119,10 +119,10 @@
                             yang diupload harus dalam format rar atau zip</div>
                         <!-- Tambahkan elemen input lainnya -->
                         <button type="submit"
-                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kirim</button>
+                            class="mb-5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kirim</button>
                         @if (!empty($projectSebelumnya->file_project))
                         <a href="/download-project-dc/{{$projectSebelumnya->file_project}}"
-                            class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Download
+                            class="text-white mb-2 bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Download
                             Project</a>
                         @endif
                     </form>
@@ -137,9 +137,41 @@
                             </ol>
                         </div>
                     </div>
+                    <div>
+                        <div class="flex justify-center">
+                            <div class="flex flex-col gap-4 items-center justify-between">
+                                <h3 class="text-2xl font-bold text-gray-900">Batas Pengumpulan</h3>
+                                <span id="countdown" class="text-2xl font-semibold text-gray-700"></span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 </div>
+<script>
+    // Set the date we're counting down to
+    var countDownDate = new Date("September 15, 2023 23:59:59").getTime();
+    // Update the count down every 1 second
+    var x = setInterval(function() {            
+        // Get today's date and time
+        var now = new Date().getTime();            
+        // Find the distance between now and the count down date
+        var distance = countDownDate - now;            
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);            
+        // Output the result in an element with id="countdown" 
+        document.getElementById("countdown").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds +
+            "s ";            
+        // If the count down is over, write some text 
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("countdown").innerHTML = "EXPIRED";
+        }
+    }, 1000);
+</script>
 @endsection

@@ -57,7 +57,11 @@ Route::get('/register', function () {
 
 Route::post('/register', [AuthController::class, 'register']);
 
-Route::get('/email/verify', [AuthController::class, 'emailNotice']);
+// Route::get('/email/verify', [AuthController::class, 'emailNotice']);
+
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
 
 // route yang mengarahkan tombol verifikasi pada email
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
@@ -67,13 +71,13 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
-    return redirect('/peserta');
-})->middleware(['auth', 'signed', 'level:peserta'])->name('verification.verify');
+    return redirect('/panitia');
+})->middleware(['auth', 'signed', 'level:panitia'])->name('verification.verify');
 
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
-    return redirect('/panitia');
-})->middleware(['auth', 'signed', 'level:panitia'])->name('verification.verify');
+    return redirect('/peserta');
+})->middleware(['auth', 'signed', 'level:peserta'])->name('verification.verify');
 
 //resend email verifikasi
 Route::post('/email/verification-notification', function (Request $request) {
@@ -361,6 +365,13 @@ Route::group(['middleware' => ['auth', 'verified', 'level:peserta']], function (
         // Menampilkan Halaman lomba
         Route::get('/lomba-peserta', [PesertaController::class, 'lomba']);
     });
+
+    // Dowload GB
+    Route::get('/gb/download/wdc', [PesertaController::class, 'downloadGuidebookWDC']);
+    // Dowload GB
+    Route::get('/gb/download/dc', [PesertaController::class, 'downloadGuidebookDC']);
+    // Dowload GB
+    Route::get('/gb/download/ctf', [PesertaController::class, 'downloadGuidebookCTF']);
 
 Route::get('tampilAdmin', function(){
     return view('admin');

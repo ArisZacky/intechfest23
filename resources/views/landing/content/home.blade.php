@@ -23,7 +23,7 @@
             <p
                 class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400 text-justify">
                 Information and Technology Festival merupakan brand kegiatan terbesar yang dimiliki oleh Unit
-                Kegiatan
+                Kegiatan Mahasiswa
                 Computer Club
                 Politeknik Negeri Bali yang dilaksanakan setiap 1 (satu) tahun sekali</p>
             <a href="#lomba"
@@ -160,7 +160,7 @@
                         </g>
                         <g>
                             <path
-                                d="M7069.73,7509.86c5.368432-9.247952,16.467761-18.237593,36.367761-14.937593s38.159064,33.973274,49.299064,48.393274s22.627536,37.803279,23.01008,53.105062-10.6569,29.188534-25.193593,31.101257c-14.553505,1.914935-30.417464-8.192819-40.472475-18.887128-13.250828-14.093316-23.145856-26.736856-35.850837-47.164872-8.255331-13.273537-15.007554-38.09138-7.16-51.61Z"
+                                d="M7069.73,7509.86c5.368432-9.247952,16.467761-18.237593,36.367761-14.937593s38.159064,33.973274,49.299064,48.393274s22.627536,37.803279,23.01008,53.105062-10.6569,29.188534-25.193593,31.101257c-14.553505,1.914935-30.417464-8.192819-40.472475-18.887128-13.285828-14.093316-23.145856-26.736856-35.850837-47.164872-8.255331-13.273537-15.007554-38.09138-7.16-51.61Z"
                                 transform="translate(-6752.027559-6749.294298)" fill="none" stroke="#1f0021"
                                 stroke-width="12" stroke-miterlimit="10" />
                         </g>
@@ -332,15 +332,24 @@
 </section>
 
 {{-- sponsor --}}
-<!-- <section class="bg-white dark:bg-gray-900" data-aos="fade-up" data-aos-duration="1000">
+<section class="bg-white dark:bg-gray-900" data-aos="fade-up" data-aos-duration="1000">
     <div class="py-8 lg:py-16 mx-auto max-w-screen-xl px-4">
         <h2
-            class="mb-8 lg:mb-16 text-2xl font-extrabold tracking-tight leading-tight text-center text-gray-900 dark:text-white md:text-4xl">
+            class="mb-8 lg:-mb-16 text-2xl font-extrabold tracking-tight leading-tight text-center text-gray-900 dark:text-white md:text-4xl">
             Sponsor Kami</h2>
         <div class="splide" role="group" aria-label="Splide Basic HTML Example">
             <div class="splide__track">
                 <ul class="splide__list">
                     <li class="splide__slide">
+                        <img src="{{asset('sponsor/logo poedja villa.PNG')}}" alt="Sponsor" />
+                    </li>
+                    <li class="splide__slide mx-auto">
+                        <img src="{{asset('sponsor/pie susu putri.jpg')}}" alt="Sponsor"/>
+                    </li>
+                    <li class="splide__slide mx-auto">
+                        <img src="{{asset('sponsor/ROTTER KONVEKSI.JPG')}}" alt="Sponsor" />
+                    </li>
+                    <!-- <li class="splide__slide mx-auto">
                         <img src="" alt="" />
                     </li>
                     <li class="splide__slide mx-auto">
@@ -348,21 +357,12 @@
                     </li>
                     <li class="splide__slide mx-auto">
                         <img src="" alt="" />
-                    </li>
-                    <li class="splide__slide mx-auto">
-                        <img src="" alt="" />
-                    </li>
-                    <li class="splide__slide mx-auto">
-                        <img src="" alt="" />
-                    </li>
-                    <li class="splide__slide mx-auto">
-                        <img src="" alt="" />
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>
     </div>
-</section> -->
+</section>
 
 {{-- lomba --}}
 <section id="lomba" class="bg-white dark:bg-gray-900 mt-16" data-aos="fade-up" data-aos-duration="1000">
@@ -393,7 +393,7 @@
                                 Design Challenge (PNBDC) merupakan kegiatan perlombaan yang akan berfokus dalam
                                 pembuatan
                                 sebuah
-                                desain UI/UX serta<span class="xs-appear">...</span><span class="xs-hidden">penyelesain
+                                desain UI/UX serta <span class="xs-appear">...</span><span class="xs-hidden">penyelesaian 
                                     suatu masalah yang nantinya akan dituangkan dalam sebuah desain.</span>
                             </p>
                             <a href="/detail-dc"
@@ -475,8 +475,7 @@
                                 Flags (PNBCTF) Merupakan Kegiatan perlombaan yang akan berfokus dalam mencermati
                                 permasalahan 
                                 keamanan jaringan,
-                                <span class="xs-appear">...</span><span class="xs-hidden">
-                                keamanan komputer, dan keamanan informasi.
+                                <span class="xs-appear">...</span><span class="xs-hidden">keamanan komputer, dan keamanan informasi.</span>
                             </p>
                             <a href="/detail-ctf"
                                 class="btn-slide relative overflow-hidden border inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-primary-lightblue rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300">
@@ -497,7 +496,7 @@
 </section>
 
 {{-- chilltalks --}}
-<section id="chilltalks" class="text-gray-600 body-font" data-aos="fade-left" data-aos-duration="1000">
+<section id="chilltalks" class="text-gray-600 body-font" data-aos="fade-up" data-aos-duration="1000">
     <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
         <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
             <img class="object-cover object-center rounded" alt="hero" src="{{asset('images/lomba/ct design 2.png')}}">
@@ -509,7 +508,7 @@
             </h1>
             <p class="mb-8 leading-relaxed">ChillTalks Intechfest Merupakan Kegiatan Seminar atau Webinar Tinggkat Nasional dengan guna
                 memberikan pengalaman dan pengetahuan baru mengenai teknologi yang sedang hype saat ini yang
-                dimana pada tahun ini mengangkat topik "Artificial Intelligent dalam dunia Pendidikan dan Bisnis di era Society 5.0".</p>
+                dimana pada tahun ini mengangkat topik "Artificial Intelligence dalam dunia Pendidikan dan Bisnis di era Society 5.0".</p>
             <div class="flex justify-center">
                 <a href="{{url('/chilltalks-peserta')}}"
                     class="inline-flex overflow-hidden relative btn-slide text-white bg-primary-lightblue border-0 py-2 px-6 focus:outline-none rounded text-lg">
@@ -521,7 +520,7 @@
 </section>
 
 {{-- about --}}
-<section class="text-gray-600 body-font" data-aos="fade-right" data-aos-duration="1000">
+<section class="text-gray-600 body-font" data-aos="fade-up" data-aos-duration="1000">
     <div class="container mx-auto flex px-5 mb-24 md:flex-row flex-col items-center">
         <div
             class="order-2 md:order-1 lg:flex-grow md:w-full lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
@@ -601,10 +600,10 @@
                     <div class="mb-2 bg-white rounded-lg border cursor-pointer p-3 faq-section"
                         onclick="faqPop('#faq-4', 'lg:h-20')" id="faq-4">
                         <div class="flex justify-between items-center">
-                            <h5 class="font-medium">Kegiatan Intecfest Online Atau Offline?</h5>
+                            <h5 class="font-medium">Kegiatan Intecfest Online Atau Offline ?</h5>
                             <i class="fa-solid fa-chevron-down transition-all duration-700"></i>
                         </div>
-                        <p class="overflow-hidden font-light text-justify h-0 transition-all duration-700">Kegiatan Intecfest Akan Diadakan Secara Hybrid yang dimana babak penyisihan akan dilaksanakan secara online, dan babak final akan dilaksanakan secar offline</p>
+                        <p class="overflow-hidden font-light text-justify h-0 transition-all duration-700">Kegiatan Intecfest Akan Diadakan Secara Hybrid yang dimana babak penyisihan akan dilaksanakan secara online, dan babak final akan dilaksanakan secara offline di Kampus Politeknik Negeri Bali</p>
                     </div>
                     <div class="mb-2 bg-white rounded-lg border cursor-pointer p-3 faq-section h-"
                         onclick="faqPop('#faq-5', 'lg:h-24')" id="faq-5">
@@ -639,96 +638,120 @@
         <div class="slider">
             <div class="slide-track">
                 <div class="slide">
-                    <img src="{{asset('Logo_medpat/Event Network 2.png')}}" class="ms-32" height="100" width="200"
+                    <img src="{{asset('logo_medpat/@eventnasional_idn.png')}}" class="ms-28 px-10" height="100" width="250"
                         alt="" />
                 </div>
                 <div class="slide">
-                    <img src="{{asset('Logo_medpat/event_jawa_timur.png')}}" class="ms-32" height="100" width="98"
+                    <img src="{{asset('logo_medpat/@infokupedia.id.png')}}" class="ms-16 px-12 -mt-1" height="100" width="250"
                         alt="" />
                 </div>
                 <div class="slide">
-                    <img src="{{asset('Logo_medpat/logo_infokampusku.png')}}" class="ms-" height="100" width="190"
+                    <img src="{{asset('logo_medpat/@infolombanasional.id.png')}}" class="-ms-5 px-20 " height="100" width="230"
                         alt="" />
                 </div>
                 <div class="slide">
-                    <img src="{{asset('Logo_medpat/Event Lamongan.png')}}" height="100" width="200"
+                    <img src="{{asset('logo_medpat/@webinar_indonesia.info.png')}}" class="px-20 -ms-28" height="100" width="230"
                         alt="" />
                 </div>
                 <div class="slide">
-                    <img src="{{asset('Logo_medpat/acara_kampus.png')}}" class="-mt-10" height="100" width="160"
+                    <img src="{{asset('logo_medpat/acara_kampus.png')}}" class=" -mt-12 -ms-36" height="100" width="180"
                         alt="" />
                 </div>
                 <div class="slide">
-                    <img src="{{asset('Logo_medpat/webinar_center_id.png')}}" class="-ms-12 -mt-1" height="100" width="240"
+                    <img src="{{asset('logo_medpat/Event Lamongan.png')}}" class=" -ms-36 mt-2" height="100" width="200"
                         alt="" />
                 </div>
                 <div class="slide">
-                    <img src="{{asset('Logo_medpat/info_lomba _ind.png')}}" height="100" width="108"
-                    alt="" />
+                    <img src="{{asset('logo_medpat/Event Network 2.png')}}" class="px-8 mt-1 -ms-32" height="100" width="250"
+                        alt="" />
                 </div>
                 <div class="slide">
-                    <img src="{{asset('Logo_medpat/info_lomba.jpg')}}" class="-mt-2 -ms-20 -me-10" height="100" width="125"
-                    alt="" />
+                    <img src="{{asset('logo_medpat/event_jawa_timur.png')}}" class="px-20 -ms-32"  height="100" width="250"
+                        alt="" />
                 </div>
                 <div class="slide">
-                    <img src="{{asset('Logo_medpat/seputar_infoid.jpg')}}" class="-mt-2 -ms-36" height="100" width="190"
-                    alt="" />
+                    <img src="{{asset('logo_medpat/@gudanglomba.ind.jpg')}}" class="-ms-36 px-20 -mt-2" height="100" width="250"
+                        alt="" />
                 </div>
                 <div class="slide">
-                    <img src="{{asset('Logo_medpat/seminar_center.png')}}" class="-mt-2 -ms-32" height="100" width="195"
-                    alt="" />
+                    <img src="{{asset('logo_medpat/@medialombaplus.png')}}" class="px-20" style="margin-left :-12rem;" height="100" width="250"
+                        alt="" />
                 </div>
                 <div class="slide">
-                    <img src="{{asset('Logo_medpat/kawal_event.png')}}" class="-ms-32" height="100" width="195"
-                    alt="" />
+                    <img src="{{asset('logo_medpat/@infolombait.png')}}" class="px-20" style="margin-left :-16rem;" height="100" width="250"
+                        alt="" />
+                </div>
+                <div class="slide">
+                    <img src="{{asset('logo_medpat/info_pelajar.png')}}" class="px-16 -mt-4" style="margin-left :-20rem;" height="100" width="250"
+                        alt="" />
+                </div>
+                <div class="slide">
+                    <img src="{{asset('logo_medpat/@lomba.loomba.png')}}" class="px-16" style="margin-left :-23rem;" height="100" width="250"
+                        alt="" />
+                </div>
+                <div class="slide">
+                    <img src="{{asset('logo_medpat/@kumpulan.event.png')}}" class="px-16" style="margin-left :-27rem;" height="100" width="250"
+                        alt="" />
                 </div>
             </div>
         </div>
         <div class="slider-reverse">
             <div class="slide-track-reverse">
                 <div class="slide">
-                    <!-- <img src="" height="100" width="250"
-                        alt="" /> -->
+                    <img src="{{asset('logo_medpat/@updatelomba.id.jpg')}}" class="me-20" height="100" width="220"
+                        alt="" />
                 </div>
                 <div class="slide">
-                    <!-- <img src="" height="100" width="250"
-                        alt="" /> -->
+                    <img src="{{asset('logo_medpat/@infolomba.mhs.jpg')}}" class="me-20" height="100" width="130"
+                        alt="" />
                 </div>
                 <div class="slide">
-                    <!-- <img src="" height="100" width="250"
-                        alt="" /> -->
+                    <img src="{{asset('logo_medpat/@uiuxindo.png')}}" class="me-12 mt-3" height="100" width="90"
+                        alt="" />
                 </div>
                 <div class="slide">
-                    <!-- <img src="" height="100" width="250"
-                        alt="" /> -->
+                    <img src="{{asset('logo_medpat/info_event.png')}}" class="me-16 mt-1" height="100" width="160"
+                        alt="" />
                 </div>
                 <div class="slide">
-                    <!-- <img src="" height="100" width="250"
-                        alt="" /> -->
+                    <img src="{{asset('logo_medpat/info_lomba _ind.png')}}" class="me-16 mt-3" height="100" width="100"
+                        alt="" />
                 </div>
                 <div class="slide">
-                    <!-- <img src="" height="100" width="250"
-                        alt="" /> -->
+                    <img src="{{asset('logo_medpat/info_lomba.jpg')}}" class="me-16 mt-2" height="100" width="100"
+                        alt="" />
                 </div>
                 <div class="slide">
-                    <!-- <img src="" height="100" width="250"
-                        alt="" /> -->
+                    <img src="{{asset('logo_medpat/kawal_event.png')}}" class="me-16 mt-6" height="100" width="160"
+                        alt="" />
                 </div>
                 <div class="slide">
-                    <!-- <img src="" height="100" width="250"
-                        alt="" /> -->
+                    <img src="{{asset('logo_medpat/logo_infokampusku.png')}}" class="me-14 mt-3" height="100" width="170"
+                        alt="" />
                 </div>
                 <div class="slide">
-                    <!-- <img src="" height="100" width="250"
-                        alt="" /> -->
+                    <img src="{{asset('logo_medpat/seminar_center.png')}}" class="me-14" height="100" width="180"
+                        alt="" />
                 </div>
                 <div class="slide">
-                    <!-- <img src="" height="100" width="250"
-                        alt="" /> -->
+                    <img src="{{asset('logo_medpat/seputar_infoid.jpg')}}" class="mt-5 me-16" height="100" width="120"
+                        alt="" />
                 </div>
                 <div class="slide">
-                    <!-- <img src="" height="100" width="250"
-                        alt="" /> -->
+                    <img src="{{asset('logo_medpat/webinar_center_id.png')}}" class="mt-5 me-16" height="100" width="160"
+                        alt="" />
+                </div>
+                <div class="slide">
+                    <img src="{{asset('logo_medpat/logo lomba uiux putih.png')}}" class="mt-1 me-24" height="100" width="95"
+                        alt="" />
+                </div>
+                <div class="slide">
+                    <img src="{{asset('logo_medpat/point kampus.png')}}" class="mt-3 me-20" height="100" width="80"
+                    alt="" />
+                </div>
+                <div class="slide">
+                    <img src="{{asset('logo_medpat/logo rm.png')}}" class="mt-6" height="100" width="210"
+                        alt="" />
                 </div>
             </div>
         </div>
@@ -741,10 +764,9 @@
         var p = document.querySelector(id+" p");
         var i = document.querySelector(id+" div i");
         p.classList.toggle("h-0");
-        p.classList.toggle("mt-5");
+        p.classList.toggle("mt-4");
         p.classList.toggle(tinggi);
         i.classList.toggle("rotate-180");
     }
 </script>
-
 @endsection

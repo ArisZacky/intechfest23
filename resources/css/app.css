@@ -5,12 +5,12 @@
 /* sponsor carousel */
 .splide__slide img {
     transition: all 400ms;
-    transform: scale(0.7);
+    transform: scale(0.3);
     filter: grayscale(100%);
 }
 
 .splide__slide.is-active img {
-    transform: scale(1.2);
+    transform: scale(0.5);
     filter: grayscale(0%);
 }
 

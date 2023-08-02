@@ -42,14 +42,15 @@
                     </div>
                     <div class="lg:translate-y-[15%] md:translate-y-[10%] p-3 w-full space-y-2 md:space-y-1 sm:p-">
                         <div class="flex justify-between items-center">
-                            <p class="text-sm font-light text-gray-500 dark:text-gray-400">
+                            <p class="text-sm font-light text-gray-500 dark:text-gray-400 mb-4">
                                 Tidak menerima email? 
-                                <form action="/email/verification-notification" method="POST">
+                                <form action="{{ url ('/email/verification-notification')}}" method="POST">
                                     @csrf
-                                    <button class="font-medium focus:outline-cyan-500 text-primary-blue hover:underline dark:text-primary-500 cursor-pointer">kirim ulang</button>
+                                    <button class="font-medium mb-4 md:-ms-24 focus:outline-cyan-500 text-primary-blue hover:underline dark:text-primary-500 cursor-pointer">kirim ulang</button>
                                 </form>
                             </p>
                         </div>
+                        <p class="text-sm font-light text-gray-500 dark:text-gray-400 italic"><b class="bold">Note: </b> Silahkan melakukan verifikasi dengan perangkat yang sama</p>
                     </div>
                 </div>
             </div>

@@ -25,8 +25,14 @@ class LombaController extends Controller
         //mengambil data dari table peserta yang memiliki email sama dengan user yang login 
         //pada table users dengan mencocokan email pada table peserta dengan table users
         $data_peserta = Peserta::where('email', $user->email)->first();
-        //return view lomba dan data dalam bentuk object
-        return view('peserta.lomba.form-wdc', ['user' => $user, 'data_peserta' => $data_peserta]);
+        // atur batas
+        $batasWaktuWDC = new Carbon('2023-08-16 23:59:59');
+        if($batasWaktuWDC->isPast()){
+            return view('errors.waktuHabis');
+        }else{
+            //return view lomba dan data dalam bentuk object
+            return view('peserta.lomba.form-wdc', ['user' => $user, 'data_peserta' => $data_peserta]);
+        }
     }
 
     public function daftarwdc(Request $request, $id)
@@ -281,8 +287,14 @@ class LombaController extends Controller
         //mengambil data dari table peserta yang memiliki email sama dengan user yang login 
         //pada table users dengan mencocokan email pada table peserta dengan table users
         $data_peserta = Peserta::where('email', $user->email)->first();
-        //return view lomba dan data dalam bentuk object
-        return view('peserta.lomba.form-dc', ['user' => $user, 'data_peserta' => $data_peserta]);
+
+        $batasWaktuDC = new Carbon('2023-08-16 23:59:59');
+        if($batasWaktuDC->isPast()){
+            return view('errors.waktuHabis');
+        }else{
+            //return view lomba dan data dalam bentuk object
+            return view('peserta.lomba.form-dc', ['user' => $user, 'data_peserta' => $data_peserta]);
+        }
     }
 
     public function daftardc(Request $request, $id)
@@ -535,8 +547,14 @@ class LombaController extends Controller
         //mengambil data dari table peserta yang memiliki email sama dengan user yang login 
         //pada table users dengan mencocokan email pada table peserta dengan table users
         $data_peserta = Peserta::where('email', $user->email)->first();
-        //return view lomba dan data dalam bentuk object
-        return view('peserta.lomba.form-ctf', ['user' => $user, 'data_peserta' => $data_peserta]);
+
+        $batasWaktuCTF = new Carbon('2023-08-26 23:59:59');
+        if($batasWaktuCTF->isPast()){
+            return view('errors.waktuHabis');
+        }else{
+            //return view lomba dan data dalam bentuk object
+            return view('peserta.lomba.form-ctf', ['user' => $user, 'data_peserta' => $data_peserta]);
+        }
     }
 
     public function daftarctf(Request $request, $id)
