@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
 
 {{-- hero section --}}
-<section id="home" class="bg-white relative overflow-y-hidden" data-aos="fade-up" data-aos-duration="1000">
+<section id="home" class="bg-white relative overflow-y-hidden" data-aos="fade-up">
     {{-- abstract --}}
     {{-- <img class="absolute bottom-0 right-0 -z-10" src="{{asset('images/abstract/Group 45.png')}}"
         alt="abstract image"> --}}
@@ -332,19 +332,19 @@
 </section>
 
 {{-- sponsor --}}
-<section class="bg-white dark:bg-gray-900" data-aos="fade-up" data-aos-duration="1000">
+<section class="bg-white sponsors dark:bg-gray-900" data-aos="fade-up">
     <div class="py-8 lg:py-16 mx-auto max-w-screen-xl px-4">
         <h2
             class="mb-8 lg:-mb-16 text-2xl font-extrabold tracking-tight leading-tight text-center text-gray-900 dark:text-white md:text-4xl">
             Sponsor Kami</h2>
         <div class="splide" role="group" aria-label="Splide Basic HTML Example">
             <div class="splide__track">
-                <ul class="splide__list">
+                <ul class="splide__list sponsor">
                     <li class="splide__slide">
                         <img src="{{asset('sponsor/logo poedja villa.PNG')}}" alt="Sponsor" />
                     </li>
                     <li class="splide__slide mx-auto">
-                        <img src="{{asset('sponsor/pie susu putri.jpg')}}" alt="Sponsor"/>
+                        <img src="{{asset('sponsor/pie susu putri.jpg')}}" alt="Sponsor" />
                     </li>
                     <li class="splide__slide mx-auto">
                         <img src="{{asset('sponsor/ROTTER KONVEKSI.JPG')}}" alt="Sponsor" />
@@ -365,7 +365,7 @@
 </section>
 
 {{-- lomba --}}
-<section id="lomba" class="bg-white dark:bg-gray-900 mt-16" data-aos="fade-up" data-aos-duration="1000">
+<section id="lomba" class="dark:bg-gray-900 mt-16" data-aos="fade-up">
     <div class="container px-6 py-10 mx-auto">
         <h1 class="text-2xl text-center font-semibold text-gray-800 lg:text-4xl dark:text-white">Cabang Lomba
         </h1>
@@ -393,7 +393,8 @@
                                 Design Challenge (PNBDC) merupakan kegiatan perlombaan yang akan berfokus dalam
                                 pembuatan
                                 sebuah
-                                desain UI/UX serta <span class="xs-appear">...</span><span class="xs-hidden">penyelesaian 
+                                desain UI/UX serta <span class="xs-appear">...</span><span
+                                    class="xs-hidden">penyelesaian
                                     suatu masalah yang nantinya akan dituangkan dalam sebuah desain.</span>
                             </p>
                             <a href="/detail-dc"
@@ -467,15 +468,16 @@
                     <div
                         class="p-5 card-text absolute left-0 top-0 card-back opacity-0 bg-primary-lightblue rounded-lg w-96 h-[270px]">
                         <div class="card-back-sub">
-                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-white text-center">
-                                    Capture The Flag
-                                </h5>
+                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-white text-center">
+                                Capture The Flag
+                            </h5>
                             <p class="mb-3 font-normal text-justify text-gray-50">
                                 Politeknik Negeri Bali Capture The
                                 Flags (PNBCTF) Merupakan Kegiatan perlombaan yang akan berfokus dalam mencermati
-                                permasalahan 
+                                permasalahan
                                 keamanan jaringan,
-                                <span class="xs-appear">...</span><span class="xs-hidden">keamanan komputer, dan keamanan informasi.</span>
+                                <span class="xs-appear">...</span><span class="xs-hidden">keamanan komputer, dan
+                                    keamanan informasi.</span>
                             </p>
                             <a href="/detail-ctf"
                                 class="btn-slide relative overflow-hidden border inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-primary-lightblue rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300">
@@ -496,7 +498,7 @@
 </section>
 
 {{-- chilltalks --}}
-<section id="chilltalks" class="text-gray-600 body-font" data-aos="fade-up" data-aos-duration="1000">
+<section id="chilltalks" class="text-gray-600 body-font" data-aos="fade-up">
     <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
         <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
             <img class="object-cover object-center rounded" alt="hero" src="{{asset('images/lomba/ct design 2.png')}}">
@@ -506,9 +508,11 @@
             <h1 class="title-font font-bold sm:text-3xl text-2xl mb-4 text-gray-900">ChillTalks Intechfest
                 <br class="hidden lg:inline-block">
             </h1>
-            <p class="mb-8 leading-relaxed">ChillTalks Intechfest Merupakan Kegiatan Seminar atau Webinar Tinggkat Nasional dengan guna
+            <p class="mb-8 leading-relaxed">ChillTalks Intechfest Merupakan Kegiatan Seminar atau Webinar Tinggkat
+                Nasional dengan guna
                 memberikan pengalaman dan pengetahuan baru mengenai teknologi yang sedang hype saat ini yang
-                dimana pada tahun ini mengangkat topik "Artificial Intelligence dalam dunia Pendidikan dan Bisnis di era Society 5.0".</p>
+                dimana pada tahun ini mengangkat topik "Artificial Intelligence dalam dunia Pendidikan dan Bisnis di era
+                Society 5.0".</p>
             <div class="flex justify-center">
                 <a href="{{url('/chilltalks-peserta')}}"
                     class="inline-flex overflow-hidden relative btn-slide text-white bg-primary-lightblue border-0 py-2 px-6 focus:outline-none rounded text-lg">
@@ -520,7 +524,7 @@
 </section>
 
 {{-- about --}}
-<section class="text-gray-600 body-font" data-aos="fade-up" data-aos-duration="1000">
+<section class="text-gray-600 body-font" data-aos="fade-up">
     <div class="container mx-auto flex px-5 mb-24 md:flex-row flex-col items-center">
         <div
             class="order-2 md:order-1 lg:flex-grow md:w-full lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
@@ -533,7 +537,7 @@
                 memperluas pengetahuan Anda dalam bidang IT. Mari jalin hubungan yang lebih erat dan
                 temukan potensi Anda dalam dunia digital bersama kami.</p>
             <div class="flex md:flex-row">
-                <a href ="https://instagram.com/intechfest.cc?igshid=MzRlODBiNWFlZA=="
+                <a href="https://instagram.com/intechfest.cc?igshid=MzRlODBiNWFlZA=="
                     class="bg-gray-100 inline-flex py-3 px-5 rounded-lg items-center hover:bg-gray-200 focus:outline-none">
                     <i class="fa-brands fa-instagram text-2xl"></i>
                     <span class="ml-4 flex items-start flex-col leading-none">
@@ -558,7 +562,7 @@
 </section>
 
 {{-- faq --}}
-<div class="bg-white pt-10" id="faq" data-aos="fade-up" data-aos-duration="1000">
+<div class="bg-white pt-10" id="faq" data-aos="fade-up">
     <h3 class="text-xl font-bold mb-3 text-center text-primary-blue">Punya pertanyaan?</h3>
     <h2
         class="lg:mb-16 text-2xl font-extrabold tracking-tight leading-tight text-center text-gray-900 dark:text-white md:text-4xl">
@@ -574,17 +578,19 @@
                             <i class="fa-solid fa-chevron-down transition-all duration-700"></i>
                         </div>
                         <p class="overflow-hidden font-light text-justify h-0 transition-all duration-700">
-                            Pendaftaran akan dilakukan melalui website official Intech Fest 2023 atau dapat melihat tata cara pendaftaran melalui Guide Book.</p>
+                            Pendaftaran akan dilakukan melalui website official Intech Fest 2023 atau dapat melihat tata
+                            cara pendaftaran melalui Guide Book.</p>
                     </div>
                     <div class="mb-2 bg-white rounded-lg border cursor-pointer p-3 faq-section"
                         onclick="faqPop('#faq-2', 'lg:h-12')" id="faq-2">
                         <div class="flex justify-between items-center">
                             <h5 class="font-medium">Apakah ChillTalks dibuka untuk umum
-                                    dan apa topik yang akan dibahas?</h5>
+                                dan apa topik yang akan dibahas?</h5>
                             <i class="fa-solid fa-chevron-down transition-all duration-700"></i>
                         </div>
                         <p class="overflow-hidden font-light text-justify h-0 transition-all duration-700">
-                            Chillstalks dibukan untuk umum. Topik yang Akan Dibahas "Artificial Intelligent dalam dunia Pendidikan dan Bisnis di era Society 5.0".</p>
+                            Chillstalks dibukan untuk umum. Topik yang Akan Dibahas "Artificial Intelligent dalam dunia
+                            Pendidikan dan Bisnis di era Society 5.0".</p>
                     </div>
                     <div class="mb-2 bg-white rounded-lg border cursor-pointer p-3 faq-section"
                         onclick="faqPop('#faq-3', 'lg:h-32')" id="faq-3">
@@ -593,7 +599,8 @@
                             <i class="fa-solid fa-chevron-down transition-all duration-700"></i>
                         </div>
                         <p class="overflow-hidden font-light text-justify h-0 transition-all duration-700">
-                            Benefit yang akan didapatkan berupa : <br> - E-sertifikat <br> - Ilmu bermanfaat <br> - Relasi <br> - Merchandise Intech
+                            Benefit yang akan didapatkan berupa : <br> - E-sertifikat <br> - Ilmu bermanfaat <br> -
+                            Relasi <br> - Merchandise Intech
                     </div>
                 </div>
                 <div class="p-4">
@@ -603,16 +610,22 @@
                             <h5 class="font-medium">Kegiatan Intecfest Online Atau Offline ?</h5>
                             <i class="fa-solid fa-chevron-down transition-all duration-700"></i>
                         </div>
-                        <p class="overflow-hidden font-light text-justify h-0 transition-all duration-700">Kegiatan Intecfest Akan Diadakan Secara Hybrid yang dimana babak penyisihan akan dilaksanakan secara online, dan babak final akan dilaksanakan secara offline di Kampus Politeknik Negeri Bali</p>
+                        <p class="overflow-hidden font-light text-justify h-0 transition-all duration-700">Kegiatan
+                            Intecfest Akan Diadakan Secara Hybrid yang dimana babak penyisihan akan dilaksanakan secara
+                            online, dan babak final akan dilaksanakan secara offline di Kampus Politeknik Negeri Bali
+                        </p>
                     </div>
                     <div class="mb-2 bg-white rounded-lg border cursor-pointer p-3 faq-section h-"
                         onclick="faqPop('#faq-5', 'lg:h-24')" id="faq-5">
                         <div class="flex justify-between items-center">
-                            <h5 class="font-medium">Apakah mengenai akomodasi ditanggung oleh pihak penyelenggara kegitan ?</h5>
+                            <h5 class="font-medium">Apakah mengenai akomodasi ditanggung oleh pihak penyelenggara
+                                kegitan ?</h5>
                             <i class="fa-solid fa-chevron-down transition-all duration-700"></i>
                         </div>
                         <p class="overflow-hidden font-light text-justify h-0 transition-all duration-700">
-                        Mengenai akomodasi ditanggung oleh peserta sendiri, namun dari pihak panitia kegiatan akan menyediakan pilihan akomodasi yang mungkin dapat dijadikan tempat akomodasi oleh peserta lomba, namun untuk biayanya ditanggung oleh pihak peserta</p>
+                            Mengenai akomodasi ditanggung oleh peserta sendiri, namun dari pihak panitia kegiatan akan
+                            menyediakan pilihan akomodasi yang mungkin dapat dijadikan tempat akomodasi oleh peserta
+                            lomba, namun untuk biayanya ditanggung oleh pihak peserta</p>
                     </div>
                     <div class="bg-white rounded-lg border cursor-pointer p-3 faq-section"
                         onclick="faqPop('#faq-6', 'lg:h-12')" id="faq-6">
@@ -620,7 +633,9 @@
                             <h5 class="font-medium">Apakah ketiga cabang lomba dibuka untuk umum?</h5>
                             <i class="fa-solid fa-chevron-down transition-all duration-700"></i>
                         </div>
-                        <p class="overflow-hidden font-light text-justify h-0 transition-all duration-700">Iya, ketiga cabang lomba intechfest 2023 dibuka secara umum dengan syarat peserta berumur 16 - 23 tahun</p>
+                        <p class="overflow-hidden font-light text-justify h-0 transition-all duration-700">Iya, ketiga
+                            cabang lomba intechfest 2023 dibuka secara umum dengan syarat peserta berumur 16 - 23 tahun
+                        </p>
                     </div>
                 </div>
             </div>
@@ -628,133 +643,109 @@
     </div>
 </div>
 
-{{-- media partner --}}
-<section class="bg-white dark:bg-gray-900" data-aos="fade-up" data-aos-duration="1000">
+{{-- media & community partner --}}
+<section class="bg-white dark:bg-gray-900" data-aos="fade-up">
     <div class="py-8 lg:py-16 mx-auto max-w-screen-xl px-4">
         <h3 class="text-xl font-bold mb-3 text-center text-primary-blue">Special thanks to our</h3>
         <h2
             class="mb-8 lg:mb-16 text-2xl font-extrabold tracking-tight leading-tight text-center text-gray-900 dark:text-white md:text-4xl">
             Media Partner And Community Partner</h2>
-        <div class="slider">
-            <div class="slide-track">
-                <div class="slide">
-                    <img src="{{asset('logo_medpat/@eventnasional_idn.png')}}" class="ms-28 px-10" height="100" width="250"
-                        alt="" />
-                </div>
-                <div class="slide">
-                    <img src="{{asset('logo_medpat/@infokupedia.id.png')}}" class="ms-16 px-12 -mt-1" height="100" width="250"
-                        alt="" />
-                </div>
-                <div class="slide">
-                    <img src="{{asset('logo_medpat/@infolombanasional.id.png')}}" class="-ms-5 px-20 " height="100" width="230"
-                        alt="" />
-                </div>
-                <div class="slide">
-                    <img src="{{asset('logo_medpat/@webinar_indonesia.info.png')}}" class="px-20 -ms-28" height="100" width="230"
-                        alt="" />
-                </div>
-                <div class="slide">
-                    <img src="{{asset('logo_medpat/acara_kampus.png')}}" class=" -mt-12 -ms-36" height="100" width="180"
-                        alt="" />
-                </div>
-                <div class="slide">
-                    <img src="{{asset('logo_medpat/Event Lamongan.png')}}" class=" -ms-36 mt-2" height="100" width="200"
-                        alt="" />
-                </div>
-                <div class="slide">
-                    <img src="{{asset('logo_medpat/Event Network 2.png')}}" class="px-8 mt-1 -ms-32" height="100" width="250"
-                        alt="" />
-                </div>
-                <div class="slide">
-                    <img src="{{asset('logo_medpat/event_jawa_timur.png')}}" class="px-20 -ms-32"  height="100" width="250"
-                        alt="" />
-                </div>
-                <div class="slide">
-                    <img src="{{asset('logo_medpat/@gudanglomba.ind.jpg')}}" class="-ms-36 px-20 -mt-2" height="100" width="250"
-                        alt="" />
-                </div>
-                <div class="slide">
-                    <img src="{{asset('logo_medpat/@medialombaplus.png')}}" class="px-20" style="margin-left :-12rem;" height="100" width="250"
-                        alt="" />
-                </div>
-                <div class="slide">
-                    <img src="{{asset('logo_medpat/@infolombait.png')}}" class="px-20" style="margin-left :-16rem;" height="100" width="250"
-                        alt="" />
-                </div>
-                <div class="slide">
-                    <img src="{{asset('logo_medpat/info_pelajar.png')}}" class="px-16 -mt-4" style="margin-left :-20rem;" height="100" width="250"
-                        alt="" />
-                </div>
-                <div class="slide">
-                    <img src="{{asset('logo_medpat/@lomba.loomba.png')}}" class="px-16" style="margin-left :-23rem;" height="100" width="250"
-                        alt="" />
-                </div>
-                <div class="slide">
-                    <img src="{{asset('logo_medpat/@kumpulan.event.png')}}" class="px-16" style="margin-left :-27rem;" height="100" width="250"
-                        alt="" />
+        <section class="splide normal -mt-10" aria-label="Splide Basic HTML Example">
+            <div class="splide__track relative">
+                <div class="splide__list partner">
+                    <div class="splide__slide flex items-center">
+                        <img src="{{asset('logo_medpat/@eventnasional_idn.png')}}" alt="" />
+                    </div>
+                    <div class="splide__slide flex items-center">
+                        <img src="{{asset('logo_medpat/@infokupedia.id.png')}}" alt="" />
+                    </div>
+                    <div class="splide__slide flex items-center">
+                        <img src="{{asset('logo_medpat/@infolombanasional.id.png')}}" alt="" />
+                    </div>
+                    <div class="splide__slide flex items-center">
+                        <img src="{{asset('logo_medpat/@webinar_indonesia.info.png')}}" alt="" />
+                    </div>
+                    <div class="splide__slide flex items-center">
+                        <img src="{{asset('logo_medpat/acara_kampus.png')}}" alt="" />
+                    </div>
+                    <div class="splide__slide flex items-center">
+                        <img src="{{asset('logo_medpat/Event Lamongan.png')}}" alt="" />
+                    </div>
+                    <div class="splide__slide flex items-center">
+                        <img src="{{asset('logo_medpat/Event Network 2.png')}}" alt="" />
+                    </div>
+                    <div class="splide__slide flex items-center">
+                        <img src="{{asset('logo_medpat/event_jawa_timur.png')}}" alt="" />
+                    </div>
+                    <div class="splide__slide flex items-center">
+                        <img src="{{asset('logo_medpat/@gudanglomba.ind.jpg')}}" alt="" />
+                    </div>
+                    <div class="splide__slide flex items-center">
+                        <img src="{{asset('logo_medpat/@medialombaplus.png')}}" alt="" />
+                    </div>
+                    <div class="splide__slide flex items-center">
+                        <img src="{{asset('logo_medpat/@infolombait.png')}}" alt="" />
+                    </div>
+                    <div class="splide__slide flex items-center">
+                        <img src="{{asset('logo_medpat/info_pelajar.png')}}" alt="" />
+                    </div>
+                    <div class="splide__slide flex items-center">
+                        <img src="{{asset('logo_medpat/@lomba.loomba.png')}}" alt="" />
+                    </div>
+                    <div class="splide__slide flex items-center">
+                        <img src="{{asset('logo_medpat/@kumpulan.event.png')}}" alt="" />
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="slider-reverse">
-            <div class="slide-track-reverse">
-                <div class="slide">
-                    <img src="{{asset('logo_medpat/@updatelomba.id.jpg')}}" class="me-20" height="100" width="220"
-                        alt="" />
-                </div>
-                <div class="slide">
-                    <img src="{{asset('logo_medpat/@infolomba.mhs.jpg')}}" class="me-20" height="100" width="130"
-                        alt="" />
-                </div>
-                <div class="slide">
-                    <img src="{{asset('logo_medpat/@uiuxindo.png')}}" class="me-12 mt-3" height="100" width="90"
-                        alt="" />
-                </div>
-                <div class="slide">
-                    <img src="{{asset('logo_medpat/info_event.png')}}" class="me-16 mt-1" height="100" width="160"
-                        alt="" />
-                </div>
-                <div class="slide">
-                    <img src="{{asset('logo_medpat/info_lomba _ind.png')}}" class="me-16 mt-3" height="100" width="100"
-                        alt="" />
-                </div>
-                <div class="slide">
-                    <img src="{{asset('logo_medpat/info_lomba.jpg')}}" class="me-16 mt-2" height="100" width="100"
-                        alt="" />
-                </div>
-                <div class="slide">
-                    <img src="{{asset('logo_medpat/kawal_event.png')}}" class="me-16 mt-6" height="100" width="160"
-                        alt="" />
-                </div>
-                <div class="slide">
-                    <img src="{{asset('logo_medpat/logo_infokampusku.png')}}" class="me-14 mt-3" height="100" width="170"
-                        alt="" />
-                </div>
-                <div class="slide">
-                    <img src="{{asset('logo_medpat/seminar_center.png')}}" class="me-14" height="100" width="180"
-                        alt="" />
-                </div>
-                <div class="slide">
-                    <img src="{{asset('logo_medpat/seputar_infoid.jpg')}}" class="mt-5 me-16" height="100" width="120"
-                        alt="" />
-                </div>
-                <div class="slide">
-                    <img src="{{asset('logo_medpat/webinar_center_id.png')}}" class="mt-5 me-16" height="100" width="160"
-                        alt="" />
-                </div>
-                <div class="slide">
-                    <img src="{{asset('logo_medpat/logo lomba uiux putih.png')}}" class="mt-1 me-24" height="100" width="95"
-                        alt="" />
-                </div>
-                <div class="slide">
-                    <img src="{{asset('logo_medpat/point kampus.png')}}" class="mt-3 me-20" height="100" width="80"
-                    alt="" />
-                </div>
-                <div class="slide">
-                    <img src="{{asset('logo_medpat/logo rm.png')}}" class="mt-6" height="100" width="210"
-                        alt="" />
-                </div>
+        </section>
+        <section class="splide reverse -mt-10" aria-label="Splide Basic HTML Example">
+            <div class="splide__track relative">
+                <ul class="splide__list partner">
+                    <div class="splide__slide flex items-center">
+                        <img src="{{asset('logo_medpat/@updatelomba.id.jpg')}}" alt="" />
+                    </div>
+                    <div class="splide__slide flex items-center">
+                        <img src="{{asset('logo_medpat/@infolomba.mhs.jpg')}}" alt="" />
+                    </div>
+                    <div class="splide__slide flex items-center">
+                        <img src="{{asset('logo_medpat/@uiuxindo.png')}}" alt="" />
+                    </div>
+                    <div class="splide__slide flex items-center">
+                        <img src="{{asset('logo_medpat/info_event.png')}}" alt="" />
+                    </div>
+                    <div class="splide__slide flex items-center">
+                        <img src="{{asset('logo_medpat/info_lomba _ind.png')}}" alt="" />
+                    </div>
+                    <div class="splide__slide flex items-center">
+                        <img src="{{asset('logo_medpat/info_lomba.jpg')}}" alt="" />
+                    </div>
+                    <div class="splide__slide flex items-center">
+                        <img src="{{asset('logo_medpat/kawal_event.png')}}" alt="" />
+                    </div>
+                    <div class="splide__slide flex items-center">
+                        <img src="{{asset('logo_medpat/logo_infokampusku.png')}}" alt="" />
+                    </div>
+                    <div class="splide__slide flex items-center">
+                        <img src="{{asset('logo_medpat/seminar_center.png')}}" alt="" />
+                    </div>
+                    <div class="splide__slide flex items-center">
+                        <img src="{{asset('logo_medpat/seputar_infoid.jpg')}}" alt="" />
+                    </div>
+                    <div class="splide__slide flex items-center">
+                        <img src="{{asset('logo_medpat/webinar_center_id.png')}}" alt="" />
+                    </div>
+                    <div class="splide__slide flex items-center">
+                        <img src="{{asset('logo_medpat/logo lomba uiux putih.png')}}" alt="" />
+                    </div>
+                    <div class="splide__slide flex items-center">
+                        <img src="{{asset('logo_medpat/point kampus.png')}}" alt="" />
+                    </div>
+                    <div class="splide__slide flex items-center">
+                        <img src="{{asset('logo_medpat/logo rm.png')}}" alt="" />
+                    </div>
+                </ul>
             </div>
-        </div>
+        </section>
     </div>
 </section>
 

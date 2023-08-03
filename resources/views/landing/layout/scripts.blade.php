@@ -1,15 +1,16 @@
 @vite('resources/js/app.js')
 <script src="https://kit.fontawesome.com/7eaa0f0932.js" crossorigin="anonymous"></script>
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
-<script>
-    AOS.init({
+<script
+  src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/js/splide-extension-auto-scroll.min.js">
+</script>
+{{-- <script>
+  AOS.init({
         'once': true
     });
-</script>
+</script> --}}
 <script>
-document.addEventListener( 'DOMContentLoaded', function () {
+  document.addEventListener( 'DOMContentLoaded', function () {
   new Splide('.splide', {
     type: 'loop',
     perPage: 3,
@@ -27,5 +28,47 @@ document.addEventListener( 'DOMContentLoaded', function () {
       }
     }
   }).mount();
+});
+document.addEventListener( 'DOMContentLoaded', function () {
+  new Splide('.normal', {
+  type: 'loop',
+  drag: 'free',
+  focus: 'center',
+  pagination: false,
+  arrows: false,
+  perPage: 5,
+  autoScroll: {
+    speed: 2,
+  },
+  breakpoints: {
+      768: {
+        perPage: 3
+      },
+      640: {
+        perPage: 2
+      }
+    }
+  }).mount(window.splide.Extensions);
+});
+document.addEventListener( 'DOMContentLoaded', function () {
+  new Splide('.reverse', {
+  type: 'loop',
+  drag: 'free',
+  focus: 'center',
+  pagination: false,
+  arrows: false,
+  perPage: 5,
+  autoScroll: {
+    speed: -2,
+  },
+  breakpoints: {
+      768: {
+        perPage: 3
+      },
+      640: {
+        perPage: 2
+      }
+    }
+  }).mount(window.splide.Extensions);
 });
 </script>
