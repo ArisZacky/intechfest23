@@ -4,12 +4,19 @@
 <script
   src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/js/splide-extension-auto-scroll.min.js">
 </script>
+<script src="{{asset('sal.js/dist/sal.js')}}"></script>
 {{-- <script>
   AOS.init({
         'once': true
     });
 </script> --}}
 <script>
+  const scrollAnimations = sal();
+
+// Provide new options
+scrollAnimations.reset({
+  once: true,
+});
   document.addEventListener( 'DOMContentLoaded', function () {
   new Splide('.splide', {
     type: 'loop',
