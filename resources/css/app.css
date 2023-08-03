@@ -3,16 +3,44 @@
 @tailwind utilities;
 
 /* sponsor carousel */
-.splide__slide img {
+.sponsor .splide__slide img {
     transition: all 400ms;
     transform: scale(0.3);
     filter: grayscale(100%);
 }
 
-.splide__slide.is-active img {
+.sponsor .splide__slide.is-active img {
     transform: scale(0.5);
     filter: grayscale(0%);
 }
+
+.partner .splide__slide img {
+    transform: scale(0.5);
+    filter: grayscale(0%);
+}
+
+.splide__track::before {
+    content: "";
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 100%;
+    background: linear-gradient(to right, rgb(255, 255, 255), rgba(255, 255, 255, 0));
+    pointer-events: none;
+}
+.splide__track::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100px;
+    height: 100%;
+    background: linear-gradient(to left, rgb(255, 255, 255), rgba(255, 255, 255, 0));
+    pointer-events: none;
+}
+
 
 /* lomba card */
 .card-back {
@@ -220,62 +248,6 @@
 }
 html {
     scroll-behavior: smooth;
-}
-.slider, .slider-reverse {
-    background: white;
-    height: 100px;
-    margin: auto;
-    overflow: hidden;
-    position: relative;
-}
-.slider::before,
-.slider::after,
-.slider-reverse::before,
-.slider-reverse::after{
-    background: linear-gradient(
-        to right,
-        white 0%,
-        rgba(255, 255, 255, 0) 100%
-    );
-    content: "";
-    height: 100px;
-    position: absolute;
-    width: 100px;
-    z-index: 2;
-}
-.slider::after {
-    right: 0;
-    top: 0;
-    transform: rotateZ(180deg);
-}
-.slider-reverse::after {
-    right: 0;
-    top: 0;
-    transform: rotateZ(-180deg);
-}
-.slider::before, .slider-reverse::before {
-    left: 0;
-    top: 0;
-}
-.slider .slide-track {
-    -webkit-animation: scroll 30s linear infinite;
-    animation: scroll 30s linear infinite;
-    display: flex;
-    width: calc(250px * 14);
-}
-.slider .slide, .slider-reverse .slide-reverse {
-    height: 100px;
-    width: 250px;
-}
-.slider .slide-track:hover, .slider-reverse .slide-track-reverse:hover {
-    animation-play-state: paused;
-}
-/* reverse */
-.slider-reverse .slide-track-reverse {
-    -webkit-animation: scrollReverse 30s linear infinite;
-    animation: scrollReverse 30s linear infinite;
-    display: flex;
-    width: calc(250px * 14);
 }
 
 /* create carousel with keyframes */
