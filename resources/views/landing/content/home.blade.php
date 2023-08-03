@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
 
 {{-- hero section --}}
-<section id="home" class="bg-white relative overflow-y-hidden" data-aos="fade-up">
+<section id="home" class="bg-white relative overflow-y-hidden" data-sal="slide-up">
     {{-- abstract --}}
     {{-- <img class="absolute bottom-0 right-0 -z-10" src="{{asset('images/abstract/Group 45.png')}}"
         alt="abstract image"> --}}
@@ -332,7 +332,7 @@
 </section>
 
 {{-- sponsor --}}
-<section class="bg-white sponsors dark:bg-gray-900" data-aos="fade-up">
+<section class="bg-white sponsors dark:bg-gray-900" data-sal="slide-up">
     <div class="py-8 lg:py-16 mx-auto max-w-screen-xl px-4">
         <h2
             class="mb-8 lg:-mb-16 text-2xl font-extrabold tracking-tight leading-tight text-center text-gray-900 dark:text-white md:text-4xl">
@@ -365,7 +365,7 @@
 </section>
 
 {{-- lomba --}}
-<section id="lomba" class="dark:bg-gray-900 mt-16" data-aos="fade-up">
+<section id="lomba" class="dark:bg-gray-900 mt-16" data-sal="slide-up">
     <div class="container px-6 py-10 mx-auto">
         <h1 class="text-2xl text-center font-semibold text-gray-800 lg:text-4xl dark:text-white">Cabang Lomba
         </h1>
@@ -498,7 +498,7 @@
 </section>
 
 {{-- chilltalks --}}
-<section id="chilltalks" class="text-gray-600 body-font" data-aos="fade-up">
+<section id="chilltalks" class="text-gray-600 body-font" data-sal="slide-up">
     <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
         <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
             <img class="object-cover object-center rounded" alt="hero" src="{{asset('images/lomba/ct design 2.png')}}">
@@ -524,7 +524,7 @@
 </section>
 
 {{-- about --}}
-<section class="text-gray-600 body-font" data-aos="fade-up">
+<section class="text-gray-600 body-font" data-sal="slide-up">
     <div class="container mx-auto flex px-5 mb-24 md:flex-row flex-col items-center">
         <div
             class="order-2 md:order-1 lg:flex-grow md:w-full lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
@@ -562,7 +562,7 @@
 </section>
 
 {{-- faq --}}
-<div class="bg-white pt-10" id="faq" data-aos="fade-up">
+<div class="bg-white pt-10" id="faq" data-sal="slide-up">
     <h3 class="text-xl font-bold mb-3 text-center text-primary-blue">Punya pertanyaan?</h3>
     <h2
         class="lg:mb-16 text-2xl font-extrabold tracking-tight leading-tight text-center text-gray-900 dark:text-white md:text-4xl">
@@ -644,7 +644,7 @@
 </div>
 
 {{-- media & community partner --}}
-<section class="bg-white dark:bg-gray-900" data-aos="fade-up">
+<section class="bg-white dark:bg-gray-900" data-sal="slide-up">
     <div class="py-8 lg:py-16 mx-auto max-w-screen-xl px-4">
         <h3 class="text-xl font-bold mb-3 text-center text-primary-blue">Special thanks to our</h3>
         <h2

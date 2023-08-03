@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+:root{
+    --sal-duration: 0.5s;
+}
+
 /* sponsor carousel */
 .sponsor .splide__slide img {
     transition: all 400ms;

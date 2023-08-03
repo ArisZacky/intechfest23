@@ -7,4 +7,5 @@
 <link rel="shortcut icon" href="{{ asset('images/logo/favicon.ico') }}">
 {{-- <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"> --}}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+<link rel="stylesheet" href="{{asset('sal.js/dist/sal.css')}}">
 @vite('resources/css/app.css')
